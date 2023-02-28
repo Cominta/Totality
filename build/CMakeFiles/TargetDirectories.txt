@@ -1,0 +1,3 @@
+C:/Users/Roman/Desktop/Totality/build/CMakeFiles/Totality.dir
+C:/Users/Roman/Desktop/Totality/build/CMakeFiles/edit_cache.dir
+C:/Users/Roman/Desktop/Totality/build/CMakeFiles/rebuild_cache.dir
