@@ -1,12 +1,22 @@
 CMakeFiles/Totality.dir/src/main.cpp.obj: \
  C:\Users\Roman\Desktop\Totality\src\main.cpp \
- C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/iostream \
- C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32/bits/c++config.h \
- C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32/bits/os_defines.h \
- C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32/bits/cpu_defines.h \
+ C:/Users/Roman/Desktop/Totality/include/engine.h \
+ C:/Users/Roman/Desktop/Totality/include/mainState.h \
+ C:/Users/Roman/Desktop/Totality/include/state.h \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Window.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/System.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Config.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/System/Clock.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/System/Export.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/System/Time.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/System/Err.hpp \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/ostream \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/ios \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/iosfwd \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32/bits/c++config.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32/bits/os_defines.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32/bits/cpu_defines.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stringfwd.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/memoryfwd.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/postypes.h \
@@ -124,5 +134,117 @@ CMakeFiles/Totality.dir/src/main.cpp.obj: \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/locale_facets.tcc \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/basic_ios.tcc \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/ostream.tcc \
+ C:/Users/Roman/Desktop/Totality/include/SFML/System/FileInputStream.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/System/InputStream.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/System/NonCopyable.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/System/Lock.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/System/MemoryInputStream.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/System/Mutex.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/System/Sleep.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/System/String.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/System/Utf.hpp \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/algorithm \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/utility \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_relops.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_algo.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/algorithmfwd.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_heap.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_tempbuf.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_construct.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/uniform_int_dist.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/limits \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/locale \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/locale_facets_nonio.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/ctime \
+ C:/mingw64/x86_64-w64-mingw32/include/time.h \
+ C:/mingw64/x86_64-w64-mingw32/include/_timeval.h \
+ C:/mingw64/x86_64-w64-mingw32/include/pthread_time.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32/bits/time_members.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32/bits/messages_members.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/codecvt.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/locale_facets_nonio.tcc \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/locale_conv.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stringfwd.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/allocator.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/codecvt.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/unique_ptr.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/tuple \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/array \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/uses_allocator.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/invoke.h \
+ C:/Users/Roman/Desktop/Totality/include/SFML/System/Utf.inl \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/iterator \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/istream \
- C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/istream.tcc
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/istream.tcc \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stream_iterator.h \
+ C:/Users/Roman/Desktop/Totality/include/SFML/System/String.inl \
+ C:/Users/Roman/Desktop/Totality/include/SFML/System/Thread.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/System/Thread.inl \
+ C:/Users/Roman/Desktop/Totality/include/SFML/System/ThreadLocal.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/System/ThreadLocalPtr.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/System/ThreadLocalPtr.inl \
+ C:/Users/Roman/Desktop/Totality/include/SFML/System/Vector2.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/System/Vector2.inl \
+ C:/Users/Roman/Desktop/Totality/include/SFML/System/Vector3.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/System/Vector3.inl \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Window/Clipboard.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Window/Export.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Window/Context.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Window/GlResource.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Window/ContextSettings.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Window/Cursor.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Window/Event.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Window/Joystick.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Window/Keyboard.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Window/Mouse.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Window/Sensor.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Window/Touch.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Window/VideoMode.hpp \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/vector \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_uninitialized.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_vector.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_bvector.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/vector.tcc \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Window/Window.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Window/WindowHandle.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Window/WindowStyle.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/BlendMode.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/Export.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/CircleShape.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/Shape.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/Drawable.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/RenderStates.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/Transform.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/Rect.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/Rect.inl \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/Transformable.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/VertexArray.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/Vertex.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/Color.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/PrimitiveType.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/ConvexShape.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/Font.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/Glyph.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/Texture.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/Image.hpp \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/map \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_tree.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/ext/aligned_buffer.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_map.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_multimap.h \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/RectangleShape.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/RenderTarget.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/View.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/RenderTexture.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/RenderWindow.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/Shader.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/Glsl.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/Glsl.inl \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/Sprite.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/Text.hpp \
+ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/VertexBuffer.hpp \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/stack \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/deque \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_deque.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/deque.tcc \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_stack.h

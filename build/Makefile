@@ -128,6 +128,54 @@ Totality/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/build
 .PHONY : Totality/fast
 
+src/button.obj: src/button.cpp.obj
+.PHONY : src/button.obj
+
+# target to build an object file
+src/button.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/button.cpp.obj
+.PHONY : src/button.cpp.obj
+
+src/button.i: src/button.cpp.i
+.PHONY : src/button.i
+
+# target to preprocess a source file
+src/button.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/button.cpp.i
+.PHONY : src/button.cpp.i
+
+src/button.s: src/button.cpp.s
+.PHONY : src/button.s
+
+# target to generate assembly for a file
+src/button.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/button.cpp.s
+.PHONY : src/button.cpp.s
+
+src/engine.obj: src/engine.cpp.obj
+.PHONY : src/engine.obj
+
+# target to build an object file
+src/engine.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/engine.cpp.obj
+.PHONY : src/engine.cpp.obj
+
+src/engine.i: src/engine.cpp.i
+.PHONY : src/engine.i
+
+# target to preprocess a source file
+src/engine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/engine.cpp.i
+.PHONY : src/engine.cpp.i
+
+src/engine.s: src/engine.cpp.s
+.PHONY : src/engine.s
+
+# target to generate assembly for a file
+src/engine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/engine.cpp.s
+.PHONY : src/engine.cpp.s
+
 src/main.obj: src/main.cpp.obj
 .PHONY : src/main.obj
 
@@ -152,6 +200,54 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/mainState.obj: src/mainState.cpp.obj
+.PHONY : src/mainState.obj
+
+# target to build an object file
+src/mainState.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/mainState.cpp.obj
+.PHONY : src/mainState.cpp.obj
+
+src/mainState.i: src/mainState.cpp.i
+.PHONY : src/mainState.i
+
+# target to preprocess a source file
+src/mainState.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/mainState.cpp.i
+.PHONY : src/mainState.cpp.i
+
+src/mainState.s: src/mainState.cpp.s
+.PHONY : src/mainState.s
+
+# target to generate assembly for a file
+src/mainState.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/mainState.cpp.s
+.PHONY : src/mainState.cpp.s
+
+src/state.obj: src/state.cpp.obj
+.PHONY : src/state.obj
+
+# target to build an object file
+src/state.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/state.cpp.obj
+.PHONY : src/state.cpp.obj
+
+src/state.i: src/state.cpp.i
+.PHONY : src/state.i
+
+# target to preprocess a source file
+src/state.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/state.cpp.i
+.PHONY : src/state.cpp.i
+
+src/state.s: src/state.cpp.s
+.PHONY : src/state.s
+
+# target to generate assembly for a file
+src/state.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/state.cpp.s
+.PHONY : src/state.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -161,9 +257,21 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Totality
+	@echo ... src/button.obj
+	@echo ... src/button.i
+	@echo ... src/button.s
+	@echo ... src/engine.obj
+	@echo ... src/engine.i
+	@echo ... src/engine.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
+	@echo ... src/mainState.obj
+	@echo ... src/mainState.i
+	@echo ... src/mainState.s
+	@echo ... src/state.obj
+	@echo ... src/state.i
+	@echo ... src/state.s
 .PHONY : help
 
 

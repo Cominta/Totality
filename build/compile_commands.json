@@ -1,7 +1,27 @@
 [
 {
   "directory": "C:/Users/Roman/Desktop/Totality/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -o CMakeFiles\\Totality.dir\\src\\button.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\button.cpp",
+  "file": "C:/Users/Roman/Desktop/Totality/src/button.cpp"
+},
+{
+  "directory": "C:/Users/Roman/Desktop/Totality/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -o CMakeFiles\\Totality.dir\\src\\engine.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\engine.cpp",
+  "file": "C:/Users/Roman/Desktop/Totality/src/engine.cpp"
+},
+{
+  "directory": "C:/Users/Roman/Desktop/Totality/build",
   "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -o CMakeFiles\\Totality.dir\\src\\main.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\main.cpp",
   "file": "C:/Users/Roman/Desktop/Totality/src/main.cpp"
+},
+{
+  "directory": "C:/Users/Roman/Desktop/Totality/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -o CMakeFiles\\Totality.dir\\src\\mainState.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\mainState.cpp",
+  "file": "C:/Users/Roman/Desktop/Totality/src/mainState.cpp"
+},
+{
+  "directory": "C:/Users/Roman/Desktop/Totality/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -o CMakeFiles\\Totality.dir\\src\\state.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\state.cpp",
+  "file": "C:/Users/Roman/Desktop/Totality/src/state.cpp"
 }
 ]
