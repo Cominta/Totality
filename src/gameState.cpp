@@ -3,12 +3,12 @@
 GameState::GameState(sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures)
     : State(window, states, textures)
 {
-
+    this->tilemap = new Tilemap(this->window, this->textures, 100, 100);
 }
 
 GameState::~GameState()
 {
-
+    delete this->tilemap;
 }
 
 void GameState::update(bool mousePressed, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)
@@ -23,5 +23,5 @@ void GameState::update(bool mousePressed, std::vector<int>& pressedKeys, std::ve
 
 void GameState::render()
 {
-    
+    this->tilemap->render();
 }

@@ -20,11 +20,13 @@ void Engine::loadTextures()
     std::string rootPath = "resources/";
 
     std::vector<std::string> paths = {
-        rootPath + "buttons/mainstate/play_idle.png"
+        rootPath + "buttons/mainstate/play_idle.png",
+        rootPath + "tiles/ground.png"
     };
 
     std::vector<std::string> names = {
-        "play_idle"
+        "play_idle",
+        "tile_ground"
     };
 
     for (int i = 0; i < paths.size(); i++)

@@ -272,6 +272,30 @@ src/state.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/state.cpp.s
 .PHONY : src/state.cpp.s
 
+src/tilemap.obj: src/tilemap.cpp.obj
+.PHONY : src/tilemap.obj
+
+# target to build an object file
+src/tilemap.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/tilemap.cpp.obj
+.PHONY : src/tilemap.cpp.obj
+
+src/tilemap.i: src/tilemap.cpp.i
+.PHONY : src/tilemap.i
+
+# target to preprocess a source file
+src/tilemap.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/tilemap.cpp.i
+.PHONY : src/tilemap.cpp.i
+
+src/tilemap.s: src/tilemap.cpp.s
+.PHONY : src/tilemap.s
+
+# target to generate assembly for a file
+src/tilemap.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/tilemap.cpp.s
+.PHONY : src/tilemap.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -299,6 +323,9 @@ help:
 	@echo ... src/state.obj
 	@echo ... src/state.i
 	@echo ... src/state.s
+	@echo ... src/tilemap.obj
+	@echo ... src/tilemap.i
+	@echo ... src/tilemap.s
 .PHONY : help
 
 

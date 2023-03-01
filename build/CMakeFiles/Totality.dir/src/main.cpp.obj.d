@@ -251,4 +251,5 @@ CMakeFiles/Totality.dir/src/main.cpp.obj: \
  C:/Users/Roman/Desktop/Totality/include/button.h \
  C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/iostream \
- C:/Users/Roman/Desktop/Totality/include/gameState.h
+ C:/Users/Roman/Desktop/Totality/include/gameState.h \
+ C:/Users/Roman/Desktop/Totality/include/tilemap.h
