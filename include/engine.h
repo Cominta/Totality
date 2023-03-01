@@ -11,6 +11,8 @@ class Engine
         std::stack<State*> states;
         std::map<std::string, sf::Texture> textures;
 
+        bool mousePressed;
+
         void loadTextures();
 
     public:

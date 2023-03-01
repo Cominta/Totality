@@ -7,3 +7,14 @@ State::State(sf::RenderWindow* window, std::stack<State*>& states, std::map<std:
 }
 
 State::~State() {}
+
+void State::updateMouse()
+{   
+    // this->mousePosition = sf::Mouse::getPosition(*(this->window));
+    this->mousePosition = this->window->mapPixelToCoords(sf::Mouse::getPosition(*(this->window)));
+}
+
+void State::update()
+{
+    
+}

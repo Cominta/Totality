@@ -6,6 +6,8 @@ Engine::Engine(sf::RenderWindow* window)
     this->loadTextures();
 
     this->states.push(new MainState(this->window, this->states, this->textures));
+
+    this->mousePressed = false;
 }
 
 Engine::~Engine()
@@ -43,12 +45,27 @@ void Engine::updateSFML()
         {
             this->window->close();
         }
+
+        if (this->sfEvent.type == sf::Event::MouseButtonReleased)
+        {
+            if (this->sfEvent.mouseButton.button == sf::Mouse::Left)
+            {
+                this->mousePressed = true;
+            }
+        }
     }
 }
 
 void Engine::update()
 {
     this->updateSFML();
+
+    if (!this->states.empty())
+    {
+        this->states.top()->update(this->mousePressed);
+    }
+
+    this->mousePressed = false;
 }
 
 void Engine::render()
