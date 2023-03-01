@@ -176,6 +176,30 @@ src/engine.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/engine.cpp.s
 .PHONY : src/engine.cpp.s
 
+src/gameState.obj: src/gameState.cpp.obj
+.PHONY : src/gameState.obj
+
+# target to build an object file
+src/gameState.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/gameState.cpp.obj
+.PHONY : src/gameState.cpp.obj
+
+src/gameState.i: src/gameState.cpp.i
+.PHONY : src/gameState.i
+
+# target to preprocess a source file
+src/gameState.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/gameState.cpp.i
+.PHONY : src/gameState.cpp.i
+
+src/gameState.s: src/gameState.cpp.s
+.PHONY : src/gameState.s
+
+# target to generate assembly for a file
+src/gameState.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/gameState.cpp.s
+.PHONY : src/gameState.cpp.s
+
 src/main.obj: src/main.cpp.obj
 .PHONY : src/main.obj
 
@@ -263,6 +287,9 @@ help:
 	@echo ... src/engine.obj
 	@echo ... src/engine.i
 	@echo ... src/engine.s
+	@echo ... src/gameState.obj
+	@echo ... src/gameState.i
+	@echo ... src/gameState.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s

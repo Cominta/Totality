@@ -10,6 +10,8 @@ class Engine
         sf::Event sfEvent;
         std::stack<State*> states;
         std::map<std::string, sf::Texture> textures;
+        std::vector<int> pressedKeys;
+        std::vector<int> realisedKeys;
 
         bool mousePressed;
 

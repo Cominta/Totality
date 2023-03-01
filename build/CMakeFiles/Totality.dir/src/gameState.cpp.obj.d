@@ -1,7 +1,6 @@
-CMakeFiles/Totality.dir/src/main.cpp.obj: \
- C:\Users\Roman\Desktop\Totality\src\main.cpp \
- C:/Users/Roman/Desktop/Totality/include/engine.h \
- C:/Users/Roman/Desktop/Totality/include/mainState.h \
+CMakeFiles/Totality.dir/src/gameState.cpp.obj: \
+ C:\Users\Roman\Desktop\Totality\src\gameState.cpp \
+ C:/Users/Roman/Desktop/Totality/include/gameState.h \
  C:/Users/Roman/Desktop/Totality/include/state.h \
  C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp \
  C:/Users/Roman/Desktop/Totality/include/SFML/Window.hpp \
@@ -247,8 +246,4 @@ CMakeFiles/Totality.dir/src/main.cpp.obj: \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/deque \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_deque.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/deque.tcc \
- C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_stack.h \
- C:/Users/Roman/Desktop/Totality/include/button.h \
- C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp \
- C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/iostream \
- C:/Users/Roman/Desktop/Totality/include/gameState.h
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_stack.h

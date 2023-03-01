@@ -8,11 +8,18 @@ MainState::MainState(sf::RenderWindow* window, std::stack<State*>& states, std::
 
 MainState::~MainState()
 {
-    delete this->window;
+
 }
 
-void MainState::update(bool mousePressed)
+void MainState::update(bool mousePressed, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)
 {
+    if (this->find(realisedKeys, sf::Keyboard::Key::Escape))
+    {
+        delete this->states.top();
+        this->states.pop();
+        return;
+    }
+
     this->updateMouse();
 
     for (auto it : this->buttons)
@@ -21,7 +28,7 @@ void MainState::update(bool mousePressed)
 
         if (it.second->isHover(this->mousePosition) && mousePressed && it.first == "play")
         {
-            
+            this->states.push(new GameState(this->window, this->states, this->textures));
         }
     }
 }

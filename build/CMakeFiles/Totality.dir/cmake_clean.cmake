@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Totality.dir/src/button.cpp.obj.d"
   "CMakeFiles/Totality.dir/src/engine.cpp.obj"
   "CMakeFiles/Totality.dir/src/engine.cpp.obj.d"
+  "CMakeFiles/Totality.dir/src/gameState.cpp.obj"
+  "CMakeFiles/Totality.dir/src/gameState.cpp.obj.d"
   "CMakeFiles/Totality.dir/src/main.cpp.obj"
   "CMakeFiles/Totality.dir/src/main.cpp.obj.d"
   "CMakeFiles/Totality.dir/src/mainState.cpp.obj"

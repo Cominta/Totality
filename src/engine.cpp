@@ -12,7 +12,6 @@ Engine::Engine(sf::RenderWindow* window)
 
 Engine::~Engine()
 {
-    delete this->window;
     
 }
 
@@ -53,6 +52,16 @@ void Engine::updateSFML()
                 this->mousePressed = true;
             }
         }
+
+        if (this->sfEvent.type == sf::Event::KeyReleased)
+        {
+            this->realisedKeys.push_back(this->sfEvent.key.code);
+        }
+
+        if (this->sfEvent.type == sf::Event::KeyPressed)
+        {
+            this->pressedKeys.push_back(this->sfEvent.key.code);
+        }
     }
 }
 
@@ -60,22 +69,18 @@ void Engine::update()
 {
     this->updateSFML();
 
-    if (!this->states.empty())
-    {
-        this->states.top()->update(this->mousePressed);
-    }
+    this->states.top()->update(this->mousePressed, this->pressedKeys, this->realisedKeys);
 
     this->mousePressed = false;
+    this->pressedKeys.clear();
+    this->realisedKeys.clear();
 }
 
 void Engine::render()
 {
     this->window->clear();
 
-    if (!this->states.empty())
-    {
-        this->states.top()->render();
-    }
+    this->states.top()->render();
 
     this->window->display();
 }
@@ -85,6 +90,13 @@ void Engine::start()
     while (this->window->isOpen())
     {
         this->update();
+
+        if (this->states.empty())
+        {
+            this->window->close();
+            break;
+        }
+
         this->render();
     }
 }

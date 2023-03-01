@@ -11,6 +11,11 @@
 },
 {
   "directory": "C:/Users/Roman/Desktop/Totality/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -o CMakeFiles\\Totality.dir\\src\\gameState.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\gameState.cpp",
+  "file": "C:/Users/Roman/Desktop/Totality/src/gameState.cpp"
+},
+{
+  "directory": "C:/Users/Roman/Desktop/Totality/build",
   "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -o CMakeFiles\\Totality.dir\\src\\main.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\main.cpp",
   "file": "C:/Users/Roman/Desktop/Totality/src/main.cpp"
 },
