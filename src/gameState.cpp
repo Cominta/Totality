@@ -3,7 +3,7 @@
 GameState::GameState(sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures)
     : State(window, states, textures)
 {
-    this->tilemap = new Tilemap(this->window, this->textures, 100, 100);
+    this->tilemap = new Tilemap(this->window, this->textures, 100, 100, 8, 2);
 }
 
 GameState::~GameState()

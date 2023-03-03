@@ -1,10 +1,15 @@
 #include "tilemap.h"
 
-Tilemap::Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& textures, int width, int height)
+Tilemap::Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& textures, int width, int height, int frequency, int octaves)
     : window(window), width(width), height(height)
 {
+    const siv::PerlinNoise::seed_type seed = 123445;
+    this->perlinNoise = new siv::PerlinNoise(seed);
     this->tiles = {
-        {0, textures["tile_ground"]}
+        {0, textures["tile_water"]},
+        {1, textures["tile_ground"]},
+        {2, textures["tile_mountain"]},
+        {3, textures["tile_snow"]}
     };
 
     for (int y = 0; y < this->height; y++)
@@ -13,12 +18,43 @@ Tilemap::Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& t
 
         for (int x = 0; x < this->width; x++)
         {
-            this->map[y].push_back(0);
+            float ix = (float)x / this->width;
+            float iy = (float)y / this->height;
+
+            double noise = this->perlinNoise->octave2D_01((ix * frequency), (iy * frequency), octaves);
+            std::cout << noise << "\n";
+
+            if (noise <= 0.2)
+            {
+                noise = 0; // water
+            }
+
+            else if (noise > 0.2 && noise <= 0.6)
+            {
+                noise = 1; // ground
+            }
+
+            else if (noise > 0.6 && noise <= 0.7)
+            {
+                noise = 2; // mountain
+            }
+
+            else if (noise > 0.7)
+            {
+                noise = 3; // snow
+            }
+
+            this->map[y].push_back((int)noise);
         }
     }
 }
 
 Tilemap::~Tilemap()
+{
+
+}
+
+void Tilemap::generateNew()
 {
 
 }
@@ -32,7 +68,7 @@ void Tilemap::render()
     {
         for (int x = 0; x < this->map[y].size(); x++)
         {
-            sprite.setTexture(this->tiles[0]);
+            sprite.setTexture(this->tiles[this->map[y][x]]);
             sprite.setPosition(pos);
             this->window->draw(sprite);
             pos.x += 64;

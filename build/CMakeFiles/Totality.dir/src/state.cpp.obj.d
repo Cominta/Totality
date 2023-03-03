@@ -105,6 +105,10 @@ CMakeFiles/Totality.dir/src/state.cpp.obj: \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/basic_string.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/ext/alloc_traits.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/alloc_traits.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/string_view \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/limits \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/functional_hash.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/string_view.tcc \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/ext/string_conversions.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/cstdlib \
  C:/mingw64/x86_64-w64-mingw32/include/stdlib.h \
@@ -114,7 +118,6 @@ CMakeFiles/Totality.dir/src/state.cpp.obj: \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/std_abs.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/cstdio \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/cerrno \
- C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/functional_hash.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/basic_string.tcc \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/locale_classes.tcc \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/system_error \
@@ -150,7 +153,6 @@ CMakeFiles/Totality.dir/src/state.cpp.obj: \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_tempbuf.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_construct.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/uniform_int_dist.h \
- C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/limits \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/locale \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/locale_facets_nonio.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/ctime \
@@ -228,6 +230,9 @@ CMakeFiles/Totality.dir/src/state.cpp.obj: \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/map \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_tree.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/ext/aligned_buffer.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/node_handle.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/optional \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/enable_special_members.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_map.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_multimap.h \
  C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/RectangleShape.hpp \
