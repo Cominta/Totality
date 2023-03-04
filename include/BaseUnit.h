@@ -7,7 +7,7 @@ class BaseUnit
 {
 private:
 	sf::CircleShape unit;
-	sf::Vector2f wayEnd;
+	sf::Vector2i wayEnd;
 	sf::RenderWindow* window;
 	bool b_active;
 	bool b_moving;
@@ -89,7 +89,7 @@ public:
 		unit.move(X, Y);
 	}
 
-	void update(bool mousePressed, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, sf::Vector2f MousePosition);
+	void update(bool mousePressed, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys);
 	bool find(std::vector<int> keys, int item)
 	{
 	    for (int i = 0; i < keys.size(); i++)
