@@ -1,18 +1,18 @@
 #pragma once
 
-#include "state.h"
+#include "SFML\Graphics.hpp"
 #include <iostream>
 
-class BaseUnit : public State
+class BaseUnit
 {
 private:
 	sf::CircleShape unit;
 	sf::Vector2f wayEnd;
+	sf::RenderWindow* window;
 	bool b_active;
 	bool b_moving;
 public:
-	BaseUnit(sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures) 
-		: State(window, states, textures)
+	BaseUnit(sf::RenderWindow *_window)
 	{
 		unit.setRadius(50.f);
 		unit.setOrigin(50.f, 50.f);
@@ -22,6 +22,7 @@ public:
 		unit.move(50.f, 50.f);
 		b_active = false;
 		b_moving = false;
+		window = _window;
 	}
 
 	~BaseUnit()
@@ -54,8 +55,8 @@ public:
 	}
 	void setMove(sf::Vector2f cord)
 	{
-		mousePosition.x = cord.x;
-		mousePosition.y = cord.y;
+		wayEnd.x = cord.x;
+		wayEnd.y = cord.y;
 	}
 
 	void setOutlineThickness(float wide)
@@ -83,10 +84,18 @@ public:
 		unit.move(X, Y);
 	}
 
-	void updateMouse()
+	void update(bool mousePressed, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, sf::Vector2f MousePosition);
+	bool find(std::vector<int> keys, int item)
 	{
-		this->mousePosition = this->window->mapPixelToCoords(sf::Mouse::getPosition(*(this->window)));
+	    for (int i = 0; i < keys.size(); i++)
+	    {
+	        if (keys[i] == item)
+	        {
+	            return true;
+	        }
+	    }
+
+	    return false;
 	}
-	void update(bool mousePressed, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys) override;
 	void render();
 };

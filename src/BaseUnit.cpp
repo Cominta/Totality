@@ -1,7 +1,7 @@
 
-#include "Units.h"
+#include "BaseUnit.h"
 
-void BaseUnit::update(bool mousePressed, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)
+void BaseUnit::update(bool mousePressed, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, sf::Vector2f mousePosition)
 {
 	if (mousePressed)
 	{
@@ -18,10 +18,9 @@ void BaseUnit::update(bool mousePressed, std::vector<int>& pressedKeys, std::vec
 		}
 		else if (find(pressedKeys, 2))
 		{
-			if (isActiv)
+			if (isActiv())
 			{
-				this->updateMouse();
-				this->setMove(this->mousePosition);
+				this->setMove(mousePosition);
 			}
 		}
 	}
@@ -67,4 +66,7 @@ void BaseUnit::moveTo()
 	}
 }
 
-void BaseUnit::render() {}
+void BaseUnit::render()
+{
+	this->window->draw(this->unit);
+}
