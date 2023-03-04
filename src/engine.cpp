@@ -5,9 +5,10 @@ Engine::Engine(sf::RenderWindow* window)
 {
     this->loadTextures();
 
-    this->states.push(new MainState(this->window, this->states, this->textures));
+    this->states.push(new MainState(State::typeState::MAINSTATE, this->window, this->states, this->textures));
 
-    this->mousePressed = false;
+    this->mousePressedLeft = false;
+    this->mousePressedRight = false;
 }
 
 Engine::~Engine()
@@ -21,12 +22,20 @@ void Engine::loadTextures()
 
     std::vector<std::string> paths = {
         rootPath + "buttons/mainstate/play_idle.png",
-        rootPath + "tiles/ground.png"
+        rootPath + "tiles/ground.png",
+        rootPath + "tiles/water.png",
+        rootPath + "tiles/mountain.png",
+        rootPath + "tiles/snow.png",
+        rootPath + "tiles/sand.png"
     };
 
     std::vector<std::string> names = {
         "play_idle",
-        "tile_ground"
+        "tile_ground",
+        "tile_water",
+        "tile_mountain",
+        "tile_snow",
+        "tile_sand"
     };
 
     for (int i = 0; i < paths.size(); i++)
@@ -51,7 +60,12 @@ void Engine::updateSFML()
         {
             if (this->sfEvent.mouseButton.button == sf::Mouse::Left)
             {
-                this->mousePressed = true;
+                this->mousePressedLeft = true;
+            }
+
+            else if (this->sfEvent.mouseButton.button == sf::Mouse::Right)
+            {
+                this->mousePressedRight = true;
             }
         }
 
@@ -71,9 +85,17 @@ void Engine::update()
 {
     this->updateSFML();
 
-    this->states.top()->update(this->mousePressed, this->pressedKeys, this->realisedKeys);
+    if (this->states.top()->type == State::typeState::MAINSTATE)
+    {
+        this->states.top()->update(this->mousePressedLeft, this->mousePressedRight, this->pressedKeys, this->realisedKeys);
+    }
 
-    this->mousePressed = false;
+    else if (this->states.top()->type == State::typeState::GAMESTATE) 
+    {
+        this->states.top()->update(this->mousePressedLeft, this->mousePressedRight, this->pressedKeys, this->realisedKeys);
+    }
+
+    this->mousePressedLeft = false;
     this->pressedKeys.clear();
     this->realisedKeys.clear();
 }

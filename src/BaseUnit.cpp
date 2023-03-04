@@ -1,11 +1,11 @@
 
 #include "BaseUnit.h"
 
-void BaseUnit::update(bool mousePressed, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, sf::Vector2f mousePosition)
+void BaseUnit::update(bool mousePressed, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)
 {
 	if (mousePressed)
 	{
-		if (find(pressedKeys, sf::Mouse::Button::Left))
+		if (find(mousePressed))
 		{
 			if (unit.getGlobalBounds().contains(mousePosition))
 			{
@@ -23,8 +23,9 @@ void BaseUnit::update(bool mousePressed, std::vector<int>& pressedKeys, std::vec
 	{
 		if (isActiv())
 		{
-			this->setMove(mousePosition);
-			this->b_moving = true;
+			sf::Vector2i mousepos = sf::Mouse::getPosition(window);
+			window.convertCoords(mousepos,window.getView());
+			this->setMove(mousepos);
 		}
 	}
 }
@@ -33,6 +34,7 @@ void BaseUnit::moveTo()
 {
 	bool endX = false;
 	bool endY = false;
+
 	if (unit.getPosition().x != this->wayEnd.x)
 	{
 		if (unit.getPosition().x > this->wayEnd.x)

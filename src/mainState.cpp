@@ -1,7 +1,7 @@
 #include "mainState.h"
 
-MainState::MainState(sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures)
-    : State(window, states, textures)
+MainState::MainState(typeState type, sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures)
+    : State(type, window, states, textures)
 {
     this->buttons["play"] = new Button(this->window, 100, 100, 1, &this->textures["play_idle"]);
 }
@@ -11,7 +11,7 @@ MainState::~MainState()
 
 }
 
-void MainState::update(bool mousePressed, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)
+void MainState::update(bool mousePressedLeft, bool MousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)
 {
     if (this->find(realisedKeys, sf::Keyboard::Key::Escape))
     {
@@ -24,11 +24,11 @@ void MainState::update(bool mousePressed, std::vector<int>& pressedKeys, std::ve
 
     for (auto it : this->buttons)
     {
-        it.second->update(this->mousePosition, mousePressed);
+        it.second->update(this->mousePosition, mousePressedLeft);
 
-        if (it.second->isHover(this->mousePosition) && mousePressed && it.first == "play")
+        if (it.second->isHover(this->mousePosition) && mousePressedLeft && it.first == "play")
         {
-            this->states.push(new GameState(this->window, this->states, this->textures));
+            this->states.push(new GameState(State::typeState::GAMESTATE, this->window, this->states, this->textures));
         }
     }
 }

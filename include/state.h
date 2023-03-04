@@ -14,7 +14,15 @@ class State
         std::map<std::string, sf::Texture>& textures;
 
     public:
-        State(sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures);
+        enum typeState 
+        {
+            MAINSTATE,
+            GAMESTATE
+        };
+
+        typeState type;
+
+        State(typeState type, sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures);
         void operator=(const State& obj) = delete;
         State(const State& obj) = delete;
 
@@ -24,6 +32,6 @@ class State
         bool find(std::vector<int> keys, int item);
 
         virtual void update();
-        virtual void update(bool mousePressed, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys) = 0;
+        virtual void update(bool mousePressedLeft, bool MousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys) = 0;
         virtual void render() = 0;
 };
