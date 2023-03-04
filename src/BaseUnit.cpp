@@ -18,6 +18,7 @@ void BaseUnit::update(bool mousePressed, std::vector<int>& pressedKeys, std::vec
 				this->setOutlineColor(0, 0, 0);
 			}
 		}
+	}
 	else if (find(realisedKeys, sf::Keyboard::Enter))
 	{
 		if (isActiv())
@@ -25,7 +26,6 @@ void BaseUnit::update(bool mousePressed, std::vector<int>& pressedKeys, std::vec
 			this->setMove(mousePosition);
 			this->b_moving = true;
 		}
-	}
 	}
 }
 
