@@ -2,6 +2,7 @@
 
 #include "state.h"
 #include "tilemap.h"
+#include "BaseUnit.h"
 
 class GameState : public State 
 {
