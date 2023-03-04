@@ -3,13 +3,14 @@
 Tilemap::Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& textures, int width, int height, int frequency, int octaves)
     : window(window), width(width), height(height)
 {
-    const siv::PerlinNoise::seed_type seed = 123445;
+    const siv::PerlinNoise::seed_type seed = 7847;
     this->perlinNoise = new siv::PerlinNoise(seed);
     this->tiles = {
         {0, textures["tile_water"]},
-        {1, textures["tile_ground"]},
-        {2, textures["tile_mountain"]},
-        {3, textures["tile_snow"]}
+        {1, textures["tile_sand"]},
+        {2, textures["tile_ground"]},
+        {3, textures["tile_mountain"]},
+        {4, textures["tile_snow"]}
     };
 
     for (int y = 0; y < this->height; y++)
@@ -22,26 +23,31 @@ Tilemap::Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& t
             float iy = (float)y / this->height;
 
             double noise = this->perlinNoise->octave2D_01((ix * frequency), (iy * frequency), octaves);
-            std::cout << noise << "\n";
+            // std::cout << noise << "\n";
 
             if (noise <= 0.2)
             {
                 noise = 0; // water
             }
 
-            else if (noise > 0.2 && noise <= 0.6)
+            else if (noise > 0.2 && noise <= 0.25)
             {
-                noise = 1; // ground
+                noise = 1; // sand
+            }
+
+            else if (noise > 0.25 && noise <= 0.6)
+            {
+                noise = 2; // ground
             }
 
             else if (noise > 0.6 && noise <= 0.7)
             {
-                noise = 2; // mountain
+                noise = 3; // mountain
             }
 
             else if (noise > 0.7)
             {
-                noise = 3; // snow
+                noise = 4; // snow
             }
 
             this->map[y].push_back((int)noise);

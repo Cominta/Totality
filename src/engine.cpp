@@ -5,7 +5,7 @@ Engine::Engine(sf::RenderWindow* window)
 {
     this->loadTextures();
 
-    this->states.push(new MainState(this->window, this->states, this->textures));
+    this->states.push(new MainState(State::typeState::MAINSTATE, this->window, this->states, this->textures));
 
     this->mousePressed = false;
 }
@@ -24,7 +24,8 @@ void Engine::loadTextures()
         rootPath + "tiles/ground.png",
         rootPath + "tiles/water.png",
         rootPath + "tiles/mountain.png",
-        rootPath + "tiles/snow.png"
+        rootPath + "tiles/snow.png",
+        rootPath + "tiles/sand.png"
     };
 
     std::vector<std::string> names = {
@@ -32,7 +33,8 @@ void Engine::loadTextures()
         "tile_ground",
         "tile_water",
         "tile_mountain",
-        "tile_snow"
+        "tile_snow",
+        "tile_sand"
     };
 
     for (int i = 0; i < paths.size(); i++)
@@ -77,7 +79,15 @@ void Engine::update()
 {
     this->updateSFML();
 
-    this->states.top()->update(this->mousePressed, this->pressedKeys, this->realisedKeys);
+    if (this->states.top()->type == State::typeState::MAINSTATE)
+    {
+        this->states.top()->update(this->mousePressed, this->pressedKeys, this->realisedKeys);
+    }
+
+    else if (this->states.top()->type == State::typeState::GAMESTATE) 
+    {
+        this->states.top()->update(this->mousePressed, this->pressedKeys, this->realisedKeys);
+    }
 
     this->mousePressed = false;
     this->pressedKeys.clear();

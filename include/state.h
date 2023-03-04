@@ -14,7 +14,15 @@ class State
         std::map<std::string, sf::Texture>& textures;
 
     public:
-        State(sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures);
+        enum typeState 
+        {
+            MAINSTATE,
+            GAMESTATE
+        };
+
+        typeState type;
+
+        State(typeState type, sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures);
         void operator=(const State& obj) = delete;
         State(const State& obj) = delete;
 

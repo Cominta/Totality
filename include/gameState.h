@@ -9,7 +9,7 @@ class GameState : public State
         Tilemap* tilemap;
 
     public:
-        GameState(sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures);
+        GameState(typeState type, sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures);
         ~GameState();
 
         void update(bool mousePressed, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys) override;

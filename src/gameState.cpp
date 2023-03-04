@@ -1,9 +1,9 @@
 #include "gameState.h"
 
-GameState::GameState(sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures)
-    : State(window, states, textures)
+GameState::GameState(typeState type, sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures)
+    : State(type, window, states, textures)
 {
-    this->tilemap = new Tilemap(this->window, this->textures, 100, 100, 8, 2);
+    this->tilemap = new Tilemap(this->window, this->textures, 1000, 1000, 1, 16);
 }
 
 GameState::~GameState()

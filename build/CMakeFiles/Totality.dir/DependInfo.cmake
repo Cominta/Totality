@@ -11,8 +11,11 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/Roman/Desktop/Totality/src/button.cpp" "CMakeFiles/Totality.dir/src/button.cpp.obj" "gcc" "CMakeFiles/Totality.dir/src/button.cpp.obj.d"
   "C:/Users/Roman/Desktop/Totality/src/engine.cpp" "CMakeFiles/Totality.dir/src/engine.cpp.obj" "gcc" "CMakeFiles/Totality.dir/src/engine.cpp.obj.d"
   "C:/Users/Roman/Desktop/Totality/src/gameState.cpp" "CMakeFiles/Totality.dir/src/gameState.cpp.obj" "gcc" "CMakeFiles/Totality.dir/src/gameState.cpp.obj.d"
+  "C:/Users/Roman/Desktop/Totality/src/hitbox.cpp" "CMakeFiles/Totality.dir/src/hitbox.cpp.obj" "gcc" "CMakeFiles/Totality.dir/src/hitbox.cpp.obj.d"
+  "C:/Users/Roman/Desktop/Totality/src/hitboxSquare.cpp" "CMakeFiles/Totality.dir/src/hitboxSquare.cpp.obj" "gcc" "CMakeFiles/Totality.dir/src/hitboxSquare.cpp.obj.d"
   "C:/Users/Roman/Desktop/Totality/src/main.cpp" "CMakeFiles/Totality.dir/src/main.cpp.obj" "gcc" "CMakeFiles/Totality.dir/src/main.cpp.obj.d"
   "C:/Users/Roman/Desktop/Totality/src/mainState.cpp" "CMakeFiles/Totality.dir/src/mainState.cpp.obj" "gcc" "CMakeFiles/Totality.dir/src/mainState.cpp.obj.d"
+  "C:/Users/Roman/Desktop/Totality/src/quadtree.cpp" "CMakeFiles/Totality.dir/src/quadtree.cpp.obj" "gcc" "CMakeFiles/Totality.dir/src/quadtree.cpp.obj.d"
   "C:/Users/Roman/Desktop/Totality/src/state.cpp" "CMakeFiles/Totality.dir/src/state.cpp.obj" "gcc" "CMakeFiles/Totality.dir/src/state.cpp.obj.d"
   "C:/Users/Roman/Desktop/Totality/src/tilemap.cpp" "CMakeFiles/Totality.dir/src/tilemap.cpp.obj" "gcc" "CMakeFiles/Totality.dir/src/tilemap.cpp.obj.d"
   )

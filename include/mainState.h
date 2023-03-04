@@ -10,7 +10,7 @@ class MainState : public State
         std::map<std::string, Button*> buttons; 
 
     public:
-        MainState(sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures);
+        MainState(typeState type, sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures);
         ~MainState();
 
         void update(bool mousePressed, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys) override;
