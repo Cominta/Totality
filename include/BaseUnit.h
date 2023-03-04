@@ -20,6 +20,8 @@ public:
 		unit.setOutlineThickness(2.5f);
 		unit.setOutlineColor(sf::Color(0, 0, 0));
 		unit.move(50.f, 50.f);
+		wayEnd.x = 0;
+		wayEnd.y = 0;
 		b_active = false;
 		b_moving = false;
 		window = _window;
