@@ -10,6 +10,7 @@ GameState::GameState(typeState type, sf::RenderWindow* window, std::stack<State*
 GameState::~GameState()
 {
     delete this->tilemap;
+    delete this->baseUnit;
 }
 
 void GameState::update(bool mousePressedLeft, bool MousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)

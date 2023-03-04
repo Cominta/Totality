@@ -5,22 +5,25 @@ void BaseUnit::update(bool mousePressed, std::vector<int>& pressedKeys, std::vec
 {
 	if (mousePressed)
 	{
-		if (find(pressedKeys, sf::Mouse::Button::Left))
+		if (mousePressed)
 		{
 			if (unit.getGlobalBounds().contains(mousePosition))
 			{
 				this->b_active = true;
+				this->setOutlineColor(255, 0 ,0);
 			}
 			else if (!find(pressedKeys, sf::Keyboard::LShift) || !find(pressedKeys, sf::Keyboard::RShift))
 			{
 				this->b_active = false;
+				this->setOutlineColor(0, 0, 0);
 			}
 		}
-		else if (find(pressedKeys, 2))
+		else if (find(realisedKeys, sf::Keyboard::Enter))
 		{
 			if (isActiv())
 			{
 				this->setMove(mousePosition);
+				this->b_moving = true;
 			}
 		}
 	}
