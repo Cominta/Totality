@@ -11,7 +11,7 @@ MainState::~MainState()
 
 }
 
-void MainState::update(bool mousePressed, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)
+void MainState::update(bool mousePressedLeft, bool MousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)
 {
     if (this->find(realisedKeys, sf::Keyboard::Key::Escape))
     {
@@ -24,9 +24,9 @@ void MainState::update(bool mousePressed, std::vector<int>& pressedKeys, std::ve
 
     for (auto it : this->buttons)
     {
-        it.second->update(this->mousePosition, mousePressed);
+        it.second->update(this->mousePosition, mousePressedLeft);
 
-        if (it.second->isHover(this->mousePosition) && mousePressed && it.first == "play")
+        if (it.second->isHover(this->mousePosition) && mousePressedLeft && it.first == "play")
         {
             this->states.push(new GameState(State::typeState::GAMESTATE, this->window, this->states, this->textures));
         }

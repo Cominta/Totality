@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "C:/Users/Roman/Desktop/Totality/output/Totality.exe.manifest"
   "C:/Users/Roman/Desktop/Totality/output/Totality.pdb"
   "C:/Users/Roman/Desktop/Totality/output/libTotality.dll.a"
+  "CMakeFiles/Totality.dir/src/BaseUnit.cpp.obj"
+  "CMakeFiles/Totality.dir/src/BaseUnit.cpp.obj.d"
   "CMakeFiles/Totality.dir/src/button.cpp.obj"
   "CMakeFiles/Totality.dir/src/button.cpp.obj.d"
   "CMakeFiles/Totality.dir/src/engine.cpp.obj"
