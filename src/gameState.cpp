@@ -15,7 +15,7 @@ GameState::~GameState()
 
 void GameState::update(bool mousePressedLeft, bool MousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)
 {
-    this->baseUnit->update(mousePressedLeft, pressedKeys, realisedKeys, this->mousePosition);
+    this->baseUnit->update(mousePressedLeft, pressedKeys, realisedKeys);
     this->baseUnit->moveTo();
 
     if (this->find(realisedKeys, sf::Keyboard::Key::Escape))
