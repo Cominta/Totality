@@ -40,6 +40,11 @@ void BaseUnit::update(bool mousePressed, std::vector<int>& pressedKeys, std::vec
 
 void BaseUnit::moveTo(std::vector<BaseUnit*> foundRange)
 {
+	if (!this->b_moving)
+	{
+		return;
+	}
+
 	bool endX = false;
 	bool endY = false;
 
@@ -47,14 +52,61 @@ void BaseUnit::moveTo(std::vector<BaseUnit*> foundRange)
 	{
 		for (auto unitFound : foundRange)
 		{
-			sf::Vector2f pos = pos;
+			if (unitFound == this)
+			{
+				continue;
+			}
+
+			// if (!this->hitbox->intersects(unitFound->getHitbox()))
+			// {
+			// 	break;
+			// }
+
+			sf::Vector2f pos = unitFound->unit.getPosition();
 			sf::Vector2f ourPos = this->unit.getPosition();
 			HitboxSquare* hitboxOther = unitFound->getHitbox();
-			this->b_moving = false;
-			this->wayEnd.x = ourPos.x;
-			this->wayEnd.y = ourPos.y;
-			return;
-		}	
+
+			if (unitFound->unit.getGlobalBounds().contains(this->wayEnd.x, this->wayEnd.y))
+			{
+				this->wayEnd.x = ourPos.x;
+				this->wayEnd.y = ourPos.y;
+				this->b_moving = false;
+
+				break;
+			}
+
+			int moveX = 0;
+			int moveY = 0;
+
+			// ourPos = this->unit.getPosition();
+
+			if (ourPos.y <= pos.y)
+			{
+				this->unit.move(0, this->speed.y * -1);
+			}
+
+			else if (ourPos.y > pos.y)
+			{
+				this->unit.move(0, this->speed.y);
+			}
+
+			else if (ourPos.x <= pos.x)
+			{
+				this->unit.move(this->speed.x * -1, 0);
+			}
+
+			else if (ourPos.x > pos.x)
+			{
+				this->unit.move(this->speed.x, 0);
+			}
+
+			ourPos = this->unit.getPosition();
+			unitFound->wayEnd.x = pos.x;
+			unitFound->wayEnd.y = pos.y;
+			unitFound->b_moving = false;
+		}
+
+		return;
 	}
 
 	if (unit.getPosition().x != this->wayEnd.x)
@@ -110,42 +162,6 @@ void BaseUnit::moveTo(std::vector<BaseUnit*> foundRange)
 		speed.x = 10;
 		speed.y = 10;
 	}
-}
-
-void BaseUnit::getNextPos(HitboxSquare& box)
-{
-	if (!this->b_moving)
-	{
-		box = *this->hitbox;
-		return;
-	}
-
-	box.setSize(this->hitbox->width, this->hitbox->height);
-
-	int xPos = this->hitbox->x;
-	int yPos = this->hitbox->y;
-
-	if (unit.getPosition().y > this->wayEnd.y)
-	{
-		yPos -= this->speed.y;
-	}
-
-	else 
-	{
-		yPos += this->speed.y;
-	}
-
-	if (unit.getPosition().x > this->wayEnd.x)
-	{
-		xPos -= this->speed.x;
-	}
-
-	else 
-	{
-		xPos += this->speed.x;
-	}
-
-	box.setPosition(xPos, yPos);
 }
 
 void BaseUnit::render()

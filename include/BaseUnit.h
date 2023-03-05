@@ -38,6 +38,7 @@ public:
 		this->hitbox = new HitboxSquare(this->window, 100, 100, &this->unit);
 	}
 
+
 	~BaseUnit()
 	{}
 
@@ -120,8 +121,6 @@ public:
 
 	    return false;
 	}
-
-	void getNextPos(HitboxSquare& box);
 
 	void render();
 };
