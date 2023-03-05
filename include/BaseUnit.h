@@ -7,7 +7,8 @@ class BaseUnit
 {
 private:
 	sf::CircleShape unit;
-	sf::Vector2f wayEnd;
+	sf::Vector2i wayEnd;
+	sf::Vector2i speed;
 	sf::RenderWindow* window;
 	bool b_active;
 	bool b_moving;
@@ -22,6 +23,8 @@ public:
 		unit.move(50.f, 50.f);
 		wayEnd.x = 0;
 		wayEnd.y = 0;
+		speed.x = 0;
+		speed.y = 0;
 		b_active = false;
 		b_moving = false;
 		window = _window;
@@ -58,7 +61,7 @@ public:
 		wayEnd.x = x;
 		wayEnd.y = y;
 	}
-	void setMove(sf::Vector2f cord)
+	void setMove(sf::Vector2i cord)
 	{
 		wayEnd.x = cord.x;
 		wayEnd.y = cord.y;
@@ -80,16 +83,16 @@ public:
 	{
 		unit.setRadius(radius);
 	}
-	bool GlobalBoundContainCheck(sf::Vector2f cord)
+	bool GlobalBoundContainCheck(sf::Vector2i cord)
 	{
-		return unit.getGlobalBounds().contains(cord);
+		return unit.getGlobalBounds().contains(sf::Vector2f(cord));
 	}
 	void move(float X, float Y)
 	{
 		unit.move(X, Y);
 	}
 
-	void update(bool mousePressed, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, sf::Vector2f MousePosition);
+	void update(bool mousePressed, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys);
 	bool find(std::vector<int> keys, int item)
 	{
 	    for (int i = 0; i < keys.size(); i++)
