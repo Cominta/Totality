@@ -128,6 +128,30 @@ Totality/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/build
 .PHONY : Totality/fast
 
+src/BaseUnit.obj: src/BaseUnit.cpp.obj
+.PHONY : src/BaseUnit.obj
+
+# target to build an object file
+src/BaseUnit.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/BaseUnit.cpp.obj
+.PHONY : src/BaseUnit.cpp.obj
+
+src/BaseUnit.i: src/BaseUnit.cpp.i
+.PHONY : src/BaseUnit.i
+
+# target to preprocess a source file
+src/BaseUnit.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/BaseUnit.cpp.i
+.PHONY : src/BaseUnit.cpp.i
+
+src/BaseUnit.s: src/BaseUnit.cpp.s
+.PHONY : src/BaseUnit.s
+
+# target to generate assembly for a file
+src/BaseUnit.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/BaseUnit.cpp.s
+.PHONY : src/BaseUnit.cpp.s
+
 src/button.obj: src/button.cpp.obj
 .PHONY : src/button.obj
 
@@ -377,6 +401,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Totality
+	@echo ... src/BaseUnit.obj
+	@echo ... src/BaseUnit.i
+	@echo ... src/BaseUnit.s
 	@echo ... src/button.obj
 	@echo ... src/button.i
 	@echo ... src/button.s

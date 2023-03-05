@@ -284,4 +284,6 @@ CMakeFiles/Totality.dir/src/mainState.cpp.obj: \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/xmmintrin.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mmintrin.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mm_malloc.h \
- C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc \
+ C:/Users/Roman/Desktop/Totality/include/BaseUnit.h \
+ C:/Users/Roman/Desktop/Totality/include/SFML\Graphics.hpp

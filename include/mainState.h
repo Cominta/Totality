@@ -13,6 +13,6 @@ class MainState : public State
         MainState(typeState type, sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures);
         ~MainState();
 
-        void update(bool mousePressed, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys) override;
+        void update(bool mousePressedLeft, bool MousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys) override;
         void render() override; 
 };

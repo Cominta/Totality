@@ -13,7 +13,8 @@ class Engine
         std::vector<int> pressedKeys;
         std::vector<int> realisedKeys;
 
-        bool mousePressed;
+        bool mousePressedLeft;
+        bool mousePressedRight;
 
         void loadTextures();
 

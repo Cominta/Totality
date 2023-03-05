@@ -7,7 +7,8 @@ Engine::Engine(sf::RenderWindow* window)
 
     this->states.push(new MainState(State::typeState::MAINSTATE, this->window, this->states, this->textures));
 
-    this->mousePressed = false;
+    this->mousePressedLeft = false;
+    this->mousePressedRight = false;
 }
 
 Engine::~Engine()
@@ -59,7 +60,12 @@ void Engine::updateSFML()
         {
             if (this->sfEvent.mouseButton.button == sf::Mouse::Left)
             {
-                this->mousePressed = true;
+                this->mousePressedLeft = true;
+            }
+
+            else if (this->sfEvent.mouseButton.button == sf::Mouse::Right)
+            {
+                this->mousePressedRight = true;
             }
         }
 
@@ -81,15 +87,15 @@ void Engine::update()
 
     if (this->states.top()->type == State::typeState::MAINSTATE)
     {
-        this->states.top()->update(this->mousePressed, this->pressedKeys, this->realisedKeys);
+        this->states.top()->update(this->mousePressedLeft, this->mousePressedRight, this->pressedKeys, this->realisedKeys);
     }
 
     else if (this->states.top()->type == State::typeState::GAMESTATE) 
     {
-        this->states.top()->update(this->mousePressed, this->pressedKeys, this->realisedKeys);
+        this->states.top()->update(this->mousePressedLeft, this->mousePressedRight, this->pressedKeys, this->realisedKeys);
     }
 
-    this->mousePressed = false;
+    this->mousePressedLeft = false;
     this->pressedKeys.clear();
     this->realisedKeys.clear();
 }

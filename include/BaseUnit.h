@@ -1,18 +1,19 @@
 #pragma once
 
-#include "state.h"
+#include "SFML\Graphics.hpp"
 #include <iostream>
 
-class BaseUnit : public State
+class BaseUnit
 {
 private:
 	sf::CircleShape unit;
-	sf::Vector2f wayEnd;
+	sf::Vector2i wayEnd;
+	sf::Vector2i speed;
+	sf::RenderWindow* window;
 	bool b_active;
 	bool b_moving;
 public:
-	BaseUnit(sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures) 
-		: State(window, states, textures)
+	BaseUnit(sf::RenderWindow *_window)
 	{
 		unit.setRadius(50.f);
 		unit.setOrigin(50.f, 50.f);
@@ -20,8 +21,16 @@ public:
 		unit.setOutlineThickness(2.5f);
 		unit.setOutlineColor(sf::Color(0, 0, 0));
 		unit.move(50.f, 50.f);
+		wayEnd.x = 0;
+		wayEnd.y = 0;
+		speed.x = 0;
+		speed.y = 0;
 		b_active = false;
 		b_moving = false;
+		window = _window;
+
+		this->wayEnd.x = this->unit.getPosition().x;
+		this->wayEnd.y = this->unit.getPosition().y;
 	}
 
 	~BaseUnit()
@@ -52,10 +61,10 @@ public:
 		wayEnd.x = x;
 		wayEnd.y = y;
 	}
-	void setMove(sf::Vector2f cord)
+	void setMove(sf::Vector2i cord)
 	{
-		mousePosition.x = cord.x;
-		mousePosition.y = cord.y;
+		wayEnd.x = cord.x;
+		wayEnd.y = cord.y;
 	}
 
 	void setOutlineThickness(float wide)
@@ -74,19 +83,27 @@ public:
 	{
 		unit.setRadius(radius);
 	}
-	bool GlobalBoundContainCheck(sf::Vector2f cord)
+	bool GlobalBoundContainCheck(sf::Vector2i cord)
 	{
-		return unit.getGlobalBounds().contains(cord);
+		return unit.getGlobalBounds().contains(sf::Vector2f(cord));
 	}
 	void move(float X, float Y)
 	{
 		unit.move(X, Y);
 	}
 
-	void updateMouse()
+	void update(bool mousePressed, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys);
+	bool find(std::vector<int> keys, int item)
 	{
-		this->mousePosition = this->window->mapPixelToCoords(sf::Mouse::getPosition(*(this->window)));
+	    for (int i = 0; i < keys.size(); i++)
+	    {
+	        if (keys[i] == item)
+	        {
+	            return true;
+	        }
+	    }
+
+	    return false;
 	}
-	void update(bool mousePressed, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys) override;
 	void render();
 };
