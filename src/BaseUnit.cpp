@@ -1,13 +1,15 @@
 
 #include "BaseUnit.h"
 
-void BaseUnit::update(bool mousePressed, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, sf::Vector2f mousePosition)
+void BaseUnit::update(bool mousePressed, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)
 {
 	if (mousePressed)
 	{
 		if (mousePressed)
 		{
-			if (unit.getGlobalBounds().contains(mousePosition))
+			sf::Vector2i mousepos = sf::Mouse::getPosition(*this->window);
+			this->window->mapCoordsToPixel(sf::Vector2f(mousepos), this->window->getView());
+			if (unit.getGlobalBounds().contains(sf::Vector2f(mousepos)))
 			{
 				this->b_active = true;
 				this->setOutlineColor(255, 0 ,0);
@@ -23,8 +25,11 @@ void BaseUnit::update(bool mousePressed, std::vector<int>& pressedKeys, std::vec
 	{
 		if (isActiv())
 		{
-			this->setMove(mousePosition);
-			this->b_moving = true;
+			sf::Vector2i mousepos = sf::Mouse::getPosition(*this->window);
+			this->window->mapCoordsToPixel(sf::Vector2f(mousepos), this->window->getView());
+			this->setMove(mousepos);
+			this->speed.x = 10;
+			this->speed.y = 10;
 		}
 	}
 }
@@ -38,11 +43,19 @@ void BaseUnit::moveTo()
 	{
 		if (unit.getPosition().x > this->wayEnd.x)
 		{
-			unit.move(-1, 0);
+			if (unit.getPosition().x + (speed.x * -1) < this->wayEnd.x)
+			{
+				speed.x = unit.getPosition().x - this->wayEnd.x;
+			}
+			unit.move(speed.x * -1, 0);
 		}
 		else
 		{
-			unit.move(1, 0);
+			if (unit.getPosition().x + speed.x > this->wayEnd.x)
+			{
+				speed.x = this->wayEnd.x - unit.getPosition().x;
+			}
+			unit.move(speed.x, 0);
 		}
 	}
 	else
@@ -53,11 +66,19 @@ void BaseUnit::moveTo()
 	{
 		if (unit.getPosition().y > this->wayEnd.y)
 		{
-			unit.move(0, -1);
+			if (unit.getPosition().y + (speed.y * -1) < this->wayEnd.y)
+			{
+				speed.y = unit.getPosition().y - this->wayEnd.y;
+			}
+			unit.move(0, speed.y * -1);
 		}
 		else
 		{
-			unit.move(0, 1);
+			if (unit.getPosition().y + speed.y > this->wayEnd.y)
+			{
+				speed.y = this->wayEnd.y - unit.getPosition().y;
+			}
+			unit.move(0, speed.y);
 		}
 	}
 	else
@@ -67,6 +88,8 @@ void BaseUnit::moveTo()
 	if (endX && endY)
 	{
 		b_moving = false;
+		speed.x = 10;
+		speed.y = 10;
 	}
 }
 

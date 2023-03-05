@@ -3,7 +3,7 @@
 GameState::GameState(typeState type, sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures)
     : State(type, window, states, textures)
 {
-    this->tilemap = new Tilemap(this->window, this->textures, 100, 100, 4, 16);
+    this->tilemap = new Tilemap(this->window, this->textures, 100, 100, 3, 16);
     this->baseUnit = new BaseUnit(this->window);
 }
 
@@ -13,14 +13,10 @@ GameState::~GameState()
     delete this->baseUnit;
 }
 
-void GameState::update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)
+void GameState::update(bool mousePressedLeft, bool MousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)
 {
     this->baseUnit->update(mousePressedLeft, pressedKeys, realisedKeys);
-
-    if (this->baseUnit->isMoving())
-    {
-        this->baseUnit->moveTo();
-    }
+    this->baseUnit->moveTo();
 
     if (this->find(realisedKeys, sf::Keyboard::Key::Escape))
     {
