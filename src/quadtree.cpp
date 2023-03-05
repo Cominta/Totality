@@ -11,13 +11,33 @@ Quadtree::Quadtree(sf::RenderWindow* window, int size, float x, float y, float w
 
 Quadtree::~Quadtree()
 {
-
+    this->clear();
 }
 
 void Quadtree::clear()
 {
-    // this->particles.clear();
+    this->units.clear();
     this->divided = false;
+
+    if (this->lt != nullptr)
+    {
+        delete this->lt;
+    }
+
+    if (this->rt != nullptr)
+    {
+        delete this->rt;
+    }
+
+    if (this->rb != nullptr)
+    {
+        delete this->rb;
+    }
+
+    if (this->lb != nullptr)
+    {
+        delete this->lb;
+    }
 
     this->lt = nullptr;
     this->rt = nullptr;
@@ -25,42 +45,32 @@ void Quadtree::clear()
     this->lb = nullptr;
 }
 
-// void Quadtree::insert(Particle* particle)
-// {
-//     if (!this->boundary->intersects(particle->getHitbox())) // AABB
-//     {
-//         return;
-//     }
+void Quadtree::insert(BaseUnit* unit)
+{
+    if (!this->boundary->intersects(unit->getHitbox())) // AABB
+    {
+        return;
+    }
 
-//     if (this->particles.size() < this->size)
-//     {
-//         this->particles.emplace_back(particle);
-//     }
+    if (this->units.size() < this->size)
+    {
+        this->units.emplace_back(unit);
+    }
 
-//     else
-//     {
-//         if (!divided)
-//         {
-//             this->subdivide();
-//             this->divided = true;
+    else
+    {
+        if (!divided)
+        {
+            this->subdivide();
+            this->divided = true;
+        }
 
-//             // for (auto &point1 : this->points)
-//             // {
-//             //     this->lt->insert(point1);
-//             //     this->rt->insert(point1);
-//             //     this->rb->insert(point1);
-//             //     this->lb->insert(point1);
-//             // }
-
-//             // this->points.clear();
-//         }
-
-//         this->lt->insert(particle);
-//         this->rt->insert(particle);
-//         this->rb->insert(particle);
-//         this->lb->insert(particle);
-//     }
-// }
+        this->lt->insert(unit);
+        this->rt->insert(unit);
+        this->rb->insert(unit);
+        this->lb->insert(unit);
+    }
+}
 
 void Quadtree::subdivide()
 {
@@ -73,32 +83,32 @@ void Quadtree::subdivide()
     this->lb = new Quadtree(this->window, 4, this->x - this->width / 4, this->y + this->height / 4, newWidth, newHeight);
 }
 
-// void Quadtree::query(HitboxSquare* range, std::vector<Particle*>& found)
-// {
-//     if (!this->boundary->intersects(range))
-//     {
-//         return;
-//     }
+void Quadtree::query(HitboxSquare* range, std::vector<BaseUnit*>& found)
+{
+    if (!this->boundary->intersects(range))
+    {
+        return;
+    }
 
-//     else
-//     {
-//         for (auto &point : this->particles)
-//         {
-//             if (range->intersects(point->getHitbox()))
-//             {
-//                 found.emplace_back(point);
-//             }
-//         }
+    else
+    {
+        for (auto &point : this->units)
+        {
+            if (range->intersects(point->getHitbox()))
+            {
+                found.emplace_back(point);
+            }
+        }
 
-//         if (divided)
-//         {
-//             this->lt->query(range, found);
-//             this->rt->query(range, found);
-//             this->rb->query(range, found);
-//             this->lb->query(range, found);
-//         }
-//     }
-// }
+        if (divided)
+        {
+            this->lt->query(range, found);
+            this->rt->query(range, found);
+            this->rb->query(range, found);
+            this->lb->query(range, found);
+        }
+    }
+}
 
 void Quadtree::update()
 {

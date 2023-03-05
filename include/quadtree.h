@@ -3,6 +3,7 @@
 
 #include "hitboxSquare.h"
 #include <vector>
+#include "BaseUnit.h"
 
 class Quadtree
 {
@@ -16,21 +17,21 @@ class Quadtree
 
         HitboxSquare* boundary;
         sf::RenderWindow* window;
-        // std::vector<Particle*> particles;
+        std::vector<BaseUnit*> units;
 
-        Quadtree* lt; // left-top
-        Quadtree* rt; // right-top
-        Quadtree* rb; // right-bottom
-        Quadtree* lb; // left-bottom
+        Quadtree* lt = nullptr; // left-top
+        Quadtree* rt = nullptr; // right-top
+        Quadtree* rb = nullptr; // right-bottom
+        Quadtree* lb = nullptr; // left-bottom
 
     public:
         Quadtree(sf::RenderWindow* window, int size, float x, float y, float width, float height);
         ~Quadtree();
 
         void clear();
-        // void insert(Particle* particle);
+        void insert(BaseUnit* unit);
         void subdivide();
-        // void query(HitboxSquare* range, std::vector<Particle*>& found);
+        void query(HitboxSquare* range, std::vector<BaseUnit*>& found);
 
         void update();
         void render();

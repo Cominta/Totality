@@ -248,7 +248,10 @@ CMakeFiles/Totality.dir/src/BaseUnit.cpp.obj: C:/Users/Roman/Desktop/Totality/sr
   C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/Sprite.hpp \
   C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/Text.hpp \
   C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/VertexBuffer.hpp \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/iostream
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/iostream \
+  C:/Users/Roman/Desktop/Totality/include/hitboxSquare.h \
+  C:/Users/Roman/Desktop/Totality/include/hitbox.h \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp
 
 CMakeFiles/Totality.dir/src/button.cpp.obj: C:/Users/Roman/Desktop/Totality/src/button.cpp \
   C:/Users/Roman/Desktop/Totality/include/button.h \
@@ -787,7 +790,10 @@ CMakeFiles/Totality.dir/src/engine.cpp.obj: C:/Users/Roman/Desktop/Totality/src/
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mm_malloc.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc \
   C:/Users/Roman/Desktop/Totality/include/BaseUnit.h \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp
+  C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp \
+  C:/Users/Roman/Desktop/Totality/include/hitboxSquare.h \
+  C:/Users/Roman/Desktop/Totality/include/hitbox.h \
+  C:/Users/Roman/Desktop/Totality/include/quadtree.h
 
 CMakeFiles/Totality.dir/src/gameState.cpp.obj: C:/Users/Roman/Desktop/Totality/src/gameState.cpp \
   C:/Users/Roman/Desktop/Totality/include/gameState.h \
@@ -1073,7 +1079,11 @@ CMakeFiles/Totality.dir/src/gameState.cpp.obj: C:/Users/Roman/Desktop/Totality/s
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mm_malloc.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc \
   C:/Users/Roman/Desktop/Totality/include/BaseUnit.h \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp
+  C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp \
+  C:/Users/Roman/Desktop/Totality/include/hitboxSquare.h \
+  C:/Users/Roman/Desktop/Totality/include/hitbox.h \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp \
+  C:/Users/Roman/Desktop/Totality/include/quadtree.h
 
 CMakeFiles/Totality.dir/src/hitbox.cpp.obj: C:/Users/Roman/Desktop/Totality/src/hitbox.cpp \
   C:/Users/Roman/Desktop/Totality/include/hitbox.h \
@@ -1862,7 +1872,10 @@ CMakeFiles/Totality.dir/src/main.cpp.obj: C:/Users/Roman/Desktop/Totality/src/ma
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mm_malloc.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc \
   C:/Users/Roman/Desktop/Totality/include/BaseUnit.h \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp
+  C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp \
+  C:/Users/Roman/Desktop/Totality/include/hitboxSquare.h \
+  C:/Users/Roman/Desktop/Totality/include/hitbox.h \
+  C:/Users/Roman/Desktop/Totality/include/quadtree.h
 
 CMakeFiles/Totality.dir/src/mainState.cpp.obj: C:/Users/Roman/Desktop/Totality/src/mainState.cpp \
   C:/Users/Roman/Desktop/Totality/include/mainState.h \
@@ -2151,7 +2164,10 @@ CMakeFiles/Totality.dir/src/mainState.cpp.obj: C:/Users/Roman/Desktop/Totality/s
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mm_malloc.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc \
   C:/Users/Roman/Desktop/Totality/include/BaseUnit.h \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp
+  C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp \
+  C:/Users/Roman/Desktop/Totality/include/hitboxSquare.h \
+  C:/Users/Roman/Desktop/Totality/include/hitbox.h \
+  C:/Users/Roman/Desktop/Totality/include/quadtree.h
 
 CMakeFiles/Totality.dir/src/quadtree.cpp.obj: C:/Users/Roman/Desktop/Totality/src/quadtree.cpp \
   C:/Users/Roman/Desktop/Totality/include/quadtree.h \
@@ -2402,7 +2418,9 @@ CMakeFiles/Totality.dir/src/quadtree.cpp.obj: C:/Users/Roman/Desktop/Totality/sr
   C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/Sprite.hpp \
   C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/Text.hpp \
   C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/VertexBuffer.hpp \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/iostream
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/iostream \
+  C:/Users/Roman/Desktop/Totality/include/BaseUnit.h \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp
 
 CMakeFiles/Totality.dir/src/state.cpp.obj: C:/Users/Roman/Desktop/Totality/src/state.cpp \
   C:/Users/Roman/Desktop/Totality/include/state.h \
@@ -3463,6 +3481,8 @@ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/VertexBuffer.hpp:
 
 C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/iostream:
 
+C:/Users/Roman/Desktop/Totality/include/hitboxSquare.h:
+
 C:/Users/Roman/Desktop/Totality/include/button.h:
 
 C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/tr1/legendre_function.tcc:
@@ -3513,15 +3533,13 @@ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/xmmintrin.h:
 
 C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mmintrin.h:
 
-C:/Users/Roman/Desktop/Totality/src/hitbox.cpp:
-
-C:/Users/Roman/Desktop/Totality/src/hitboxSquare.cpp:
-
-C:/Users/Roman/Desktop/Totality/include/hitboxSquare.h:
+C:/Users/Roman/Desktop/Totality/src/mainState.cpp:
 
 C:/Users/Roman/Desktop/Totality/include/quadtree.h:
 
-C:/Users/Roman/Desktop/Totality/src/mainState.cpp:
+C:/Users/Roman/Desktop/Totality/src/hitbox.cpp:
+
+C:/Users/Roman/Desktop/Totality/src/hitboxSquare.cpp:
 
 C:/Users/Roman/Desktop/Totality/src/state.cpp:
 

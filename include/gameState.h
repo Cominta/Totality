@@ -3,12 +3,17 @@
 #include "state.h"
 #include "tilemap.h"
 #include "BaseUnit.h"
+#include "quadtree.h"
 
 class GameState : public State 
 {
     private:
+        const int sizeMapX;
+        const int sizeMapY;
+
         Tilemap* tilemap;
-        BaseUnit* baseUnit;
+        Quadtree* quadtree;
+        std::vector<BaseUnit*> units;
 
     public:
         GameState(typeState type, sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures);

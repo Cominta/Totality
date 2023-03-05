@@ -248,4 +248,6 @@ CMakeFiles/Totality.dir/src/quadtree.cpp.obj: \
  C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/Sprite.hpp \
  C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/Text.hpp \
  C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/VertexBuffer.hpp \
- C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/iostream
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/iostream \
+ C:/Users/Roman/Desktop/Totality/include/BaseUnit.h \
+ C:/Users/Roman/Desktop/Totality/include/SFML\Graphics.hpp

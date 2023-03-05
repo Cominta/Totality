@@ -28,16 +28,34 @@ void BaseUnit::update(bool mousePressed, std::vector<int>& pressedKeys, std::vec
 			sf::Vector2i mousepos = sf::Mouse::getPosition(*this->window);
 			this->window->mapCoordsToPixel(sf::Vector2f(mousepos), this->window->getView());
 			this->setMove(mousepos);
+			this->setIsMoving(true);
 			this->speed.x = 10;
 			this->speed.y = 10;
 		}
 	}
+
+	this->unit.setPosition(this->unit.getPosition());
+	this->hitbox->update();
 }
 
-void BaseUnit::moveTo()
+void BaseUnit::moveTo(std::vector<BaseUnit*> foundRange)
 {
 	bool endX = false;
 	bool endY = false;
+
+	if (foundRange.size() >= 2)
+	{
+		for (auto unitFound : foundRange)
+		{
+			sf::Vector2f pos = pos;
+			sf::Vector2f ourPos = this->unit.getPosition();
+			HitboxSquare* hitboxOther = unitFound->getHitbox();
+			this->b_moving = false;
+			this->wayEnd.x = ourPos.x;
+			this->wayEnd.y = ourPos.y;
+			return;
+		}	
+	}
 
 	if (unit.getPosition().x != this->wayEnd.x)
 	{
@@ -62,6 +80,7 @@ void BaseUnit::moveTo()
 	{
 		endX = true;
 	}
+	
 	if (unit.getPosition().y != this->wayEnd.y)
 	{
 		if (unit.getPosition().y > this->wayEnd.y)
@@ -93,7 +112,44 @@ void BaseUnit::moveTo()
 	}
 }
 
+void BaseUnit::getNextPos(HitboxSquare& box)
+{
+	if (!this->b_moving)
+	{
+		box = *this->hitbox;
+		return;
+	}
+
+	box.setSize(this->hitbox->width, this->hitbox->height);
+
+	int xPos = this->hitbox->x;
+	int yPos = this->hitbox->y;
+
+	if (unit.getPosition().y > this->wayEnd.y)
+	{
+		yPos -= this->speed.y;
+	}
+
+	else 
+	{
+		yPos += this->speed.y;
+	}
+
+	if (unit.getPosition().x > this->wayEnd.x)
+	{
+		xPos -= this->speed.x;
+	}
+
+	else 
+	{
+		xPos += this->speed.x;
+	}
+
+	box.setPosition(xPos, yPos);
+}
+
 void BaseUnit::render()
 {
 	this->window->draw(this->unit);
+	this->hitbox->render();
 }
