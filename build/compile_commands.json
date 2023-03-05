@@ -21,16 +21,6 @@
 },
 {
   "directory": "C:/Users/Roman/Desktop/Totality/build",
-  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\hitbox.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\hitbox.cpp",
-  "file": "C:/Users/Roman/Desktop/Totality/src/hitbox.cpp"
-},
-{
-  "directory": "C:/Users/Roman/Desktop/Totality/build",
-  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\hitboxSquare.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\hitboxSquare.cpp",
-  "file": "C:/Users/Roman/Desktop/Totality/src/hitboxSquare.cpp"
-},
-{
-  "directory": "C:/Users/Roman/Desktop/Totality/build",
   "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\main.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\main.cpp",
   "file": "C:/Users/Roman/Desktop/Totality/src/main.cpp"
 },
@@ -38,11 +28,6 @@
   "directory": "C:/Users/Roman/Desktop/Totality/build",
   "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\mainState.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\mainState.cpp",
   "file": "C:/Users/Roman/Desktop/Totality/src/mainState.cpp"
-},
-{
-  "directory": "C:/Users/Roman/Desktop/Totality/build",
-  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\quadtree.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\quadtree.cpp",
-  "file": "C:/Users/Roman/Desktop/Totality/src/quadtree.cpp"
 },
 {
   "directory": "C:/Users/Roman/Desktop/Totality/build",

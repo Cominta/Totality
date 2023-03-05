@@ -5,16 +5,12 @@ GameState::GameState(typeState type, sf::RenderWindow* window, std::stack<State*
 {
     this->tilemap = new Tilemap(this->window, this->textures, this->sizeMapX, this->sizeMapY, 3, 16);
 
-    for (int i = 0; i < 2; i++)
+    for (int i = 0; i < 3; i++)
     {
         this->units.push_back(new BaseUnit(this->window));
         this->units[i]->setPosition(100, 150 * i);
-        this->units[i]->getHitbox()->update();
         // this->quadtree->insert(this->units[i]);
     }
-
-    // this->quadtree = new Quadtree(this->window, 4, this->sizeMapX * 64 / 2, this->sizeMapY * 64 / 2, this->sizeMapX * 64, this->sizeMapY * 64);
-    this->quadtree = new Quadtree(this->window, 4, this->window->getSize().x / 2, this->window->getSize().y / 2, this->window->getSize().x, this->window->getSize().y);
 }
 
 GameState::~GameState()
@@ -29,28 +25,6 @@ GameState::~GameState()
 
 void GameState::update(bool mousePressedLeft, bool MousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)
 {
-    this->quadtree->clear();
-
-    for (auto& unit : this->units)
-    {
-        this->quadtree->insert(unit);
-    }
-
-    for (auto& unit : this->units)
-    {
-        std::vector<BaseUnit*> unitsFound;
-        HitboxSquare* next = unit->getHitbox();
-        unit->update(mousePressedLeft, pressedKeys, realisedKeys);
-        next->setSize(next->width + 10, next->height + 10);
-        next->setOrigin(next->width / 2, next->height / 2);
-
-        this->quadtree->query(next, unitsFound);
-
-        next->setSize(next->width - 10, next->height - 10);
-        next->setOrigin(next->width / 2, next->height / 2);
-
-        unit->moveTo(unitsFound);
-    }
 
     if (this->find(realisedKeys, sf::Keyboard::Key::Escape))
     {
@@ -68,6 +42,4 @@ void GameState::render()
     {
         unit->render();
     }
-
-    this->quadtree->render();
 }

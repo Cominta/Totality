@@ -35,7 +35,6 @@ void BaseUnit::update(bool mousePressed, std::vector<int>& pressedKeys, std::vec
 	}
 
 	this->unit.setPosition(this->unit.getPosition());
-	this->hitbox->update();
 }
 
 void BaseUnit::moveTo(std::vector<BaseUnit*> foundRange)
@@ -47,67 +46,6 @@ void BaseUnit::moveTo(std::vector<BaseUnit*> foundRange)
 
 	bool endX = false;
 	bool endY = false;
-
-	if (foundRange.size() >= 2)
-	{
-		for (auto unitFound : foundRange)
-		{
-			if (unitFound == this)
-			{
-				continue;
-			}
-
-			// if (!this->hitbox->intersects(unitFound->getHitbox()))
-			// {
-			// 	break;
-			// }
-
-			sf::Vector2f pos = unitFound->unit.getPosition();
-			sf::Vector2f ourPos = this->unit.getPosition();
-			HitboxSquare* hitboxOther = unitFound->getHitbox();
-
-			if (unitFound->unit.getGlobalBounds().contains(this->wayEnd.x, this->wayEnd.y))
-			{
-				this->wayEnd.x = ourPos.x;
-				this->wayEnd.y = ourPos.y;
-				this->b_moving = false;
-
-				break;
-			}
-
-			int moveX = 0;
-			int moveY = 0;
-
-			// ourPos = this->unit.getPosition();
-
-			if (ourPos.y <= pos.y)
-			{
-				this->unit.move(0, this->speed.y * -1);
-			}
-
-			else if (ourPos.y > pos.y)
-			{
-				this->unit.move(0, this->speed.y);
-			}
-
-			else if (ourPos.x <= pos.x)
-			{
-				this->unit.move(this->speed.x * -1, 0);
-			}
-
-			else if (ourPos.x > pos.x)
-			{
-				this->unit.move(this->speed.x, 0);
-			}
-
-			ourPos = this->unit.getPosition();
-			unitFound->wayEnd.x = pos.x;
-			unitFound->wayEnd.y = pos.y;
-			unitFound->b_moving = false;
-		}
-
-		return;
-	}
 
 	if (unit.getPosition().x != this->wayEnd.x)
 	{
@@ -167,5 +105,4 @@ void BaseUnit::moveTo(std::vector<BaseUnit*> foundRange)
 void BaseUnit::render()
 {
 	this->window->draw(this->unit);
-	this->hitbox->render();
 }

@@ -16,6 +16,7 @@ Tilemap::Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& t
     for (int y = 0; y < this->height; y++)
     {
         this->map.push_back(std::vector<int>());
+        this->mapUnits.push_back(std::vector<int>());
 
         for (int x = 0; x < this->width; x++)
         {
@@ -51,6 +52,7 @@ Tilemap::Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& t
             }
 
             this->map[y].push_back((int)noise);
+            this->mapUnits[y].push_back(0);
         }
     }
 }

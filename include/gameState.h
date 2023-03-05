@@ -3,7 +3,6 @@
 #include "state.h"
 #include "tilemap.h"
 #include "BaseUnit.h"
-#include "quadtree.h"
 
 class GameState : public State 
 {
@@ -12,7 +11,6 @@ class GameState : public State
         const int sizeMapY;
 
         Tilemap* tilemap;
-        Quadtree* quadtree;
         std::vector<BaseUnit*> units;
 
     public:

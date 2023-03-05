@@ -21,6 +21,7 @@ class Tilemap
         // вот так вот просто
 
         std::vector<std::vector<int>> map;
+        std::vector<std::vector<int>> mapUnits;
         std::map<int, sf::Texture> tiles;
 
     public:

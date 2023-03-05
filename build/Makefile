@@ -224,54 +224,6 @@ src/gameState.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/gameState.cpp.s
 .PHONY : src/gameState.cpp.s
 
-src/hitbox.obj: src/hitbox.cpp.obj
-.PHONY : src/hitbox.obj
-
-# target to build an object file
-src/hitbox.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/hitbox.cpp.obj
-.PHONY : src/hitbox.cpp.obj
-
-src/hitbox.i: src/hitbox.cpp.i
-.PHONY : src/hitbox.i
-
-# target to preprocess a source file
-src/hitbox.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/hitbox.cpp.i
-.PHONY : src/hitbox.cpp.i
-
-src/hitbox.s: src/hitbox.cpp.s
-.PHONY : src/hitbox.s
-
-# target to generate assembly for a file
-src/hitbox.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/hitbox.cpp.s
-.PHONY : src/hitbox.cpp.s
-
-src/hitboxSquare.obj: src/hitboxSquare.cpp.obj
-.PHONY : src/hitboxSquare.obj
-
-# target to build an object file
-src/hitboxSquare.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/hitboxSquare.cpp.obj
-.PHONY : src/hitboxSquare.cpp.obj
-
-src/hitboxSquare.i: src/hitboxSquare.cpp.i
-.PHONY : src/hitboxSquare.i
-
-# target to preprocess a source file
-src/hitboxSquare.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/hitboxSquare.cpp.i
-.PHONY : src/hitboxSquare.cpp.i
-
-src/hitboxSquare.s: src/hitboxSquare.cpp.s
-.PHONY : src/hitboxSquare.s
-
-# target to generate assembly for a file
-src/hitboxSquare.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/hitboxSquare.cpp.s
-.PHONY : src/hitboxSquare.cpp.s
-
 src/main.obj: src/main.cpp.obj
 .PHONY : src/main.obj
 
@@ -319,30 +271,6 @@ src/mainState.s: src/mainState.cpp.s
 src/mainState.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/mainState.cpp.s
 .PHONY : src/mainState.cpp.s
-
-src/quadtree.obj: src/quadtree.cpp.obj
-.PHONY : src/quadtree.obj
-
-# target to build an object file
-src/quadtree.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/quadtree.cpp.obj
-.PHONY : src/quadtree.cpp.obj
-
-src/quadtree.i: src/quadtree.cpp.i
-.PHONY : src/quadtree.i
-
-# target to preprocess a source file
-src/quadtree.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/quadtree.cpp.i
-.PHONY : src/quadtree.cpp.i
-
-src/quadtree.s: src/quadtree.cpp.s
-.PHONY : src/quadtree.s
-
-# target to generate assembly for a file
-src/quadtree.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/quadtree.cpp.s
-.PHONY : src/quadtree.cpp.s
 
 src/state.obj: src/state.cpp.obj
 .PHONY : src/state.obj
@@ -413,21 +341,12 @@ help:
 	@echo ... src/gameState.obj
 	@echo ... src/gameState.i
 	@echo ... src/gameState.s
-	@echo ... src/hitbox.obj
-	@echo ... src/hitbox.i
-	@echo ... src/hitbox.s
-	@echo ... src/hitboxSquare.obj
-	@echo ... src/hitboxSquare.i
-	@echo ... src/hitboxSquare.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
 	@echo ... src/mainState.obj
 	@echo ... src/mainState.i
 	@echo ... src/mainState.s
-	@echo ... src/quadtree.obj
-	@echo ... src/quadtree.i
-	@echo ... src/quadtree.s
 	@echo ... src/state.obj
 	@echo ... src/state.i
 	@echo ... src/state.s

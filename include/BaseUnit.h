@@ -2,7 +2,6 @@
 
 #include "SFML\Graphics.hpp"
 #include <iostream>
-#include "hitboxSquare.h"
 
 class BaseUnit
 {
@@ -13,7 +12,6 @@ private:
 	sf::RenderWindow* window;
 	bool b_active;
 	bool b_moving;
-	HitboxSquare* hitbox;
 
 public:
 	BaseUnit(sf::RenderWindow *_window)
@@ -34,8 +32,6 @@ public:
 
 		this->wayEnd.x = this->unit.getPosition().x;
 		this->wayEnd.y = this->unit.getPosition().y;
-
-		this->hitbox = new HitboxSquare(this->window, 100, 100, &this->unit);
 	}
 
 
@@ -101,11 +97,6 @@ public:
 	void setPosition(float x, float y)
 	{
 		this->unit.setPosition(x, y);
-	}
-
-	HitboxSquare* getHitbox()
-	{
-		return this->hitbox;
 	}
 
 	void update(bool mousePressed, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys);
