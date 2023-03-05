@@ -38,7 +38,7 @@ public:
 	~BaseUnit()
 	{}
 
-	void moveTo(std::vector<BaseUnit*> foundRange);
+	void moveTo(std::vector<std::vector<int>> mapUnits);
 
 	void setActive(bool _active)
 	{
