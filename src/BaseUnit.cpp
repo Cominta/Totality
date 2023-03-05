@@ -5,7 +5,7 @@ void BaseUnit::update(bool mousePressed, std::vector<int>& pressedKeys, std::vec
 {
 	if (mousePressed)
 	{
-		if (find(pressedKeys, sf::Mouse::Button::Left))
+		if (mousePressed)
 		{
 			if (unit.getGlobalBounds().contains(mousePosition))
 			{
