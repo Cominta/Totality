@@ -16,12 +16,11 @@ private:
 public:
 	BaseUnit(sf::RenderWindow *_window)
 	{
-		unit.setRadius(50.f);
-		unit.setOrigin(50.f, 50.f);
+		unit.setRadius(32.f);
+		unit.setOrigin(32.f, 32.f);
 		unit.setFillColor(sf::Color(100, 100, 100));
 		unit.setOutlineThickness(2.5f);
 		unit.setOutlineColor(sf::Color(0, 0, 0));
-		unit.move(50.f, 50.f);
 		wayEnd.x = 0;
 		wayEnd.y = 0;
 		speed.x = 0;
