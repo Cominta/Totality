@@ -21,14 +21,16 @@ class Tilemap
         // вот так вот просто
 
         std::vector<std::vector<int>> map;
-        std::vector<std::vector<int>> mapUnits;
         std::map<int, sf::Texture> tiles;
 
     public:
+        std::vector<std::vector<int>> mapUnits;
+        
         Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& textures, int width, int height, int frequency, int octaves);
         ~Tilemap();
 
         void generateNew();
+        int getTile(int x, int y) {return this->map[y][x];};
 
         void render();
 };

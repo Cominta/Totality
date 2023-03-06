@@ -5,9 +5,9 @@ GameState::GameState(typeState type, sf::RenderWindow* window, std::stack<State*
 {
     this->tilemap = new Tilemap(this->window, this->textures, this->sizeMapX, this->sizeMapY, 3, 16);
 
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 10; i++)
     {
-        this->units.push_back(new BaseUnit(this->window));
+        this->units.push_back(new BaseUnit(this->window, this->tilemap, i, i, this->tilemap->mapUnits));
         // this->quadtree->insert(this->units[i]);
     }
 }
@@ -24,7 +24,11 @@ GameState::~GameState()
 
 void GameState::update(bool mousePressedLeft, bool MousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)
 {
-    
+    for (auto& unit : this->units)
+    {
+        unit->update(mousePressedLeft, pressedKeys, realisedKeys, this->tilemap->mapUnits);
+        unit->moveTo(this->tilemap->mapUnits);
+    }
 
     if (this->find(realisedKeys, sf::Keyboard::Key::Escape))
     {

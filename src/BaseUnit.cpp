@@ -1,7 +1,7 @@
 
 #include "BaseUnit.h"
 
-void BaseUnit::update(bool mousePressed, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)
+void BaseUnit::update(bool mousePressed, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, std::vector<std::vector<int>>& mapUnits)
 {
 	if (mousePressed)
 	{
@@ -29,31 +29,66 @@ void BaseUnit::update(bool mousePressed, std::vector<int>& pressedKeys, std::vec
 			this->window->mapCoordsToPixel(sf::Vector2f(mousepos), this->window->getView());
 			this->setMove(mousepos);
 			this->setIsMoving(true);
-			this->speed.x = 10;
-			this->speed.y = 10;
+			this->currentSpeed = 0;
 		}
 	}
-
-	this->unit.setPosition(this->unit.getPosition());
 }
 
-void BaseUnit::moveTo(std::vector<std::vector<int>> mapUnits)
+void BaseUnit::moveTo(std::vector<std::vector<int>>& mapUnits)
 {
 	if (!this->b_moving)
 	{
 		return;
 	}
 
-	bool endX = false;
-	bool endY = false;
-
-	
-	if (endX && endY)
+	if (this->currentSpeed != 0)
 	{
-		b_moving = false;
-		speed.x = 10;
-		speed.y = 10;
+		this->currentSpeed--;
+		return;
 	}
+
+	int oldX = this->xMap;
+	int oldY = this->yMap;
+	mapUnits[this->yMap][this->xMap] = 0;
+
+	if (this->wayEnd.x > this->xMap)
+	{
+		this->xMap++;
+	}
+
+	if (this->wayEnd.x < this->xMap)
+	{
+		this->xMap--;
+	}
+
+	if (this->wayEnd.y > this->yMap)
+	{
+		this->yMap++;
+	}
+
+	if (this->wayEnd.y < this->yMap)
+	{
+		this->yMap--;
+	}
+
+	if (mapUnits[this->yMap][this->xMap] == 1)
+	{
+		this->xMap = oldX;
+		this->yMap = oldY;
+
+		this->b_moving = false;
+		return;
+	}
+
+	mapUnits[this->yMap][this->xMap] = 1;
+	this->unit.setPosition(this->xMap * 64 + 32, this->yMap * 64 + 32);
+
+	if (this->wayEnd.x == this->xMap && this->wayEnd.y == this->yMap)
+	{
+		this->b_moving = false;
+	}
+
+	this->currentSpeed = 200;
 }
 
 void BaseUnit::render()
