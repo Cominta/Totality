@@ -9,7 +9,6 @@ GameState::GameState(typeState type, sf::RenderWindow* window, std::stack<State*
     for (int i = 0; i < 10; i++)
     {
         this->units.push_back(new BaseUnit(this->window, this->tilemap, i, i, this->tilemap->mapUnits));
-        // this->quadtree->insert(this->units[i]);
     }
 }
 

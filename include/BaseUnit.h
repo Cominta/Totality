@@ -8,7 +8,7 @@
 struct TaskMove
 {
     std::vector<sf::RectangleShape> path;
-    sf::Vector2i wayEnd;
+    sf::Vector2f wayEnd;
 };
 
 class BaseUnit
@@ -29,7 +29,7 @@ private:
 
     // std::vector<sf::RectangleShape> path;
     std::queue<TaskMove> tasks;
-    std::vector<sf::RectangleShape> predictPath(std::vector<std::vector<int>>& map, sf::Vector2i wayEnd, int& startX, int& startY, bool& success);
+    std::vector<sf::RectangleShape> predictPath(std::vector<std::vector<int>>& map, sf::Vector2f wayEnd, float& startX, float& startY, bool& success);
     void clearTasks();
 
 public:

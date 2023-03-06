@@ -8,8 +8,8 @@ void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector
         if (mousePressedLeft)
         {
             sf::Vector2i mousepos = sf::Mouse::getPosition(*this->window);
-            this->window->mapCoordsToPixel(sf::Vector2f(mousepos), this->window->getView());
-            if (unit.getGlobalBounds().contains(sf::Vector2f(mousepos)))
+            sf::Vector2f worldPos = this->window->mapPixelToCoords(mousepos);
+            if (unit.getGlobalBounds().contains(worldPos))
             {
                 this->b_active = true;
                 this->setOutlineColor(255, 0 ,0);
@@ -26,39 +26,34 @@ void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector
         if (isActiv())
         {
             sf::Vector2i mousepos = sf::Mouse::getPosition(*this->window);
-            this->window->mapPixelToCoords(mousepos);
+            sf::Vector2f worldPos = this->window->mapPixelToCoords(mousepos);
 
             if (!sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
             {
                 this->clearTasks();
             }
 
-            mousepos.x /= 64;
-            mousepos.y /= 64;
+            worldPos.x /= 64;
+            worldPos.y /= 64;
+            worldPos.x = (float)(int)worldPos.x;
+            worldPos.y = (float)(int)worldPos.y;
 
             TaskMove task;
             bool success = true;
 
             if (this->tasks.empty())
             {
-                task = {this->predictPath(map, mousepos, mousepos.x, mousepos.y, success), mousepos};
+                task = {this->predictPath(map, worldPos, worldPos.x, worldPos.y, success), worldPos};
             }
 
             else 
             {
-                task = {this->predictPath(map, mousepos, this->tasks.back().wayEnd.x, this->tasks.back().wayEnd.y, success), mousepos};
+                task = {this->predictPath(map, worldPos, this->tasks.back().wayEnd.x, this->tasks.back().wayEnd.y, success), worldPos};
             }
 
             if (success)
             {
-                // task.wayEnd.x = mousepos.x;
-                // task.wayEnd.y = mousepos.y;
                 this->tasks.push(task);
-            }
-
-            if (!this->isMoving())
-            {
-                this->currentSpeed = 0;
             }
 
             this->setIsMoving(true);
@@ -74,7 +69,7 @@ void BaseUnit::clearTasks()
     }
 }
 
-std::vector<sf::RectangleShape> BaseUnit::predictPath(std::vector<std::vector<int>>& map, sf::Vector2i wayEnd, int& startX, int& startY, bool& success)
+std::vector<sf::RectangleShape> BaseUnit::predictPath(std::vector<std::vector<int>>& map, sf::Vector2f wayEnd, float& startX, float& startY, bool& success)
 {
     int xPath;
     int yPath;
@@ -220,7 +215,7 @@ void BaseUnit::moveTo(std::vector<std::vector<int>>& mapUnits)
     int oldY = this->yMap;
 
     std::vector<sf::RectangleShape>& path = this->tasks.front().path;
-    sf::Vector2i wayEnd = this->tasks.front().wayEnd;
+    sf::Vector2f wayEnd = this->tasks.front().wayEnd;
 
     this->xMap = path[0].getPosition().x / 64;
     this->yMap = path[0].getPosition().y / 64;
@@ -252,7 +247,10 @@ void BaseUnit::moveTo(std::vector<std::vector<int>>& mapUnits)
         }
     }
 
-    this->currentSpeed = this->speed;
+    if (this->currentSpeed == 0)
+    {
+        this->currentSpeed = this->speed;
+    }
 }
 
 void BaseUnit::render()
@@ -266,7 +264,6 @@ void BaseUnit::render()
             for (int i = 0; i < temp.front().path.size(); i++)
             {
                 this->window->draw(temp.front().path[i]);
-                // std::cout << this->path[i].getPosition().x << " " << this->path[i].getPosition().y << " " << i << "\n";
             }
 
             temp.pop();
