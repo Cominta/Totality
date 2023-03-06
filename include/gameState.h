@@ -13,6 +13,8 @@ class GameState : public State
 
         Tilemap* tilemap;
         Camera* camera;
+        sf::View gameView;
+        sf::View minimap;
         std::vector<BaseUnit*> units;
 
     public:

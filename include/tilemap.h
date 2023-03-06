@@ -32,5 +32,6 @@ class Tilemap
         void generateNew();
         int getTile(int x, int y) {return this->map[y][x];};
 
-        void render();
+        void renderGame(sf::View view);
+        void renderMini(sf::View view);
 };

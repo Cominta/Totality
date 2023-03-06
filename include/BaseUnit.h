@@ -125,5 +125,6 @@ public:
         return false;
     }
 
-    void render();
+    void renderGame(sf::View view);
+    void renderMini(sf::View view);
 };

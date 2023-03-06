@@ -59,7 +59,7 @@ Tilemap::Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& t
 
 Tilemap::~Tilemap()
 {
-
+    delete this->perlinNoise;
 }
 
 void Tilemap::generateNew()
@@ -67,8 +67,11 @@ void Tilemap::generateNew()
 
 }
 
-void Tilemap::render()
+void Tilemap::renderGame(sf::View view)
 {
+    sf::View old = this->window->getView();
+    this->window->setView(view);
+
     sf::Sprite sprite;
     sf::Vector2f pos(0, 0);
 
@@ -85,4 +88,32 @@ void Tilemap::render()
         pos.y += 64;
         pos.x = 0;
     }
+
+    this->window->setView(old);
+}
+
+void Tilemap::renderMini(sf::View view)
+{
+    sf::View old = this->window->getView();
+    this->window->setView(view);
+
+    sf::Sprite sprite;
+    sf::Vector2f pos(0, 0);
+
+    for (int y = 0; y < this->map.size(); y++)
+    {
+        for (int x = 0; x < this->map[y].size(); x++)
+        {
+            sprite.setTexture(this->tiles[this->map[y][x]]);
+            sprite.setScale(0.15, 0.15);
+            sprite.setPosition(pos);
+            this->window->draw(sprite);
+            pos.x += sprite.getTexture()->getSize().x * sprite.getScale().x;
+        }
+
+        pos.y += sprite.getTexture()->getSize().y * sprite.getScale().y;
+        pos.x = 0;
+    }
+
+    this->window->setView(old);
 }

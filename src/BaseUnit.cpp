@@ -253,8 +253,11 @@ void BaseUnit::moveTo(std::vector<std::vector<int>>& mapUnits)
     }
 }
 
-void BaseUnit::render()
+void BaseUnit::renderGame(sf::View view)
 {
+    sf::View old = this->window->getView();
+    this->window->setView(view);
+    
     if (this->b_moving && !this->tasks.empty())
     {
         std::queue<TaskMove> temp = this->tasks;
@@ -271,4 +274,24 @@ void BaseUnit::render()
     }
 
     this->window->draw(this->unit);
+    this->window->setView(old);
+}
+
+void BaseUnit::renderMini(sf::View view)
+{
+    sf::View old = this->window->getView();
+    this->window->setView(view);
+
+    int xPos = this->unit.getPosition().x;
+    int yPos = this->unit.getPosition().y;
+
+    this->unit.setScale(0.15, 0.15);
+    this->unit.setPosition(xPos * 0.15, yPos * 0.15);
+    
+    this->window->draw(this->unit);
+
+    this->unit.setPosition(xPos, yPos);
+    this->unit.setScale(1, 1);
+
+    this->window->setView(old);
 }

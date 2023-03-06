@@ -3,8 +3,10 @@
 GameState::GameState(typeState type, sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures)
     : State(type, window, states, textures), sizeMapX(100), sizeMapY(100)
 {
-    this->tilemap = new Tilemap(this->window, this->textures, this->sizeMapX, this->sizeMapY, 2, 8);
+    this->tilemap = new Tilemap(this->window, this->textures, this->sizeMapX, this->sizeMapY, 3, 8);
     this->camera = new Camera(this->window, 16000, 16000);
+    this->gameView = this->window->getView();
+    this->minimap.setViewport(sf::FloatRect(0.86f, 0, 0.15f, 0.25f));
 
     for (int i = 0; i < 10; i++)
     {
@@ -20,12 +22,15 @@ GameState::~GameState()
     {
         delete unit;
     }
+
+    this->window->setView(this->window->getDefaultView());
 }
 
 void GameState::update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)
 {
     this->updateMouse();
     this->camera->update(this->mousePosition, 2.0f);
+    this->gameView = this->window->getView();
 
     for (auto& unit : this->units)
     {
@@ -43,10 +48,12 @@ void GameState::update(bool mousePressedLeft, bool mousePressedRight, std::vecto
 
 void GameState::render()
 {
-    this->tilemap->render();
+    this->tilemap->renderGame(this->gameView);
+    this->tilemap->renderMini(this->minimap);
 
     for (auto& unit : this->units)
     {
-        unit->render();
+        unit->renderGame(this->gameView);
+        unit->renderMini(this->minimap);
     }
 }
