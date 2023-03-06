@@ -26,7 +26,7 @@ void BaseUnit::update(bool mousePressed, std::vector<int>& pressedKeys, std::vec
 		if (isActiv())
 		{
 			sf::Vector2i mousepos = sf::Mouse::getPosition(*this->window);
-			this->window->mapCoordsToPixel(sf::Vector2f(mousepos), this->window->getView());
+			this->window->mapPixelToCoords(mousepos);
 			this->setMove(mousepos);
 			this->setIsMoving(true);
 			this->currentSpeed = 0;

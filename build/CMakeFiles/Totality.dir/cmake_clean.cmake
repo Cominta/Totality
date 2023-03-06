@@ -19,6 +19,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Totality.dir/src/state.cpp.obj.d"
   "CMakeFiles/Totality.dir/src/tilemap.cpp.obj"
   "CMakeFiles/Totality.dir/src/tilemap.cpp.obj.d"
+  "CMakeFiles/Totality.dir/src/viewMap.cpp.obj"
+  "CMakeFiles/Totality.dir/src/viewMap.cpp.obj.d"
 )
 
 # Per-language clean rules from dependency scanning.

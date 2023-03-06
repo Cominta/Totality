@@ -320,6 +320,30 @@ src/tilemap.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/tilemap.cpp.s
 .PHONY : src/tilemap.cpp.s
 
+src/viewMap.obj: src/viewMap.cpp.obj
+.PHONY : src/viewMap.obj
+
+# target to build an object file
+src/viewMap.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/viewMap.cpp.obj
+.PHONY : src/viewMap.cpp.obj
+
+src/viewMap.i: src/viewMap.cpp.i
+.PHONY : src/viewMap.i
+
+# target to preprocess a source file
+src/viewMap.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/viewMap.cpp.i
+.PHONY : src/viewMap.cpp.i
+
+src/viewMap.s: src/viewMap.cpp.s
+.PHONY : src/viewMap.s
+
+# target to generate assembly for a file
+src/viewMap.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/viewMap.cpp.s
+.PHONY : src/viewMap.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -353,6 +377,9 @@ help:
 	@echo ... src/tilemap.obj
 	@echo ... src/tilemap.i
 	@echo ... src/tilemap.s
+	@echo ... src/viewMap.obj
+	@echo ... src/viewMap.i
+	@echo ... src/viewMap.s
 .PHONY : help
 
 

@@ -287,4 +287,5 @@ CMakeFiles/Totality.dir/src/main.cpp.obj: \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mm_malloc.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc \
  C:/Users/Roman/Desktop/Totality/include/BaseUnit.h \
- C:/Users/Roman/Desktop/Totality/include/SFML\Graphics.hpp
+ C:/Users/Roman/Desktop/Totality/include/SFML\Graphics.hpp \
+ C:/Users/Roman/Desktop/Totality/include/viewMap.h

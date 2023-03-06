@@ -4,6 +4,7 @@ GameState::GameState(typeState type, sf::RenderWindow* window, std::stack<State*
     : State(type, window, states, textures), sizeMapX(100), sizeMapY(100)
 {
     this->tilemap = new Tilemap(this->window, this->textures, this->sizeMapX, this->sizeMapY, 3, 16);
+    this->camera = new Camera(this->window, 16000, 16000);
 
     for (int i = 0; i < 10; i++)
     {
@@ -24,6 +25,9 @@ GameState::~GameState()
 
 void GameState::update(bool mousePressedLeft, bool MousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)
 {
+    this->updateMouse();
+    this->camera->update(this->mousePosition, 2.0f);
+
     for (auto& unit : this->units)
     {
         unit->update(mousePressedLeft, pressedKeys, realisedKeys, this->tilemap->mapUnits);

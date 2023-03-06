@@ -38,5 +38,10 @@
   "directory": "C:/Users/Roman/Desktop/Totality/build",
   "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\tilemap.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\tilemap.cpp",
   "file": "C:/Users/Roman/Desktop/Totality/src/tilemap.cpp"
+},
+{
+  "directory": "C:/Users/Roman/Desktop/Totality/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\viewMap.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\viewMap.cpp",
+  "file": "C:/Users/Roman/Desktop/Totality/src/viewMap.cpp"
 }
 ]

@@ -3,6 +3,7 @@
 #include "state.h"
 #include "tilemap.h"
 #include "BaseUnit.h"
+#include "viewMap.h"
 
 class GameState : public State 
 {
@@ -11,6 +12,7 @@ class GameState : public State
         const int sizeMapY;
 
         Tilemap* tilemap;
+        Camera* camera;
         std::vector<BaseUnit*> units;
 
     public:
