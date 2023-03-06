@@ -26,10 +26,10 @@ GameState::~GameState()
     this->window->setView(this->window->getDefaultView());
 }
 
-void GameState::update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)
+void GameState::update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, int mouseScroll)
 {
     this->updateMouse();
-    this->camera->update(this->mousePosition, 2.0f);
+    this->camera->update(this->mousePosition, mouseScroll);
     this->gameView = this->window->getView();
 
     for (auto& unit : this->units)

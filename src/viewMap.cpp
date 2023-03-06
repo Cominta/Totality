@@ -10,41 +10,37 @@ Camera::~Camera()
 
 }
 
-void Camera::update(sf::Vector2f mousePosition, float mouseWheel)
+void Camera::update(sf::Vector2f mousePosition, int mouseScroll)
 {
     sf::View view {this->window->getView()};
     sf::Vector2f currentSize {this->window->getSize()};
 
     //(mouse scrolling)-------------------------
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && view.getCenter().x > view.getSize().x / 2) 
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) 
     { 
         this->currentSpeedX = -this->scrollSpeed; 
     }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && view.getCenter().x < this->sideX - view.getSize().x / 2) 
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) 
     { 
         this->currentSpeedX = this->scrollSpeed; 
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && view.getCenter().y < this->sideY - view.getSize().y / 2) 
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) 
     { 
         this->currentSpeedY = this->scrollSpeed; 
     }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && view.getCenter().y > view.getSize().y / 2) 
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) 
     {  
         this->currentSpeedY = -this->scrollSpeed; 
     }
 
-    float zoom = 1.0f;
-
-    // if (mouseWheel > 0) // прокрутка вверх
-    // {
-    //     zoom = 0.9f; // уменьшаем масштаб
-    // }
-    // else if (mouseWheel < 0) // прокрутка вниз
-    // {
-    //     zoom = 1.1f; // увеличиваем масштаб
-    // }
-
-    view.setSize(window->getSize().x / zoom, window->getSize().y / zoom);
+    if (mouseScroll > 0 && mouseScroll <= 1) // прокрутка вверх
+    {
+        view.zoom(0.95);
+    }
+    else if (mouseScroll < 0 && mouseScroll >= -1) // прокрутка вниз
+    {
+        view.zoom(1.05);
+    }
 
     //(changing camera view)-------------------------
 
@@ -58,5 +54,3 @@ void Camera::update(sf::Vector2f mousePosition, float mouseWheel)
     currentSpeedX = 0;
     currentSpeedY = 0;
 }
-
-

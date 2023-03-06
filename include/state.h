@@ -32,6 +32,7 @@ class State
         bool find(std::vector<int> keys, int item);
 
         virtual void update();
-        virtual void update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys) = 0;
+        virtual void update(bool mousePressedLeft, bool MousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys);
+        virtual void update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, int mouseScroll);
         virtual void render() = 0;
 };
