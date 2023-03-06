@@ -3,7 +3,7 @@
 GameState::GameState(typeState type, sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures)
     : State(type, window, states, textures), sizeMapX(100), sizeMapY(100)
 {
-    this->tilemap = new Tilemap(this->window, this->textures, this->sizeMapX, this->sizeMapY, 3, 16);
+    this->tilemap = new Tilemap(this->window, this->textures, this->sizeMapX, this->sizeMapY, 2, 8);
     this->camera = new Camera(this->window, 16000, 16000);
 
     for (int i = 0; i < 10; i++)

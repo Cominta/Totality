@@ -3,7 +3,7 @@
 Tilemap::Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& textures, int width, int height, int frequency, int octaves)
     : window(window), width(width), height(height)
 {
-    const siv::PerlinNoise::seed_type seed = 7847;
+    const siv::PerlinNoise::seed_type seed = 5425542;
     this->perlinNoise = new siv::PerlinNoise(seed);
     this->tiles = {
         {0, textures["tile_water"]},

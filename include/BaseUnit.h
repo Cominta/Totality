@@ -20,6 +20,9 @@ private:
 	int xMap;
 	int yMap;
 
+	std::vector<sf::RectangleShape> path;
+	void predictPath();
+
 public:
 	BaseUnit(sf::RenderWindow *_window, Tilemap* tilemap, int xMap, int yMap, std::vector<std::vector<int>>& mapUnits)
 		: speed(20)
