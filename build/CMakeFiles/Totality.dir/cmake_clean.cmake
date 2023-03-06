@@ -1,8 +1,4 @@
 file(REMOVE_RECURSE
-  "C:/Users/Roman/Desktop/Totality/output/Totality.exe"
-  "C:/Users/Roman/Desktop/Totality/output/Totality.exe.manifest"
-  "C:/Users/Roman/Desktop/Totality/output/Totality.pdb"
-  "C:/Users/Roman/Desktop/Totality/output/libTotality.dll.a"
   "CMakeFiles/Totality.dir/src/BaseUnit.cpp.obj"
   "CMakeFiles/Totality.dir/src/BaseUnit.cpp.obj.d"
   "CMakeFiles/Totality.dir/src/button.cpp.obj"
@@ -21,6 +17,10 @@ file(REMOVE_RECURSE
   "CMakeFiles/Totality.dir/src/tilemap.cpp.obj.d"
   "CMakeFiles/Totality.dir/src/viewMap.cpp.obj"
   "CMakeFiles/Totality.dir/src/viewMap.cpp.obj.d"
+  "D:/Microsoft Visual Studio/VS Code repos/Totality/output/Totality.exe"
+  "D:/Microsoft Visual Studio/VS Code repos/Totality/output/Totality.exe.manifest"
+  "D:/Microsoft Visual Studio/VS Code repos/Totality/output/Totality.pdb"
+  "D:/Microsoft Visual Studio/VS Code repos/Totality/output/libTotality.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.
