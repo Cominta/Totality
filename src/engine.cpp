@@ -96,6 +96,7 @@ void Engine::update()
     }
 
     this->mousePressedLeft = false;
+    this->mousePressedRight = false;
     this->pressedKeys.clear();
     this->realisedKeys.clear();
 }

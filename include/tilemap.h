@@ -20,10 +20,10 @@ class Tilemap
         // 1 - гора
         // вот так вот просто
 
-        std::vector<std::vector<int>> map;
         std::map<int, sf::Texture> tiles;
 
     public:
+        std::vector<std::vector<int>> map;
         std::vector<std::vector<int>> mapUnits;
         
         Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& textures, int width, int height, int frequency, int octaves);

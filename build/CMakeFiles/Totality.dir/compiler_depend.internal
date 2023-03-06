@@ -280,6 +280,11 @@ CMakeFiles/Totality.dir/src/BaseUnit.cpp.obj
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mmintrin.h
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mm_malloc.h
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/queue
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/deque
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_deque.h
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/deque.tcc
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_queue.h
 
 CMakeFiles/Totality.dir/src/button.cpp.obj
  C:/Users/Roman/Desktop/Totality/src/button.cpp
@@ -821,6 +826,8 @@ CMakeFiles/Totality.dir/src/engine.cpp.obj
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc
  C:/Users/Roman/Desktop/Totality/include/BaseUnit.h
  C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/queue
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_queue.h
  C:/Users/Roman/Desktop/Totality/include/viewMap.h
 
 CMakeFiles/Totality.dir/src/gameState.cpp.obj
@@ -1109,6 +1116,8 @@ CMakeFiles/Totality.dir/src/gameState.cpp.obj
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc
  C:/Users/Roman/Desktop/Totality/include/BaseUnit.h
  C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/queue
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_queue.h
  C:/Users/Roman/Desktop/Totality/include/viewMap.h
 
 CMakeFiles/Totality.dir/src/main.cpp.obj
@@ -1401,6 +1410,8 @@ CMakeFiles/Totality.dir/src/main.cpp.obj
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc
  C:/Users/Roman/Desktop/Totality/include/BaseUnit.h
  C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/queue
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_queue.h
  C:/Users/Roman/Desktop/Totality/include/viewMap.h
 
 CMakeFiles/Totality.dir/src/mainState.cpp.obj
@@ -1692,6 +1703,8 @@ CMakeFiles/Totality.dir/src/mainState.cpp.obj
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc
  C:/Users/Roman/Desktop/Totality/include/BaseUnit.h
  C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/queue
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_queue.h
  C:/Users/Roman/Desktop/Totality/include/viewMap.h
 
 CMakeFiles/Totality.dir/src/state.cpp.obj

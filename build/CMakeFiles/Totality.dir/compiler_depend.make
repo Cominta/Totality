@@ -278,7 +278,12 @@ CMakeFiles/Totality.dir/src/BaseUnit.cpp.obj: C:/Users/Roman/Desktop/Totality/sr
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/xmmintrin.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mmintrin.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mm_malloc.h \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/queue \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/deque \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_deque.h \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/deque.tcc \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_queue.h
 
 CMakeFiles/Totality.dir/src/button.cpp.obj: C:/Users/Roman/Desktop/Totality/src/button.cpp \
   C:/Users/Roman/Desktop/Totality/include/button.h \
@@ -818,6 +823,8 @@ CMakeFiles/Totality.dir/src/engine.cpp.obj: C:/Users/Roman/Desktop/Totality/src/
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc \
   C:/Users/Roman/Desktop/Totality/include/BaseUnit.h \
   C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/queue \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_queue.h \
   C:/Users/Roman/Desktop/Totality/include/viewMap.h
 
 CMakeFiles/Totality.dir/src/gameState.cpp.obj: C:/Users/Roman/Desktop/Totality/src/gameState.cpp \
@@ -1105,6 +1112,8 @@ CMakeFiles/Totality.dir/src/gameState.cpp.obj: C:/Users/Roman/Desktop/Totality/s
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc \
   C:/Users/Roman/Desktop/Totality/include/BaseUnit.h \
   C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/queue \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_queue.h \
   C:/Users/Roman/Desktop/Totality/include/viewMap.h
 
 CMakeFiles/Totality.dir/src/main.cpp.obj: C:/Users/Roman/Desktop/Totality/src/main.cpp \
@@ -1396,6 +1405,8 @@ CMakeFiles/Totality.dir/src/main.cpp.obj: C:/Users/Roman/Desktop/Totality/src/ma
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc \
   C:/Users/Roman/Desktop/Totality/include/BaseUnit.h \
   C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/queue \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_queue.h \
   C:/Users/Roman/Desktop/Totality/include/viewMap.h
 
 CMakeFiles/Totality.dir/src/mainState.cpp.obj: C:/Users/Roman/Desktop/Totality/src/mainState.cpp \
@@ -1686,6 +1697,8 @@ CMakeFiles/Totality.dir/src/mainState.cpp.obj: C:/Users/Roman/Desktop/Totality/s
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc \
   C:/Users/Roman/Desktop/Totality/include/BaseUnit.h \
   C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/queue \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_queue.h \
   C:/Users/Roman/Desktop/Totality/include/viewMap.h
 
 CMakeFiles/Totality.dir/src/state.cpp.obj: C:/Users/Roman/Desktop/Totality/src/state.cpp \
@@ -2666,6 +2679,8 @@ C:/mingw64/x86_64-w64-mingw32/include/locale.h:
 
 C:/mingw64/x86_64-w64-mingw32/include/stdio.h:
 
+C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/queue:
+
 C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/tr1/modified_bessel_func.tcc:
 
 C:/mingw64/x86_64-w64-mingw32/include/sec_api/stdio_s.h:
@@ -2868,6 +2883,8 @@ C:/Users/Roman/Desktop/Totality/include/SFML/System/String.inl:
 
 C:/mingw64/x86_64-w64-mingw32/include/time.h:
 
+C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_queue.h:
+
 C:/mingw64/x86_64-w64-mingw32/include/_timeval.h:
 
 C:/Users/Roman/Desktop/Totality/include/SFML/Window/Cursor.hpp:
@@ -3028,17 +3045,17 @@ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/xmmintrin.h:
 
 C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mmintrin.h:
 
-C:/Users/Roman/Desktop/Totality/include/button.h:
-
-C:/Users/Roman/Desktop/Totality/include/state.h:
-
-C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/stack:
-
 C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/deque:
 
 C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_deque.h:
 
 C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/deque.tcc:
+
+C:/Users/Roman/Desktop/Totality/include/button.h:
+
+C:/Users/Roman/Desktop/Totality/include/state.h:
+
+C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/stack:
 
 C:/Users/Roman/Desktop/Totality/include/gameState.h:
 

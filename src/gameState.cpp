@@ -23,14 +23,14 @@ GameState::~GameState()
     }
 }
 
-void GameState::update(bool mousePressedLeft, bool MousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)
+void GameState::update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)
 {
     this->updateMouse();
     this->camera->update(this->mousePosition, 2.0f);
 
     for (auto& unit : this->units)
     {
-        unit->update(mousePressedLeft, pressedKeys, realisedKeys, this->tilemap->mapUnits);
+        unit->update(mousePressedLeft, mousePressedRight, pressedKeys, realisedKeys, this->tilemap->mapUnits, this->tilemap->map);
         unit->moveTo(this->tilemap->mapUnits);
     }
 

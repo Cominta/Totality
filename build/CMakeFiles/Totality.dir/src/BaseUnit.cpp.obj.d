@@ -276,4 +276,9 @@ CMakeFiles/Totality.dir/src/BaseUnit.cpp.obj: \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/xmmintrin.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mmintrin.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mm_malloc.h \
- C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/queue \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/deque \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_deque.h \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/deque.tcc \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_queue.h
