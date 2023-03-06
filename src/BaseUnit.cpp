@@ -37,25 +37,26 @@ void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector
             mousepos.y /= 64;
 
             TaskMove task;
+            bool success = true;
 
             if (this->tasks.empty())
             {
-                task = {this->predictPath(map, mousepos), mousepos};
+                task = {this->predictPath(map, mousepos, mousepos.x, mousepos.y, success), mousepos};
             }
 
             else 
             {
-                task = {this->predictPath(map, mousepos, this->tasks.back().wayEnd.x, this->tasks.back().wayEnd.y), mousepos};
+                task = {this->predictPath(map, mousepos, this->tasks.back().wayEnd.x, this->tasks.back().wayEnd.y, success), mousepos};
             }
 
-            this->tasks.push(task);
-
-            if (this->isMoving())
+            if (success)
             {
-                this->currentSpeed = this->speed;
+                // task.wayEnd.x = mousepos.x;
+                // task.wayEnd.y = mousepos.y;
+                this->tasks.push(task);
             }
 
-            else 
+            if (!this->isMoving())
             {
                 this->currentSpeed = 0;
             }
@@ -73,7 +74,7 @@ void BaseUnit::clearTasks()
     }
 }
 
-std::vector<sf::RectangleShape> BaseUnit::predictPath(std::vector<std::vector<int>>& map, sf::Vector2i wayEnd, int startX, int startY)
+std::vector<sf::RectangleShape> BaseUnit::predictPath(std::vector<std::vector<int>>& map, sf::Vector2i wayEnd, int& startX, int& startY, bool& success)
 {
     int xPath;
     int yPath;
@@ -137,12 +138,8 @@ std::vector<sf::RectangleShape> BaseUnit::predictPath(std::vector<std::vector<in
 
         if (map[yPath][xPath] != 2)
         {
-            wayEnd.x = oldX;
-            wayEnd.y = oldY;
-
-            this->clearTasks();
-
-            break;
+            success = false;
+            return path;
         }
 
         if ((directX != previousDirectX || directY != previousDirectY) && path.size() != 0)

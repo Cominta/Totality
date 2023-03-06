@@ -29,7 +29,7 @@ private:
 
     // std::vector<sf::RectangleShape> path;
     std::queue<TaskMove> tasks;
-    std::vector<sf::RectangleShape> predictPath(std::vector<std::vector<int>>& map, sf::Vector2i wayEnd, int startX = -1, int startY = -1);
+    std::vector<sf::RectangleShape> predictPath(std::vector<std::vector<int>>& map, sf::Vector2i wayEnd, int& startX, int& startY, bool& success);
     void clearTasks();
 
 public:
