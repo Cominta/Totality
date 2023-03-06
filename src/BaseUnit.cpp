@@ -37,7 +37,7 @@ void BaseUnit::update(bool mousePressed, std::vector<int>& pressedKeys, std::vec
 	this->unit.setPosition(this->unit.getPosition());
 }
 
-void BaseUnit::moveTo(std::vector<BaseUnit*> foundRange)
+void BaseUnit::moveTo(std::vector<std::vector<int>> mapUnits)
 {
 	if (!this->b_moving)
 	{
@@ -47,53 +47,7 @@ void BaseUnit::moveTo(std::vector<BaseUnit*> foundRange)
 	bool endX = false;
 	bool endY = false;
 
-	if (unit.getPosition().x != this->wayEnd.x)
-	{
-		if (unit.getPosition().x > this->wayEnd.x)
-		{
-			if (unit.getPosition().x + (speed.x * -1) < this->wayEnd.x)
-			{
-				speed.x = unit.getPosition().x - this->wayEnd.x;
-			}
-			unit.move(speed.x * -1, 0);
-		}
-		else
-		{
-			if (unit.getPosition().x + speed.x > this->wayEnd.x)
-			{
-				speed.x = this->wayEnd.x - unit.getPosition().x;
-			}
-			unit.move(speed.x, 0);
-		}
-	}
-	else
-	{
-		endX = true;
-	}
 	
-	if (unit.getPosition().y != this->wayEnd.y)
-	{
-		if (unit.getPosition().y > this->wayEnd.y)
-		{
-			if (unit.getPosition().y + (speed.y * -1) < this->wayEnd.y)
-			{
-				speed.y = unit.getPosition().y - this->wayEnd.y;
-			}
-			unit.move(0, speed.y * -1);
-		}
-		else
-		{
-			if (unit.getPosition().y + speed.y > this->wayEnd.y)
-			{
-				speed.y = this->wayEnd.y - unit.getPosition().y;
-			}
-			unit.move(0, speed.y);
-		}
-	}
-	else
-	{
-		endY = true;
-	}
 	if (endX && endY)
 	{
 		b_moving = false;
