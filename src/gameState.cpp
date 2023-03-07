@@ -34,7 +34,7 @@ GameState::~GameState()
 void GameState::update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, int mouseScroll)
 {
     this->updateMouse();
-    this->camera->update(this->mousePosition, mouseScroll);
+    this->camera->update(this->mousePosition, mouseScroll, sizeMapX, sizeMapY);
     this->gameView = this->window->getView();
 
     for (int i = 0; i < this->units.size(); i++)
