@@ -13,13 +13,18 @@ struct TaskMove
 
 class BaseUnit
 {
-private:
+protected:
     sf::CircleShape unit;
     // sf::Vector2i wayEnd;
     sf::RenderWindow* window;
     Tilemap* tilemap;
     bool b_active;
     bool b_moving;
+
+    //atack options
+    int observationR;
+    int atackDMG;
+    int defense;
 
     const int speed;
     int currentSpeed;
@@ -33,7 +38,7 @@ private:
     void clearTasks();
 
 public:
-    BaseUnit(sf::RenderWindow *_window, Tilemap* tilemap, int xMap, int yMap, std::vector<std::vector<int>>& mapUnits)
+    BaseUnit(sf::RenderWindow *_window, Tilemap* tilemap, int xMap, int yMap, int _observationR , int _atackDMG, int _defence, std::vector<std::vector<int>>& mapUnits)
         : speed(50)
     {
         unit.setRadius(32.f);
@@ -50,13 +55,16 @@ public:
         mapUnits[yMap][xMap] = 1;
         this->xMap = xMap;
         this->yMap = yMap;
+        observationR = _observationR;
+        atackDMG = _atackDMG;
+        defense = _defence;
 
         // this->wayEnd.x = this->unit.getPosition().x;
         // this->wayEnd.y = this->unit.getPosition().y;
     }
 
 
-    ~BaseUnit()
+    virtual ~BaseUnit()
     {}
 
     void moveTo(std::vector<std::vector<int>>& mapUnits);
@@ -101,7 +109,7 @@ public:
     }
     void move(float X, float Y)
     {
-        unit.move(X, Y);
+        unit.move(X / 64, Y / 64);
     }
 
     void setPosition(int x, int y, std::vector<std::vector<int>>& vector)
