@@ -18,10 +18,15 @@ GameState::~GameState()
 {
     delete this->tilemap;
     
-    for (auto& unit : this->units)
+    for (auto unit : this->units)
     {
-        delete unit;
+        if (unit != nullptr)
+        {
+            delete unit;
+        }
     }
+
+    this->units.clear();
 
     this->window->setView(this->window->getDefaultView());
 }
@@ -32,10 +37,28 @@ void GameState::update(bool mousePressedLeft, bool mousePressedRight, std::vecto
     this->camera->update(this->mousePosition, mouseScroll);
     this->gameView = this->window->getView();
 
-    for (auto& unit : this->units)
+    for (int i = 0; i < this->units.size(); i++)
     {
-        unit->update(mousePressedLeft, mousePressedRight, pressedKeys, realisedKeys, this->tilemap->mapUnits, this->tilemap->map);
-        unit->moveTo(this->tilemap->mapUnits);
+        if (this->units[i] == nullptr)
+        {
+            continue;
+        }
+
+        if (this->units[i]->getHp() <= 0)
+        {
+            this->tilemap->mapUnits[this->units[i]->getY()][this->units[i]->getX()] = 0;
+
+            if (this->units[i] != nullptr)
+            {
+                delete this->units[i];
+            }
+
+            this->units.erase(this->units.begin() + i);
+            break;
+        }
+
+        this->units[i]->update(mousePressedLeft, mousePressedRight, realisedKeys, pressedKeys, this->units);
+        this->units[i]->moveTo();
     }
 
     if (this->find(realisedKeys, sf::Keyboard::Key::Escape))
@@ -49,11 +72,16 @@ void GameState::update(bool mousePressedLeft, bool mousePressedRight, std::vecto
 void GameState::render()
 {
     this->tilemap->renderGame(this->gameView);
+    
+    for (auto& unit : this->units)
+    {
+        unit->renderGame(this->gameView);
+    }
+
     this->tilemap->renderMini(this->minimap);
 
     for (auto& unit : this->units)
     {
-        unit->renderGame(this->gameView);
         unit->renderMini(this->minimap);
     }
 }

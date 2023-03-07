@@ -21,21 +21,38 @@ private:
     bool b_active;
     bool b_moving;
 
+    bool attack;
+    BaseUnit* toAttack;
+
     const int speed;
+    const int speedAttack;
     int currentSpeed;
+    int currentSpeedAttack;
+
+    int hp;
+    const int maxHp;
+    int damage;
 
     int xMap;
     int yMap;
 
+    sf::RectangleShape hpBar;
+    sf::RectangleShape hpBarBack;
+
     // std::vector<sf::RectangleShape> path;
     std::queue<TaskMove> tasks;
-    std::vector<sf::RectangleShape> predictPath(std::vector<std::vector<int>>& map, sf::Vector2f wayEnd, float& startX, float& startY, bool& success);
+    std::vector<sf::RectangleShape> predictPath(sf::Vector2f wayEnd, float& startX, float& startY, bool& success);
     void clearTasks();
+    void initHpBar();
+    void updateHpBar();
 
 public:
     BaseUnit(sf::RenderWindow *_window, Tilemap* tilemap, int xMap, int yMap, std::vector<std::vector<int>>& mapUnits)
-        : speed(50)
+        : speed(50), speedAttack(20), maxHp(100)
     {
+        this->hp = 100;
+
+        this->damage = 10;
         unit.setRadius(32.f);
         unit.setOrigin(32.f, 32.f);
         unit.setFillColor(sf::Color(100, 100, 100));
@@ -45,11 +62,14 @@ public:
         b_active = false;
         b_moving = false;
         this->currentSpeed = 0;
+        this->currentSpeedAttack = 0;
         window = _window;
         this->tilemap = tilemap;
         mapUnits[yMap][xMap] = 1;
         this->xMap = xMap;
         this->yMap = yMap;
+
+        this->initHpBar();
 
         // this->wayEnd.x = this->unit.getPosition().x;
         // this->wayEnd.y = this->unit.getPosition().y;
@@ -57,9 +77,12 @@ public:
 
 
     ~BaseUnit()
-    {}
+    {
+        toAttack = nullptr;
+    }
 
-    void moveTo(std::vector<std::vector<int>>& mapUnits);
+    void moveTo();
+    int getHp() {return this->hp;}
 
     void setActive(bool _active)
     {
@@ -111,7 +134,10 @@ public:
         this->yMap = y;
     }
 
-    void update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, std::vector<std::vector<int>>& mapUnits, std::vector<std::vector<int>>& map);
+    int getX() {return this->xMap;}
+    int getY() {return this->yMap;}
+
+    void update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& realisedKeys, std::vector<int>& pressedKeys, std::vector<BaseUnit*>& units);
     bool find(std::vector<int> keys, int item)
     {
         for (int i = 0; i < keys.size(); i++)
