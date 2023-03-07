@@ -43,7 +43,7 @@ void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector
             TaskMove task;
             bool success = true;
 
-            if (tilemap->mapUnits[worldPos.y][worldPos.x] == 1 && this->xMap != worldPos.x && this->yMap != worldPos.y)
+            if (tilemap->mapUnits[worldPos.y][worldPos.x] == 1 && (this->xMap != worldPos.x || this->yMap != worldPos.y))
             {
                 this->attack = true;
                 this->clearTasks();
@@ -304,8 +304,8 @@ void BaseUnit::moveTo()
 
     if (this->tilemap->mapUnits[newY][newX] == 1 && (!this->attack || (this->attack && this->toAttack != nullptr && this->toAttack->xMap != newX || this->toAttack->yMap != newY)))
     {
-        this->xMap = oldX;
-        this->yMap = oldY;
+        // this->xMap = oldX;
+        // this->yMap = oldY;
 
         this->clearTasks();
         this->b_moving = false;
