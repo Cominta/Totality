@@ -1,15 +1,17 @@
 
 #include "BaseUnit.h"
 
-void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, std::vector<std::vector<int>>& mapUnits, std::vector<std::vector<int>>& map)
+void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& realisedKeys, std::vector<int>& pressedKeys, std::vector<BaseUnit*>& units)
 {
+    this->updateHpBar();
+
     if (mousePressedLeft)
     {
         if (mousePressedLeft)
         {
             sf::Vector2i mousepos = sf::Mouse::getPosition(*this->window);
-            this->window->mapCoordsToPixel(sf::Vector2f(mousepos), this->window->getView());
-            if (unit.getGlobalBounds().contains(sf::Vector2f(mousepos)))
+            sf::Vector2f worldPos = this->window->mapPixelToCoords(mousepos);
+            if (unit.getGlobalBounds().contains(worldPos))
             {
                 this->b_active = true;
                 this->setOutlineColor(255, 0 ,0);
@@ -26,44 +28,107 @@ void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector
         if (isActiv())
         {
             sf::Vector2i mousepos = sf::Mouse::getPosition(*this->window);
-            this->window->mapPixelToCoords(mousepos);
+            sf::Vector2f worldPos = this->window->mapPixelToCoords(mousepos);
 
             if (!sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
             {
                 this->clearTasks();
             }
 
-            mousepos.x /= 64;
-            mousepos.y /= 64;
+            worldPos.x /= 64;
+            worldPos.y /= 64;
+            worldPos.x = (float)(int)worldPos.x;
+            worldPos.y = (float)(int)worldPos.y;
 
             TaskMove task;
             bool success = true;
 
-            if (this->tasks.empty())
+            if (tilemap->mapUnits[worldPos.y][worldPos.x] == 1 && (this->xMap != worldPos.x || this->yMap != worldPos.y))
             {
-                task = {this->predictPath(map, mousepos, mousepos.x, mousepos.y, success), mousepos};
+                this->attack = true;
+                this->clearTasks();
+                
+                for (auto unit : units)
+                {
+                    if (unit->xMap == worldPos.x && unit->yMap == worldPos.y)
+                    {
+                        this->toAttack = unit;
+                        worldPos.x = this->toAttack->xMap;
+                        worldPos.y = this->toAttack->yMap;
+
+                        // if (abs(this->xMap - worldPos.x) > 1)
+                        // {
+                        //     if (this->xMap < worldPos.x)
+                        //     {
+                        //         worldPos.x--;
+                        //     }
+
+                        //     if (this->xMap > worldPos.x)
+                        //     {
+                        //         worldPos.x++;
+                        //     }
+                        // }
+
+                        // if (abs(this->yMap - worldPos.y) > 1)
+                        // {
+                        //     if (this->yMap < worldPos.y)
+                        //     {
+                        //         worldPos.y--;
+                        //     }
+
+                        //     if (this->yMap > worldPos.y)
+                        //     {
+                        //         worldPos.y++;
+                        //     }
+                        // }
+                    }
+                }
+                
             }
 
             else 
             {
-                task = {this->predictPath(map, mousepos, this->tasks.back().wayEnd.x, this->tasks.back().wayEnd.y, success), mousepos};
+                this->attack = false;
+                this->toAttack = nullptr;
+            }
+
+            if (this->tasks.empty())
+            {
+                task = {this->predictPath(worldPos, worldPos.x, worldPos.y, success), worldPos};
+            }
+
+            else 
+            {
+                task = {this->predictPath(worldPos, this->tasks.back().wayEnd.x, this->tasks.back().wayEnd.y, success), worldPos};
             }
 
             if (success)
             {
-                // task.wayEnd.x = mousepos.x;
-                // task.wayEnd.y = mousepos.y;
                 this->tasks.push(task);
-            }
-
-            if (!this->isMoving())
-            {
-                this->currentSpeed = 0;
             }
 
             this->setIsMoving(true);
         }
     }
+}
+
+void BaseUnit::updateHpBar()
+{
+    this->hpBar.setSize(sf::Vector2f(32 * ((float)this->hp / this->maxHp), 6));
+    this->hpBar.setPosition(this->unit.getPosition().x, this->unit.getPosition().y);
+
+    this->hpBarBack.setPosition(this->unit.getPosition().x, this->unit.getPosition().y);
+}
+
+void BaseUnit::initHpBar()
+{
+    this->hpBar.setSize(sf::Vector2f(32, 6));
+    this->hpBar.setOrigin(16, 20);
+    this->hpBar.setFillColor(sf::Color::Green);
+
+    this->hpBarBack.setSize(sf::Vector2f(32, 6));
+    this->hpBarBack.setOrigin(16, 20);
+    this->hpBarBack.setFillColor(sf::Color::Black);
 }
 
 void BaseUnit::clearTasks()
@@ -74,7 +139,7 @@ void BaseUnit::clearTasks()
     }
 }
 
-std::vector<sf::RectangleShape> BaseUnit::predictPath(std::vector<std::vector<int>>& map, sf::Vector2i wayEnd, int& startX, int& startY, bool& success)
+std::vector<sf::RectangleShape> BaseUnit::predictPath(sf::Vector2f wayEnd, float& startX, float& startY, bool& success)
 {
     int xPath;
     int yPath;
@@ -136,7 +201,7 @@ std::vector<sf::RectangleShape> BaseUnit::predictPath(std::vector<std::vector<in
 
         sf::RectangleShape shape(sf::Vector2f(5, 32));
 
-        if (map[yPath][xPath] != 2)
+        if (this->tilemap->map[yPath][xPath] != 2)
         {
             success = false;
             return path;
@@ -203,9 +268,9 @@ std::vector<sf::RectangleShape> BaseUnit::predictPath(std::vector<std::vector<in
     return path;
 }
 
-void BaseUnit::moveTo(std::vector<std::vector<int>>& mapUnits)
+void BaseUnit::moveTo()
 {
-    if (!this->b_moving || this->tasks.empty() || this->tasks.front().path.size() == 0)
+    if (this->tasks.empty() || this->tasks.front().path.size() == 0)
     {
         return;
     }
@@ -216,19 +281,31 @@ void BaseUnit::moveTo(std::vector<std::vector<int>>& mapUnits)
         return;
     }
 
+    if (this->attack && this->toAttack != nullptr)
+    {
+        this->clearTasks();
+        float startX = (float)this->xMap;
+        float startY = (float)this->yMap;
+        bool success = true;
+        TaskMove task {this->predictPath(sf::Vector2f(this->toAttack->xMap, this->toAttack->yMap), startX, startY, success), sf::Vector2f(this->toAttack->xMap, this->toAttack->yMap)};
+        this->tasks.push(task);
+    }
+
     int oldX = this->xMap;
     int oldY = this->yMap;
 
     std::vector<sf::RectangleShape>& path = this->tasks.front().path;
-    sf::Vector2i wayEnd = this->tasks.front().wayEnd;
+    sf::Vector2f wayEnd = this->tasks.front().wayEnd;
 
-    this->xMap = path[0].getPosition().x / 64;
-    this->yMap = path[0].getPosition().y / 64;
+    int newX = path[0].getPosition().x / 64;
+    int newY = path[0].getPosition().y / 64;
 
-    if (mapUnits[this->yMap][this->xMap] == 1)
+    this->updateHpBar();
+
+    if (this->tilemap->mapUnits[newY][newX] == 1 && (!this->attack || (this->attack && this->toAttack != nullptr && this->toAttack->xMap != newX || this->toAttack->yMap != newY)))
     {
-        this->xMap = oldX;
-        this->yMap = oldY;
+        // this->xMap = oldX;
+        // this->yMap = oldY;
 
         this->clearTasks();
         this->b_moving = false;
@@ -236,8 +313,35 @@ void BaseUnit::moveTo(std::vector<std::vector<int>>& mapUnits)
         return;
     }
 
-    mapUnits[oldY][oldX] = 0;
-    mapUnits[this->yMap][this->xMap] = 1;
+    else if (this->attack && this->toAttack != nullptr && this->toAttack->xMap == newX && this->toAttack->yMap == newY)
+    {
+        if (this->currentSpeedAttack != 0)
+        {
+            this->currentSpeedAttack--;
+            return;
+        }
+
+        this->b_moving = false;
+        // this->xMap = oldX;
+        // this->yMap = oldY;
+
+        this->toAttack->hp -= this->damage;
+        this->currentSpeedAttack = this->speedAttack;
+
+        if (this->toAttack->hp <= 0)
+        {
+            this->attack = false;
+            this->toAttack = nullptr;
+        }
+
+        return;
+    }
+
+    this->xMap = newX;
+    this->yMap = newY;
+
+    this->tilemap->mapUnits[oldY][oldX] = 0;
+    this->tilemap->mapUnits[this->yMap][this->xMap] = 1;
 
     this->unit.setPosition(this->xMap * 64 + 32, this->yMap * 64 + 32);
     path.erase(path.begin());
@@ -255,8 +359,11 @@ void BaseUnit::moveTo(std::vector<std::vector<int>>& mapUnits)
     this->currentSpeed = this->speed;
 }
 
-void BaseUnit::render()
+void BaseUnit::renderGame(sf::View view)
 {
+    sf::View old = this->window->getView();
+    this->window->setView(view);
+    
     if (this->b_moving && !this->tasks.empty())
     {
         std::queue<TaskMove> temp = this->tasks;
@@ -266,7 +373,6 @@ void BaseUnit::render()
             for (int i = 0; i < temp.front().path.size(); i++)
             {
                 this->window->draw(temp.front().path[i]);
-                // std::cout << this->path[i].getPosition().x << " " << this->path[i].getPosition().y << " " << i << "\n";
             }
 
             temp.pop();
@@ -274,4 +380,28 @@ void BaseUnit::render()
     }
 
     this->window->draw(this->unit);
+
+    this->window->draw(this->hpBarBack);
+    this->window->draw(this->hpBar);
+
+    this->window->setView(old);
+}
+
+void BaseUnit::renderMini(sf::View view)
+{
+    sf::View old = this->window->getView();
+    this->window->setView(view);
+
+    int xPos = this->unit.getPosition().x;
+    int yPos = this->unit.getPosition().y;
+
+    this->unit.setScale(0.15, 0.15);
+    this->unit.setPosition(xPos * 0.15, yPos * 0.15);
+    
+    this->window->draw(this->unit);
+
+    this->unit.setPosition(xPos, yPos);
+    this->unit.setScale(1, 1);
+
+    this->window->setView(old);
 }

@@ -2,9 +2,8 @@ cmake_minimum_required(VERSION 3.2)
 project(Totality)
 
 set(CMAKE_CXX_STANDARD 17)
-set(Totality_VERSION 0.1)
+set(Totality_VERSION 0.2)
 set(EXECUTABLE_OUTPUT_PATH ../output/)
-# set( CMAKE_DISABLE_FIND_PACKAGE_PkgConfig ON)
 
 configure_file("${PROJECT_SOURCE_DIR}/include/versionToGen.h" "${PROJECT_SOURCE_DIR}/genCmake/version.h")
 configure_file("${PROJECT_SOURCE_DIR}/include/pathToGen.h" "${PROJECT_SOURCE_DIR}/genCmake/path.h")

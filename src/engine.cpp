@@ -78,6 +78,11 @@ void Engine::updateSFML()
         {
             this->pressedKeys.push_back(this->sfEvent.key.code);
         }
+
+        if (this->sfEvent.type == sf::Event::MouseWheelScrolled && this->sfEvent.mouseWheelScroll.delta != 0)
+        {
+            this->mouseScroll = this->sfEvent.mouseWheelScroll.delta;
+        }
     }
 }
 
@@ -92,13 +97,14 @@ void Engine::update()
 
     else if (this->states.top()->type == State::typeState::GAMESTATE) 
     {
-        this->states.top()->update(this->mousePressedLeft, this->mousePressedRight, this->pressedKeys, this->realisedKeys);
+        this->states.top()->update(this->mousePressedLeft, this->mousePressedRight, this->pressedKeys, this->realisedKeys, this->mouseScroll);
     }
 
     this->mousePressedLeft = false;
     this->mousePressedRight = false;
     this->pressedKeys.clear();
     this->realisedKeys.clear();
+    this->mouseScroll = 0;
 }
 
 void Engine::render()
