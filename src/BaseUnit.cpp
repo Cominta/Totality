@@ -43,7 +43,7 @@ void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector
             TaskMove task;
             bool success = true;
 
-            if (tilemap->mapUnits[worldPos.y][worldPos.x] == 1)
+            if (tilemap->mapUnits[worldPos.y][worldPos.x] == 1 && this->xMap != worldPos.x && this->yMap != worldPos.y)
             {
                 this->attack = true;
                 this->clearTasks();
@@ -55,28 +55,35 @@ void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector
                         this->toAttack = unit;
                         worldPos.x = this->toAttack->xMap;
                         worldPos.y = this->toAttack->yMap;
+
+                        // if (abs(this->xMap - worldPos.x) > 1)
+                        // {
+                        //     if (this->xMap < worldPos.x)
+                        //     {
+                        //         worldPos.x--;
+                        //     }
+
+                        //     if (this->xMap > worldPos.x)
+                        //     {
+                        //         worldPos.x++;
+                        //     }
+                        // }
+
+                        // if (abs(this->yMap - worldPos.y) > 1)
+                        // {
+                        //     if (this->yMap < worldPos.y)
+                        //     {
+                        //         worldPos.y--;
+                        //     }
+
+                        //     if (this->yMap > worldPos.y)
+                        //     {
+                        //         worldPos.y++;
+                        //     }
+                        // }
                     }
                 }
                 
-                // if (this->xMap < worldPos.x)
-                // {
-                //     worldPos.x--;
-                // }
-
-                // if (this->xMap > worldPos.x)
-                // {
-                //     worldPos.x++;
-                // }
-
-                // if (this->yMap < worldPos.y)
-                // {
-                //     worldPos.y--;
-                // }
-
-                // if (this->yMap > worldPos.y)
-                // {
-                //     worldPos.y++;
-                // }
             }
 
             else 
@@ -290,12 +297,12 @@ void BaseUnit::moveTo()
     std::vector<sf::RectangleShape>& path = this->tasks.front().path;
     sf::Vector2f wayEnd = this->tasks.front().wayEnd;
 
-    this->xMap = path[0].getPosition().x / 64;
-    this->yMap = path[0].getPosition().y / 64;
+    int newX = path[0].getPosition().x / 64;
+    int newY = path[0].getPosition().y / 64;
 
     this->updateHpBar();
 
-    if (this->tilemap->mapUnits[this->yMap][this->xMap] == 1 && !this->attack)
+    if (this->tilemap->mapUnits[newY][newX] == 1 && (!this->attack || (this->attack && this->toAttack != nullptr && this->toAttack->xMap != newX || this->toAttack->yMap != newY)))
     {
         this->xMap = oldX;
         this->yMap = oldY;
@@ -306,7 +313,7 @@ void BaseUnit::moveTo()
         return;
     }
 
-    else if (this->attack && this->toAttack != nullptr && this->toAttack->xMap == this->xMap && this->toAttack->yMap == this->yMap)
+    else if (this->attack && this->toAttack != nullptr && this->toAttack->xMap == newX && this->toAttack->yMap == newY)
     {
         if (this->currentSpeedAttack != 0)
         {
@@ -315,8 +322,8 @@ void BaseUnit::moveTo()
         }
 
         this->b_moving = false;
-        this->xMap = oldX;
-        this->yMap = oldY;
+        // this->xMap = oldX;
+        // this->yMap = oldY;
 
         this->toAttack->hp -= this->damage;
         this->currentSpeedAttack = this->speedAttack;
@@ -329,6 +336,9 @@ void BaseUnit::moveTo()
 
         return;
     }
+
+    this->xMap = newX;
+    this->yMap = newY;
 
     this->tilemap->mapUnits[oldY][oldX] = 0;
     this->tilemap->mapUnits[this->yMap][this->xMap] = 1;
