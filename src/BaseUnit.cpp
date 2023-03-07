@@ -123,11 +123,11 @@ void BaseUnit::updateHpBar()
 void BaseUnit::initHpBar()
 {
     this->hpBar.setSize(sf::Vector2f(32, 6));
-    this->hpBar.setOrigin(16, 3);
+    this->hpBar.setOrigin(16, 20);
     this->hpBar.setFillColor(sf::Color::Green);
 
     this->hpBarBack.setSize(sf::Vector2f(32, 6));
-    this->hpBarBack.setOrigin(16, 3);
+    this->hpBarBack.setOrigin(16, 20);
     this->hpBarBack.setFillColor(sf::Color::Black);
 }
 

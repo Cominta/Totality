@@ -79,7 +79,7 @@ void Engine::updateSFML()
             this->pressedKeys.push_back(this->sfEvent.key.code);
         }
 
-        if (this->sfEvent.mouseWheelScroll.delta != 0)
+        if (this->sfEvent.type == sf::Event::MouseWheelScrolled && this->sfEvent.mouseWheelScroll.delta != 0)
         {
             this->mouseScroll = this->sfEvent.mouseWheelScroll.delta;
         }
