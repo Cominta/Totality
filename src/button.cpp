@@ -14,6 +14,8 @@ Button::Button(sf::RenderWindow* window, float x, float y, float scale, sf::Text
     this->state = Button::states::IDLE;
 
     this->size = 64;
+
+    this->active = 0;
 }
 
 Button::~Button()

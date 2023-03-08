@@ -8,7 +8,7 @@ class MainState : public State
 {
     private:
         std::map<std::string, Button*> buttons; 
-
+        
     public:
         MainState(typeState type, sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures);
         ~MainState();

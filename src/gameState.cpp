@@ -9,10 +9,8 @@ GameState::GameState(typeState type, sf::RenderWindow* window, std::stack<State*
     this->gameView = this->window->getView();
     this->minimap.setViewport(sf::FloatRect(0.86f, 0, 0.15f, 0.25f));
 
-    for (int i = 0; i < 10; i++)
-    {
-        this->units.push_back(new BaseUnit(this->window, this->tilemap, i, i, this->tilemap->mapUnits));
-    }
+    this->buttons["AddUnit"] = new Button(this->window, 1840, 1000, 1, &textures["UnitButton_Idle"]);
+    this->buttons["AddBaseUnit"] = new Button(this->window, 1840, 920, 1, &textures["BaseUnitAddButton_Idle"]);
 }
 
 GameState::~GameState()
@@ -68,6 +66,27 @@ void GameState::generateBlood(std::pair<sf::Vector2f, int>& pos)
 
 void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)
 {
+    this->updateButtons(mousePressedLeft);
+    if (buttons.at("AddBaseUnit")->isActiv())
+    {
+        if (mousePressedLeft)
+        {
+            if (this->tilemap->map[mousePosition.y / 64][mousePosition.x / 64] >= 1 
+            && this->tilemap->map[mousePosition.y / 64][mousePosition.x / 64] <= 4)
+            {
+                if (this->tilemap->mapUnits[mousePosition.y / 64][mousePosition.x / 64] != 1)
+                {
+                    if (!buttons.at("AddBaseUnit")->isHover(sf::Vector2f(this->mousePosition.x, this->mousePosition.y)))
+                    {
+                        this->units.push_back(new BaseUnit(this->window, this->tilemap, mousePosition.x / 64, mousePosition.y / 64, 
+                        this->tilemap->mapUnits));
+                    }
+                }
+            }
+        }
+    }
+
+
     for (int i = 0; i < this->units.size(); i++)
     {
         if (this->units[i] == nullptr)
@@ -101,6 +120,49 @@ void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::
 
         this->units[i]->update(mousePressedLeft, mousePressedRight, realisedKeys, pressedKeys, this->units);
         this->units[i]->moveTo();
+    }
+}
+
+void GameState::updateButtons(bool mousePressedLeft)
+{
+    //this->window->mapPixelToCoords(sf::Vector2i(10, 20));
+    this->updateMouse();
+    if (buttons.at("AddUnit")->isHover(this->mousePosition) && mousePressedLeft)
+    {
+        if (buttons.at("AddUnit")->isActiv())
+        {
+            for (auto it : this->buttons)
+            {
+                it.second->setActiv(false);
+            }
+        }
+        else
+        {
+            buttons.at("AddUnit")->setActiv(true);
+        }
+    }
+
+    int counter = 0;
+    for(auto& it : this->buttons)
+    {
+        it.second->setPosition(this->window->mapPixelToCoords(sf::Vector2i(0, 1000 - 80 * counter)));
+        it.second->setScale(this->window->getView().getSize().x / 100 / 18.0f, this->window->getView().getSize().y / 100 / 10);
+        counter++;
+    }
+
+    if (buttons.at("AddUnit")->isActiv())
+    {
+        if (buttons.at("AddBaseUnit")->isHover(this->mousePosition) && mousePressedLeft)
+        {
+            if (buttons.at("AddBaseUnit")->isActiv())
+            {
+                buttons.at("AddBaseUnit")->setActiv(false);
+            }
+            else
+            {
+                buttons.at("AddBaseUnit")->setActiv(true);
+            }
+        }
     }
 }
 
@@ -146,5 +208,17 @@ void GameState::render()
     for (auto& unit : this->units)
     {
         unit->renderMini(this->minimap);
+    }
+    
+    if (buttons.at("AddUnit")->isActiv())
+    {
+        for (auto& button : this->buttons)
+        {
+            button.second->render();
+        }
+    }
+    else
+    {
+        buttons.at("AddUnit")->render();
     }
 }
