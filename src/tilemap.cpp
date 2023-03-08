@@ -1,28 +1,30 @@
 #include "tilemap.h"
 
 Tilemap::Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& textures, int width, int height, int frequency, int octaves, int seedGame)
-    : window(window), width(width), height(height)
+    : window(window), width(width), height(height), animSleep(40)
 {
     srand(time(0));
 
     this->tileKeys = {
-        {"water", {0, 0}},
-        {"sand", {1, 1}},
-        {"ground", {2, 4}},
-        {"mountain", {5, 5}},
-        {"snow", {6, 6}}
+        {"water", {0, 1}},
+        {"sand", {2, 2}},
+        {"ground", {3, 5}},
+        {"mountain", {6, 6}},
+        {"snow", {7, 7}}
     };
 
     const siv::PerlinNoise::seed_type seed = seedGame;
     this->perlinNoise = new siv::PerlinNoise(seed);
+
     this->tiles = {
-        {0, textures["tile_water"]},
-        {1, textures["tile_sand"]},
-        {2, textures["tile_ground_1"]},
-        {3, textures["tile_ground_2"]},
-        {4, textures["tile_ground_3"]},
-        {5, textures["tile_mountain"]},
-        {6, textures["tile_snow"]}
+        {0, textures["tile_water_1"]},
+        {1, textures["tile_water_2"]},
+        {2, textures["tile_sand"]},
+        {3, textures["tile_ground_1"]},
+        {4, textures["tile_ground_2"]},
+        {5, textures["tile_ground_3"]},
+        {6, textures["tile_mountain"]},
+        {7, textures["tile_snow"]}
     };
 
     for (int y = 0; y < this->height; y++)
@@ -112,10 +114,31 @@ void Tilemap::renderMini(sf::View view)
     {
         for (int x = 0; x < this->map[y].size(); x++)
         {
+            if (this->currentAnim <= 0)
+            {
+                if (this->map[y][x] == 0)
+                {
+                    this->map[y][x] = 1;
+                }
+
+                else if (this->map[y][x] == 1)
+                {
+                    this->map[y][x] = 0;
+                }
+
+                this->currentAnim = this->animSleep;
+            }
+
+            else 
+            {
+                this->currentAnim--;
+            }
+
             sprite.setTexture(this->tiles[this->map[y][x]]);
             sprite.setScale(0.15, 0.15);
             sprite.setPosition(pos);
             this->window->draw(sprite);
+
             pos.x += sprite.getTexture()->getSize().x * sprite.getScale().x;
         }
 

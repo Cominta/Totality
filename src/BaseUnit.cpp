@@ -204,7 +204,7 @@ std::vector<sf::RectangleShape> BaseUnit::predictPath(sf::Vector2f wayEnd, float
 
         sf::RectangleShape shape(sf::Vector2f(5, 32));
 
-        if (this->tilemap->map[yPath][xPath] < 1 || this->tilemap->map[yPath][xPath] > 4)
+        if (this->tilemap->map[yPath][xPath] < 2 || this->tilemap->map[yPath][xPath] > 5)
         {
             success = false;
             return path;

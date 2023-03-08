@@ -20,6 +20,9 @@ class Tilemap
         // 1 - гора
         // вот так вот просто
 
+        const int animSleep;
+        int currentAnim;
+
         std::map<std::string, std::pair<int, int>> tileKeys;
         std::map<int, sf::Texture> tiles;
 
