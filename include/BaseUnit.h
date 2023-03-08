@@ -13,7 +13,7 @@ struct TaskMove
 
 class BaseUnit
 {
-private:
+protected:
     sf::CircleShape unit;
     // sf::Vector2i wayEnd;
     sf::RenderWindow* window;
@@ -21,8 +21,15 @@ private:
     bool b_active;
     bool b_moving;
 
+<<<<<<< HEAD
+    //atack options
+    int observationR;
+    int atackDMG;
+    int defense;
+=======
     bool attack;
     BaseUnit* toAttack;
+>>>>>>> 0080bf571384e66bdab1cfbafe1e57efb0a2cd5f
 
     const int speed;
     const int speedAttack;
@@ -48,8 +55,13 @@ private:
     void updateHpBar();
 
 public:
+<<<<<<< HEAD
+    BaseUnit(sf::RenderWindow *_window, Tilemap* tilemap, int xMap, int yMap, int _observationR , int _atackDMG, int _defence, std::vector<std::vector<int>>& mapUnits)
+        : speed(50)
+=======
     BaseUnit(sf::RenderWindow *_window, Tilemap* tilemap, int xMap, int yMap, std::vector<std::vector<int>>& mapUnits)
         : speed(50), speedAttack(20), maxHp(100)
+>>>>>>> 0080bf571384e66bdab1cfbafe1e57efb0a2cd5f
     {
         this->hp = 100;
         this->attacked = false;
@@ -69,6 +81,9 @@ public:
         mapUnits[yMap][xMap] = 1;
         this->xMap = xMap;
         this->yMap = yMap;
+        observationR = _observationR;
+        atackDMG = _atackDMG;
+        defense = _defence;
 
         this->initHpBar();
 
@@ -77,10 +92,15 @@ public:
     }
 
 
+<<<<<<< HEAD
+    virtual ~BaseUnit()
+    {}
+=======
     ~BaseUnit()
     {
         toAttack = nullptr;
     }
+>>>>>>> 0080bf571384e66bdab1cfbafe1e57efb0a2cd5f
 
     void moveTo();
     int getHp() {return this->hp;}
@@ -125,7 +145,7 @@ public:
     }
     void move(float X, float Y)
     {
-        unit.move(X, Y);
+        unit.move(X / 64, Y / 64);
     }
 
     void doDamage(int damage)
