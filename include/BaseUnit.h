@@ -32,6 +32,7 @@ private:
     int hp;
     const int maxHp;
     int damage;
+    bool attacked;
 
     int xMap;
     int yMap;
@@ -51,7 +52,7 @@ public:
         : speed(50), speedAttack(20), maxHp(100)
     {
         this->hp = 100;
-
+        this->attacked = false;
         this->damage = 10;
         unit.setRadius(32.f);
         unit.setOrigin(32.f, 32.f);
@@ -126,6 +127,14 @@ public:
     {
         unit.move(X, Y);
     }
+
+    void doDamage(int damage)
+    {
+        this->hp -= damage;
+        this->attacked = true;
+    }
+
+    bool getAttacked() {return this->attacked;}
 
     void setPosition(int x, int y, std::vector<std::vector<int>>& vector)
     {

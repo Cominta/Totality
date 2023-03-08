@@ -26,7 +26,8 @@ void Engine::loadTextures()
         rootPath + "tiles/water.png",
         rootPath + "tiles/mountain.png",
         rootPath + "tiles/snow.png",
-        rootPath + "tiles/sand.png"
+        rootPath + "tiles/sand.png",
+        rootPath + "blood.png"
     };
 
     std::vector<std::string> names = {
@@ -35,7 +36,8 @@ void Engine::loadTextures()
         "tile_water",
         "tile_mountain",
         "tile_snow",
-        "tile_sand"
+        "tile_sand",
+        "blood"
     };
 
     for (int i = 0; i < paths.size(); i++)

@@ -28,6 +28,9 @@ class Tilemap
         
         Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& textures, int width, int height, int frequency, int octaves);
         ~Tilemap();
+
+        const int getWidth() {return this->width;}
+        const int getHeight() {return this->height;}
         
         void generateNew();
         int getTile(int x, int y) {return this->map[y][x];};

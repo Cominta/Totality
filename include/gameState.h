@@ -16,6 +16,10 @@ class GameState : public State
         sf::View gameView;
         sf::View minimap;
         std::vector<BaseUnit*> units;
+        std::vector<std::pair<sf::Vector2f, int>> bloods;
+
+        void generateBlood(std::pair<sf::Vector2f, int>& pos);
+        void updateUnits(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys);
 
     public:
         GameState(typeState type, sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures);

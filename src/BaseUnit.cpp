@@ -3,6 +3,7 @@
 
 void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& realisedKeys, std::vector<int>& pressedKeys, std::vector<BaseUnit*>& units)
 {
+    this->attacked = false;
     this->updateHpBar();
 
     if (mousePressedLeft)
@@ -42,6 +43,11 @@ void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector
 
             TaskMove task;
             bool success = true;
+
+            if (worldPos.x > this->tilemap->getWidth() - 1 || worldPos.y > this->tilemap->getHeight() - 1)
+            {
+                return;
+            }
 
             if (tilemap->mapUnits[worldPos.y][worldPos.x] == 1 && (this->xMap != worldPos.x || this->yMap != worldPos.y))
             {
@@ -325,7 +331,7 @@ void BaseUnit::moveTo()
         // this->xMap = oldX;
         // this->yMap = oldY;
 
-        this->toAttack->hp -= this->damage;
+        this->toAttack->doDamage(this->damage);
         this->currentSpeedAttack = this->speedAttack;
 
         if (this->toAttack->hp <= 0)
