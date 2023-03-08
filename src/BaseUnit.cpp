@@ -14,13 +14,11 @@ void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector
             sf::Vector2f worldPos = this->window->mapPixelToCoords(mousepos);
             if (unit.getGlobalBounds().contains(worldPos))
             {
-                this->b_active = true;
-                this->setOutlineColor(255, 0 ,0);
+                this->setActive(true);
             }
-            else if (!find(pressedKeys, sf::Keyboard::LShift) || !find(pressedKeys, sf::Keyboard::RShift))
+            else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift))
             {
-                this->b_active = false;
-                this->setOutlineColor(0, 0, 0);
+                this->setActive(false);
             }
         }
     }
@@ -49,7 +47,7 @@ void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector
                 return;
             }
 
-            if (tilemap->mapUnits[worldPos.y][worldPos.x] == 1 && (this->xMap != worldPos.x || this->yMap != worldPos.y))
+            if (this->tilemap->mapUnits[worldPos.y][worldPos.x] == 1 && (this->xMap != worldPos.x || this->yMap != worldPos.y))
             {
                 this->attack = true;
                 this->clearTasks();
@@ -300,7 +298,7 @@ void BaseUnit::moveTo()
             this->clearTasks();
             this->b_moving = false;
             this->attack = false;
-            
+
             return;
         }
     }

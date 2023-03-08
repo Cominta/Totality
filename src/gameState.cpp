@@ -13,6 +13,13 @@ GameState::GameState(typeState type, sf::RenderWindow* window, std::stack<State*
     {
         this->units.push_back(new BaseUnit(this->window, this->tilemap, i, i, this->tilemap->mapUnits));
     }
+
+    this->multiply = false;
+    // sf::Color color();
+    // color.a = 100;
+    this->multiplyShape.setFillColor(sf::Color::Transparent);
+    this->multiplyShape.setOutlineColor(sf::Color(17, 255, 0));
+    this->multiplyShape.setOutlineThickness(5.0f);
 }
 
 GameState::~GameState()
@@ -104,12 +111,64 @@ void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::
     }
 }
 
+void GameState::multiplyUnits()
+{
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !this->multiply)
+    {
+        this->multiply = true;
+        this->multiplyShape.setPosition(this->mousePosition.x, this->mousePosition.y);
+        this->mStartPos = this->mousePosition;
+    }
+
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && this->multiply)
+    {
+        if (this->mStartPos.x < this->mousePosition.x && this->mStartPos.y < this->mousePosition.y) // bottom - right
+        {
+            this->multiplyShape.setSize(sf::Vector2f(this->mousePosition.x - this->mStartPos.x, this->mousePosition.y - this->mStartPos.y));
+            this->multiplyShape.setPosition(this->mStartPos.x, this->mStartPos.y);
+        }
+
+        else if (this->mStartPos.x > this->mousePosition.x && this->mStartPos.y < this->mousePosition.y) // bottom - left
+        {
+            this->multiplyShape.setSize(sf::Vector2f(this->mStartPos.x - this->mousePosition.x, this->mousePosition.y - this->mStartPos.y));
+            this->multiplyShape.setPosition(this->mousePosition.x, this->mStartPos.y);
+        }
+
+        else if (this->mStartPos.x < this->mousePosition.x && this->mStartPos.y > this->mousePosition.y) // top - right
+        {
+            this->multiplyShape.setSize(sf::Vector2f(this->mousePosition.x - this->mStartPos.x, this->mStartPos.y - this->mousePosition.y));
+            this->multiplyShape.setPosition(this->mStartPos.x, this->mousePosition.y);
+        }
+
+        else if (this->mStartPos.x > this->mousePosition.x && this->mStartPos.y > this->mousePosition.y) // top - left
+        {
+            this->multiplyShape.setSize(sf::Vector2f(this->mStartPos.x - this->mousePosition.x, this->mStartPos.y - this->mousePosition.y));
+            this->multiplyShape.setPosition(this->mousePosition.x, this->mousePosition.y);
+        }
+    }
+
+    if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && this->multiply)
+    {
+        for (auto unit : this->units)
+        {
+            if (this->multiplyShape.getGlobalBounds().intersects(unit->getShape().getGlobalBounds()))
+            {
+                unit->setActive(true);
+            }
+        }
+
+        this->multiply = false;
+        this->multiplyShape.setSize(sf::Vector2f(0, 0));
+    }
+}
+
 void GameState::update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, int mouseScroll)
 {
     this->updateMouse();
     this->camera->update(this->mousePosition, mouseScroll, sizeMapX, sizeMapY);
     this->gameView = this->window->getView();
 
+    this->multiplyUnits();
     this->updateUnits(mousePressedLeft, mousePressedRight, pressedKeys, realisedKeys);
 
     if (this->find(realisedKeys, sf::Keyboard::Key::Escape))
@@ -139,6 +198,11 @@ void GameState::render()
     for (auto& unit : this->units)
     {
         unit->renderGame(this->gameView);
+    }
+
+    if (this->multiply)
+    {
+        this->window->draw(this->multiplyShape);
     }
     
     this->tilemap->renderMini(this->minimap);
