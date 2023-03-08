@@ -113,14 +113,14 @@ void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::
 
 void GameState::multiplyUnits()
 {
-    if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !this->multiply)
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !this->multiply && sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift))
     {
         this->multiply = true;
         this->multiplyShape.setPosition(this->mousePosition.x, this->mousePosition.y);
         this->mStartPos = this->mousePosition;
     }
 
-    if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && this->multiply)
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && this->multiply && sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift))
     {
         if (this->mStartPos.x < this->mousePosition.x && this->mStartPos.y < this->mousePosition.y) // bottom - right
         {
@@ -147,7 +147,7 @@ void GameState::multiplyUnits()
         }
     }
 
-    if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && this->multiply)
+    if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && this->multiply && sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift))
     {
         for (auto unit : this->units)
         {
