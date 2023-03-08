@@ -9,6 +9,7 @@ Engine::Engine(sf::RenderWindow* window)
 
     this->mousePressedLeft = false;
     this->mousePressedRight = false;
+    this->typedString = "";
 }
 
 Engine::~Engine()
@@ -84,6 +85,11 @@ void Engine::updateSFML()
         if (this->sfEvent.type == sf::Event::MouseWheelScrolled && this->sfEvent.mouseWheelScroll.delta != 0)
         {
             this->mouseScroll = this->sfEvent.mouseWheelScroll.delta;
+        }
+
+        if (this->sfEvent.type == sf::Event::TextEntered && this->states.top()->type == State::typeState::MAINSTATE)
+        {
+            ((MainState*)this->states.top())->getTb()->typedOn(this->sfEvent);
         }
     }
 }

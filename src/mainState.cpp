@@ -3,7 +3,8 @@
 MainState::MainState(typeState type, sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures)
     : State(type, window, states, textures)
 {
-    this->buttons["play"] = new Button(this->window, 100, 100, 1, &this->textures["play_idle"]);
+    this->buttons["play"] = new Button(this->window, 10, 10, 0.2, &this->textures["play_idle"]);
+    this->tbSeed = new TextBox(this->window, 300, 50, 10, 500);
 }
 
 MainState::~MainState()
@@ -11,7 +12,7 @@ MainState::~MainState()
 
 }
 
-void MainState::update(bool mousePressedLeft, bool MousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)
+void MainState::update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)
 {
     if (this->find(realisedKeys, sf::Keyboard::Key::Escape))
     {
@@ -21,6 +22,8 @@ void MainState::update(bool mousePressedLeft, bool MousePressedRight, std::vecto
     }
 
     this->updateMouse();
+
+    this->tbSeed->update(mousePressedLeft, this->mousePosition, this->find(pressedKeys, sf::Keyboard::BackSpace));
 
     for (auto it : this->buttons)
     {
@@ -35,6 +38,8 @@ void MainState::update(bool mousePressedLeft, bool MousePressedRight, std::vecto
 
 void MainState::render()
 {
+    this->tbSeed->render();
+
     for (auto it : this->buttons)
     {
         it.second->render();
