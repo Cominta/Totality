@@ -1,9 +1,9 @@
 #include "tilemap.h"
 
-Tilemap::Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& textures, int width, int height, int frequency, int octaves)
+Tilemap::Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& textures, int width, int height, int frequency, int octaves, int seedGame)
     : window(window), width(width), height(height)
 {
-    const siv::PerlinNoise::seed_type seed = 2134;
+    const siv::PerlinNoise::seed_type seed = seedGame;
     this->perlinNoise = new siv::PerlinNoise(seed);
     this->tiles = {
         {0, textures["tile_water"]},

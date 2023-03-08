@@ -29,9 +29,11 @@ class TextBox
         void handle(int charTyped);
 
     public:
-        TextBox(sf::RenderWindow* window, int width, int height, float x, float y);
+        TextBox(sf::RenderWindow* window, int width, int height, float x, float y, int maxSymbols);
 
         void typedOn(sf::Event sfEvent);
         void update(bool mousePressedLeft, sf::Vector2f mousePosition, bool backspace);
         void render();
+        std::string getStr() {return this->str;}
+        void setStr(std::string str) {this->str = str;}
 };

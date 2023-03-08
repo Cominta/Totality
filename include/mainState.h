@@ -11,6 +11,9 @@ class MainState : public State
         std::map<std::string, Button*> buttons; 
         TextBox* tbSeed;
 
+        void filterSeedStr();
+        void convert(int num, std::string& str);
+
     public:
         MainState(typeState type, sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures);
         ~MainState();

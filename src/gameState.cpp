@@ -1,10 +1,10 @@
 #include "gameState.h"
 
-GameState::GameState(typeState type, sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures)
+GameState::GameState(typeState type, sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures, unsigned int seed)
     : State(type, window, states, textures), sizeMapX(100), sizeMapY(100)
 {
     srand(time(0));
-    this->tilemap = new Tilemap(this->window, this->textures, this->sizeMapX, this->sizeMapY, 3, 8);
+    this->tilemap = new Tilemap(this->window, this->textures, this->sizeMapX, this->sizeMapY, 3, 8, seed);
     this->camera = new Camera(this->window, 16000, 16000);
     this->gameView = this->window->getView();
     this->minimap.setViewport(sf::FloatRect(0.86f, 0, 0.15f, 0.25f));

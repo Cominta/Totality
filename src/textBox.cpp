@@ -1,6 +1,6 @@
 #include "textBox.h"
 
-TextBox::TextBox(sf::RenderWindow* window, int width, int height, float x, float y)
+TextBox::TextBox(sf::RenderWindow* window, int width, int height, float x, float y, int maxSymbols)
     : window(window), width(width), height(height), x(x), y(y)
 {
     this->backgoundColor = sf::Color(31, 36, 40);
@@ -23,7 +23,7 @@ TextBox::TextBox(sf::RenderWindow* window, int width, int height, float x, float
     this->str = "";
     this->active = false;
     this->cursor = false;
-    this->maxSymbols = 9;
+    this->maxSymbols = maxSymbols;
 }
 
 void TextBox::isActive(bool mousePressedLeft, sf::Vector2f mousePosition)
