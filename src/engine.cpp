@@ -22,20 +22,26 @@ void Engine::loadTextures()
 
     std::vector<std::string> paths = {
         rootPath + "buttons/mainstate/play_idle.png",
+        rootPath + "buttons/gamestate/UnitButton_Idle.png",
+        rootPath + "buttons/gamestate/BaseUnitAddButton_Idle.png",
         rootPath + "tiles/ground.png",
         rootPath + "tiles/water.png",
         rootPath + "tiles/mountain.png",
         rootPath + "tiles/snow.png",
-        rootPath + "tiles/sand.png"
+        rootPath + "tiles/sand.png",
+        rootPath + "blood.png"
     };
 
     std::vector<std::string> names = {
         "play_idle",
+        "UnitButton_Idle",
+        "BaseUnitAddButton_Idle",
         "tile_ground",
         "tile_water",
         "tile_mountain",
         "tile_snow",
-        "tile_sand"
+        "tile_sand",
+        "blood"
     };
 
     for (int i = 0; i < paths.size(); i++)
@@ -78,6 +84,11 @@ void Engine::updateSFML()
         {
             this->pressedKeys.push_back(this->sfEvent.key.code);
         }
+
+        if (this->sfEvent.type == sf::Event::MouseWheelScrolled && this->sfEvent.mouseWheelScroll.delta != 0)
+        {
+            this->mouseScroll = this->sfEvent.mouseWheelScroll.delta;
+        }
     }
 }
 
@@ -92,12 +103,14 @@ void Engine::update()
 
     else if (this->states.top()->type == State::typeState::GAMESTATE) 
     {
-        this->states.top()->update(this->mousePressedLeft, this->mousePressedRight, this->pressedKeys, this->realisedKeys);
+        this->states.top()->update(this->mousePressedLeft, this->mousePressedRight, this->pressedKeys, this->realisedKeys, this->mouseScroll);
     }
 
     this->mousePressedLeft = false;
+    this->mousePressedRight = false;
     this->pressedKeys.clear();
     this->realisedKeys.clear();
+    this->mouseScroll = 0;
 }
 
 void Engine::render()

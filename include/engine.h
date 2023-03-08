@@ -15,6 +15,7 @@ class Engine
 
         bool mousePressedLeft;
         bool mousePressedRight;
+        int mouseScroll = 0;
 
         void loadTextures();
 
