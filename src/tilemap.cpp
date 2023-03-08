@@ -8,9 +8,9 @@ Tilemap::Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& t
     this->tileKeys = {
         {"water", {0, 0}},
         {"sand", {1, 1}},
-        {"ground", {2, 3}},
-        {"mountain", {4, 4}},
-        {"snow", {5, 5}}
+        {"ground", {2, 4}},
+        {"mountain", {5, 5}},
+        {"snow", {6, 6}}
     };
 
     const siv::PerlinNoise::seed_type seed = seedGame;
@@ -20,8 +20,9 @@ Tilemap::Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& t
         {1, textures["tile_sand"]},
         {2, textures["tile_ground_1"]},
         {3, textures["tile_ground_2"]},
-        {4, textures["tile_mountain"]},
-        {5, textures["tile_snow"]}
+        {4, textures["tile_ground_3"]},
+        {5, textures["tile_mountain"]},
+        {6, textures["tile_snow"]}
     };
 
     for (int y = 0; y < this->height; y++)
@@ -72,11 +73,6 @@ Tilemap::Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& t
 Tilemap::~Tilemap()
 {
     delete this->perlinNoise;
-}
-
-void Tilemap::generateNew()
-{
-
 }
 
 void Tilemap::renderGame(sf::View view)

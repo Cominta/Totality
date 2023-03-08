@@ -33,7 +33,6 @@ class Tilemap
         const int getWidth() {return this->width;}
         const int getHeight() {return this->height;}
         
-        void generateNew();
         int getTile(int x, int y) {return this->map[y][x];};
 
         void renderGame(sf::View view);

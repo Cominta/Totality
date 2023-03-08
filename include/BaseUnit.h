@@ -36,6 +36,7 @@ protected:
 
     int xMap;
     int yMap;
+    bool slowed;
 
     sf::RectangleShape hpBar;
     sf::RectangleShape hpBarBack;
@@ -49,8 +50,9 @@ protected:
 
 public:
     BaseUnit(sf::RenderWindow *_window, Tilemap* tilemap, int xMap, int yMap, std::vector<std::vector<int>>& mapUnits)
-        : speed(50), speedAttack(20), maxHp(100)
+        : speed(70), speedAttack(20), maxHp(100)
     {
+        this->slowed = false;
         this->hp = 100;
         this->attacked = false;
         this->damage = 10;

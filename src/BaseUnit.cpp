@@ -204,7 +204,7 @@ std::vector<sf::RectangleShape> BaseUnit::predictPath(sf::Vector2f wayEnd, float
 
         sf::RectangleShape shape(sf::Vector2f(5, 32));
 
-        if (this->tilemap->map[yPath][xPath] < 2 || this->tilemap->map[yPath][xPath] > 3)
+        if (this->tilemap->map[yPath][xPath] < 1 || this->tilemap->map[yPath][xPath] > 4)
         {
             success = false;
             return path;
@@ -278,9 +278,9 @@ void BaseUnit::moveTo()
         return;
     }
 
-    if (this->currentSpeed != 0)
+    if (this->currentSpeed > 0)
     {
-        this->currentSpeed--;
+        this->currentSpeed -= 2;
         return;
     }
 
@@ -313,6 +313,11 @@ void BaseUnit::moveTo()
     int newY = path[0].getPosition().y / 64;
 
     this->updateHpBar();
+
+    if (this->tilemap->map[newY][newX] == 1)
+    {
+        this->slowed = true;
+    }
 
     if (this->tilemap->mapUnits[newY][newX] == 1 && (!this->attack || (this->attack && this->toAttack != nullptr && this->toAttack->xMap != newX || this->toAttack->yMap != newY)))
     {
@@ -368,7 +373,16 @@ void BaseUnit::moveTo()
         }
     }
 
-    this->currentSpeed = this->speed;
+    if (this->slowed)
+    {
+        this->currentSpeed = this->speed * 2;
+        this->slowed = false;
+    }
+
+    else 
+    {
+        this->currentSpeed = this->speed;
+    }
 }
 
 void BaseUnit::renderGame(sf::View view)
