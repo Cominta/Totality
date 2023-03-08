@@ -111,9 +111,8 @@ void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector
             if (success)
             {
                 this->tasks.push(task);
+                this->setIsMoving(true);
             }
-
-            this->setIsMoving(true);
         }
     }
 }
@@ -295,6 +294,15 @@ void BaseUnit::moveTo()
         bool success = true;
         TaskMove task {this->predictPath(sf::Vector2f(this->toAttack->xMap, this->toAttack->yMap), startX, startY, success), sf::Vector2f(this->toAttack->xMap, this->toAttack->yMap)};
         this->tasks.push(task);
+
+        if (!success)
+        {
+            this->clearTasks();
+            this->b_moving = false;
+            this->attack = false;
+            
+            return;
+        }
     }
 
     int oldX = this->xMap;
