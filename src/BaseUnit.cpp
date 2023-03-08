@@ -204,7 +204,7 @@ std::vector<sf::RectangleShape> BaseUnit::predictPath(sf::Vector2f wayEnd, float
 
         sf::RectangleShape shape(sf::Vector2f(5, 32));
 
-        if (this->tilemap->map[yPath][xPath] != 2)
+        if (this->tilemap->map[yPath][xPath] < 2 || this->tilemap->map[yPath][xPath] > 3)
         {
             success = false;
             return path;
@@ -407,7 +407,7 @@ void BaseUnit::renderMini(sf::View view)
     int xPos = this->unit.getPosition().x;
     int yPos = this->unit.getPosition().y;
 
-    this->unit.setScale(0.15, 0.15);
+    this->unit.setScale(0.30, 0.30);
     this->unit.setPosition(xPos * 0.15, yPos * 0.15);
     
     this->window->draw(this->unit);
