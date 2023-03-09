@@ -79,13 +79,6 @@ void Camera::update(sf::Vector2f mousePosition, int mouseScroll, int width, int 
         view.setSize(currentSize * currentZoom);
     }
 
-    
-
-    // CAMERA VIEW
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
-        view.rotate(5);
-    }
-
     view.move(this->currentSpeedX, this->currentSpeedY);
     this->window->setView(view);
 
