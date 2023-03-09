@@ -13,6 +13,8 @@ GameState::GameState(typeState type, sf::RenderWindow* window, std::stack<State*
     this->buttons["AddBaseUnit"] = new Button(this->window, 1840, 920, 1, &textures["BaseUnitAddButton_Idle"]);
     this->buttons["AddUnit"]->setActiv(false);
     this->buttons["AddBaseUnit"]->setActiv(false);
+    this->buttons["AddArcherUnit"] = new Button(this->window, 1840, 840, 1, &textures["ArcherUnitAddButton_Idle"]);
+    this->buttons["AddArcherUnit"]->setActiv(false);
     this->multiply = false;
     // sf::Color color();
     // color.a = 100;
@@ -96,6 +98,24 @@ void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::
             }
         }
     }
+    else if (buttons.at("AddArcherUnit")->isActiv())
+    {
+        if (mousePressedLeft)
+        {
+            if (this->tilemap->map[mousePosition.y / 64][mousePosition.x / 64] >= this->tilemap->tileKeys["ground"].first 
+            && this->tilemap->map[mousePosition.y / 64][mousePosition.x / 64] <= this->tilemap->tileKeys["ground"].second)
+            {
+                if (this->tilemap->mapUnits[mousePosition.y / 64][mousePosition.x / 64] != 1)
+                {
+                    if (!buttons.at("AddArcherUnit")->isHover(sf::Vector2f(this->mousePosition.x, this->mousePosition.y)))
+                    {
+                        this->units.push_back(new Archer(this->window, this->tilemap, mousePosition.x / 64, mousePosition.y / 64, 
+                        this->tilemap->mapUnits));
+                    }
+                }
+            }
+        }
+    }
 
 
     for (int i = 0; i < this->units.size(); i++)
@@ -172,6 +192,17 @@ void GameState::updateButtons(bool mousePressedLeft)
             else
             {
                 buttons.at("AddBaseUnit")->setActiv(true);
+            }
+        }
+        else if(buttons.at("AddArcherUnit")->isHover(this->mousePosition) && mousePressedLeft)
+        {
+            if (buttons.at("AddArcherUnit")->isActiv())
+            {
+                buttons.at("AddArcherUnit")->setActiv(false);
+            }
+            else
+            {
+                buttons.at("AddArcherUnit")->setActiv(true);
             }
         }
     }
