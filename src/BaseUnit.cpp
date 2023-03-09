@@ -314,8 +314,6 @@ void BaseUnit::moveTo()
 
     this->updateHpBar();
 
-    std::cout << this->tilemap->map[newY][newX] << "\n";
-
     if (this->tilemap->map[newY][newX] >= this->tilemap->tileKeys["sand"].first && this->tilemap->map[newY][newX] <= this->tilemap->tileKeys["sand"].second)
     {
         this->slowed = true;
