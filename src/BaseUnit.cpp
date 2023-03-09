@@ -3,6 +3,7 @@
 
 void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& realisedKeys, std::vector<int>& pressedKeys, std::vector<BaseUnit*>& units)
 {
+    this->attacked = false;
     this->updateHpBar();
 
     if (mousePressedLeft)
@@ -13,13 +14,11 @@ void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector
             sf::Vector2f worldPos = this->window->mapPixelToCoords(mousepos);
             if (unit.getGlobalBounds().contains(worldPos))
             {
-                this->b_active = true;
-                this->setOutlineColor(255, 0 ,0);
+                this->setActive(true);
             }
-            else if (!find(pressedKeys, sf::Keyboard::LShift) || !find(pressedKeys, sf::Keyboard::RShift))
+            else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift))
             {
-                this->b_active = false;
-                this->setOutlineColor(0, 0, 0);
+                this->setActive(false);
             }
         }
     }
@@ -43,7 +42,12 @@ void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector
             TaskMove task;
             bool success = true;
 
-            if (tilemap->mapUnits[worldPos.y][worldPos.x] == 1 && (this->xMap != worldPos.x || this->yMap != worldPos.y))
+            if (worldPos.x > this->tilemap->getWidth() - 1 || worldPos.y > this->tilemap->getHeight() - 1)
+            {
+                return;
+            }
+
+            if (this->tilemap->mapUnits[worldPos.y][worldPos.x] == 1 && (this->xMap != worldPos.x || this->yMap != worldPos.y))
             {
                 this->attack = true;
                 this->clearTasks();
@@ -105,9 +109,8 @@ void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector
             if (success)
             {
                 this->tasks.push(task);
+                this->setIsMoving(true);
             }
-
-            this->setIsMoving(true);
         }
     }
 }
@@ -201,7 +204,7 @@ std::vector<sf::RectangleShape> BaseUnit::predictPath(sf::Vector2f wayEnd, float
 
         sf::RectangleShape shape(sf::Vector2f(5, 32));
 
-        if (this->tilemap->map[yPath][xPath] != 2)
+        if (this->tilemap->map[yPath][xPath] < this->tilemap->tileKeys["sand"].first || this->tilemap->map[yPath][xPath] > this->tilemap->tileKeys["ground"].second)
         {
             success = false;
             return path;
@@ -275,9 +278,9 @@ void BaseUnit::moveTo()
         return;
     }
 
-    if (this->currentSpeed != 0)
+    if (this->currentSpeed > 0)
     {
-        this->currentSpeed--;
+        this->currentSpeed -= 2;
         return;
     }
 
@@ -289,6 +292,15 @@ void BaseUnit::moveTo()
         bool success = true;
         TaskMove task {this->predictPath(sf::Vector2f(this->toAttack->xMap, this->toAttack->yMap), startX, startY, success), sf::Vector2f(this->toAttack->xMap, this->toAttack->yMap)};
         this->tasks.push(task);
+
+        if (!success)
+        {
+            this->clearTasks();
+            this->b_moving = false;
+            this->attack = false;
+
+            return;
+        }
     }
 
     int oldX = this->xMap;
@@ -301,6 +313,11 @@ void BaseUnit::moveTo()
     int newY = path[0].getPosition().y / 64;
 
     this->updateHpBar();
+
+    if (this->tilemap->map[newY][newX] >= this->tilemap->tileKeys["sand"].first && this->tilemap->map[newY][newX] <= this->tilemap->tileKeys["sand"].second)
+    {
+        this->slowed = true;
+    }
 
     if (this->tilemap->mapUnits[newY][newX] == 1 && (!this->attack || (this->attack && this->toAttack != nullptr && this->toAttack->xMap != newX || this->toAttack->yMap != newY)))
     {
@@ -325,7 +342,7 @@ void BaseUnit::moveTo()
         // this->xMap = oldX;
         // this->yMap = oldY;
 
-        this->toAttack->hp -= this->damage;
+        this->toAttack->doDamage(this->damage);
         this->currentSpeedAttack = this->speedAttack;
 
         if (this->toAttack->hp <= 0)
@@ -356,7 +373,16 @@ void BaseUnit::moveTo()
         }
     }
 
-    this->currentSpeed = this->speed;
+    if (this->slowed)
+    {
+        this->currentSpeed = this->speed * 2;
+        this->slowed = false;
+    }
+
+    else 
+    {
+        this->currentSpeed = this->speed;
+    }
 }
 
 void BaseUnit::renderGame(sf::View view)
@@ -395,11 +421,13 @@ void BaseUnit::renderMini(sf::View view)
     int xPos = this->unit.getPosition().x;
     int yPos = this->unit.getPosition().y;
 
-    this->unit.setScale(0.15, 0.15);
+    this->unit.setScale(0.30, 0.30);
     this->unit.setPosition(xPos * 0.15, yPos * 0.15);
+    this->unit.setFillColor(sf::Color::White);
     
     this->window->draw(this->unit);
 
+    this->unit.setFillColor(sf::Color(100, 100, 100));
     this->unit.setPosition(xPos, yPos);
     this->unit.setScale(1, 1);
 

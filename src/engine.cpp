@@ -9,6 +9,7 @@ Engine::Engine(sf::RenderWindow* window)
 
     this->mousePressedLeft = false;
     this->mousePressedRight = false;
+    this->typedString = "";
 }
 
 Engine::~Engine()
@@ -22,20 +23,44 @@ void Engine::loadTextures()
 
     std::vector<std::string> paths = {
         rootPath + "buttons/mainstate/play_idle.png",
-        rootPath + "tiles/ground.png",
-        rootPath + "tiles/water.png",
+        rootPath + "buttons/gamestate/UnitButton_Idle.png",
+        rootPath + "buttons/gamestate/BaseUnitAddButton_Idle.png",
+        rootPath + "tiles/ground_1.png",
+        rootPath + "tiles/ground_2.png",
+        rootPath + "tiles/ground_3.png",
+        rootPath + "tiles/water_1.png",
+        rootPath + "tiles/water_2.png",
+        rootPath + "tiles/water_3.png",
+        rootPath + "tiles/water_4.png",
+        rootPath + "tiles/water_5.png",
+        rootPath + "tiles/water_6.png",
+        rootPath + "tiles/water_7.png",
+        rootPath + "tiles/water_8.png",
         rootPath + "tiles/mountain.png",
+        rootPath + "tiles/sand.png",
         rootPath + "tiles/snow.png",
-        rootPath + "tiles/sand.png"
+        rootPath + "blood.png"
     };
 
     std::vector<std::string> names = {
         "play_idle",
-        "tile_ground",
-        "tile_water",
+        "UnitButton_Idle",
+        "BaseUnitAddButton_Idle",
+        "tile_ground_1",
+        "tile_ground_2",
+        "tile_ground_3",
+        "tile_water_1",
+        "tile_water_2",
+        "tile_water_3",
+        "tile_water_4",
+        "tile_water_5",
+        "tile_water_6",
+        "tile_water_7",
+        "tile_water_8",
         "tile_mountain",
+        "tile_sand",
         "tile_snow",
-        "tile_sand"
+        "blood"
     };
 
     for (int i = 0; i < paths.size(); i++)
@@ -82,6 +107,11 @@ void Engine::updateSFML()
         if (this->sfEvent.type == sf::Event::MouseWheelScrolled && this->sfEvent.mouseWheelScroll.delta != 0)
         {
             this->mouseScroll = this->sfEvent.mouseWheelScroll.delta;
+        }
+
+        if (this->sfEvent.type == sf::Event::TextEntered && this->states.top()->type == State::typeState::MAINSTATE)
+        {
+            ((MainState*)this->states.top())->getTb()->typedOn(this->sfEvent);
         }
     }
 }

@@ -1,6 +1,7 @@
 #pragma once 
 
 #include "state.h"
+#include "button.h"
 #include "tilemap.h"
 #include "BaseUnit.h"
 #include "viewMap.h"
@@ -16,9 +17,20 @@ class GameState : public State
         sf::View gameView;
         sf::View minimap;
         std::vector<BaseUnit*> units;
+        std::vector<std::pair<sf::Vector2f, int>> bloods;
+        std::map<std::string, Button*> buttons;
+
+        sf::RectangleShape multiplyShape;
+        sf::Vector2f mStartPos;
+        bool multiply;
+
+        void generateBlood(std::pair<sf::Vector2f, int>& pos);
+        void updateUnits(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys);
+        void updateButtons(bool mousePressedLeft);
+        void multiplyUnits();
 
     public:
-        GameState(typeState type, sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures);
+        GameState(typeState type, sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures, unsigned int seed);
         ~GameState();
 
         void update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, int mouseScroll) override;

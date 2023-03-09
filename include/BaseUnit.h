@@ -13,7 +13,7 @@ struct TaskMove
 
 class BaseUnit
 {
-private:
+protected:
     sf::CircleShape unit;
     // sf::Vector2i wayEnd;
     sf::RenderWindow* window;
@@ -32,9 +32,11 @@ private:
     int hp;
     const int maxHp;
     int damage;
+    bool attacked;
 
     int xMap;
     int yMap;
+    bool slowed;
 
     sf::RectangleShape hpBar;
     sf::RectangleShape hpBarBack;
@@ -48,10 +50,11 @@ private:
 
 public:
     BaseUnit(sf::RenderWindow *_window, Tilemap* tilemap, int xMap, int yMap, std::vector<std::vector<int>>& mapUnits)
-        : speed(50), speedAttack(20), maxHp(100)
+        : speed(70), speedAttack(20), maxHp(100)
     {
+        this->slowed = false;
         this->hp = 100;
-
+        this->attacked = false;
         this->damage = 10;
         unit.setRadius(32.f);
         unit.setOrigin(32.f, 32.f);
@@ -68,7 +71,6 @@ public:
         mapUnits[yMap][xMap] = 1;
         this->xMap = xMap;
         this->yMap = yMap;
-
         this->initHpBar();
 
         // this->wayEnd.x = this->unit.getPosition().x;
@@ -86,7 +88,17 @@ public:
 
     void setActive(bool _active)
     {
-        b_active = _active;
+        this->b_active = _active;
+
+        if (this->b_active)
+        {
+            this->setOutlineColor(255, 0 ,0);
+        }
+
+        else 
+        {
+            this->setOutlineColor(0, 0 ,0);
+        }
     }
     bool isActiv() const
     {
@@ -124,8 +136,16 @@ public:
     }
     void move(float X, float Y)
     {
-        unit.move(X, Y);
+        unit.move(X / 64, Y / 64);
     }
+
+    void doDamage(int damage)
+    {
+        this->hp -= damage;
+        this->attacked = true;
+    }
+
+    bool getAttacked() {return this->attacked;}
 
     void setPosition(int x, int y, std::vector<std::vector<int>>& vector)
     {
@@ -150,6 +170,8 @@ public:
 
         return false;
     }
+
+    sf::CircleShape getShape() {return this->unit;}
 
     void renderGame(sf::View view);
     void renderMini(sf::View view);

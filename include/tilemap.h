@@ -20,16 +20,22 @@ class Tilemap
         // 1 - гора
         // вот так вот просто
 
+        const int animSleep;
+        int currentAnim;
+
         std::map<int, sf::Texture> tiles;
 
     public:
         std::vector<std::vector<int>> map;
         std::vector<std::vector<int>> mapUnits;
+        std::map<std::string, std::pair<int, int>> tileKeys;
         
-        Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& textures, int width, int height, int frequency, int octaves);
+        Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& textures, int width, int height, int frequency, int octaves, int seedGame);
         ~Tilemap();
+
+        const int getWidth() {return this->width;}
+        const int getHeight() {return this->height;}
         
-        void generateNew();
         int getTile(int x, int y) {return this->map[y][x];};
 
         void renderGame(sf::View view);

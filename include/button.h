@@ -18,6 +18,8 @@ class Button
         float y;
         float scale;
 
+        bool activ;
+
     public:
         enum class states
         {
@@ -34,6 +36,8 @@ class Button
         ~Button();
 
         bool isHover(sf::Vector2f mousePosition);
+        bool isActiv() const {return this->activ;}
+        void setActiv(bool _activ) {this->activ = _activ;}
         void setTexture(sf::Texture* idle, sf::Texture* hover, sf::Texture* active);
         void setPosition(float x, float y) {this->sprite->setPosition(x, y);};
         void setPosition(sf::Vector2f pos) {this->sprite->setPosition(pos);};

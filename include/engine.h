@@ -17,6 +17,8 @@ class Engine
         bool mousePressedRight;
         int mouseScroll = 0;
 
+        std::string typedString;
+
         void loadTextures();
 
     public:
