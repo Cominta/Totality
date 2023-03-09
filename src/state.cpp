@@ -37,7 +37,7 @@ void State::update(bool mousePressedLeft, bool MousePressedRight, std::vector<in
     
 }
 
-void State::update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, int mouseScroll)
+void State::update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, int mouseScroll, float dt)
 {
     
 }

@@ -72,6 +72,11 @@ void Engine::loadTextures()
     }
 }
 
+void Engine::updateDt()
+{
+    this->dt = this->clock.restart().asSeconds();
+}
+
 void Engine::updateSFML()
 {
     while (this->window->pollEvent(this->sfEvent))
@@ -120,6 +125,13 @@ void Engine::update()
 {
     this->updateSFML();
 
+    // int sum = 0; // for test delta time
+
+    // for (int i = 0; i < 10000000; i++)
+    // {
+    //     sum += i;
+    // }
+
     if (this->states.top()->type == State::typeState::MAINSTATE)
     {
         this->states.top()->update(this->mousePressedLeft, this->mousePressedRight, this->pressedKeys, this->realisedKeys);
@@ -127,7 +139,7 @@ void Engine::update()
 
     else if (this->states.top()->type == State::typeState::GAMESTATE) 
     {
-        this->states.top()->update(this->mousePressedLeft, this->mousePressedRight, this->pressedKeys, this->realisedKeys, this->mouseScroll);
+        this->states.top()->update(this->mousePressedLeft, this->mousePressedRight, this->pressedKeys, this->realisedKeys, this->mouseScroll, this->dt);
     }
 
     this->mousePressedLeft = false;
@@ -150,6 +162,7 @@ void Engine::start()
 {
     while (this->window->isOpen())
     {
+        this->updateDt();
         this->update();
 
         if (this->states.empty())

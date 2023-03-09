@@ -3,14 +3,14 @@
 Camera::Camera(sf::RenderWindow* window, int sideX, int sideY) 
     : window(window), sideX(sideX), sideY(sideY)
 {
-    this->scrollSpeed = 50;
+    this->scrollSpeed = 1000;
 }
 Camera::~Camera()
 {
 
 }
 
-void Camera::update(sf::Vector2f mousePosition, int mouseScroll, int width, int height)
+void Camera::update(sf::Vector2f mousePosition, int mouseScroll, int width, int height, float dt)
 {
     const float MIN_ZOOM = 0.9;
     const float MAX_ZOOM = 3.35;
@@ -79,7 +79,7 @@ void Camera::update(sf::Vector2f mousePosition, int mouseScroll, int width, int 
         view.setSize(currentSize * currentZoom);
     }
 
-    view.move(this->currentSpeedX, this->currentSpeedY);
+    view.move(this->currentSpeedX * dt, this->currentSpeedY * dt);
     this->window->setView(view);
 
     currentSpeedX = 0;

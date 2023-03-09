@@ -18,5 +18,5 @@ public:
     Camera(sf::RenderWindow* window, int sideX, int sideY);
     ~Camera();
 
-    void update(sf::Vector2f mousePosition, int mouseScroll, int width, int height);
+    void update(sf::Vector2f mousePosition, int mouseScroll, int width, int height, float dt);
 };

@@ -271,7 +271,7 @@ std::vector<sf::RectangleShape> BaseUnit::predictPath(sf::Vector2f wayEnd, float
     return path;
 }
 
-void BaseUnit::moveTo()
+void BaseUnit::moveTo(float dt)
 {
     if (this->tasks.empty() || this->tasks.front().path.size() == 0)
     {
@@ -343,7 +343,7 @@ void BaseUnit::moveTo()
         // this->yMap = oldY;
 
         this->toAttack->doDamage(this->damage);
-        this->currentSpeedAttack = this->speedAttack;
+        this->currentSpeedAttack = this->speedAttack + (1.0f / dt) / 10;
 
         if (this->toAttack->hp <= 0)
         {
@@ -375,13 +375,13 @@ void BaseUnit::moveTo()
 
     if (this->slowed)
     {
-        this->currentSpeed = this->speed * 2;
+        this->currentSpeed = this->speed + (1.0f / dt * 1.5) + (1.0f / dt);
         this->slowed = false;
     }
 
     else 
     {
-        this->currentSpeed = this->speed;
+        this->currentSpeed = this->speed + (1.0f / dt); // 1.0f / dt = fps
     }
 }
 

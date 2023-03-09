@@ -50,7 +50,7 @@ protected:
 
 public:
     BaseUnit(sf::RenderWindow *_window, Tilemap* tilemap, int xMap, int yMap, std::vector<std::vector<int>>& mapUnits)
-        : speed(70), speedAttack(20), maxHp(100)
+        : speed(6), speedAttack(1), maxHp(100)
     {
         this->slowed = false;
         this->hp = 100;
@@ -83,7 +83,7 @@ public:
         toAttack = nullptr;
     }
 
-    void moveTo();
+    void moveTo(float dt);
     int getHp() {return this->hp;}
 
     void setActive(bool _active)

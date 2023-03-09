@@ -75,7 +75,7 @@ void GameState::generateBlood(std::pair<sf::Vector2f, int>& pos)
     pos.second = rand() % (360 + 1 - 0) - 0;
 }
 
-void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)
+void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, float dt)
 {
     this->updateButtons(mousePressedLeft);
     if (buttons.at("AddBaseUnit")->isActiv())
@@ -130,7 +130,7 @@ void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::
         }
 
         this->units[i]->update(mousePressedLeft, mousePressedRight, realisedKeys, pressedKeys, this->units);
-        this->units[i]->moveTo();
+        this->units[i]->moveTo(dt);
     }
 }
 
@@ -228,14 +228,14 @@ void GameState::multiplyUnits()
     }
 }
 
-void GameState::update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, int mouseScroll)
+void GameState::update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, int mouseScroll, float dt)
 {
     this->updateMouse();
-    this->camera->update(this->mousePosition, mouseScroll, sizeMapX, sizeMapY);
+    this->camera->update(this->mousePosition, mouseScroll, sizeMapX, sizeMapY, dt);
     this->gameView = this->window->getView();
 
     this->multiplyUnits();
-    this->updateUnits(mousePressedLeft, mousePressedRight, pressedKeys, realisedKeys);
+    this->updateUnits(mousePressedLeft, mousePressedRight, pressedKeys, realisedKeys, dt);
 
     if (this->find(realisedKeys, sf::Keyboard::Key::Escape))
     {

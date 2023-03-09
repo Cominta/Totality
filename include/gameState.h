@@ -25,7 +25,7 @@ class GameState : public State
         bool multiply;
 
         void generateBlood(std::pair<sf::Vector2f, int>& pos);
-        void updateUnits(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys);
+        void updateUnits(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, float dt);
         void updateButtons(bool mousePressedLeft);
         void multiplyUnits();
 
@@ -33,6 +33,6 @@ class GameState : public State
         GameState(typeState type, sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures, unsigned int seed);
         ~GameState();
 
-        void update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, int mouseScroll) override;
+        void update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, int mouseScroll, float dt) override;
         void render() override;
 };

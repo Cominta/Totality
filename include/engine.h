@@ -19,12 +19,16 @@ class Engine
 
         std::string typedString;
 
+        sf::Clock clock;
+        float dt;
+
         void loadTextures();
 
     public:
         Engine(sf::RenderWindow* window);
         ~Engine();
         
+        void updateDt();
         void updateSFML();
         void update();
         void render();
