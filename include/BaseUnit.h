@@ -36,6 +36,7 @@ protected:
 
     int xMap;
     int yMap;
+    bool slowed;
 
     sf::RectangleShape hpBar;
     sf::RectangleShape hpBarBack;
@@ -49,8 +50,9 @@ protected:
 
 public:
     BaseUnit(sf::RenderWindow *_window, Tilemap* tilemap, int xMap, int yMap, std::vector<std::vector<int>>& mapUnits)
-        : speed(50), speedAttack(20), maxHp(100)
+        : speed(70), speedAttack(20), maxHp(100)
     {
+        this->slowed = false;
         this->hp = 100;
         this->attacked = false;
         this->damage = 10;
@@ -69,7 +71,6 @@ public:
         mapUnits[yMap][xMap] = 1;
         this->xMap = xMap;
         this->yMap = yMap;
-        
         this->initHpBar();
 
         // this->wayEnd.x = this->unit.getPosition().x;
@@ -87,7 +88,17 @@ public:
 
     void setActive(bool _active)
     {
-        b_active = _active;
+        this->b_active = _active;
+
+        if (this->b_active)
+        {
+            this->setOutlineColor(255, 0 ,0);
+        }
+
+        else 
+        {
+            this->setOutlineColor(0, 0 ,0);
+        }
     }
     bool isActiv() const
     {
@@ -159,6 +170,8 @@ public:
 
         return false;
     }
+
+    sf::CircleShape getShape() {return this->unit;}
 
     void renderGame(sf::View view);
     void renderMini(sf::View view);

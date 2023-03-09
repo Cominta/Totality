@@ -1,21 +1,26 @@
 #include "gameState.h"
 
-GameState::GameState(typeState type, sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures)
+GameState::GameState(typeState type, sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures, unsigned int seed)
     : State(type, window, states, textures), sizeMapX(100), sizeMapY(100)
 {
     srand(time(0));
-    this->tilemap = new Tilemap(this->window, this->textures, this->sizeMapX, this->sizeMapY, 3, 8);
+    this->tilemap = new Tilemap(this->window, this->textures, this->sizeMapX, this->sizeMapY, 3, 8, seed);
     this->camera = new Camera(this->window, 16000, 16000);
     this->gameView = this->window->getView();
     this->minimap.setViewport(sf::FloatRect(0.86f, 0, 0.15f, 0.25f));
 
     this->buttons["AddUnit"] = new Button(this->window, 1840, 1000, 1, &textures["UnitButton_Idle"]);
     this->buttons["AddBaseUnit"] = new Button(this->window, 1840, 920, 1, &textures["BaseUnitAddButton_Idle"]);
+    this->multiply = false;
+    // sf::Color color();
+    // color.a = 100;
+    this->multiplyShape.setFillColor(sf::Color::Transparent);
+    this->multiplyShape.setOutlineColor(sf::Color(17, 255, 0));
+    this->multiplyShape.setOutlineThickness(5.0f);
 }
 
 GameState::~GameState()
 {
-    delete this->tilemap;
     
     for (auto unit : this->units)
     {
@@ -71,8 +76,8 @@ void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::
     {
         if (mousePressedLeft)
         {
-            if (this->tilemap->map[mousePosition.y / 64][mousePosition.x / 64] >= 1 
-            && this->tilemap->map[mousePosition.y / 64][mousePosition.x / 64] <= 4)
+            if (this->tilemap->map[mousePosition.y / 64][mousePosition.x / 64] >= this->tilemap->tileKeys["ground"].first 
+            && this->tilemap->map[mousePosition.y / 64][mousePosition.x / 64] <= this->tilemap->tileKeys["ground"].second)
             {
                 if (this->tilemap->mapUnits[mousePosition.y / 64][mousePosition.x / 64] != 1)
                 {
@@ -166,12 +171,64 @@ void GameState::updateButtons(bool mousePressedLeft)
     }
 }
 
+void GameState::multiplyUnits()
+{
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !this->multiply && sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift))
+    {
+        this->multiply = true;
+        this->multiplyShape.setPosition(this->mousePosition.x, this->mousePosition.y);
+        this->mStartPos = this->mousePosition;
+    }
+
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && this->multiply && sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift))
+    {
+        if (this->mStartPos.x < this->mousePosition.x && this->mStartPos.y < this->mousePosition.y) // bottom - right
+        {
+            this->multiplyShape.setSize(sf::Vector2f(this->mousePosition.x - this->mStartPos.x, this->mousePosition.y - this->mStartPos.y));
+            this->multiplyShape.setPosition(this->mStartPos.x, this->mStartPos.y);
+        }
+
+        else if (this->mStartPos.x > this->mousePosition.x && this->mStartPos.y < this->mousePosition.y) // bottom - left
+        {
+            this->multiplyShape.setSize(sf::Vector2f(this->mStartPos.x - this->mousePosition.x, this->mousePosition.y - this->mStartPos.y));
+            this->multiplyShape.setPosition(this->mousePosition.x, this->mStartPos.y);
+        }
+
+        else if (this->mStartPos.x < this->mousePosition.x && this->mStartPos.y > this->mousePosition.y) // top - right
+        {
+            this->multiplyShape.setSize(sf::Vector2f(this->mousePosition.x - this->mStartPos.x, this->mStartPos.y - this->mousePosition.y));
+            this->multiplyShape.setPosition(this->mStartPos.x, this->mousePosition.y);
+        }
+
+        else if (this->mStartPos.x > this->mousePosition.x && this->mStartPos.y > this->mousePosition.y) // top - left
+        {
+            this->multiplyShape.setSize(sf::Vector2f(this->mStartPos.x - this->mousePosition.x, this->mStartPos.y - this->mousePosition.y));
+            this->multiplyShape.setPosition(this->mousePosition.x, this->mousePosition.y);
+        }
+    }
+
+    if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && this->multiply && sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift))
+    {
+        for (auto unit : this->units)
+        {
+            if (this->multiplyShape.getGlobalBounds().intersects(unit->getShape().getGlobalBounds()))
+            {
+                unit->setActive(true);
+            }
+        }
+
+        this->multiply = false;
+        this->multiplyShape.setSize(sf::Vector2f(0, 0));
+    }
+}
+
 void GameState::update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, int mouseScroll)
 {
     this->updateMouse();
     this->camera->update(this->mousePosition, mouseScroll, sizeMapX, sizeMapY);
     this->gameView = this->window->getView();
 
+    this->multiplyUnits();
     this->updateUnits(mousePressedLeft, mousePressedRight, pressedKeys, realisedKeys);
 
     if (this->find(realisedKeys, sf::Keyboard::Key::Escape))
@@ -201,6 +258,11 @@ void GameState::render()
     for (auto& unit : this->units)
     {
         unit->renderGame(this->gameView);
+    }
+
+    if (this->multiply)
+    {
+        this->window->draw(this->multiplyShape);
     }
     
     this->tilemap->renderMini(this->minimap);
