@@ -6,6 +6,11 @@
 },
 {
   "directory": "C:/Users/Roman/Desktop/Totality/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\archerUnit.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\archerUnit.cpp",
+  "file": "C:/Users/Roman/Desktop/Totality/src/archerUnit.cpp"
+},
+{
+  "directory": "C:/Users/Roman/Desktop/Totality/build",
   "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\button.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\button.cpp",
   "file": "C:/Users/Roman/Desktop/Totality/src/button.cpp"
 },
@@ -48,5 +53,10 @@
   "directory": "C:/Users/Roman/Desktop/Totality/build",
   "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\viewMap.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\viewMap.cpp",
   "file": "C:/Users/Roman/Desktop/Totality/src/viewMap.cpp"
+},
+{
+  "directory": "C:/Users/Roman/Desktop/Totality/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\wariorUnit.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\wariorUnit.cpp",
+  "file": "C:/Users/Roman/Desktop/Totality/src/wariorUnit.cpp"
 }
 ]

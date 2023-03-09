@@ -24,13 +24,13 @@ protected:
     bool attack;
     BaseUnit* toAttack;
 
-    const int speed;
-    const int speedAttack;
+    int speed;
+    int speedAttack;
     int currentSpeed;
     int currentSpeedAttack;
 
     int hp;
-    const int maxHp;
+    int maxHp;
     int damage;
     bool attacked;
 
@@ -43,7 +43,7 @@ protected:
 
     // std::vector<sf::RectangleShape> path;
     std::queue<TaskMove> tasks;
-    std::vector<sf::RectangleShape> predictPath(sf::Vector2f wayEnd, float& startX, float& startY, bool& success);
+    virtual std::vector<sf::RectangleShape> predictPath(sf::Vector2f wayEnd, float& startX, float& startY, bool& success);
     void clearTasks();
     void initHpBar();
     void updateHpBar();

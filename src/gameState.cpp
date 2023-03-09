@@ -89,7 +89,7 @@ void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::
                 {
                     if (!buttons.at("AddBaseUnit")->isHover(sf::Vector2f(this->mousePosition.x, this->mousePosition.y)))
                     {
-                        this->units.push_back(new BaseUnit(this->window, this->tilemap, mousePosition.x / 64, mousePosition.y / 64, 
+                        this->units.push_back(new Warrior(this->window, this->tilemap, mousePosition.x / 64, mousePosition.y / 64, 
                         this->tilemap->mapUnits));
                     }
                 }

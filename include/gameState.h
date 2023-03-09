@@ -3,7 +3,8 @@
 #include "state.h"
 #include "button.h"
 #include "tilemap.h"
-#include "BaseUnit.h"
+#include "wariorUnit.h"
+#include "archerUnit.h"
 #include "viewMap.h"
 
 class GameState : public State 

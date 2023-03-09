@@ -152,6 +152,30 @@ src/BaseUnit.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/BaseUnit.cpp.s
 .PHONY : src/BaseUnit.cpp.s
 
+src/archerUnit.obj: src/archerUnit.cpp.obj
+.PHONY : src/archerUnit.obj
+
+# target to build an object file
+src/archerUnit.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/archerUnit.cpp.obj
+.PHONY : src/archerUnit.cpp.obj
+
+src/archerUnit.i: src/archerUnit.cpp.i
+.PHONY : src/archerUnit.i
+
+# target to preprocess a source file
+src/archerUnit.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/archerUnit.cpp.i
+.PHONY : src/archerUnit.cpp.i
+
+src/archerUnit.s: src/archerUnit.cpp.s
+.PHONY : src/archerUnit.s
+
+# target to generate assembly for a file
+src/archerUnit.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/archerUnit.cpp.s
+.PHONY : src/archerUnit.cpp.s
+
 src/button.obj: src/button.cpp.obj
 .PHONY : src/button.obj
 
@@ -368,6 +392,30 @@ src/viewMap.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/viewMap.cpp.s
 .PHONY : src/viewMap.cpp.s
 
+src/wariorUnit.obj: src/wariorUnit.cpp.obj
+.PHONY : src/wariorUnit.obj
+
+# target to build an object file
+src/wariorUnit.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/wariorUnit.cpp.obj
+.PHONY : src/wariorUnit.cpp.obj
+
+src/wariorUnit.i: src/wariorUnit.cpp.i
+.PHONY : src/wariorUnit.i
+
+# target to preprocess a source file
+src/wariorUnit.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/wariorUnit.cpp.i
+.PHONY : src/wariorUnit.cpp.i
+
+src/wariorUnit.s: src/wariorUnit.cpp.s
+.PHONY : src/wariorUnit.s
+
+# target to generate assembly for a file
+src/wariorUnit.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/wariorUnit.cpp.s
+.PHONY : src/wariorUnit.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -380,6 +428,9 @@ help:
 	@echo ... src/BaseUnit.obj
 	@echo ... src/BaseUnit.i
 	@echo ... src/BaseUnit.s
+	@echo ... src/archerUnit.obj
+	@echo ... src/archerUnit.i
+	@echo ... src/archerUnit.s
 	@echo ... src/button.obj
 	@echo ... src/button.i
 	@echo ... src/button.s
@@ -407,6 +458,9 @@ help:
 	@echo ... src/viewMap.obj
 	@echo ... src/viewMap.i
 	@echo ... src/viewMap.s
+	@echo ... src/wariorUnit.obj
+	@echo ... src/wariorUnit.i
+	@echo ... src/wariorUnit.s
 .PHONY : help
 
 
