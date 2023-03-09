@@ -423,9 +423,11 @@ void BaseUnit::renderMini(sf::View view)
 
     this->unit.setScale(0.30, 0.30);
     this->unit.setPosition(xPos * 0.15, yPos * 0.15);
+    this->unit.setFillColor(sf::Color::White);
     
     this->window->draw(this->unit);
 
+    this->unit.setFillColor(sf::Color(100, 100, 100));
     this->unit.setPosition(xPos, yPos);
     this->unit.setScale(1, 1);
 

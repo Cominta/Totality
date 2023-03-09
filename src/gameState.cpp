@@ -11,6 +11,8 @@ GameState::GameState(typeState type, sf::RenderWindow* window, std::stack<State*
 
     this->buttons["AddUnit"] = new Button(this->window, 1840, 1000, 1, &textures["UnitButton_Idle"]);
     this->buttons["AddBaseUnit"] = new Button(this->window, 1840, 920, 1, &textures["BaseUnitAddButton_Idle"]);
+    this->buttons["AddUnit"]->setActiv(false);
+    this->buttons["AddBaseUnit"]->setActiv(false);
     this->multiply = false;
     // sf::Color color();
     // color.a = 100;
@@ -21,7 +23,11 @@ GameState::GameState(typeState type, sf::RenderWindow* window, std::stack<State*
 
 GameState::~GameState()
 {
-    
+    for (auto button : this->buttons)
+    {
+        delete button.second;
+    }
+
     for (auto unit : this->units)
     {
         if (unit != nullptr)
