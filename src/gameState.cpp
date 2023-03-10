@@ -253,7 +253,7 @@ void GameState::multiplyUnits()
         }
     }
 
-    if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && this->multiply && !sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift))
+    if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) || this->multiply && !sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift))
     {
         for (auto unit : this->units)
         {

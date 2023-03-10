@@ -72,12 +72,12 @@ void Archer::updateArrow(float dt)
 void Archer::moveTo(float dt)
 {
     this->updateRange();
-
     this->updateArrow(dt);
 
-    if (!this->attack && !this->shoot)
+    if (!this->attack)
     {
         this->arrow.setPosition(-1, -1);
+        this->shoot = false;
     }
 
     if (this->toAttack != nullptr && this->toAttack->getHp() <= 0)
@@ -85,6 +85,11 @@ void Archer::moveTo(float dt)
         this->attack = false;
         this->shoot = false;
         this->toAttack = nullptr;
+    }
+
+    if (this->toAttack != nullptr && !this->range.getGlobalBounds().intersects(this->toAttack->getShape().getGlobalBounds()))
+    {
+        this->shoot = false;
     }
 
     if (this->attack && this->toAttack != nullptr && this->range.getGlobalBounds().intersects(this->toAttack->getShape().getGlobalBounds()))
