@@ -1,5 +1,15 @@
 #include "archerUnit.h"
 
+std::vector<sf::RectangleShape> Archer::predictPath(sf::Vector2f wayEnd, float& startX, float& startY, bool& success)
+{
+    if (this->attack && this->toAttack != nullptr && this->range.getLocalBounds().intersects(this->toAttack->getShape().getGlobalBounds()))
+    {
+        return std::vector<sf::RectangleShape> ();
+    }
+
+    return BaseUnit::predictPath(wayEnd, startX, startY, success);
+}
+
 void Archer::shootLogic()
 {    
     if (this->shoot && (this->arrow.getPosition().y / 64 <= 0 || this->arrow.getPosition().x / 64 <= 0 || 
@@ -39,8 +49,13 @@ void Archer::updateRange()
 
 void Archer::updateArrow(float dt)
 {
-    float newX = -cos((M_PI / 180) * this->arrow.getRotation());
-    float newY = -sin((M_PI / 180) * this->arrow.getRotation());
+    if (!this->shoot || this->currentSpeedAttack > 0)
+    {
+        return;
+    }
+
+    float newX = -cos((PI / 180) * this->arrow.getRotation());
+    float newY = -sin((PI / 180) * this->arrow.getRotation());
 
     this->arrow.move(newX * dt * this->arrowSpeed, newY * dt * this->arrowSpeed);
 
@@ -56,31 +71,48 @@ void Archer::updateArrow(float dt)
 
 void Archer::moveTo(float dt)
 {
-    if (this->shoot)
+    this->updateRange();
+
+    this->updateArrow(dt);
+
+    if (!this->attack && !this->shoot)
     {
-        this->updateArrow(dt);
+        this->arrow.setPosition(-1, -1);
+    }
 
-        if (this->toAttack != nullptr && this->arrow.getGlobalBounds().intersects(this->toAttack->getShape().getGlobalBounds()))
+    if (this->attack && this->toAttack != nullptr && this->range.getGlobalBounds().intersects(this->toAttack->getShape().getGlobalBounds()))
+    {
+        this->clearTasks();
+
+        if (this->currentSpeedAttack > 0)
         {
-            this->shoot = false;
-            this->toAttack->doDamage(this->damage);
-            this->currentSpeedAttack = this->speedAttack + (1.0f / dt) / 10;
-
-            if (this->toAttack->hp <= 0)
-            {
-                this->attack = false;
-                this->toAttack = nullptr;
-                this->clearTasks();
-            }
+            this->currentSpeedAttack--;
         }
 
-        else if (this->toAttack == nullptr)
+        if (!this->shoot && this->currentSpeedAttack <= 0)
+        {
+            this->currentSpeedAttack = this->speedAttack + (1.0f / dt);
+            this->arrow.setPosition(this->unit.getPosition());
+            this->shoot = true;
+            this->shootLogic();
+        }
+
+        if (this->arrow.getGlobalBounds().intersects(this->toAttack->getShape().getGlobalBounds()))
+        {
+            this->arrow.setPosition(-1, -1);
+            this->shoot = false;
+
+            this->toAttack->doDamage(this->damage);
+        }
+
+        if (this->toAttack->getHp() <= 0)
         {
             this->attack = false;
-            this->clearTasks();
-
-            return;
+            this->shoot = false;
+            this->toAttack = nullptr;
         }
+
+        return;
     }
 
     if (this->tasks.empty() || this->tasks.front().path.size() == 0)
@@ -99,13 +131,8 @@ void Archer::moveTo(float dt)
         this->clearTasks();
         this->b_moving = false;
         this->attack = false;
-
+        
         return;
-    }
-
-    else 
-    {
-        this->b_moving = true;
     }
 
     int oldX = this->xMap;
@@ -117,7 +144,6 @@ void Archer::moveTo(float dt)
     int newX = path[0].getPosition().x / 64;
     int newY = path[0].getPosition().y / 64;
 
-    this->updateRange();
     this->updateHpBar();
 
     if (this->tilemap->map[newY][newX] >= this->tilemap->tileKeys["sand"].first && this->tilemap->map[newY][newX] <= this->tilemap->tileKeys["sand"].second)
@@ -136,25 +162,29 @@ void Archer::moveTo(float dt)
         return;
     }
 
-    else if (this->attack && this->toAttack != nullptr && this->range.getGlobalBounds().intersects(this->toAttack->getShape().getGlobalBounds()))
-    {
-        if (this->currentSpeedAttack != 0)
-        {
-            this->currentSpeedAttack--;
-            return;
-        }
+    // else if (this->attack && this->toAttack != nullptr && this->toAttack->xMap == newX && this->toAttack->yMap == newY)
+    // {
+    //     if (this->currentSpeedAttack != 0)
+    //     {
+    //         this->currentSpeedAttack--;
+    //         return;
+    //     }
 
-        if (!this->shoot)
-        {
-            this->shootLogic();
-        }
+    //     this->b_moving = false;
+    //     // this->xMap = oldX;
+    //     // this->yMap = oldY;
 
-        this->b_moving = false;
-        // this->xMap = oldX;
-        // this->yMap = oldY;
+    //     // this->toAttack->doDamage(this->damage);
+    //     this->currentSpeedAttack = this->speedAttack + (1.0f / dt) / 10;
 
-        return;
-    }
+    //     // if (this->toAttack->hp <= 0)
+    //     // {
+    //     //     this->attack = false;
+    //     //     this->toAttack = nullptr;
+    //     // }
+
+    //     return;
+    // }
 
     this->xMap = newX;
     this->yMap = newY;
@@ -191,7 +221,7 @@ void Archer::renderGame(sf::View view)
 {
     BaseUnit::renderGame(view);
 
-    // this->window->draw(this->range); // debug
+    this->window->draw(this->range); // debug
 
     if (this->shoot)
     {

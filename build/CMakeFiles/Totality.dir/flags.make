@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = @CMakeFiles/Totality.dir/includes_CXX.rsp
 
-CXX_FLAGS = -g -std=gnu++1z
+CXX_FLAGS = -O2 -g -DNDEBUG -std=gnu++1z
 

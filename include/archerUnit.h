@@ -14,6 +14,7 @@ class Archer : public BaseUnit
         bool shoot;
         int arrowSpeed;
 
+        std::vector<sf::RectangleShape> predictPath(sf::Vector2f wayEnd, float& startX, float& startY, bool& success) override;
         void shootLogic();
         void updateRange();
         void updateArrow(float dt);
@@ -41,9 +42,11 @@ class Archer : public BaseUnit
             this->hp = this->maxHp;
             this->speed = 2;
             this->speedAttack = 20;
+            this->currentSpeedAttack = this->speedAttack;
             this->shoot = false;
             this->distance = 0;
             this->maxDistance = this->range.getSize().x / 2; // pixels
+            this->toAttack = nullptr;
 
             this->updateRange();
         }

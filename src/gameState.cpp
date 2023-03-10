@@ -95,15 +95,14 @@ void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::
                     if (button.first != "AddBaseUnit" && button.second->isHover(sf::Vector2f(this->mousePosition.x, this->mousePosition.y)))
                     {
                         add = false;
-                        buttons.at("AddBaseUnit")->setActiv(false);
+                        // buttons.at("AddBaseUnit")->setActiv(false);
                         break;
                     }
                 }
                 
                 if (add && buttons.at("AddBaseUnit")->isActiv())
                 {
-                    this->units.push_back(new Warrior(this->window, this->tilemap, mousePosition.x / 64, mousePosition.y / 64, 
-                    this->tilemap->mapUnits));
+                    this->units.push_back(new Warrior(this->window, this->tilemap, mousePosition.x / 64, mousePosition.y / 64, this->tilemap->mapUnits));
                 }
             }
 
@@ -120,10 +119,9 @@ void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::
                     }
                 }
 
-                if (add)
+                if (add && buttons.at("AddArcherUnit")->isActiv())
                 {
-                    this->units.push_back(new Archer(this->window, this->tilemap, mousePosition.x / 64, mousePosition.y / 64, 
-                    this->tilemap->mapUnits));
+                    this->units.push_back(new Archer(this->window, this->tilemap, mousePosition.x / 64, mousePosition.y / 64, this->tilemap->mapUnits));
                 }
             }
         }
@@ -146,6 +144,7 @@ void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::
             }
 
             this->units.erase(this->units.begin() + i);
+
             break;
         }
 
@@ -159,7 +158,6 @@ void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::
             this->generateBlood(blood);
             this->bloods.push_back(blood);
         }
-
         this->units[i]->update(mousePressedLeft, mousePressedRight, realisedKeys, pressedKeys, this->units);
         this->units[i]->moveTo(dt);
     }
