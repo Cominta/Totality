@@ -93,7 +93,7 @@ void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector
             else 
             {
                 this->attack = false;
-                this->toAttack = nullptr;
+                // this->toAttack = nullptr;
             }
 
             if (this->tasks.empty())
@@ -271,6 +271,23 @@ std::vector<sf::RectangleShape> BaseUnit::predictPath(sf::Vector2f wayEnd, float
     return path;
 }
 
+bool BaseUnit::newPredict()
+{
+    if (this->attack && this->toAttack != nullptr)
+    {
+        this->clearTasks();
+        float startX = (float)this->xMap;
+        float startY = (float)this->yMap;
+        bool success = true;
+        TaskMove task {this->predictPath(sf::Vector2f(this->toAttack->xMap, this->toAttack->yMap), startX, startY, success), sf::Vector2f(this->toAttack->xMap, this->toAttack->yMap)};
+        this->tasks.push(task);
+
+        return !success;
+    }
+
+    return false;
+}
+
 void BaseUnit::moveTo(float dt)
 {
     if (this->tasks.empty() || this->tasks.front().path.size() == 0)
@@ -284,23 +301,13 @@ void BaseUnit::moveTo(float dt)
         return;
     }
 
-    if (this->attack && this->toAttack != nullptr)
+    if (this->newPredict())
     {
         this->clearTasks();
-        float startX = (float)this->xMap;
-        float startY = (float)this->yMap;
-        bool success = true;
-        TaskMove task {this->predictPath(sf::Vector2f(this->toAttack->xMap, this->toAttack->yMap), startX, startY, success), sf::Vector2f(this->toAttack->xMap, this->toAttack->yMap)};
-        this->tasks.push(task);
-
-        if (!success)
-        {
-            this->clearTasks();
-            this->b_moving = false;
-            this->attack = false;
-
-            return;
-        }
+        this->b_moving = false;
+        this->attack = false;
+        
+        return;
     }
 
     int oldX = this->xMap;

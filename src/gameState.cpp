@@ -80,43 +80,54 @@ void GameState::generateBlood(std::pair<sf::Vector2f, int>& pos)
 void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, float dt)
 {
     this->updateButtons(mousePressedLeft);
-    if (buttons.at("AddBaseUnit")->isActiv())
-    {
-        if (mousePressedLeft)
-        {
-            if (this->tilemap->map[mousePosition.y / 64][mousePosition.x / 64] >= this->tilemap->tileKeys["ground"].first 
-            && this->tilemap->map[mousePosition.y / 64][mousePosition.x / 64] <= this->tilemap->tileKeys["ground"].second)
-            {
-                if (this->tilemap->mapUnits[mousePosition.y / 64][mousePosition.x / 64] != 1)
-                {
-                    if (!buttons.at("AddBaseUnit")->isHover(sf::Vector2f(this->mousePosition.x, this->mousePosition.y)))
-                    {
-                        this->units.push_back(new Warrior(this->window, this->tilemap, mousePosition.x / 64, mousePosition.y / 64, 
-                        this->tilemap->mapUnits));
-                    }
-                }
-            }
-        }
-    }
-    else if (buttons.at("AddArcherUnit")->isActiv())
-    {
-        if (mousePressedLeft)
-        {
-            if (this->tilemap->map[mousePosition.y / 64][mousePosition.x / 64] >= this->tilemap->tileKeys["ground"].first 
-            && this->tilemap->map[mousePosition.y / 64][mousePosition.x / 64] <= this->tilemap->tileKeys["ground"].second)
-            {
-                if (this->tilemap->mapUnits[mousePosition.y / 64][mousePosition.x / 64] != 1)
-                {
-                    if (!buttons.at("AddArcherUnit")->isHover(sf::Vector2f(this->mousePosition.x, this->mousePosition.y)))
-                    {
-                        this->units.push_back(new Archer(this->window, this->tilemap, mousePosition.x / 64, mousePosition.y / 64, 
-                        this->tilemap->mapUnits));
-                    }
-                }
-            }
-        }
-    }
 
+    if (this->tilemap->map[mousePosition.y / 64][mousePosition.x / 64] >= this->tilemap->tileKeys["ground"].first 
+    && this->tilemap->map[mousePosition.y / 64][mousePosition.x / 64] <= this->tilemap->tileKeys["ground"].second)
+    {
+        if (this->tilemap->mapUnits[mousePosition.y / 64][mousePosition.x / 64] != 1 && mousePressedLeft)
+        {
+            if (!buttons.at("AddBaseUnit")->isHover(sf::Vector2f(this->mousePosition.x, this->mousePosition.y)) && buttons.at("AddBaseUnit")->isActiv())
+            {
+                bool add = true;
+
+                for (auto button : this->buttons)
+                {
+                    if (button.first != "AddBaseUnit" && button.second->isHover(sf::Vector2f(this->mousePosition.x, this->mousePosition.y)))
+                    {
+                        add = false;
+                        buttons.at("AddBaseUnit")->setActiv(false);
+                        break;
+                    }
+                }
+                
+                if (add && buttons.at("AddBaseUnit")->isActiv())
+                {
+                    this->units.push_back(new Warrior(this->window, this->tilemap, mousePosition.x / 64, mousePosition.y / 64, 
+                    this->tilemap->mapUnits));
+                }
+            }
+
+            else if (!buttons.at("AddArcherUnit")->isHover(sf::Vector2f(this->mousePosition.x, this->mousePosition.y)) && buttons.at("AddArcherUnit")->isActiv())
+            {
+                bool add = true;
+
+                for (auto button : this->buttons)
+                {
+                    if (button.first != "AddArcherUnit" && button.second->isHover(sf::Vector2f(this->mousePosition.x, this->mousePosition.y)))
+                    {
+                        add = false;
+                        break;
+                    }
+                }
+
+                if (add)
+                {
+                    this->units.push_back(new Archer(this->window, this->tilemap, mousePosition.x / 64, mousePosition.y / 64, 
+                    this->tilemap->mapUnits));
+                }
+            }
+        }
+    }
 
     for (int i = 0; i < this->units.size(); i++)
     {
