@@ -568,7 +568,8 @@ CMakeFiles/Totality.dir/src/archerUnit.cpp.obj: C:/Users/Roman/Desktop/Totality/
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/deque \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_deque.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/deque.tcc \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_queue.h
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_queue.h \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/math.h
 
 CMakeFiles/Totality.dir/src/button.cpp.obj: C:/Users/Roman/Desktop/Totality/src/button.cpp \
   C:/Users/Roman/Desktop/Totality/include/button.h \
@@ -1112,6 +1113,7 @@ CMakeFiles/Totality.dir/src/engine.cpp.obj: C:/Users/Roman/Desktop/Totality/src/
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/queue \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_queue.h \
   C:/Users/Roman/Desktop/Totality/include/archerUnit.h \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/math.h \
   C:/Users/Roman/Desktop/Totality/include/viewMap.h \
   C:/Users/Roman/Desktop/Totality/include/textBox.h
 
@@ -1406,6 +1408,7 @@ CMakeFiles/Totality.dir/src/gameState.cpp.obj: C:/Users/Roman/Desktop/Totality/s
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/queue \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_queue.h \
   C:/Users/Roman/Desktop/Totality/include/archerUnit.h \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/math.h \
   C:/Users/Roman/Desktop/Totality/include/viewMap.h
 
 CMakeFiles/Totality.dir/src/main.cpp.obj: C:/Users/Roman/Desktop/Totality/src/main.cpp \
@@ -1701,6 +1704,7 @@ CMakeFiles/Totality.dir/src/main.cpp.obj: C:/Users/Roman/Desktop/Totality/src/ma
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/queue \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_queue.h \
   C:/Users/Roman/Desktop/Totality/include/archerUnit.h \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/math.h \
   C:/Users/Roman/Desktop/Totality/include/viewMap.h \
   C:/Users/Roman/Desktop/Totality/include/textBox.h
 
@@ -1996,6 +2000,7 @@ CMakeFiles/Totality.dir/src/mainState.cpp.obj: C:/Users/Roman/Desktop/Totality/s
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/queue \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_queue.h \
   C:/Users/Roman/Desktop/Totality/include/archerUnit.h \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/math.h \
   C:/Users/Roman/Desktop/Totality/include/viewMap.h \
   C:/Users/Roman/Desktop/Totality/include/textBox.h
 
@@ -3890,6 +3895,8 @@ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/deque.tcc:
 C:/Users/Roman/Desktop/Totality/src/archerUnit.cpp:
 
 C:/Users/Roman/Desktop/Totality/include/archerUnit.h:
+
+C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/math.h:
 
 C:/Users/Roman/Desktop/Totality/include/button.h:
 

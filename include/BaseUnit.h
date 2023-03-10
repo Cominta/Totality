@@ -14,6 +14,9 @@ struct TaskMove
 class BaseUnit
 {
 protected:
+    friend class Archer;
+    friend class Warrior;
+
     sf::CircleShape unit;
     // sf::Vector2i wayEnd;
     sf::RenderWindow* window;
@@ -44,6 +47,7 @@ protected:
     // std::vector<sf::RectangleShape> path;
     std::queue<TaskMove> tasks;
     virtual std::vector<sf::RectangleShape> predictPath(sf::Vector2f wayEnd, float& startX, float& startY, bool& success);
+    bool newPredict();
     void clearTasks();
     void initHpBar();
     void updateHpBar();
@@ -83,7 +87,7 @@ public:
         toAttack = nullptr;
     }
 
-    void moveTo(float dt);
+    virtual void moveTo(float dt);
     int getHp() {return this->hp;}
 
     void setActive(bool _active)
@@ -173,6 +177,6 @@ public:
 
     sf::CircleShape getShape() {return this->unit;}
 
-    void renderGame(sf::View view);
+    virtual void renderGame(sf::View view);
     void renderMini(sf::View view);
 };
