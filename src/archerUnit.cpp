@@ -83,7 +83,7 @@ void Archer::moveTo(float dt)
         }
     }
 
-    if (this->tasks.empty() || this->tasks.front().path.size() == 0 && !this->shoot)
+    if (this->tasks.empty() || this->tasks.front().path.size() == 0)
     {
         return;
     }
