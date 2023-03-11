@@ -54,7 +54,13 @@ void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector
                 
                 for (auto unit : units)
                 {
-                    if (unit->xMap == worldPos.x && unit->yMap == worldPos.y)
+                    if (unit->xMap == worldPos.x && unit->yMap == worldPos.y && unit->getTeam() == this->team)
+                    {
+                        this->attack = false;
+                        break;
+                    }
+
+                    if (unit->xMap == worldPos.x && unit->yMap == worldPos.y && unit->getTeam() != this->team)
                     {
                         this->toAttack = unit;
                         worldPos.x = this->toAttack->xMap;
@@ -288,8 +294,16 @@ bool BaseUnit::newPredict()
     return false;
 }
 
-void BaseUnit::moveTo(float dt)
+void BaseUnit::moveTo(float dt, std::vector<BaseUnit*>& units)
 {
+    if (this->attack && this->toAttack != nullptr && this->toAttack->hp <= 0)
+    {
+        this->attack = false;
+        this->toAttack = nullptr;
+
+        this->clearTasks();
+    }
+
     if (this->tasks.empty() || this->tasks.front().path.size() == 0)
     {
         return;
@@ -321,12 +335,24 @@ void BaseUnit::moveTo(float dt)
 
     this->updateHpBar();
 
+    if (this->tilemap->mapUnits[newY][newX] == 1)
+    {
+        for (auto unit : units)
+        {
+            if (unit != nullptr && unit->xMap == newX && unit->yMap == newY && unit->getTeam() != this->team)
+            {
+                this->doDamage(0, unit, true);
+            }
+        }
+    }
+
     if (this->tilemap->map[newY][newX] >= this->tilemap->tileKeys["sand"].first && this->tilemap->map[newY][newX] <= this->tilemap->tileKeys["sand"].second)
     {
         this->slowed = true;
     }
 
-    if (this->tilemap->mapUnits[newY][newX] == 1 && (!this->attack || (this->attack && this->toAttack != nullptr && this->toAttack->xMap != newX || this->toAttack->yMap != newY)))
+    if (this->tilemap->mapUnits[newY][newX] == 1 && ((!this->attack || 
+        (this->attack && this->toAttack != nullptr && this->toAttack->xMap != newX || this->toAttack->yMap != newY))))
     {
         // this->xMap = oldX;
         // this->yMap = oldY;
@@ -350,14 +376,9 @@ void BaseUnit::moveTo(float dt)
         // this->yMap = oldY;
         if (this->team != this->toAttack->getTeam())
         {
-                this->toAttack->doDamage(this->damage);
-                this->currentSpeedAttack = this->speedAttack + (1.0f / dt) / 10;
+            this->toAttack->doDamage(this->damage, this);
+            this->currentSpeedAttack = this->speedAttack + (1.0f / dt) / 10;
 
-                if (this->toAttack->hp <= 0)
-                {
-                    this->attack = false;
-                    this->toAttack = nullptr;
-                }
         }
 
         return;

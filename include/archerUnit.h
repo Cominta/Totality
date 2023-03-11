@@ -7,6 +7,7 @@ class Archer : public BaseUnit
 {
     private:
         sf::RectangleShape range;
+        std::vector<sf::CircleShape> pointsRange;
 
         sf::RectangleShape arrow;
         int distance;
@@ -48,10 +49,15 @@ class Archer : public BaseUnit
             this->maxDistance = this->range.getSize().x / 2; // pixels
             this->toAttack = nullptr;
 
+            for (int i = 0; i < 4; i++)
+            {
+                this->pointsRange.push_back(sf::CircleShape(10.0f));
+            }
+
             this->updateRange();
         }
 
-        void moveTo(float dt) override;
+        void moveTo(float dt, std::vector<BaseUnit*>& units) override;
         void renderGame(sf::View view) override;
         void renderArrow() override;
 };

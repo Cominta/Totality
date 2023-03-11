@@ -20,6 +20,7 @@ class GameState : public State
         sf::RectangleShape minimapCamera;
         std::vector<BaseUnit*> units;
         std::vector<std::pair<sf::Vector2f, int>> bloods;
+        std::vector<std::pair<sf::Vector2f, int>> deads;
         std::map<std::string, Button*> buttons;
 
         sf::RectangleShape multiplyShape;

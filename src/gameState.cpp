@@ -54,26 +54,26 @@ void GameState::generateBlood(std::pair<sf::Vector2f, int>& pos)
 
     int op = rand() % 100;
 
-    if (op >= 50)
+    if (op >= 45)
     {
-        x += rand() % (40 + 1 - 5) - 5;
+        x += abs(rand() % (100 + 1 - 5) - 5);
     }
 
     else 
     {
-        x -= rand() % (40 + 1 - 5) - 5;
+        x -= abs(rand() % (100 + 1 - 5) - 5);
     }
 
     op = rand() % 100;
 
-    if (op >= 50)
+    if (op >= 45)
     {
-        y += rand() % (40 + 1 - 5) - 5;
+        y += abs(rand() % (100 + 1 - 5) - 5);
     }
 
     else 
     {
-        y -= rand() % (40 + 1 - 5) - 5;
+        y -= abs(rand() % (100 + 1 - 5) - 5);
     }
 
     pos.first.x = x;
@@ -140,6 +140,14 @@ void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::
 
         if (this->units[i]->getHp() <= 0)
         {
+            std::pair<sf::Vector2f, int> dead;
+
+            sf::Vector2f pos(this->units[i]->getX() * 64, this->units[i]->getY() * 64);
+            dead.first = pos;
+            
+            this->generateBlood(dead);
+            this->deads.push_back(dead);
+
             this->tilemap->mapUnits[this->units[i]->getY()][this->units[i]->getX()] = 0;
 
             if (this->units[i] != nullptr)
@@ -162,8 +170,9 @@ void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::
             this->generateBlood(blood);
             this->bloods.push_back(blood);
         }
+
         this->units[i]->update(mousePressedLeft, mousePressedRight, realisedKeys, pressedKeys, this->units);
-        this->units[i]->moveTo(dt);
+        this->units[i]->moveTo(dt, this->units);
     }
 }
 
@@ -343,6 +352,19 @@ void GameState::render()
         sprite.setTexture(this->textures["blood"]);
         sprite.setPosition(blood.first.x, blood.first.y);
         sprite.setRotation(blood.second);
+        sprite.setScale(0.5, 0.5);
+
+        this->window->draw(sprite);
+    }
+
+    for (auto dead : this->deads)
+    {
+        sf::Sprite sprite;
+
+        sprite.setOrigin(this->textures["dead"].getSize().x / 2, this->textures["dead"].getSize().y / 2);
+        sprite.setTexture(this->textures["dead"]);
+        sprite.setPosition(dead.first.x, dead.first.y);
+        sprite.setRotation(dead.second);
 
         this->window->draw(sprite);
     }

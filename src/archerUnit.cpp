@@ -45,6 +45,11 @@ void Archer::shootLogic()
 void Archer::updateRange()
 {
     this->range.setPosition(this->unit.getPosition());
+
+    this->pointsRange[0].setPosition(this->range.getPosition().x + this->range.getSize().x / 2, this->range.getPosition().y); // right
+    this->pointsRange[1].setPosition(this->range.getPosition().x - this->range.getSize().x / 2, this->range.getPosition().y); // left
+    this->pointsRange[2].setPosition(this->range.getPosition().x, this->range.getPosition().y - this->range.getSize().y / 2); // top
+    this->pointsRange[3].setPosition(this->range.getPosition().x, this->range.getPosition().y + this->range.getSize().y / 2); // bottom
 }
 
 void Archer::updateArrow(float dt)
@@ -69,7 +74,7 @@ void Archer::updateArrow(float dt)
     }
 }
 
-void Archer::moveTo(float dt)
+void Archer::moveTo(float dt, std::vector<BaseUnit*>& units)
 {
     this->updateRange();
     this->updateArrow(dt);
@@ -91,8 +96,33 @@ void Archer::moveTo(float dt)
     {
         this->shoot = false;
     }
+
     if (this->attack && this->toAttack != nullptr && this->team != this->toAttack->getTeam())
     {
+        if (this->tilemap->mapUnits[this->arrow.getPosition().y / 64][this->arrow.getPosition().x / 64] == 1)
+        {
+            for (auto unit : units)
+            {
+                if (unit == nullptr)
+                {
+                    continue;
+                }
+
+                if (unit != nullptr && unit->getHp() <= 0)
+                {
+                    continue;
+                }
+
+                if (this->arrow.getGlobalBounds().intersects(unit->getShape().getGlobalBounds()) && this->team != unit->getTeam())
+                {
+                    this->arrow.setPosition(-1, -1);
+                    this->shoot = false;
+
+                    unit->doDamage(this->damage, this);
+                }
+            }
+        }
+
         if (this->attack && this->toAttack != nullptr && this->range.getGlobalBounds().intersects(this->toAttack->getShape().getGlobalBounds()))
         {
             this->clearTasks();
@@ -115,7 +145,7 @@ void Archer::moveTo(float dt)
                 this->arrow.setPosition(-1, -1);
                 this->shoot = false;
 
-                this->toAttack->doDamage(this->damage);
+                this->toAttack->doDamage(this->damage, this);
             }
 
             return;
@@ -228,7 +258,14 @@ void Archer::renderGame(sf::View view)
 {
     BaseUnit::renderGame(view);
 
-    this->window->draw(this->range); // debug
+    if (this->b_active)
+    {
+        // this->window->draw(this->range); // debug
+        for (auto point : pointsRange)
+        {
+            this->window->draw(point);
+        }
+    }
 }
 
 void Archer::renderArrow()

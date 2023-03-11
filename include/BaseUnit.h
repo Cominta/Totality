@@ -106,7 +106,7 @@ public:
         toAttack = nullptr;
     }
 
-    virtual void moveTo(float dt);
+    virtual void moveTo(float dt, std::vector<BaseUnit*>& units);
     int getHp() {return this->hp;}
 
     void setActive(bool _active)
@@ -181,10 +181,39 @@ public:
         unit.move(X / 64, Y / 64);
     }
 
-    void doDamage(int damage)
+    void doDamage(int damage, BaseUnit* unit, bool addNew = false)
     {
         this->hp -= damage;
         this->attacked = true;
+
+        if (unit != nullptr && (!this->attack || addNew))
+        {
+            this->attack = true;
+            this->toAttack = unit;
+
+            this->clearTasks();
+            
+            TaskMove task;
+            sf::Vector2f wayEnd;
+            wayEnd.x = this->toAttack->xMap;
+            wayEnd.y = this->toAttack->yMap;
+            bool success = true;
+
+            task = {this->predictPath(wayEnd, wayEnd.x, wayEnd.y, success), wayEnd};
+
+            if (success)
+            {
+                this->tasks.push(task);
+                this->setIsMoving(true);
+            }
+
+            else 
+            {
+                this->attack = false;
+                this->toAttack = nullptr;
+                this->clearTasks();
+            }
+        }
     }
 
     bool getAttacked() {return this->attacked;}
