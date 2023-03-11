@@ -440,3 +440,8 @@ void BaseUnit::renderMini(sf::View view)
 
     this->window->setView(old);
 }
+
+void BaseUnit::renderArrow()
+{
+    
+}

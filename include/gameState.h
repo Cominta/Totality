@@ -17,6 +17,7 @@ class GameState : public State
         Camera* camera;
         sf::View gameView;
         sf::View minimap;
+        sf::RectangleShape minimapCamera;
         std::vector<BaseUnit*> units;
         std::vector<std::pair<sf::Vector2f, int>> bloods;
         std::map<std::string, Button*> buttons;
