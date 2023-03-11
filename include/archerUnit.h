@@ -20,8 +20,8 @@ class Archer : public BaseUnit
         void updateArrow(float dt);
 
     public:
-        Archer(sf::RenderWindow *_window, Tilemap* tilemap, int xMap, int yMap, std::vector<std::vector<int>>& mapUnits) 
-        : BaseUnit(_window, tilemap, xMap, yMap, mapUnits)
+        Archer(sf::RenderWindow *_window, Tilemap* tilemap, int xMap, int yMap, std::vector<std::vector<int>>& mapUnits, Team _team) 
+        : BaseUnit(_window, tilemap, xMap, yMap, mapUnits, _team)
         {
             this->range.setSize(sf::Vector2f(2000, 2000));
             this->range.setOrigin(this->range.getSize().x / 2, this->range.getSize().y / 2);

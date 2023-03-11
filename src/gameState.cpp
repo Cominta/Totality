@@ -10,10 +10,11 @@ GameState::GameState(typeState type, sf::RenderWindow* window, std::stack<State*
     this->minimap.setViewport(sf::FloatRect(0.86f, 0, 0.15f, 0.25f));
 
     this->buttons["AddUnit"] = new Button(this->window, 1840, 1000, 1, &textures["UnitButton_Idle"]);
+    this->buttons["Team"] = new Button(this->window, 1840, 920, 1, &textures["Team_Red"]);
     this->buttons["AddBaseUnit"] = new Button(this->window, 1840, 920, 1, &textures["BaseUnitAddButton_Idle"]);
+    this->buttons["AddArcherUnit"] = new Button(this->window, 1840, 840, 1, &textures["ArcherUnitAddButton_Idle"]);
     this->buttons["AddUnit"]->setActiv(false);
     this->buttons["AddBaseUnit"]->setActiv(false);
-    this->buttons["AddArcherUnit"] = new Button(this->window, 1840, 840, 1, &textures["ArcherUnitAddButton_Idle"]);
     this->buttons["AddArcherUnit"]->setActiv(false);
     this->multiply = false;
     // sf::Color color();
@@ -79,7 +80,7 @@ void GameState::generateBlood(std::pair<sf::Vector2f, int>& pos)
 
 void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, float dt)
 {
-    this->updateButtons(mousePressedLeft);
+    int team = this->updateButtons(mousePressedLeft);
 
     if (this->tilemap->map[mousePosition.y / 64][mousePosition.x / 64] >= this->tilemap->tileKeys["ground"].first 
     && this->tilemap->map[mousePosition.y / 64][mousePosition.x / 64] <= this->tilemap->tileKeys["ground"].second)
@@ -102,7 +103,7 @@ void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::
                 
                 if (add && buttons.at("AddBaseUnit")->isActiv())
                 {
-                    this->units.push_back(new Warrior(this->window, this->tilemap, mousePosition.x / 64, mousePosition.y / 64, this->tilemap->mapUnits));
+                    this->units.push_back(new Warrior(this->window, this->tilemap, mousePosition.x / 64, mousePosition.y / 64, this->tilemap->mapUnits, Team(team)));
                 }
             }
 
@@ -121,7 +122,7 @@ void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::
 
                 if (add && buttons.at("AddArcherUnit")->isActiv())
                 {
-                    this->units.push_back(new Archer(this->window, this->tilemap, mousePosition.x / 64, mousePosition.y / 64, this->tilemap->mapUnits));
+                    this->units.push_back(new Archer(this->window, this->tilemap, mousePosition.x / 64, mousePosition.y / 64, this->tilemap->mapUnits, Team(team)));
                 }
             }
         }
@@ -163,8 +164,9 @@ void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::
     }
 }
 
-void GameState::updateButtons(bool mousePressedLeft)
+int GameState::updateButtons(bool mousePressedLeft)
 {
+    static int team = 0;
     //this->window->mapPixelToCoords(sf::Vector2i(10, 20));
     this->updateMouse();
     if (buttons.at("AddUnit")->isHover(this->mousePosition) && mousePressedLeft)
@@ -200,6 +202,11 @@ void GameState::updateButtons(bool mousePressedLeft)
             }
             else
             {
+                for (auto it : this->buttons)
+                {
+                    it.second->setActiv(false);
+                }
+                buttons.at("AddUnit")->setActiv(true);
                 buttons.at("AddBaseUnit")->setActiv(true);
             }
         }
@@ -211,10 +218,39 @@ void GameState::updateButtons(bool mousePressedLeft)
             }
             else
             {
+                for (auto it : this->buttons)
+                {
+                    it.second->setActiv(false);
+                }
+                buttons.at("AddUnit")->setActiv(true);
                 buttons.at("AddArcherUnit")->setActiv(true);
             }
         }
+        else if (buttons.at("Team")->isHover(this->mousePosition) && mousePressedLeft)
+        {
+            team++;
+            team = team % 4;
+            if (team == 0)
+            {
+                buttons.at("Team")->setTexture(&textures["Team_Red"]);
+            }
+            else if (team == 1)
+            {
+                buttons.at("Team")->setTexture(&textures["Team_Blue"]);
+            }
+            else if (team == 2)
+            {
+                buttons.at("Team")->setTexture(&textures["Team_Green"]);
+            }
+            else if (team == 3)
+            {
+                buttons.at("Team")->setTexture(&textures["Team_Yellow"]);
+            }
+            buttons.at("Team")->updateSprite();
+            return team;
+        }
     }
+    return team;
 }
 
 void GameState::multiplyUnits()

@@ -27,7 +27,7 @@ class GameState : public State
 
         void generateBlood(std::pair<sf::Vector2f, int>& pos);
         void updateUnits(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, float dt);
-        void updateButtons(bool mousePressedLeft);
+        int updateButtons(bool mousePressedLeft);
         void multiplyUnits();
 
     public:

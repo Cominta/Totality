@@ -348,14 +348,16 @@ void BaseUnit::moveTo(float dt)
         this->b_moving = false;
         // this->xMap = oldX;
         // this->yMap = oldY;
-
-        this->toAttack->doDamage(this->damage);
-        this->currentSpeedAttack = this->speedAttack + (1.0f / dt) / 10;
-
-        if (this->toAttack->hp <= 0)
+        if (this->team != this->toAttack->getTeam())
         {
-            this->attack = false;
-            this->toAttack = nullptr;
+                this->toAttack->doDamage(this->damage);
+                this->currentSpeedAttack = this->speedAttack + (1.0f / dt) / 10;
+
+                if (this->toAttack->hp <= 0)
+                {
+                    this->attack = false;
+                    this->toAttack = nullptr;
+                }
         }
 
         return;

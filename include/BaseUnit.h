@@ -4,6 +4,7 @@
 #include <iostream>
 #include "tilemap.h"
 #include <queue>
+#include "team.h"
 
 struct TaskMove
 {
@@ -52,19 +53,37 @@ protected:
     void initHpBar();
     void updateHpBar();
 
+    Team team;
+
 public:
-    BaseUnit(sf::RenderWindow *_window, Tilemap* tilemap, int xMap, int yMap, std::vector<std::vector<int>>& mapUnits)
+    BaseUnit(sf::RenderWindow *_window, Tilemap* tilemap, int xMap, int yMap, std::vector<std::vector<int>>& mapUnits, Team _team)
         : speed(6), speedAttack(1), maxHp(100)
     {
         this->slowed = false;
         this->hp = 100;
         this->attacked = false;
         this->damage = 10;
+        team = _team;
         unit.setRadius(32.f);
         unit.setOrigin(32.f, 32.f);
-        unit.setFillColor(sf::Color(100, 100, 100));
+        unit.setFillColor(sf::Color(0, 0, 0));
         unit.setOutlineThickness(2.5f);
-        unit.setOutlineColor(sf::Color(0, 0, 0));
+        if (team == 0)
+        {
+            unit.setOutlineColor(sf::Color(255, 0, 0));
+        }
+        else if (team == 1)
+        {
+            unit.setOutlineColor(sf::Color(0, 0, 255));
+        }
+        else if (team == 2)
+        {
+            unit.setOutlineColor(sf::Color(0, 255, 0));
+        }
+        else if (team == 3)
+        {
+            unit.setOutlineColor(sf::Color(255, 255, 0));
+        }
         unit.setPosition(xMap * 64 + 32, yMap * 64 + 32);
         b_active = false;
         b_moving = false;
@@ -96,12 +115,27 @@ public:
 
         if (this->b_active)
         {
-            this->setOutlineColor(255, 0 ,0);
+            this->setOutlineColor(235, 235, 235);
         }
 
         else 
         {
-            this->setOutlineColor(0, 0 ,0);
+            if (this->team == 0)
+            {
+                this->setOutlineColor(255, 0 ,0);
+            }
+            else if (this->team == 1)
+            {
+                this->setOutlineColor(0, 0 ,255);
+            }
+            else if (this->team == 2)
+            {
+                this->setOutlineColor(0, 255 ,0);
+            }
+            else if (this->team == 3)
+            {
+                this->setOutlineColor(255, 255 ,0);
+            }
         }
     }
     bool isActiv() const
@@ -116,6 +150,10 @@ public:
     bool isMoving() const
     {
         return b_moving;
+    }
+    Team getTeam() const
+    {
+        return team;
     }
 
     void setOutlineThickness(float wide)

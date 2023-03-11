@@ -91,33 +91,35 @@ void Archer::moveTo(float dt)
     {
         this->shoot = false;
     }
-
-    if (this->attack && this->toAttack != nullptr && this->range.getGlobalBounds().intersects(this->toAttack->getShape().getGlobalBounds()))
+    if (this->attack && this->toAttack != nullptr && this->team != this->toAttack->getTeam())
     {
-        this->clearTasks();
-
-        if (this->currentSpeedAttack > 0)
+        if (this->attack && this->toAttack != nullptr && this->range.getGlobalBounds().intersects(this->toAttack->getShape().getGlobalBounds()))
         {
-            this->currentSpeedAttack--;
+            this->clearTasks();
+
+            if (this->currentSpeedAttack > 0)
+            {
+                this->currentSpeedAttack--;
+            }
+
+            if (!this->shoot && this->currentSpeedAttack <= 0)
+            {
+                this->currentSpeedAttack = this->speedAttack + (1.0f / dt);
+                this->arrow.setPosition(this->unit.getPosition());
+                this->shoot = true;
+                this->shootLogic();
+            }
+
+            if (this->arrow.getGlobalBounds().intersects(this->toAttack->getShape().getGlobalBounds()))
+            {
+                this->arrow.setPosition(-1, -1);
+                this->shoot = false;
+
+                this->toAttack->doDamage(this->damage);
+            }
+
+            return;
         }
-
-        if (!this->shoot && this->currentSpeedAttack <= 0)
-        {
-            this->currentSpeedAttack = this->speedAttack + (1.0f / dt);
-            this->arrow.setPosition(this->unit.getPosition());
-            this->shoot = true;
-            this->shootLogic();
-        }
-
-        if (this->arrow.getGlobalBounds().intersects(this->toAttack->getShape().getGlobalBounds()))
-        {
-            this->arrow.setPosition(-1, -1);
-            this->shoot = false;
-
-            this->toAttack->doDamage(this->damage);
-        }
-
-        return;
     }
 
     if (this->tasks.empty() || this->tasks.front().path.size() == 0)
