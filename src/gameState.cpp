@@ -8,6 +8,9 @@ GameState::GameState(typeState type, sf::RenderWindow* window, std::stack<State*
     this->camera = new Camera(this->window, 16000, 16000);
     this->gameView = this->window->getView();
     this->minimap.setViewport(sf::FloatRect(0.86f, 0, 0.15f, 0.25f));
+    this->minimapCamera.setSize(this->gameView.getSize());
+    this->minimapCamera.setFillColor(sf::Color::Transparent);
+    this->minimapCamera.setOutlineThickness(50.0f);
 
     this->buttons["AddUnit"] = new Button(this->window, 1840, 1000, 1, &textures["UnitButton_Idle"]);
     this->buttons["Team"] = new Button(this->window, 1840, 920, 1, &textures["Team_Red"]);
@@ -310,6 +313,13 @@ void GameState::update(bool mousePressedLeft, bool mousePressedRight, std::vecto
     this->camera->update(this->mousePosition, mouseScroll, sizeMapX, sizeMapY, dt);
     this->gameView = this->window->getView();
 
+    this->minimapCamera.setSize(this->gameView.getSize());
+    this->minimapCamera.setScale(this->minimap.getViewport().width / this->gameView.getViewport().width, 
+                             this->minimap.getViewport().width / this->gameView.getViewport().width);
+
+    this->minimapCamera.setPosition(this->gameView.getCenter().x * 0.15, this->gameView.getCenter().y * 0.15);
+    this->minimapCamera.setOrigin(this->minimapCamera.getSize().x / 2, this->minimapCamera.getSize().y / 2);
+
     this->multiplyUnits();
     this->updateUnits(mousePressedLeft, mousePressedRight, pressedKeys, realisedKeys, dt);
 
@@ -342,12 +352,21 @@ void GameState::render()
         unit->renderGame(this->gameView);
     }
 
+    for (auto& unit : this->units)
+    {
+        unit->renderArrow();
+    }
+
     if (this->multiply)
     {
         this->window->draw(this->multiplyShape);
     }
     
     this->tilemap->renderMini(this->minimap);
+
+    this->window->setView(this->minimap);
+    this->window->draw(this->minimapCamera);
+    this->window->setView(this->gameView);
 
     for (auto& unit : this->units)
     {

@@ -229,7 +229,10 @@ void Archer::renderGame(sf::View view)
     BaseUnit::renderGame(view);
 
     this->window->draw(this->range); // debug
+}
 
+void Archer::renderArrow()
+{
     if (this->shoot)
     {
         this->window->draw(this->arrow);

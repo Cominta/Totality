@@ -53,4 +53,5 @@ class Archer : public BaseUnit
 
         void moveTo(float dt) override;
         void renderGame(sf::View view) override;
+        void renderArrow() override;
 };

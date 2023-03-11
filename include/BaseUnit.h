@@ -217,4 +217,5 @@ public:
 
     virtual void renderGame(sf::View view);
     void renderMini(sf::View view);
+    virtual void renderArrow();
 };

@@ -1,80 +1,67 @@
 [
 {
-  "directory": "D:/Microsoft Visual Studio/VS Code repos/Totality/build",
-  "command": "D:\\MinGW\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\BaseUnit.cpp.obj -c \"D:\\Microsoft Visual Studio\\VS Code repos\\Totality\\src\\BaseUnit.cpp\"",
-  "file": "D:/Microsoft Visual Studio/VS Code repos/Totality/src/BaseUnit.cpp",
-  "output": "CMakeFiles/Totality.dir/src/BaseUnit.cpp.obj"
+  "directory": "C:/Users/Roman/Desktop/Totality/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -O2 -g -DNDEBUG -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\BaseUnit.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\BaseUnit.cpp",
+  "file": "C:/Users/Roman/Desktop/Totality/src/BaseUnit.cpp"
 },
 {
-  "directory": "D:/Microsoft Visual Studio/VS Code repos/Totality/build",
-  "command": "D:\\MinGW\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\archerUnit.cpp.obj -c \"D:\\Microsoft Visual Studio\\VS Code repos\\Totality\\src\\archerUnit.cpp\"",
-  "file": "D:/Microsoft Visual Studio/VS Code repos/Totality/src/archerUnit.cpp",
-  "output": "CMakeFiles/Totality.dir/src/archerUnit.cpp.obj"
+  "directory": "C:/Users/Roman/Desktop/Totality/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -O2 -g -DNDEBUG -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\archerUnit.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\archerUnit.cpp",
+  "file": "C:/Users/Roman/Desktop/Totality/src/archerUnit.cpp"
 },
 {
-  "directory": "D:/Microsoft Visual Studio/VS Code repos/Totality/build",
-  "command": "D:\\MinGW\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\button.cpp.obj -c \"D:\\Microsoft Visual Studio\\VS Code repos\\Totality\\src\\button.cpp\"",
-  "file": "D:/Microsoft Visual Studio/VS Code repos/Totality/src/button.cpp",
-  "output": "CMakeFiles/Totality.dir/src/button.cpp.obj"
+  "directory": "C:/Users/Roman/Desktop/Totality/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -O2 -g -DNDEBUG -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\button.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\button.cpp",
+  "file": "C:/Users/Roman/Desktop/Totality/src/button.cpp"
 },
 {
-  "directory": "D:/Microsoft Visual Studio/VS Code repos/Totality/build",
-  "command": "D:\\MinGW\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\engine.cpp.obj -c \"D:\\Microsoft Visual Studio\\VS Code repos\\Totality\\src\\engine.cpp\"",
-  "file": "D:/Microsoft Visual Studio/VS Code repos/Totality/src/engine.cpp",
-  "output": "CMakeFiles/Totality.dir/src/engine.cpp.obj"
+  "directory": "C:/Users/Roman/Desktop/Totality/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -O2 -g -DNDEBUG -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\engine.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\engine.cpp",
+  "file": "C:/Users/Roman/Desktop/Totality/src/engine.cpp"
 },
 {
-  "directory": "D:/Microsoft Visual Studio/VS Code repos/Totality/build",
-  "command": "D:\\MinGW\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\gameState.cpp.obj -c \"D:\\Microsoft Visual Studio\\VS Code repos\\Totality\\src\\gameState.cpp\"",
-  "file": "D:/Microsoft Visual Studio/VS Code repos/Totality/src/gameState.cpp",
-  "output": "CMakeFiles/Totality.dir/src/gameState.cpp.obj"
+  "directory": "C:/Users/Roman/Desktop/Totality/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -O2 -g -DNDEBUG -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\gameState.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\gameState.cpp",
+  "file": "C:/Users/Roman/Desktop/Totality/src/gameState.cpp"
 },
 {
-  "directory": "D:/Microsoft Visual Studio/VS Code repos/Totality/build",
-  "command": "D:\\MinGW\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\main.cpp.obj -c \"D:\\Microsoft Visual Studio\\VS Code repos\\Totality\\src\\main.cpp\"",
-  "file": "D:/Microsoft Visual Studio/VS Code repos/Totality/src/main.cpp",
-  "output": "CMakeFiles/Totality.dir/src/main.cpp.obj"
+  "directory": "C:/Users/Roman/Desktop/Totality/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -O2 -g -DNDEBUG -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\main.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\main.cpp",
+  "file": "C:/Users/Roman/Desktop/Totality/src/main.cpp"
 },
 {
-  "directory": "D:/Microsoft Visual Studio/VS Code repos/Totality/build",
-  "command": "D:\\MinGW\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\mainState.cpp.obj -c \"D:\\Microsoft Visual Studio\\VS Code repos\\Totality\\src\\mainState.cpp\"",
-  "file": "D:/Microsoft Visual Studio/VS Code repos/Totality/src/mainState.cpp",
-  "output": "CMakeFiles/Totality.dir/src/mainState.cpp.obj"
+  "directory": "C:/Users/Roman/Desktop/Totality/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -O2 -g -DNDEBUG -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\mainState.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\mainState.cpp",
+  "file": "C:/Users/Roman/Desktop/Totality/src/mainState.cpp"
 },
 {
-  "directory": "D:/Microsoft Visual Studio/VS Code repos/Totality/build",
-  "command": "D:\\MinGW\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\state.cpp.obj -c \"D:\\Microsoft Visual Studio\\VS Code repos\\Totality\\src\\state.cpp\"",
-  "file": "D:/Microsoft Visual Studio/VS Code repos/Totality/src/state.cpp",
-  "output": "CMakeFiles/Totality.dir/src/state.cpp.obj"
+  "directory": "C:/Users/Roman/Desktop/Totality/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -O2 -g -DNDEBUG -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\state.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\state.cpp",
+  "file": "C:/Users/Roman/Desktop/Totality/src/state.cpp"
 },
 {
-  "directory": "D:/Microsoft Visual Studio/VS Code repos/Totality/build",
-  "command": "D:\\MinGW\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\team.cpp.obj -c \"D:\\Microsoft Visual Studio\\VS Code repos\\Totality\\src\\team.cpp\"",
-  "file": "D:/Microsoft Visual Studio/VS Code repos/Totality/src/team.cpp",
-  "output": "CMakeFiles/Totality.dir/src/team.cpp.obj"
+  "directory": "C:/Users/Roman/Desktop/Totality/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -O2 -g -DNDEBUG -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\team.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\team.cpp",
+  "file": "C:/Users/Roman/Desktop/Totality/src/team.cpp"
 },
 {
-  "directory": "D:/Microsoft Visual Studio/VS Code repos/Totality/build",
-  "command": "D:\\MinGW\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\textBox.cpp.obj -c \"D:\\Microsoft Visual Studio\\VS Code repos\\Totality\\src\\textBox.cpp\"",
-  "file": "D:/Microsoft Visual Studio/VS Code repos/Totality/src/textBox.cpp",
-  "output": "CMakeFiles/Totality.dir/src/textBox.cpp.obj"
+  "directory": "C:/Users/Roman/Desktop/Totality/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -O2 -g -DNDEBUG -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\textBox.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\textBox.cpp",
+  "file": "C:/Users/Roman/Desktop/Totality/src/textBox.cpp"
 },
 {
-  "directory": "D:/Microsoft Visual Studio/VS Code repos/Totality/build",
-  "command": "D:\\MinGW\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\tilemap.cpp.obj -c \"D:\\Microsoft Visual Studio\\VS Code repos\\Totality\\src\\tilemap.cpp\"",
-  "file": "D:/Microsoft Visual Studio/VS Code repos/Totality/src/tilemap.cpp",
-  "output": "CMakeFiles/Totality.dir/src/tilemap.cpp.obj"
+  "directory": "C:/Users/Roman/Desktop/Totality/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -O2 -g -DNDEBUG -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\tilemap.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\tilemap.cpp",
+  "file": "C:/Users/Roman/Desktop/Totality/src/tilemap.cpp"
 },
 {
-  "directory": "D:/Microsoft Visual Studio/VS Code repos/Totality/build",
-  "command": "D:\\MinGW\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\viewMap.cpp.obj -c \"D:\\Microsoft Visual Studio\\VS Code repos\\Totality\\src\\viewMap.cpp\"",
-  "file": "D:/Microsoft Visual Studio/VS Code repos/Totality/src/viewMap.cpp",
-  "output": "CMakeFiles/Totality.dir/src/viewMap.cpp.obj"
+  "directory": "C:/Users/Roman/Desktop/Totality/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -O2 -g -DNDEBUG -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\viewMap.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\viewMap.cpp",
+  "file": "C:/Users/Roman/Desktop/Totality/src/viewMap.cpp"
 },
 {
-  "directory": "D:/Microsoft Visual Studio/VS Code repos/Totality/build",
-  "command": "D:\\MinGW\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -g -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\wariorUnit.cpp.obj -c \"D:\\Microsoft Visual Studio\\VS Code repos\\Totality\\src\\wariorUnit.cpp\"",
-  "file": "D:/Microsoft Visual Studio/VS Code repos/Totality/src/wariorUnit.cpp",
-  "output": "CMakeFiles/Totality.dir/src/wariorUnit.cpp.obj"
+  "directory": "C:/Users/Roman/Desktop/Totality/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -O2 -g -DNDEBUG -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\wariorUnit.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\wariorUnit.cpp",
+  "file": "C:/Users/Roman/Desktop/Totality/src/wariorUnit.cpp"
 }
 ]
