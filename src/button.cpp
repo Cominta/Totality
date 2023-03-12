@@ -49,17 +49,32 @@ void Button::update(sf::Vector2f mousePosition, bool mousePressed)
         if (mousePressed)
         {
             this->state = Button::states::ACTIVE;
+
+            if (this->active != nullptr)
+            {
+                this->sprite->setTexture(*this->active);
+            }
         }
 
         else
         {
             this->state = Button::states::HOVER;
+
+            if (this->hover != nullptr)
+            {
+                this->sprite->setTexture(*this->hover);
+            }
         }
     }
 
     else
     {
         this->state = Button::states::IDLE;
+
+        if (this->idle != nullptr)
+            {
+                this->sprite->setTexture(*this->idle);
+            }
     }
 }
 

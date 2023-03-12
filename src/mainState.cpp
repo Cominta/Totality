@@ -5,7 +5,9 @@ MainState::MainState(typeState type, sf::RenderWindow* window, std::stack<State*
 {
     srand(time(0));
 
-    this->buttons["play"] = new Button(this->window, 10, 10, 0.2, &this->textures["play_idle"]);
+    this->buttons["play"] = new Button(this->window, 10, 10, 1, &this->textures["play_idle"]);
+    this->buttons["play"]->setTexture(&this->textures["play_idle"], &this->textures["play_hover"], &this->textures["play_active"]);
+
     this->tbSeed = new TextBox(this->window, 300, 50, 10, 500, 8);
     int seed = rand() % 1000000000;
     
