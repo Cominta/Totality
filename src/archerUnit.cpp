@@ -65,9 +65,6 @@ void Archer::updateArrow(float dt)
 
     this->arrow.move(newX * dt * this->arrowSpeed, newY * dt * this->arrowSpeed);
 
-    std::cout << (this->arrow.getPosition().y / 64 > this->tilemap->getHeight()) << " ";
-    std::cout << this->arrow.getPosition().y / 64 << "\n";
-
     if (this->arrow.getPosition().y / 64 > this->tilemap->getHeight() || this->arrow.getPosition().x / 64 > this->tilemap->getWidth())
     {
         this->arrow.setPosition(-1, -1);

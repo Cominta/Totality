@@ -54,7 +54,7 @@ void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector
                 
                 for (auto unit : units)
                 {
-                    if (unit->xMap == worldPos.x && unit->yMap == worldPos.y && unit->getTeam() == this->team)
+                    if (unit->xMap == worldPos.x && unit->yMap == worldPos.y && unit->getTeam() == this->team && unit != this)
                     {
                         this->attack = false;
                         break;
@@ -279,7 +279,7 @@ std::vector<sf::RectangleShape> BaseUnit::predictPath(sf::Vector2f wayEnd, float
 
 bool BaseUnit::newPredict()
 {
-    if (this->attack && this->toAttack != nullptr && this->toAttack->hp <= 0)
+    if (this->attack && this->toAttack != nullptr && this->toAttack->hp > 0)
     {
         this->clearTasks();
         float startX = (float)this->xMap;
