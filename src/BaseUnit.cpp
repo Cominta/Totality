@@ -279,7 +279,7 @@ std::vector<sf::RectangleShape> BaseUnit::predictPath(sf::Vector2f wayEnd, float
 
 bool BaseUnit::newPredict()
 {
-    if (this->attack && this->toAttack != nullptr)
+    if (this->attack && this->toAttack != nullptr && this->toAttack->hp <= 0)
     {
         this->clearTasks();
         float startX = (float)this->xMap;

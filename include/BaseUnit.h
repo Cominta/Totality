@@ -95,6 +95,7 @@ public:
         this->xMap = xMap;
         this->yMap = yMap;
         this->initHpBar();
+        this->toAttack = nullptr;
 
         // this->wayEnd.x = this->unit.getPosition().x;
         // this->wayEnd.y = this->unit.getPosition().y;

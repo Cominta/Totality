@@ -12,7 +12,8 @@ std::vector<sf::RectangleShape> Archer::predictPath(sf::Vector2f wayEnd, float& 
 
 void Archer::shootLogic()
 {    
-    if (this->shoot && (this->arrow.getPosition().y / 64 <= 0 || this->arrow.getPosition().x / 64 <= 0 || 
+    if (this->shoot && (this->arrow.getPosition().y / 64 < 0 || this->arrow.getPosition().x / 64 < 0 || 
+        this->arrow.getPosition().y / 64 > this->tilemap->getHeight() || this->arrow.getPosition().x / 64 > this->tilemap->getWidth() ||
         this->tilemap->map[this->arrow.getPosition().y / 64][this->arrow.getPosition().x / 64] >= this->tilemap->tileKeys["mountain"].first ||
         this->toAttack == nullptr || 
         !this->range.getGlobalBounds().intersects(this->toAttack->getShape().getGlobalBounds())))
@@ -63,6 +64,16 @@ void Archer::updateArrow(float dt)
     float newY = -sin((PI / 180) * this->arrow.getRotation());
 
     this->arrow.move(newX * dt * this->arrowSpeed, newY * dt * this->arrowSpeed);
+
+    std::cout << (this->arrow.getPosition().y / 64 > this->tilemap->getHeight()) << " ";
+    std::cout << this->arrow.getPosition().y / 64 << "\n";
+
+    if (this->arrow.getPosition().y / 64 > this->tilemap->getHeight() || this->arrow.getPosition().x / 64 > this->tilemap->getWidth())
+    {
+        this->arrow.setPosition(-1, -1);
+        this->shoot = false;
+        return;
+    }
 
     if ((this->arrow.getPosition().x > this->unit.getPosition().x && this->arrow.getPosition().x - this->unit.getPosition().x > this->maxDistance) || 
         (this->arrow.getPosition().x < this->unit.getPosition().x && this->unit.getPosition().x - this->arrow.getPosition().x > this->maxDistance) ||
