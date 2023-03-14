@@ -91,6 +91,7 @@ void Archer::moveTo(float dt, std::vector<BaseUnit*>& units)
     {
         this->arrow.setPosition(-1, -1);
         this->shoot = false;
+        this->toAttack = nullptr;
     }
 
     if (this->toAttack != nullptr && this->toAttack->getHp() <= 0)

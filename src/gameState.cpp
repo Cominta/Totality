@@ -196,10 +196,10 @@ int GameState::updateButtons(bool mousePressedLeft)
         }
     }
 
-    int counter = 0;
+    int counter = 1;
     for(auto& it : this->buttons)
     {
-        it.second->setPosition(this->window->mapPixelToCoords(sf::Vector2i(0, 1000 - 80 * counter)));
+        it.second->setPosition(this->window->mapPixelToCoords(sf::Vector2i(0, this->window->getSize().y - 80 * counter)));
         it.second->setScale(this->window->getView().getSize().x / 100 / 18.0f, this->window->getView().getSize().y / 100 / 10);
         counter++;
     }
