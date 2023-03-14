@@ -365,7 +365,7 @@ void BaseUnit::moveTo(float dt, std::vector<BaseUnit*>& units)
 
     else if (this->attack && this->toAttack != nullptr && this->toAttack->xMap == newX && this->toAttack->yMap == newY)
     {
-        if (this->currentSpeedAttack != 0)
+        if (this->currentSpeedAttack > 0)
         {
             this->currentSpeedAttack--;
             return;
@@ -374,11 +374,10 @@ void BaseUnit::moveTo(float dt, std::vector<BaseUnit*>& units)
         this->b_moving = false;
         // this->xMap = oldX;
         // this->yMap = oldY;
-        if (this->team != this->toAttack->getTeam())
+        if (this->toAttack != nullptr && this->team != this->toAttack->getTeam())
         {
             this->toAttack->doDamage(this->damage, this);
             this->currentSpeedAttack = this->speedAttack + (1.0f / dt) / 10;
-
         }
 
         return;
