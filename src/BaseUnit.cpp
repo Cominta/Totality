@@ -296,6 +296,16 @@ bool BaseUnit::newPredict()
 
 void BaseUnit::moveTo(float dt, std::vector<BaseUnit*>& units)
 {
+    if (!this->attack)
+    {
+        this->toAttack = nullptr;
+    }
+
+    if (this->toAttack == nullptr)
+    {
+        this->attack = false;
+    }
+
     if (this->attack && this->toAttack != nullptr && this->toAttack->hp <= 0)
     {
         this->attack = false;
