@@ -216,6 +216,9 @@ int GameState::updateButtons(bool mousePressedLeft)
 
             buttons.at("Prepare")->setActiv(true);
             buttons.at("Prepare")->setTexture(&textures["Prepare_End"]);
+            bloods.clear();
+            deads.clear();
+            this->units.clear();
         }
         buttons.at("Prepare")->updateSprite();
     }
@@ -317,6 +320,7 @@ int GameState::updateButtons(bool mousePressedLeft)
         }
         buttons.at("Prepare")->setActiv(true);
     }
+    
     return team;
 }
 
