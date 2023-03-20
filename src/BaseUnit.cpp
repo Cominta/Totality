@@ -177,104 +177,37 @@ std::vector<sf::RectangleShape> BaseUnit::predictPath(sf::Vector2f wayEnd, float
     int previousDirectX = 0;
     int previousDirectY = 0;
 
-    std::vector<sf::RectangleShape> path;
+    std::vector<sf::RectangleShape> pathResult;
 
-    while (true)
+    AStar::CoordinateList pathGenerate = this->generator.findPath({xPath, yPath}, {(int)wayEnd.x, (int)wayEnd.y});
+    AStar::CoordinateList pathReverse;
+
+    for (int i = pathGenerate.size() - 1; i >= 0; i--)
     {
-        int directX = 0;
-        int directY = 0;
-
-        if (wayEnd.x > xPath)
-        {
-            directX = 1;
-            xPath++;
-        }
-
-        if (wayEnd.x < xPath)
-        {
-            directX = -1;
-            xPath--;
-        }
-
-        if (wayEnd.y > yPath)
-        {
-            directY = 1;
-            yPath++;
-        }
-
-        if (wayEnd.y < yPath)
-        {
-            directY = -1;
-            yPath--;
-        }
-
-        sf::RectangleShape shape(sf::Vector2f(5, 32));
-
-        if (this->tilemap->map[yPath][xPath] < this->tilemap->tileKeys["sand"].first || this->tilemap->map[yPath][xPath] > this->tilemap->tileKeys["ground"].second)
-        {
-            success = false;
-            return path;
-        }
-
-        if ((directX != previousDirectX || directY != previousDirectY) && path.size() != 0)
-        {
-            path[path.size() - 1].setSize(sf::Vector2f(32, 32));
-            path[path.size() - 1].setOrigin(path[path.size() - 1].getSize().x / 2, path[path.size() - 1].getSize().y / 2);
-            path[path.size() - 1].setRotation(0);
-        }
-
-        shape.setOrigin(shape.getSize().x / 2, shape.getSize().y / 2);
-        shape.setPosition(sf::Vector2f(xPath * 64 + 32, yPath * 64 + 32));
-
-        if (directY == -1 && directX == -1) // top - left
-        {
-            shape.setRotation(-45);
-        }
-
-        else if (directY == -1 && directX == 1) // top - right
-        {
-            shape.setRotation(45);
-        }
-
-        else if (directY == 1 && directX == -1) // bottom - left
-        {
-            shape.setRotation(-135);
-        }
-
-        else if (directY == 1 && directX == 1) // bottom - right
-        {
-            shape.setRotation(135);
-        }
-
-        else if (directY == 0) // left - right
-        {
-            shape.setRotation(90 * directX);
-        }
-
-        else if (directX == 0) // top - bottom
-        {
-            shape.setRotation(180 * directY);
-        }
-
-        path.push_back(shape);
-
-        if ((xPath == wayEnd.x && yPath == wayEnd.y))
-        {
-            path[path.size() - 1].setSize(sf::Vector2f(32, 32));
-            path[path.size() - 1].setOrigin(path[path.size() - 1].getSize().x / 2, path[path.size() - 1].getSize().y / 2);
-            path[path.size() - 1].setRotation(0);
-            
-            break;
-        }
-
-        previousDirectX = directX;
-        previousDirectY = directY;
-
-        oldX = xPath;
-        oldY = yPath;
+        pathReverse.push_back(pathGenerate[i]);
     }
 
-    return path;
+    pathGenerate = pathReverse;
+
+    if (pathGenerate[pathGenerate.size() - 1].x >= 99 || pathGenerate[pathGenerate.size() - 1].y >= 99)
+    {
+        success = false;
+        return pathResult;
+    }
+
+    // std::cout << xPath << " " << yPath << " ^ " << wayEnd.x << " " << wayEnd.y << "\n";
+
+    for (auto coord : pathGenerate)
+    {
+        sf::RectangleShape shape(sf::Vector2f(5, 32));
+        shape.setOrigin(shape.getSize().x / 2, shape.getSize().y / 2);
+        shape.setPosition(coord.x * 64 + 32, coord.y * 64 + 32);
+        pathResult.push_back(shape);
+    }
+
+    std::cout << pathGenerate[pathGenerate.size() - 1].x << " " << pathGenerate[pathGenerate.size() - 1].y << "\n";
+
+    return pathResult;
 }
 
 bool BaseUnit::newPredict()
@@ -361,7 +294,7 @@ void BaseUnit::moveTo(float dt, std::vector<BaseUnit*>& units)
         this->slowed = true;
     }
 
-    if (this->tilemap->mapUnits[newY][newX] == 1 && ((!this->attack || 
+    if (this->tilemap->mapUnits[newY][newX] == 1 && newX != this->xMap && newY != this->yMap && ((!this->attack || 
         (this->attack && this->toAttack != nullptr && this->toAttack->xMap != newX || this->toAttack->yMap != newY))))
     {
         // this->xMap = oldX;

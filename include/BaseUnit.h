@@ -5,6 +5,7 @@
 #include "tilemap.h"
 #include <queue>
 #include "team.h"
+#include "AStar.hpp"
 
 struct TaskMove
 {
@@ -41,6 +42,7 @@ protected:
     int xMap;
     int yMap;
     bool slowed;
+    AStar::Generator generator;
 
     sf::RectangleShape hpBar;
     sf::RectangleShape hpBarBack;
@@ -97,6 +99,20 @@ public:
         this->initHpBar();
         this->toAttack = nullptr;
 
+        this->generator.setWorldSize({this->tilemap->getWidth(), this->tilemap->getHeight()});
+        this->generator.setHeuristic(AStar::Heuristic::euclidean);
+        this->generator.setDiagonalMovement(true);
+
+        for (int y = 0; y < this->tilemap->getHeight(); y++)
+        {
+            for (int x = 0; x < this->tilemap->getWidth(); x++)
+            {
+                if (this->tilemap->map[y][x] < this->tilemap->tileKeys["sand"].first || this->tilemap->map[y][x] > this->tilemap->tileKeys["ground"].second)
+                {
+                    this->generator.addCollision({x, y});
+                }
+            }
+        }
         // this->wayEnd.x = this->unit.getPosition().x;
         // this->wayEnd.y = this->unit.getPosition().y;
     }
