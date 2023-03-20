@@ -58,6 +58,6 @@ class Archer : public BaseUnit
         }
 
         void moveTo(float dt, std::vector<BaseUnit*>& units) override;
-        void renderGame(sf::View view) override;
+        void renderGame(sf::View view, bool renderPath) override;
         void renderArrow() override;
 };

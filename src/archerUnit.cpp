@@ -263,9 +263,9 @@ void Archer::moveTo(float dt, std::vector<BaseUnit*>& units)
     }
 }
 
-void Archer::renderGame(sf::View view)
+void Archer::renderGame(sf::View view, bool renderPath)
 {
-    BaseUnit::renderGame(view);
+    BaseUnit::renderGame(view, renderPath);
 
     if (this->b_active)
     {

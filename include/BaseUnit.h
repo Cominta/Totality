@@ -53,7 +53,6 @@ protected:
     bool newPredict();
     void clearTasks();
     void initHpBar();
-    void updateHpBar();
 
     Team team;
 
@@ -125,6 +124,7 @@ public:
 
     virtual void moveTo(float dt, std::vector<BaseUnit*>& units);
     int getHp() {return this->hp;}
+    void updateHpBar();
 
     void setActive(bool _active)
     {
@@ -261,7 +261,7 @@ public:
 
     sf::CircleShape getShape() {return this->unit;}
 
-    virtual void renderGame(sf::View view);
+    virtual void renderGame(sf::View view, bool renderPath);
     void renderMini(sf::View view);
     virtual void renderArrow();
 };

@@ -44,6 +44,7 @@ class Button
         void setScale(float scaleX, float scaleY) {this->sprite->setScale(scaleX, scaleY);};
         sf::Vector2f getSize() {this->sprite->getTexture()->getSize();};
         void updateSprite() {this->sprite->setTexture(*this->idle);}
+        void setOrigin(float x, float y) {this->sprite->setOrigin(x, y);}
 
         void update(sf::Vector2f mousePosition, bool mousePressed);
         void render();

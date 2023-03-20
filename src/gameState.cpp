@@ -13,6 +13,7 @@ GameState::GameState(typeState type, sf::RenderWindow* window, std::stack<State*
     this->minimapCamera.setOutlineThickness(50.0f);
 
     this->buttons["Prepare"] = new Button(this->window, 910, 0, 1, &textures["Prepare_End"]);
+    this->buttons["Prepare"]->setOrigin(textures["Prepare_End"].getSize().x / 2, textures["Prepare_End"].getSize().y / 2);
     this->buttons["AddUnit"] = new Button(this->window, 1840, 1000, 1, &textures["UnitButton_Idle"]);
     this->buttons["Team"] = new Button(this->window, 1840, 920, 1, &textures["Team_Red"]);
     this->buttons["AddBaseUnit"] = new Button(this->window, 1840, 840, 1, &textures["BaseUnitAddButton_Idle"]);
@@ -86,6 +87,11 @@ void GameState::generateBlood(std::pair<sf::Vector2f, int>& pos)
 void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, float dt)
 {
     int team = this->updateButtons(mousePressedLeft);
+
+    for (auto& unit : this->units)
+    {
+        unit->updateHpBar();
+    }
 
     if (buttons.at("Prepare")->isActiv() && this->tilemap->map[mousePosition.y / 64][mousePosition.x / 64] >= this->tilemap->tileKeys["ground"].first 
     && this->tilemap->map[mousePosition.y / 64][mousePosition.x / 64] <= this->tilemap->tileKeys["ground"].second)
@@ -199,11 +205,40 @@ int GameState::updateButtons(bool mousePressedLeft)
         }
         else
         {
+            for (auto unit : this->units)
+            {
+                delete unit;
+            }
+
+            this->units.clear();
+            this->bloods.clear();
+            this->deads.clear();
+
             buttons.at("Prepare")->setActiv(true);
             buttons.at("Prepare")->setTexture(&textures["Prepare_End"]);
         }
         buttons.at("Prepare")->updateSprite();
     }
+
+    int counter = 1;
+
+    for(auto& it : this->buttons)
+    {
+        if (it.first == "Prepare")
+        {
+            it.second->setPosition(this->window->mapPixelToCoords(sf::Vector2i(this->window->getSize().x / 2, 
+                                    80)));
+            it.second->setScale(this->window->getView().getSize().x / 100 / 18.0f, this->window->getView().getSize().y / 100 / 10);
+        }
+
+        else 
+        {
+            it.second->setPosition(this->window->mapPixelToCoords(sf::Vector2i(0, this->window->getSize().y - 80 * counter)));
+            it.second->setScale(this->window->getView().getSize().x / 100 / 18.0f, this->window->getView().getSize().y / 100 / 10);
+            counter++;
+        }
+    }
+
     if (buttons.at("Prepare")->isActiv())
     {
         if (buttons.at("AddUnit")->isHover(this->mousePosition) && mousePressedLeft)
@@ -219,17 +254,6 @@ int GameState::updateButtons(bool mousePressedLeft)
             else
             {
                 buttons.at("AddUnit")->setActiv(true);
-            }
-        }
-
-        int counter = 1;
-        for(auto& it : this->buttons)
-        {
-            if (it.first != "Prepare")
-            {
-                it.second->setPosition(this->window->mapPixelToCoords(sf::Vector2i(0, this->window->getSize().y - 80 * counter)));
-                it.second->setScale(this->window->getView().getSize().x / 100 / 18.0f, this->window->getView().getSize().y / 100 / 10);
-                counter++;
             }
         }
 
@@ -298,6 +322,11 @@ int GameState::updateButtons(bool mousePressedLeft)
 
 void GameState::multiplyUnits()
 {
+    if (this->buttons["Prepare"]->isActiv())
+    {
+        return;
+    }
+
     if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !this->multiply && sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift))
     {
         this->multiply = true;
@@ -375,6 +404,13 @@ void GameState::render()
 {
     this->tilemap->renderGame(this->gameView);
 
+    bool renderPath = false;
+
+    if (!this->buttons["Prepare"]->isActiv())
+    {
+        renderPath = true;
+    }
+
     for (auto blood : this->bloods)
     {
         sf::Sprite sprite;
@@ -402,7 +438,7 @@ void GameState::render()
     
     for (auto& unit : this->units)
     {
-        unit->renderGame(this->gameView);
+        unit->renderGame(this->gameView, renderPath);
     }
 
     for (auto& unit : this->units)

@@ -152,37 +152,25 @@ std::vector<sf::RectangleShape> BaseUnit::predictPath(sf::Vector2f wayEnd, float
 {
     int xPath;
     int yPath;
-
-    int oldX;
-    int oldY;
     
     if (this->tasks.empty())
     {
         xPath = this->xMap;
         yPath = this->yMap;
-
-        oldX = this->xMap;
-        oldY = this->yMap;
     }
 
     else 
     {
         xPath = startX;
         yPath = startY;
-
-        oldX = startX;
-        oldY = startY;
     }
-
-    int previousDirectX = 0;
-    int previousDirectY = 0;
 
     std::vector<sf::RectangleShape> pathResult;
 
     AStar::CoordinateList pathGenerate = this->generator.findPath({xPath, yPath}, {(int)wayEnd.x, (int)wayEnd.y});
     AStar::CoordinateList pathReverse;
 
-    for (int i = pathGenerate.size() - 1; i >= 0; i--)
+    for (int i = pathGenerate.size() - 2; i >= 0; i--)
     {
         pathReverse.push_back(pathGenerate[i]);
     }
@@ -192,20 +180,93 @@ std::vector<sf::RectangleShape> BaseUnit::predictPath(sf::Vector2f wayEnd, float
     if (pathGenerate[pathGenerate.size() - 1].x >= 99 || pathGenerate[pathGenerate.size() - 1].y >= 99)
     {
         success = false;
-        return pathResult;
+        return std::vector<sf::RectangleShape> ();
     }
 
-    // std::cout << xPath << " " << yPath << " ^ " << wayEnd.x << " " << wayEnd.y << "\n";
+    int oldX = this->xMap;
+    int oldY = this->yMap;
+
+    int previousDirectX = 0;
+    int previousDirectY = 0;
 
     for (auto coord : pathGenerate)
     {
+        int directX = 0;
+        int directY = 0;
+
         sf::RectangleShape shape(sf::Vector2f(5, 32));
         shape.setOrigin(shape.getSize().x / 2, shape.getSize().y / 2);
         shape.setPosition(coord.x * 64 + 32, coord.y * 64 + 32);
+        
+        if (coord.x > oldX) // right
+        {
+            directX = 1;
+        }
+
+        else if (coord.x < oldX) // left
+        {
+            directX = -1;
+        }
+
+        if (coord.y < oldY) // top
+        {
+            directY = -1;
+        }
+
+        else if (coord.y > oldY) // bottom
+        {
+            directY = 1;
+        }
+
+        if ((directX != previousDirectX || directY != previousDirectY) && pathResult.size() != 0)
+        {
+            pathResult[pathResult.size() - 1].setSize(sf::Vector2f(32, 32));
+            pathResult[pathResult.size() - 1].setOrigin(pathResult[pathResult.size() - 1].getSize().x / 2, pathResult[pathResult.size() - 1].getSize().y / 2);
+            pathResult[pathResult.size() - 1].setRotation(0);
+        }
+
+        if (directY == -1 && directX == -1) // top - left
+        {
+            shape.setRotation(-45);
+        }
+
+        else if (directY == -1 && directX == 1) // top - right
+        {
+            shape.setRotation(45);
+        }
+
+        else if (directY == 1 && directX == -1) // bottom - left
+        {
+            shape.setRotation(-135);
+        }
+
+        else if (directY == 1 && directX == 1) // bottom - right
+        {
+            shape.setRotation(135);
+        }
+
+        else if (directY == 0) // left - right
+        {
+            shape.setRotation(90 * directX);
+        }
+
+        else if (directX == 0) // top - bottom
+        {
+            shape.setRotation(180 * directY);
+        }
+
+        oldX = coord.x;
+        oldY = coord.y;
+
+        previousDirectX = directX;
+        previousDirectY = directY;
+
         pathResult.push_back(shape);
     }
 
-    std::cout << pathGenerate[pathGenerate.size() - 1].x << " " << pathGenerate[pathGenerate.size() - 1].y << "\n";
+    pathResult[pathResult.size() - 1].setSize(sf::Vector2f(32, 32));
+    pathResult[pathResult.size() - 1].setOrigin(pathResult[pathResult.size() - 1].getSize().x / 2, pathResult[pathResult.size() - 1].getSize().y / 2);
+    pathResult[pathResult.size() - 1].setRotation(0);
 
     return pathResult;
 }
@@ -276,8 +337,6 @@ void BaseUnit::moveTo(float dt, std::vector<BaseUnit*>& units)
     int newX = path[0].getPosition().x / 64;
     int newY = path[0].getPosition().y / 64;
 
-    this->updateHpBar();
-
     if (this->tilemap->mapUnits[newY][newX] == 1)
     {
         for (auto unit : units)
@@ -294,7 +353,7 @@ void BaseUnit::moveTo(float dt, std::vector<BaseUnit*>& units)
         this->slowed = true;
     }
 
-    if (this->tilemap->mapUnits[newY][newX] == 1 && newX != this->xMap && newY != this->yMap && ((!this->attack || 
+    if (this->tilemap->mapUnits[newY][newX] == 1 && ((!this->attack || 
         (this->attack && this->toAttack != nullptr && this->toAttack->xMap != newX || this->toAttack->yMap != newY))))
     {
         // this->xMap = oldX;
@@ -357,12 +416,12 @@ void BaseUnit::moveTo(float dt, std::vector<BaseUnit*>& units)
     }
 }
 
-void BaseUnit::renderGame(sf::View view)
+void BaseUnit::renderGame(sf::View view, bool renderPath)
 {
     sf::View old = this->window->getView();
     this->window->setView(view);
     
-    if (this->b_moving && !this->tasks.empty())
+    if (this->b_moving && !this->tasks.empty() && renderPath)
     {
         std::queue<TaskMove> temp = this->tasks;
 
