@@ -135,7 +135,7 @@ void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::
                 if (add && buttons.at("AddArcherUnit")->isActiv())
                 {
                     this->units.push_back(new Archer(this->window, this->tilemap, mousePosition.x / 64, mousePosition.y / 64, 
-                                          this->tilemap->mapUnits, Team(team), this->textures["warrior"]));
+                                          this->tilemap->mapUnits, Team(team), this->textures["archer"]));
                 }
             }
         }

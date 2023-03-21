@@ -54,7 +54,9 @@ void Engine::loadTextures()
         rootPath + "tiles/snow.png",
         rootPath + "blood.png",
         rootPath + "dead.png",
-        rootPath + "units/warrior.png"
+        rootPath + "background.png",
+        rootPath + "units/warrior.png",
+        rootPath + "units/archer.png"
     };
 
     std::vector<std::string> names = {
@@ -90,7 +92,9 @@ void Engine::loadTextures()
         "tile_snow",
         "blood",
         "dead",
-        "warrior"
+        "background",
+        "warrior",
+        "archer"
     };
 
     for (int i = 0; i < paths.size(); i++)

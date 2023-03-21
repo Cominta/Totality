@@ -42,10 +42,12 @@ class Button
         void setPosition(float x, float y) {this->sprite->setPosition(x, y);};
         void setPosition(sf::Vector2f pos) {this->sprite->setPosition(pos);};
         void setScale(float scaleX, float scaleY) {this->sprite->setScale(scaleX, scaleY);};
-        sf::Vector2f getSize() {this->sprite->getTexture()->getSize();};
-        void updateSprite() {this->sprite->setTexture(*this->idle);}
         void setOrigin(float x, float y) {this->sprite->setOrigin(x, y);}
 
+        sf::Vector2f getSize() {this->sprite->getTexture()->getSize();};
+        sf::Vector2f getPos() {this->sprite->getPosition();}
+
+        void updateSprite() {this->sprite->setTexture(*this->idle);}
         void update(sf::Vector2f mousePosition, bool mousePressed);
         void render();
 };

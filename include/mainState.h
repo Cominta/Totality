@@ -11,6 +11,12 @@ class MainState : public State
         std::map<std::string, Button*> buttons; 
         TextBox* tbSeed;
 
+        sf::RectangleShape background;
+
+        sf::Text title;
+        sf::Text credits;
+        sf::Font font;
+
         void filterSeedStr();
         void convert(int num, std::string& str);
 
