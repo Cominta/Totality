@@ -33,8 +33,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.25.0-rc2/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.25.0-rc2/CMakeRCCompiler.cmake"
   "CMakeFiles/3.25.0-rc2/CMakeSystem.cmake"
-  "C:/Users/Roman/Desktop/Totality/include/pathToGen.h"
-  "C:/Users/Roman/Desktop/Totality/include/versionToGen.h"
+  "C:/Users/Roman/Desktop/Totality/include/pathToGen.h.in"
+  "C:/Users/Roman/Desktop/Totality/include/versionToGen.h.in"
   )
 
 # The corresponding makefile is:

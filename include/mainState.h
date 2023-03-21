@@ -4,6 +4,7 @@
 #include "button.h"
 #include "gameState.h"
 #include "textBox.h"
+#include "version.h"
 
 class MainState : public State
 {
@@ -15,6 +16,7 @@ class MainState : public State
 
         sf::Text title;
         sf::Text credits;
+        sf::Text version;
         sf::Font font;
 
         void filterSeedStr();

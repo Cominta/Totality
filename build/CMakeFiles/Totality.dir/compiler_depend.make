@@ -1311,7 +1311,8 @@ CMakeFiles/Totality.dir/src/engine.cpp.obj: C:/Users/Roman/Desktop/Totality/src/
   C:/Users/Roman/Desktop/Totality/include/archerUnit.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/math.h \
   C:/Users/Roman/Desktop/Totality/include/viewMap.h \
-  C:/Users/Roman/Desktop/Totality/include/textBox.h
+  C:/Users/Roman/Desktop/Totality/include/textBox.h \
+  C:/Users/Roman/Desktop/Totality/genCmake/version.h
 
 CMakeFiles/Totality.dir/src/gameState.cpp.obj: C:/Users/Roman/Desktop/Totality/src/gameState.cpp \
   C:/Users/Roman/Desktop/Totality/include/gameState.h \
@@ -1926,7 +1927,8 @@ CMakeFiles/Totality.dir/src/main.cpp.obj: C:/Users/Roman/Desktop/Totality/src/ma
   C:/Users/Roman/Desktop/Totality/include/archerUnit.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/math.h \
   C:/Users/Roman/Desktop/Totality/include/viewMap.h \
-  C:/Users/Roman/Desktop/Totality/include/textBox.h
+  C:/Users/Roman/Desktop/Totality/include/textBox.h \
+  C:/Users/Roman/Desktop/Totality/genCmake/version.h
 
 CMakeFiles/Totality.dir/src/mainState.cpp.obj: C:/Users/Roman/Desktop/Totality/src/mainState.cpp \
   C:/Users/Roman/Desktop/Totality/include/mainState.h \
@@ -2234,7 +2236,8 @@ CMakeFiles/Totality.dir/src/mainState.cpp.obj: C:/Users/Roman/Desktop/Totality/s
   C:/Users/Roman/Desktop/Totality/include/archerUnit.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/math.h \
   C:/Users/Roman/Desktop/Totality/include/viewMap.h \
-  C:/Users/Roman/Desktop/Totality/include/textBox.h
+  C:/Users/Roman/Desktop/Totality/include/textBox.h \
+  C:/Users/Roman/Desktop/Totality/genCmake/version.h
 
 CMakeFiles/Totality.dir/src/state.cpp.obj: C:/Users/Roman/Desktop/Totality/src/state.cpp \
   C:/Users/Roman/Desktop/Totality/include/state.h \
@@ -4365,6 +4368,8 @@ C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/PrimitiveType.hpp:
 C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/ConvexShape.hpp:
 
 C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/Font.hpp:
+
+C:/Users/Roman/Desktop/Totality/genCmake/version.h:
 
 C:/Users/Roman/Desktop/Totality/include/SFML/Graphics/RectangleShape.hpp:
 
