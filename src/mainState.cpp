@@ -9,6 +9,10 @@ MainState::MainState(typeState type, sf::RenderWindow* window, std::stack<State*
     this->buttons["play"]->setTexture(&this->textures["play_idle"], &this->textures["play_hover"], &this->textures["play_active"]);
     this->buttons["play"]->setOrigin(this->textures["play_idle"].getSize().x / 2, this->textures["play_idle"].getSize().y / 2);
 
+    this->buttons["exit"] = new Button(this->window, this->window->getSize().x / 2, 510, 1, &this->textures["play_idle"]);
+    this->buttons["exit"]->setTexture(&this->textures["exit_idle"], &this->textures["exit_hover"], &this->textures["exit_active"]);
+    this->buttons["exit"]->setOrigin(this->textures["exit_idle"].getSize().x / 2, this->textures["exit_idle"].getSize().y / 2);
+
     this->tbSeed = new TextBox(this->window, 300, 50, this->window->getSize().x / 2 - 150, 100, 8);
     int seed = rand() % 1000000000;
     
@@ -59,12 +63,6 @@ void MainState::convert(int num, std::string& str)
 
 void MainState::update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys)
 {
-    if (this->find(realisedKeys, sf::Keyboard::Key::Escape))
-    {
-        delete this->states.top();
-        this->states.pop();
-        return;
-    }
 
     this->updateMouse();
     this->filterSeedStr();
@@ -85,6 +83,14 @@ void MainState::update(bool mousePressedLeft, bool mousePressedRight, std::vecto
         {
             it.second->setScale(1.f, 1.f);
         }    
+    }
+
+    if (this->find(realisedKeys, sf::Keyboard::Key::Escape) ||
+        (mousePressedLeft && this->buttons["exit"]->isHover(this->mousePosition)))
+    {
+        delete this->states.top();
+        this->states.pop();
+        return;
     }
 
     if (mousePressedLeft && this->buttons["play"]->isHover(this->mousePosition))
