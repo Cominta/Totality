@@ -22,9 +22,9 @@ void Engine::loadTextures()
     std::string rootPath = "resources/";
 
     std::vector<std::string> paths = {
-        rootPath + "buttons/mainstate/play_idle.jpg",
-        rootPath + "buttons/mainstate/play_hover.jpg",
-        rootPath + "buttons/mainstate/play_active.jpg",
+        rootPath + "buttons/mainstate/play_idle.png",
+        rootPath + "buttons/mainstate/play_hover.png",
+        rootPath + "buttons/mainstate/play_active.png",
         rootPath + "buttons/gamestate/UnitButton_Idle.png",
         rootPath + "buttons/gamestate/BaseUnitAddButton_Idle.png",
         rootPath + "buttons/gamestate/ArcherUnitAddButton_Idle.png",

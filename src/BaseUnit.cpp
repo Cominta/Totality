@@ -42,7 +42,8 @@ void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector
             TaskMove task;
             bool success = true;
 
-            if (worldPos.x > this->tilemap->getWidth() - 1 || worldPos.y > this->tilemap->getHeight() - 1)
+            if ((worldPos.x > this->tilemap->getWidth() - 1 || worldPos.y > this->tilemap->getHeight() - 1) ||
+                (this->tilemap->map[worldPos.y][worldPos.x] < this->tilemap->tileKeys["sand"].first || this->tilemap->map[worldPos.y][worldPos.x] > this->tilemap->tileKeys["ground"].second))
             {
                 return;
             }
@@ -194,7 +195,7 @@ std::vector<sf::RectangleShape> BaseUnit::predictPath(sf::Vector2f wayEnd, float
         int directX = 0;
         int directY = 0;
 
-        sf::RectangleShape shape(sf::Vector2f(5, 32));
+        sf::RectangleShape shape(sf::Vector2f(5, 64));
         shape.setOrigin(shape.getSize().x / 2, shape.getSize().y / 2);
         shape.setPosition(coord.x * 64 + 32, coord.y * 64 + 32);
         

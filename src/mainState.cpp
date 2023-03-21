@@ -5,10 +5,11 @@ MainState::MainState(typeState type, sf::RenderWindow* window, std::stack<State*
 {
     srand(time(0));
 
-    this->buttons["play"] = new Button(this->window, 10, 10, 1, &this->textures["play_idle"]);
+    this->buttons["play"] = new Button(this->window, this->window->getSize().x / 2, 300, 1, &this->textures["play_idle"]);
     this->buttons["play"]->setTexture(&this->textures["play_idle"], &this->textures["play_hover"], &this->textures["play_active"]);
+    this->buttons["play"]->setOrigin(this->textures["play_idle"].getSize().x / 2, this->textures["play_idle"].getSize().y / 2);
 
-    this->tbSeed = new TextBox(this->window, 300, 50, 10, 500, 8);
+    this->tbSeed = new TextBox(this->window, 300, 50, this->window->getSize().x / 2 - 150, 100, 8);
     int seed = rand() % 1000000000;
     
     std::string str = std::to_string(seed);
@@ -74,10 +75,21 @@ void MainState::update(bool mousePressedLeft, bool mousePressedRight, std::vecto
     {
         it.second->update(this->mousePosition, mousePressedLeft);
 
-        if (it.second->isHover(this->mousePosition) && mousePressedLeft && it.first == "play")
+        if (it.second->state == Button::states::HOVER)
         {
-            this->states.push(new GameState(State::typeState::GAMESTATE, this->window, this->states, this->textures, std::stoi(this->tbSeed->getStr())));
+            it.second->setScale(1.1f, 1.1f);
+
         }
+
+        else 
+        {
+            it.second->setScale(1.f, 1.f);
+        }    
+    }
+
+    if (mousePressedLeft && this->buttons["play"]->isHover(this->mousePosition))
+    {
+        this->states.push(new GameState(State::typeState::GAMESTATE, this->window, this->states, this->textures, std::stoi(this->tbSeed->getStr())));
     }
 }
 
