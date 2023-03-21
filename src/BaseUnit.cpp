@@ -122,12 +122,35 @@ void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector
     }
 }
 
+sf::Texture BaseUnit::editSprite(sf::Color color, sf::Texture texture)
+{
+    sf::Image image = texture.copyToImage();
+
+    for (int y = 0; y < image.getSize().y; y++)
+    {
+        for (int x = 0; x < image.getSize().x; x++)
+        {
+            sf::Color pixel = image.getPixel(x, y);
+
+            if (pixel.r == 77 && pixel.g == 255 && pixel.b == 0)
+            {
+                image.setPixel(x, y, color);
+            }
+        }
+    }
+
+    sf::Texture result;
+    result.loadFromImage(image);
+    
+    return result;
+}
+
 void BaseUnit::updateHpBar()
 {
     this->hpBar.setSize(sf::Vector2f(32 * ((float)this->hp / this->maxHp), 6));
-    this->hpBar.setPosition(this->unit.getPosition().x, this->unit.getPosition().y);
+    this->hpBar.setPosition(this->unit.getPosition().x, this->unit.getPosition().y - 30);
 
-    this->hpBarBack.setPosition(this->unit.getPosition().x, this->unit.getPosition().y);
+    this->hpBarBack.setPosition(this->unit.getPosition().x, this->unit.getPosition().y - 30);
 }
 
 void BaseUnit::initHpBar()
@@ -337,7 +360,7 @@ void BaseUnit::moveTo(float dt, std::vector<BaseUnit*>& units)
 
     int newX = path[0].getPosition().x / 64;
     int newY = path[0].getPosition().y / 64;
-
+    
     if (this->tilemap->mapUnits[newY][newX] == 1)
     {
         for (auto unit : units)
@@ -453,16 +476,13 @@ void BaseUnit::renderMini(sf::View view)
     int xPos = this->unit.getPosition().x;
     int yPos = this->unit.getPosition().y;
 
-    this->unit.setScale(0.30, 0.30);
-    this->unit.setPosition(xPos * 0.15, yPos * 0.15);
-    this->unit.setFillColor(sf::Color::White);
+    sf::CircleShape shape;
+    shape.setRadius(32);
+    shape.setScale(0.30, 0.30);
+    shape.setPosition(xPos * 0.15, yPos * 0.15);
+    shape.setOrigin(32, 32);
     
-    this->window->draw(this->unit);
-
-    this->unit.setFillColor(sf::Color(100, 100, 100));
-    this->unit.setPosition(xPos, yPos);
-    this->unit.setScale(1, 1);
-
+    this->window->draw(shape);
     this->window->setView(old);
 }
 

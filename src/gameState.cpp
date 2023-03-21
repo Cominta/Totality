@@ -59,24 +59,24 @@ void GameState::generateBlood(std::pair<sf::Vector2f, int>& pos)
 
     if (op >= 45)
     {
-        x += abs(rand() % (100 + 1 - 5) - 5);
+        x += abs(rand() % (30 + 1 - (-30)) - (-30));
     }
 
-    else 
+    else if (op < 35)  
     {
-        x -= abs(rand() % (100 + 1 - 5) - 5);
+        x -= abs(rand() % (30 + 1 - (-30)) - (-30));
     }
 
     op = rand() % 100;
 
     if (op >= 45)
     {
-        y += abs(rand() % (100 + 1 - 5) - 5);
+        y += abs(rand() % (30 + 1 - (-30)) - (-30));
     }
 
-    else 
+    else if (op < 35) 
     {
-        y -= abs(rand() % (100 + 1 - 5) - 5);
+        y -= abs(rand() % (30 + 1 - (-30)) - (-30));
     }
 
     pos.first.x = x;
@@ -114,7 +114,8 @@ void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::
                 
                 if (add && buttons.at("AddBaseUnit")->isActiv())
                 {
-                    this->units.push_back(new Warrior(this->window, this->tilemap, mousePosition.x / 64, mousePosition.y / 64, this->tilemap->mapUnits, Team(team)));
+                    this->units.push_back(new Warrior(this->window, this->tilemap, mousePosition.x / 64, mousePosition.y / 64, 
+                                          this->tilemap->mapUnits, Team(team), this->textures["warrior"]));
                 }
             }
 
@@ -133,7 +134,8 @@ void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::
 
                 if (add && buttons.at("AddArcherUnit")->isActiv())
                 {
-                    this->units.push_back(new Archer(this->window, this->tilemap, mousePosition.x / 64, mousePosition.y / 64, this->tilemap->mapUnits, Team(team)));
+                    this->units.push_back(new Archer(this->window, this->tilemap, mousePosition.x / 64, mousePosition.y / 64, 
+                                          this->tilemap->mapUnits, Team(team), this->textures["warrior"]));
                 }
             }
         }
@@ -423,7 +425,7 @@ void GameState::render()
         sprite.setTexture(this->textures["blood"]);
         sprite.setPosition(blood.first.x, blood.first.y);
         sprite.setRotation(blood.second);
-        sprite.setScale(0.5, 0.5);
+        sprite.setScale(0.2, 0.2);
 
         this->window->draw(sprite);
     }
@@ -436,6 +438,7 @@ void GameState::render()
         sprite.setTexture(this->textures["dead"]);
         sprite.setPosition(dead.first.x, dead.first.y);
         sprite.setRotation(dead.second);
+        sprite.setScale(0.6, 0.6);
 
         this->window->draw(sprite);
     }

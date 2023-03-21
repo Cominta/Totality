@@ -19,7 +19,14 @@ protected:
     friend class Archer;
     friend class Warrior;
 
-    sf::CircleShape unit;
+    sf::Sprite unit;
+    sf::Texture normalTexture;
+    sf::Color normalColor;
+
+    sf::Texture activeTexture;
+    sf::Color activeColor;
+
+    bool flipped;
     // sf::Vector2i wayEnd;
     sf::RenderWindow* window;
     Tilemap* tilemap;
@@ -53,11 +60,12 @@ protected:
     bool newPredict();
     void clearTasks();
     void initHpBar();
+    sf::Texture editSprite(sf::Color color, sf::Texture texture);
 
     Team team;
 
 public:
-    BaseUnit(sf::RenderWindow *_window, Tilemap* tilemap, int xMap, int yMap, std::vector<std::vector<int>>& mapUnits, Team _team)
+    BaseUnit(sf::RenderWindow *_window, Tilemap* tilemap, int xMap, int yMap, std::vector<std::vector<int>>& mapUnits, Team _team, sf::Texture texture)
         : speed(6), speedAttack(1), maxHp(100)
     {
         this->slowed = false;
@@ -65,26 +73,38 @@ public:
         this->attacked = false;
         this->damage = 10;
         team = _team;
-        unit.setRadius(32.f);
-        unit.setOrigin(32.f, 32.f);
-        unit.setFillColor(sf::Color(0, 0, 0));
-        unit.setOutlineThickness(2.5f);
+        this->flipped = false;
+
         if (team == 0)
         {
-            unit.setOutlineColor(sf::Color(255, 0, 0));
+            this->normalColor = sf::Color(255, 0, 0);
+            this->activeColor = sf::Color(100, 0, 0);
         }
+
         else if (team == 1)
         {
-            unit.setOutlineColor(sf::Color(0, 0, 255));
+            this->normalColor = sf::Color(0, 0, 255);
+            this->activeColor = sf::Color(0, 0, 100);
         }
+
         else if (team == 2)
         {
-            unit.setOutlineColor(sf::Color(0, 255, 0));
+            this->normalColor = sf::Color(0, 255, 0);
+            this->activeColor = sf::Color(0, 100, 0);
         }
+
         else if (team == 3)
         {
-            unit.setOutlineColor(sf::Color(255, 255, 0));
+            this->normalColor = sf::Color(255, 255, 0);
+            this->activeColor = sf::Color(100, 100, 0);
         }
+
+        this->normalTexture = this->editSprite(this->normalColor, texture);
+        this->activeTexture = this->editSprite(this->activeColor, texture);
+
+        this->unit.setOrigin(this->normalTexture.getSize().x / 2, this->normalTexture.getSize().y / 2);
+        this->unit.setTexture(this->normalTexture);
+
         unit.setPosition(xMap * 64 + 32, yMap * 64 + 32);
         b_active = false;
         b_moving = false;
@@ -132,27 +152,12 @@ public:
 
         if (this->b_active)
         {
-            this->setOutlineColor(235, 235, 235);
+            this->unit.setTexture(this->activeTexture);
         }
 
         else 
         {
-            if (this->team == 0)
-            {
-                this->setOutlineColor(255, 0 ,0);
-            }
-            else if (this->team == 1)
-            {
-                this->setOutlineColor(0, 0 ,255);
-            }
-            else if (this->team == 2)
-            {
-                this->setOutlineColor(0, 255 ,0);
-            }
-            else if (this->team == 3)
-            {
-                this->setOutlineColor(255, 255 ,0);
-            }
+            this->unit.setTexture(this->normalTexture);
         }
     }
     bool isActiv() const
@@ -173,22 +178,6 @@ public:
         return team;
     }
 
-    void setOutlineThickness(float wide)
-    {
-        unit.setOutlineThickness(wide);
-    }
-    void setOutlineColor(sf::Uint8 R, sf::Uint8 G, sf::Uint8 B)
-    {
-        unit.setOutlineColor(sf::Color(R, G, B));
-    }
-    void setFillColor(sf::Uint8 R, sf::Uint8 G, sf::Uint8 B)
-    {
-        unit.setFillColor(sf::Color(R, G, B));
-    }
-    void setRadius(float radius)
-    {
-        unit.setRadius(radius);
-    }
     bool GlobalBoundContainCheck(sf::Vector2i cord)
     {
         return unit.getGlobalBounds().contains(sf::Vector2f(cord));
@@ -259,7 +248,7 @@ public:
         return false;
     }
 
-    sf::CircleShape getShape() {return this->unit;}
+    sf::Sprite getShape() {return this->unit;}
 
     virtual void renderGame(sf::View view, bool renderPath);
     void renderMini(sf::View view);
