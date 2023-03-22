@@ -6,6 +6,7 @@
 #include "wariorUnit.h"
 #include "archerUnit.h"
 #include "viewMap.h"
+#include "randomNums.h"
 
 class GameState : public State 
 {

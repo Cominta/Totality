@@ -41,6 +41,11 @@
 },
 {
   "directory": "C:/Users/Roman/Desktop/Totality/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -O2 -g -DNDEBUG -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\randomNums.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\randomNums.cpp",
+  "file": "C:/Users/Roman/Desktop/Totality/src/randomNums.cpp"
+},
+{
+  "directory": "C:/Users/Roman/Desktop/Totality/build",
   "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/Totality.dir/includes_CXX.rsp -O2 -g -DNDEBUG -std=gnu++1z -o CMakeFiles\\Totality.dir\\src\\sounds.cpp.obj -c C:\\Users\\Roman\\Desktop\\Totality\\src\\sounds.cpp",
   "file": "C:/Users/Roman/Desktop/Totality/src/sounds.cpp"
 },

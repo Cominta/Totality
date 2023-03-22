@@ -3,7 +3,8 @@
 
 void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& realisedKeys, std::vector<int>& pressedKeys, std::vector<BaseUnit*>& units)
 {
-    this->attacked = false;
+    srand(time(0));
+
     this->updateHpBar();
 
     if (mousePressedLeft)
@@ -368,6 +369,7 @@ void BaseUnit::moveTo(float dt, std::vector<BaseUnit*>& units)
             if (unit != nullptr && unit->xMap == newX && unit->yMap == newY && unit->getTeam() != this->team)
             {
                 this->doDamage(0, unit, true);
+                this->attacked = false;
             }
         }
     }
@@ -402,6 +404,10 @@ void BaseUnit::moveTo(float dt, std::vector<BaseUnit*>& units)
         // this->yMap = oldY;
         if (this->toAttack != nullptr && this->team != this->toAttack->getTeam())
         {
+            int hitSound = randomNumbers::getRandomNum(1, 2);
+            std::string str = "hit_sword_" + std::string(std::to_string(hitSound));
+            sounds::play(str, sounds::getVolume(str), false, true, this->unit.getPosition().x, this->unit.getPosition().y);
+            
             this->toAttack->doDamage(this->damage, this);
             this->currentSpeedAttack = this->speedAttack + (1.0f / dt) / 10;
         }
@@ -409,45 +415,7 @@ void BaseUnit::moveTo(float dt, std::vector<BaseUnit*>& units)
         return;
     }
 
-    const int maxDist = 1500;
-    int minDist = 300;
-    float volume = sounds::getVolume("walk");
-    float volumeFactor = 0;
-    float distX;
-    float distY;
-    float dist;
-
-    // Volume factor = MinDistance / (MinDistance + Attenuation * (max(Distance, MinDistance) - MinDistance))
-
-    // x
-    if (this->unit.getPosition().x > this->window->getView().getCenter().x)
-    {
-        distX = this->unit.getPosition().x - this->window->getView().getCenter().x;
-    }
-
-    else 
-    {
-        distX = this->window->getView().getCenter().x - this->unit.getPosition().x;
-    }
-
-    // y
-    if (this->unit.getPosition().y > this->window->getView().getCenter().y)
-    {
-        distY = this->unit.getPosition().y - this->window->getView().getCenter().y;
-    }
-
-    else 
-    {
-        distY = this->window->getView().getCenter().y - this->unit.getPosition().y;
-    }
-
-    if (distX <= maxDist && distY <= maxDist)
-    {
-        dist = sqrt(pow(distX, 2) + pow(distY, 2));
-        volumeFactor = minDist / (minDist + 1.0f * (std::max((int)dist, minDist) - minDist));
-        
-        sounds::play("walk", volume * volumeFactor);
-    }
+    sounds::play("walk", sounds::getVolume("walk"), false, true, this->unit.getPosition().x, this->unit.getPosition().y);
 
     this->xMap = newX;
     this->yMap = newY;

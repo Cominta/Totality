@@ -7,6 +7,7 @@
 #include "team.h"
 #include "AStar.hpp"
 #include "sounds.h"
+#include "randomNums.h"
 
 struct TaskMove
 {
@@ -67,7 +68,7 @@ protected:
 
 public:
     BaseUnit(sf::RenderWindow *_window, Tilemap* tilemap, int xMap, int yMap, std::vector<std::vector<int>>& mapUnits, Team _team, sf::Texture texture)
-        : speed(6), speedAttack(1), maxHp(100)
+        : speed(6), speedAttack(20), maxHp(100)
     {
         this->slowed = false;
         this->hp = 100;
@@ -183,6 +184,12 @@ public:
     {
         return unit.getGlobalBounds().contains(sf::Vector2f(cord));
     }
+
+    void setAttacked(bool attacked)
+    {
+        this->attacked = attacked;
+    }
+    
     void move(float X, float Y)
     {
         unit.move(X / 64, Y / 64);

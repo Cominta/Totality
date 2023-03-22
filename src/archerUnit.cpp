@@ -232,6 +232,8 @@ void Archer::moveTo(float dt, std::vector<BaseUnit*>& units)
     //     return;
     // }
 
+    sounds::play("walk", sounds::getVolume("walk"), false, true, this->unit.getPosition().x, this->unit.getPosition().y);
+
     this->xMap = newX;
     this->yMap = newY;
 

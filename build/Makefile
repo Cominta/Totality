@@ -320,6 +320,30 @@ src/mainState.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/mainState.cpp.s
 .PHONY : src/mainState.cpp.s
 
+src/randomNums.obj: src/randomNums.cpp.obj
+.PHONY : src/randomNums.obj
+
+# target to build an object file
+src/randomNums.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/randomNums.cpp.obj
+.PHONY : src/randomNums.cpp.obj
+
+src/randomNums.i: src/randomNums.cpp.i
+.PHONY : src/randomNums.i
+
+# target to preprocess a source file
+src/randomNums.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/randomNums.cpp.i
+.PHONY : src/randomNums.cpp.i
+
+src/randomNums.s: src/randomNums.cpp.s
+.PHONY : src/randomNums.s
+
+# target to generate assembly for a file
+src/randomNums.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/randomNums.cpp.s
+.PHONY : src/randomNums.cpp.s
+
 src/sounds.obj: src/sounds.cpp.obj
 .PHONY : src/sounds.obj
 
@@ -521,6 +545,9 @@ help:
 	@echo ... src/mainState.obj
 	@echo ... src/mainState.i
 	@echo ... src/mainState.s
+	@echo ... src/randomNums.obj
+	@echo ... src/randomNums.i
+	@echo ... src/randomNums.s
 	@echo ... src/sounds.obj
 	@echo ... src/sounds.i
 	@echo ... src/sounds.s
