@@ -116,7 +116,7 @@ void Engine::loadSounds()
 
     std::vector<float> volumes = {
         20.0f,
-        50.0f
+        70.0f
     };
 
     for (int i = 0; i < names.size(); i++)

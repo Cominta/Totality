@@ -410,11 +410,14 @@ void BaseUnit::moveTo(float dt, std::vector<BaseUnit*>& units)
     }
 
     const int maxDist = 1500;
+    int minDist = 300;
     float volume = sounds::getVolume("walk");
-    float distPersentX;
-    float distPersentY;
+    float volumeFactor = 0;
     float distX;
     float distY;
+    float dist;
+
+    // Volume factor = MinDistance / (MinDistance + Attenuation * (max(Distance, MinDistance) - MinDistance))
 
     // x
     if (this->unit.getPosition().x > this->window->getView().getCenter().x)
@@ -440,12 +443,10 @@ void BaseUnit::moveTo(float dt, std::vector<BaseUnit*>& units)
 
     if (distX <= maxDist && distY <= maxDist)
     {
-        distPersentX = distX / maxDist * 100;
-        distPersentY = distY / maxDist * 100;
-        volume -= volume / 100 * distPersentX;
-        volume -= volume / 100 * distPersentY;
+        dist = sqrt(pow(distX, 2) + pow(distY, 2));
+        volumeFactor = minDist / (minDist + 1.0f * (std::max((int)dist, minDist) - minDist));
         
-        sounds::play("walk", volume);
+        sounds::play("walk", volume * volumeFactor);
     }
 
     this->xMap = newX;

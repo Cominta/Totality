@@ -20,6 +20,7 @@ class Button
         float scale;
 
         bool activ;
+        bool sounded;
 
     public:
         enum class states

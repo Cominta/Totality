@@ -4,24 +4,19 @@ namespace sounds
 {
     const std::string rootPath = "resources/sounds/";
 
-    std::map<std::string, sf::Music*> sounds;
+    std::map<std::string, sf::SoundBuffer> buffers;
+    std::vector<sf::Sound> sounds;
     std::map<std::string, float> volumes;
 
     void load(std::string name, float volume)
     {
-        sounds[name] = new sf::Music();
-
-        if (!sounds[name]->openFromFile(rootPath + name + ".wav"))
-        {
-            std::cout << "Sound load error: " << name << "\n";
-        }
-
         if (volume == -1)
         {
-            volume = 10.0f;
+            volume = 10;
         }
 
         volumes[name] = volume;
+        buffers[name].loadFromFile(rootPath + name + ".wav");
     }
 
     float getVolume(std::string name)
@@ -31,24 +26,46 @@ namespace sounds
 
     void play(std::string name, float volume, bool repeat)
     {
-        if (volume == -1)
+        if (sounds.size() == 0)
         {
-            volume = volumes[name];
+            sounds.push_back(sf::Sound());
+            sounds[0].setBuffer(buffers[name]);
+            sounds[0].setVolume(volume);
+            sounds[0].play();
         }
 
-        sounds[name]->setVolume(volume);
-        sounds[name]->setLoop(repeat);
-
-        if (sounds[name]->getStatus() == 2)
+        else 
         {
-            return;
-        }
+            int location = -1;
 
-        if (sounds[name]->getStatus() == 0)
-        {
-            sounds[name]->stop();
-        }
+            for (int i = 0; i < sounds.size(); i++)
+            {
+                // if (sounds[i].getStatus() != sf::Sound::Playing)
+                // {
+                //     sounds.erase(sounds.begin() + i);
+                // }
 
-        sounds[name]->play();
+                if (sounds[i].getStatus() != sf::Sound::Playing && location == -1)
+                {
+                    location = i;
+                    break;
+                }
+            }
+
+            if (location != -1)
+            {
+                sounds[location].setBuffer(buffers[name]);
+                sounds[location].setVolume(volume);
+                sounds[location].play();
+            }
+
+            else 
+            {
+                sounds.push_back(sf::Sound());
+                sounds[sounds.size() - 1].setBuffer(buffers[name]);
+                sounds[sounds.size() - 1].setVolume(volume);
+                sounds[sounds.size() - 1].play();   
+            }
+        }
     }
 };
