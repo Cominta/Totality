@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "sounds.h"
 
 class Button
 {
@@ -19,6 +20,7 @@ class Button
         float scale;
 
         bool activ;
+        bool sounded;
 
     public:
         enum class states

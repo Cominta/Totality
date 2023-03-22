@@ -23,6 +23,7 @@ class Engine
         float dt;
 
         void loadTextures();
+        void loadSounds();
 
     public:
         Engine(sf::RenderWindow* window);

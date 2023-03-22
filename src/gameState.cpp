@@ -1,9 +1,11 @@
 #include "gameState.h"
 
+static int team = 0;
+
 GameState::GameState(typeState type, sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures, unsigned int seed)
     : State(type, window, states, textures), sizeMapX(100), sizeMapY(100)
 {
-    srand(time(0));
+    srand((unsigned) time(0));
     this->tilemap = new Tilemap(this->window, this->textures, this->sizeMapX, this->sizeMapY, 3, 8, seed);
     this->camera = new Camera(this->window, 16000, 16000);
     this->gameView = this->window->getView();
@@ -49,6 +51,8 @@ GameState::~GameState()
     this->units.clear();
 
     this->window->setView(this->window->getDefaultView());
+    delete this->tilemap;
+    team = 0;
 }
 
 void GameState::generateBlood(std::pair<sf::Vector2f, int>& pos)
@@ -56,28 +60,28 @@ void GameState::generateBlood(std::pair<sf::Vector2f, int>& pos)
     int x = pos.first.x;
     int y = pos.first.y;
 
-    int op = rand() % 100;
+    int op = randomNumbers::getRandomNum(0, 100);
 
-    if (op >= 45)
+    if (op >= 50)
     {
-        x += abs(rand() % (30 + 1 - (-30)) - (-30));
+        x += randomNumbers::getRandomNum(0, 40);
     }
 
-    else if (op < 35)  
+    else  
     {
-        x -= abs(rand() % (30 + 1 - (-30)) - (-30));
+        x -= randomNumbers::getRandomNum(0, 40);
     }
 
-    op = rand() % 100;
+    op = randomNumbers::getRandomNum(0, 100);
 
-    if (op >= 45)
+    if (op >= 50)
     {
-        y += abs(rand() % (30 + 1 - (-30)) - (-30));
+        y += randomNumbers::getRandomNum(0, 40);
     }
 
-    else if (op < 35) 
+    else 
     {
-        y -= abs(rand() % (30 + 1 - (-30)) - (-30));
+        y -= randomNumbers::getRandomNum(0, 40);
     }
 
     pos.first.x = x;
@@ -182,6 +186,7 @@ void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::
                 
                 this->generateBlood(blood);
                 this->bloods.push_back(blood);
+                this->units[i]->setAttacked(false);
             }
 
             this->units[i]->update(mousePressedLeft, mousePressedRight, realisedKeys, pressedKeys, this->units);
@@ -192,9 +197,9 @@ void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::
 
 int GameState::updateButtons(bool mousePressedLeft)
 {
-    static int team = 0;
     //this->window->mapPixelToCoords(sf::Vector2i(10, 20));
     this->updateMouse();
+
     if (buttons.at("Prepare")->isHover(this->mousePosition) && mousePressedLeft)
     {
         if (buttons.at("Prepare")->isActiv())
@@ -238,6 +243,8 @@ int GameState::updateButtons(bool mousePressedLeft)
             it.second->setScale(this->window->getView().getSize().x / 100 / 18.0f, this->window->getView().getSize().y / 100 / 10);
             counter++;
         }
+
+        it.second->update(this->mousePosition, mousePressedLeft);
     }
 
     if (buttons.at("Prepare")->isActiv())
@@ -422,7 +429,7 @@ void GameState::render()
         sprite.setTexture(this->textures["blood"]);
         sprite.setPosition(blood.first.x, blood.first.y);
         sprite.setRotation(blood.second);
-        sprite.setScale(0.2, 0.2);
+        sprite.setScale(0.7, 0.7);
 
         this->window->draw(sprite);
     }

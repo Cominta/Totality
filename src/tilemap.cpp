@@ -15,6 +15,7 @@ Tilemap::Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& t
 
     const siv::PerlinNoise::seed_type seed = seedGame;
     this->perlinNoise = new siv::PerlinNoise(seed);
+    this->currentAnim = 0;
 
     this->tiles = {
         {0, textures["tile_water_1"]},
@@ -130,7 +131,7 @@ void Tilemap::renderMini(sf::View view)
 
                 else if (this->map[y][x] == this->tileKeys["water"].second)
                 {
-                    this->map[y][x] = 0;
+                    this->map[y][x] = this->tileKeys["water"].first;
                 }
 
                 this->currentAnim = this->animSleep;

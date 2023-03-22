@@ -3,7 +3,8 @@
 
 void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& realisedKeys, std::vector<int>& pressedKeys, std::vector<BaseUnit*>& units)
 {
-    this->attacked = false;
+    srand(time(0));
+
     this->updateHpBar();
 
     if (mousePressedLeft)
@@ -368,6 +369,7 @@ void BaseUnit::moveTo(float dt, std::vector<BaseUnit*>& units)
             if (unit != nullptr && unit->xMap == newX && unit->yMap == newY && unit->getTeam() != this->team)
             {
                 this->doDamage(0, unit, true);
+                this->attacked = false;
             }
         }
     }
@@ -402,12 +404,18 @@ void BaseUnit::moveTo(float dt, std::vector<BaseUnit*>& units)
         // this->yMap = oldY;
         if (this->toAttack != nullptr && this->team != this->toAttack->getTeam())
         {
+            int hitSound = randomNumbers::getRandomNum(1, 2);
+            std::string str = "hit_sword_" + std::string(std::to_string(hitSound));
+            sounds::play(str, sounds::getVolume(str), false, true, this->unit.getPosition().x, this->unit.getPosition().y);
+            
             this->toAttack->doDamage(this->damage, this);
             this->currentSpeedAttack = this->speedAttack + (1.0f / dt) / 10;
         }
 
         return;
     }
+
+    sounds::play("walk", sounds::getVolume("walk"), false, true, this->unit.getPosition().x, this->unit.getPosition().y);
 
     this->xMap = newX;
     this->yMap = newY;

@@ -1,3 +1,0 @@
-D:\CMake\bin\cmake.exe -E rm -f CMakeFiles\Totality.dir/objects.a
-D:\MinGW\mingw64\bin\ar.exe qc CMakeFiles\Totality.dir/objects.a @CMakeFiles\Totality.dir\objects1.rsp
-D:\MinGW\mingw64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\Totality.dir/objects.a -Wl,--no-whole-archive -o "D:\Microsoft Visual Studio\VS Code repos\Totality\output\Totality.exe" -Wl,--out-implib,"D:\Microsoft Visual Studio\VS Code repos\Totality\output\libTotality.dll.a" -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Totality.dir\linkLibs.rsp

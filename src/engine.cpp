@@ -4,8 +4,10 @@ Engine::Engine(sf::RenderWindow* window)
     : window(window)
 {
     this->loadTextures();
+    this->loadSounds();
 
     this->states.push(new MainState(State::typeState::MAINSTATE, this->window, this->states, this->textures));
+    sounds::setWindow(window);
 
     this->mousePressedLeft = false;
     this->mousePressedRight = false;
@@ -103,6 +105,28 @@ void Engine::loadTextures()
         texture.loadFromFile(paths[i]);
 
         this->textures[names[i]] = texture;
+    }
+}
+
+void Engine::loadSounds()
+{
+    std::vector<std::string> names = {
+        "press_button",
+        "walk",
+        "hit_sword_1",
+        "hit_sword_2"
+    };
+
+    std::vector<float> volumes = {
+        40.0f,
+        70.0f,
+        1.0f,
+        1.0f
+    };
+
+    for (int i = 0; i < names.size(); i++)
+    {
+        sounds::load(names[i], volumes[i]);
     }
 }
 

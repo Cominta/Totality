@@ -16,6 +16,7 @@ Button::Button(sf::RenderWindow* window, float x, float y, float scale, sf::Text
     this->size = 64;
 
     this->active = 0;
+    this->sounded = false;
 }
 
 Button::~Button()
@@ -50,6 +51,12 @@ void Button::update(sf::Vector2f mousePosition, bool mousePressed)
         {
             this->state = Button::states::ACTIVE;
 
+            if (!sounded)
+            {
+                sounds::play("press_button");
+                sounded = true;
+            }
+
             if (this->active != nullptr)
             {
                 this->sprite->setTexture(*this->active);
@@ -59,6 +66,7 @@ void Button::update(sf::Vector2f mousePosition, bool mousePressed)
         else
         {
             this->state = Button::states::HOVER;
+            sounded = false;
 
             if (this->hover != nullptr)
             {
@@ -70,11 +78,12 @@ void Button::update(sf::Vector2f mousePosition, bool mousePressed)
     else
     {
         this->state = Button::states::IDLE;
+        sounded = false;
 
         if (this->idle != nullptr)
-            {
-                this->sprite->setTexture(*this->idle);
-            }
+        {
+            this->sprite->setTexture(*this->idle);
+        }
     }
 }
 
