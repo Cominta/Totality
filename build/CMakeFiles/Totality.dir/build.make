@@ -188,11 +188,26 @@ CMakeFiles/Totality.dir/src/mainState.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Totality.dir/src/mainState.cpp.s"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Roman\Desktop\Totality\src\mainState.cpp -o CMakeFiles\Totality.dir\src\mainState.cpp.s
 
+CMakeFiles/Totality.dir/src/sounds.cpp.obj: CMakeFiles/Totality.dir/flags.make
+CMakeFiles/Totality.dir/src/sounds.cpp.obj: CMakeFiles/Totality.dir/includes_CXX.rsp
+CMakeFiles/Totality.dir/src/sounds.cpp.obj: C:/Users/Roman/Desktop/Totality/src/sounds.cpp
+CMakeFiles/Totality.dir/src/sounds.cpp.obj: CMakeFiles/Totality.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Roman\Desktop\Totality\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Totality.dir/src/sounds.cpp.obj"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Totality.dir/src/sounds.cpp.obj -MF CMakeFiles\Totality.dir\src\sounds.cpp.obj.d -o CMakeFiles\Totality.dir\src\sounds.cpp.obj -c C:\Users\Roman\Desktop\Totality\src\sounds.cpp
+
+CMakeFiles/Totality.dir/src/sounds.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Totality.dir/src/sounds.cpp.i"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Roman\Desktop\Totality\src\sounds.cpp > CMakeFiles\Totality.dir\src\sounds.cpp.i
+
+CMakeFiles/Totality.dir/src/sounds.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Totality.dir/src/sounds.cpp.s"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Roman\Desktop\Totality\src\sounds.cpp -o CMakeFiles\Totality.dir\src\sounds.cpp.s
+
 CMakeFiles/Totality.dir/src/state.cpp.obj: CMakeFiles/Totality.dir/flags.make
 CMakeFiles/Totality.dir/src/state.cpp.obj: CMakeFiles/Totality.dir/includes_CXX.rsp
 CMakeFiles/Totality.dir/src/state.cpp.obj: C:/Users/Roman/Desktop/Totality/src/state.cpp
 CMakeFiles/Totality.dir/src/state.cpp.obj: CMakeFiles/Totality.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Roman\Desktop\Totality\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Totality.dir/src/state.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Roman\Desktop\Totality\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Totality.dir/src/state.cpp.obj"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Totality.dir/src/state.cpp.obj -MF CMakeFiles\Totality.dir\src\state.cpp.obj.d -o CMakeFiles\Totality.dir\src\state.cpp.obj -c C:\Users\Roman\Desktop\Totality\src\state.cpp
 
 CMakeFiles/Totality.dir/src/state.cpp.i: cmake_force
@@ -207,7 +222,7 @@ CMakeFiles/Totality.dir/src/team.cpp.obj: CMakeFiles/Totality.dir/flags.make
 CMakeFiles/Totality.dir/src/team.cpp.obj: CMakeFiles/Totality.dir/includes_CXX.rsp
 CMakeFiles/Totality.dir/src/team.cpp.obj: C:/Users/Roman/Desktop/Totality/src/team.cpp
 CMakeFiles/Totality.dir/src/team.cpp.obj: CMakeFiles/Totality.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Roman\Desktop\Totality\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Totality.dir/src/team.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Roman\Desktop\Totality\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Totality.dir/src/team.cpp.obj"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Totality.dir/src/team.cpp.obj -MF CMakeFiles\Totality.dir\src\team.cpp.obj.d -o CMakeFiles\Totality.dir\src\team.cpp.obj -c C:\Users\Roman\Desktop\Totality\src\team.cpp
 
 CMakeFiles/Totality.dir/src/team.cpp.i: cmake_force
@@ -222,7 +237,7 @@ CMakeFiles/Totality.dir/src/textBox.cpp.obj: CMakeFiles/Totality.dir/flags.make
 CMakeFiles/Totality.dir/src/textBox.cpp.obj: CMakeFiles/Totality.dir/includes_CXX.rsp
 CMakeFiles/Totality.dir/src/textBox.cpp.obj: C:/Users/Roman/Desktop/Totality/src/textBox.cpp
 CMakeFiles/Totality.dir/src/textBox.cpp.obj: CMakeFiles/Totality.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Roman\Desktop\Totality\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Totality.dir/src/textBox.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Roman\Desktop\Totality\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Totality.dir/src/textBox.cpp.obj"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Totality.dir/src/textBox.cpp.obj -MF CMakeFiles\Totality.dir\src\textBox.cpp.obj.d -o CMakeFiles\Totality.dir\src\textBox.cpp.obj -c C:\Users\Roman\Desktop\Totality\src\textBox.cpp
 
 CMakeFiles/Totality.dir/src/textBox.cpp.i: cmake_force
@@ -237,7 +252,7 @@ CMakeFiles/Totality.dir/src/tilemap.cpp.obj: CMakeFiles/Totality.dir/flags.make
 CMakeFiles/Totality.dir/src/tilemap.cpp.obj: CMakeFiles/Totality.dir/includes_CXX.rsp
 CMakeFiles/Totality.dir/src/tilemap.cpp.obj: C:/Users/Roman/Desktop/Totality/src/tilemap.cpp
 CMakeFiles/Totality.dir/src/tilemap.cpp.obj: CMakeFiles/Totality.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Roman\Desktop\Totality\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Totality.dir/src/tilemap.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Roman\Desktop\Totality\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Totality.dir/src/tilemap.cpp.obj"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Totality.dir/src/tilemap.cpp.obj -MF CMakeFiles\Totality.dir\src\tilemap.cpp.obj.d -o CMakeFiles\Totality.dir\src\tilemap.cpp.obj -c C:\Users\Roman\Desktop\Totality\src\tilemap.cpp
 
 CMakeFiles/Totality.dir/src/tilemap.cpp.i: cmake_force
@@ -252,7 +267,7 @@ CMakeFiles/Totality.dir/src/viewMap.cpp.obj: CMakeFiles/Totality.dir/flags.make
 CMakeFiles/Totality.dir/src/viewMap.cpp.obj: CMakeFiles/Totality.dir/includes_CXX.rsp
 CMakeFiles/Totality.dir/src/viewMap.cpp.obj: C:/Users/Roman/Desktop/Totality/src/viewMap.cpp
 CMakeFiles/Totality.dir/src/viewMap.cpp.obj: CMakeFiles/Totality.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Roman\Desktop\Totality\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Totality.dir/src/viewMap.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Roman\Desktop\Totality\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Totality.dir/src/viewMap.cpp.obj"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Totality.dir/src/viewMap.cpp.obj -MF CMakeFiles\Totality.dir\src\viewMap.cpp.obj.d -o CMakeFiles\Totality.dir\src\viewMap.cpp.obj -c C:\Users\Roman\Desktop\Totality\src\viewMap.cpp
 
 CMakeFiles/Totality.dir/src/viewMap.cpp.i: cmake_force
@@ -267,7 +282,7 @@ CMakeFiles/Totality.dir/src/wariorUnit.cpp.obj: CMakeFiles/Totality.dir/flags.ma
 CMakeFiles/Totality.dir/src/wariorUnit.cpp.obj: CMakeFiles/Totality.dir/includes_CXX.rsp
 CMakeFiles/Totality.dir/src/wariorUnit.cpp.obj: C:/Users/Roman/Desktop/Totality/src/wariorUnit.cpp
 CMakeFiles/Totality.dir/src/wariorUnit.cpp.obj: CMakeFiles/Totality.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Roman\Desktop\Totality\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Totality.dir/src/wariorUnit.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Roman\Desktop\Totality\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/Totality.dir/src/wariorUnit.cpp.obj"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Totality.dir/src/wariorUnit.cpp.obj -MF CMakeFiles\Totality.dir\src\wariorUnit.cpp.obj.d -o CMakeFiles\Totality.dir\src\wariorUnit.cpp.obj -c C:\Users\Roman\Desktop\Totality\src\wariorUnit.cpp
 
 CMakeFiles/Totality.dir/src/wariorUnit.cpp.i: cmake_force
@@ -288,6 +303,7 @@ Totality_OBJECTS = \
 "CMakeFiles/Totality.dir/src/gameState.cpp.obj" \
 "CMakeFiles/Totality.dir/src/main.cpp.obj" \
 "CMakeFiles/Totality.dir/src/mainState.cpp.obj" \
+"CMakeFiles/Totality.dir/src/sounds.cpp.obj" \
 "CMakeFiles/Totality.dir/src/state.cpp.obj" \
 "CMakeFiles/Totality.dir/src/team.cpp.obj" \
 "CMakeFiles/Totality.dir/src/textBox.cpp.obj" \
@@ -306,6 +322,7 @@ C:/Users/Roman/Desktop/Totality/output/Totality.exe: CMakeFiles/Totality.dir/src
 C:/Users/Roman/Desktop/Totality/output/Totality.exe: CMakeFiles/Totality.dir/src/gameState.cpp.obj
 C:/Users/Roman/Desktop/Totality/output/Totality.exe: CMakeFiles/Totality.dir/src/main.cpp.obj
 C:/Users/Roman/Desktop/Totality/output/Totality.exe: CMakeFiles/Totality.dir/src/mainState.cpp.obj
+C:/Users/Roman/Desktop/Totality/output/Totality.exe: CMakeFiles/Totality.dir/src/sounds.cpp.obj
 C:/Users/Roman/Desktop/Totality/output/Totality.exe: CMakeFiles/Totality.dir/src/state.cpp.obj
 C:/Users/Roman/Desktop/Totality/output/Totality.exe: CMakeFiles/Totality.dir/src/team.cpp.obj
 C:/Users/Roman/Desktop/Totality/output/Totality.exe: CMakeFiles/Totality.dir/src/textBox.cpp.obj
@@ -317,10 +334,11 @@ C:/Users/Roman/Desktop/Totality/output/Totality.exe: C:/Users/Roman/Desktop/Tota
 C:/Users/Roman/Desktop/Totality/output/Totality.exe: C:/Users/Roman/Desktop/Totality/lib/libsfml-graphics-d.a
 C:/Users/Roman/Desktop/Totality/output/Totality.exe: C:/Users/Roman/Desktop/Totality/lib/libsfml-window-d.a
 C:/Users/Roman/Desktop/Totality/output/Totality.exe: C:/Users/Roman/Desktop/Totality/lib/libsfml-main-d.a
+C:/Users/Roman/Desktop/Totality/output/Totality.exe: C:/Users/Roman/Desktop/Totality/lib/libsfml-audio-d.a
 C:/Users/Roman/Desktop/Totality/output/Totality.exe: CMakeFiles/Totality.dir/linkLibs.rsp
 C:/Users/Roman/Desktop/Totality/output/Totality.exe: CMakeFiles/Totality.dir/objects1
 C:/Users/Roman/Desktop/Totality/output/Totality.exe: CMakeFiles/Totality.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Roman\Desktop\Totality\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable C:\Users\Roman\Desktop\Totality\output\Totality.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Roman\Desktop\Totality\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable C:\Users\Roman\Desktop\Totality\output\Totality.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Totality.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

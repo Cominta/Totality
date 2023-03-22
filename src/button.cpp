@@ -49,6 +49,7 @@ void Button::update(sf::Vector2f mousePosition, bool mousePressed)
         if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
         {
             this->state = Button::states::ACTIVE;
+            sounds::play("press_button");
 
             if (this->active != nullptr)
             {
@@ -72,9 +73,9 @@ void Button::update(sf::Vector2f mousePosition, bool mousePressed)
         this->state = Button::states::IDLE;
 
         if (this->idle != nullptr)
-            {
-                this->sprite->setTexture(*this->idle);
-            }
+        {
+            this->sprite->setTexture(*this->idle);
+        }
     }
 }
 

@@ -19,6 +19,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Totality.dir/src/main.cpp.obj.d"
   "CMakeFiles/Totality.dir/src/mainState.cpp.obj"
   "CMakeFiles/Totality.dir/src/mainState.cpp.obj.d"
+  "CMakeFiles/Totality.dir/src/sounds.cpp.obj"
+  "CMakeFiles/Totality.dir/src/sounds.cpp.obj.d"
   "CMakeFiles/Totality.dir/src/state.cpp.obj"
   "CMakeFiles/Totality.dir/src/state.cpp.obj.d"
   "CMakeFiles/Totality.dir/src/team.cpp.obj"

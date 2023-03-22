@@ -6,6 +6,7 @@
 #include <queue>
 #include "team.h"
 #include "AStar.hpp"
+#include "sounds.h"
 
 struct TaskMove
 {

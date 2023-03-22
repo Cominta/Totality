@@ -320,6 +320,30 @@ src/mainState.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/mainState.cpp.s
 .PHONY : src/mainState.cpp.s
 
+src/sounds.obj: src/sounds.cpp.obj
+.PHONY : src/sounds.obj
+
+# target to build an object file
+src/sounds.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/sounds.cpp.obj
+.PHONY : src/sounds.cpp.obj
+
+src/sounds.i: src/sounds.cpp.i
+.PHONY : src/sounds.i
+
+# target to preprocess a source file
+src/sounds.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/sounds.cpp.i
+.PHONY : src/sounds.cpp.i
+
+src/sounds.s: src/sounds.cpp.s
+.PHONY : src/sounds.s
+
+# target to generate assembly for a file
+src/sounds.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Totality.dir\build.make CMakeFiles/Totality.dir/src/sounds.cpp.s
+.PHONY : src/sounds.cpp.s
+
 src/state.obj: src/state.cpp.obj
 .PHONY : src/state.obj
 
@@ -497,6 +521,9 @@ help:
 	@echo ... src/mainState.obj
 	@echo ... src/mainState.i
 	@echo ... src/mainState.s
+	@echo ... src/sounds.obj
+	@echo ... src/sounds.i
+	@echo ... src/sounds.s
 	@echo ... src/state.obj
 	@echo ... src/state.i
 	@echo ... src/state.s

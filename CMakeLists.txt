@@ -19,3 +19,4 @@ target_link_libraries(${PROJECT_NAME} ${CMAKE_SOURCE_DIR}/lib/libsfml-system-d.a
 target_link_libraries(${PROJECT_NAME} ${CMAKE_SOURCE_DIR}/lib/libsfml-graphics-d.a)
 target_link_libraries(${PROJECT_NAME} ${CMAKE_SOURCE_DIR}/lib/libsfml-window-d.a)
 target_link_libraries(${PROJECT_NAME} ${CMAKE_SOURCE_DIR}/lib/libsfml-main-d.a)
+target_link_libraries(${PROJECT_NAME} ${CMAKE_SOURCE_DIR}/lib/libsfml-audio-d.a)
