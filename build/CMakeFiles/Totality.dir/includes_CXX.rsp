@@ -1,1 +1,1 @@
--IC:/Users/Roman/Desktop/Totality/include -IC:/Users/Roman/Desktop/Totality/genCmake
+-I"D:/Microsoft Visual Studio/VS Code repos/Totality/include" -I"D:/Microsoft Visual Studio/VS Code repos/Totality/genCmake"
