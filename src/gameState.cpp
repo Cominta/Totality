@@ -217,6 +217,14 @@ int GameState::updateButtons(bool mousePressedLeft)
                 delete unit;
             }
 
+            for (int y = 0; y < this->tilemap->mapUnits.size(); y++)
+            {
+                for (int x = 0; x < this->tilemap->mapUnits[y].size(); x++)
+                {
+                    this->tilemap->mapUnits[y][x] = 0;
+                }
+            }
+
             this->units.clear();
             this->bloods.clear();
             this->deads.clear();
