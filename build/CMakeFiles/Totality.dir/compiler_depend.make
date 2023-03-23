@@ -439,6 +439,32 @@ CMakeFiles/Totality.dir/src/BaseUnit.cpp.obj: C:/Users/Roman/Desktop/Totality/sr
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mmintrin.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mm_malloc.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc \
+  C:/Users/Roman/Desktop/Totality/include/viewMap.h \
+  C:/Users/Roman/Desktop/Totality/include/sounds.h \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/InputSoundFile.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Export.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Listener.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Music.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundStream.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundSource.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/AlResource.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/OutputSoundFile.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Sound.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundBuffer.hpp \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/set \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_set.h \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_multiset.h \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundBufferRecorder.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundRecorder.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileFactory.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileFactory.inl \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileReader.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileWriter.hpp \
+  C:/Users/Roman/Desktop/Totality/include/randomNums.h \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/chrono \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/ratio \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/parse_numbers.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/queue \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/deque \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_deque.h \
@@ -452,32 +478,7 @@ CMakeFiles/Totality.dir/src/BaseUnit.cpp.obj: C:/Users/Roman/Desktop/Totality/sr
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/unordered_map \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/hashtable.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/hashtable_policy.h \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/unordered_map.h \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/set \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_set.h \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_multiset.h \
-  C:/Users/Roman/Desktop/Totality/include/sounds.h \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/InputSoundFile.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Export.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Listener.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Music.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundStream.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundSource.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/AlResource.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/OutputSoundFile.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Sound.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundBuffer.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundBufferRecorder.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundRecorder.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileFactory.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileFactory.inl \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileReader.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileWriter.hpp \
-  C:/Users/Roman/Desktop/Totality/include/randomNums.h \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/chrono \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/ratio \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/parse_numbers.h
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/unordered_map.h
 
 CMakeFiles/Totality.dir/src/archerUnit.cpp.obj: C:/Users/Roman/Desktop/Totality/src/archerUnit.cpp \
   C:/Users/Roman/Desktop/Totality/include/archerUnit.h \
@@ -758,6 +759,32 @@ CMakeFiles/Totality.dir/src/archerUnit.cpp.obj: C:/Users/Roman/Desktop/Totality/
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mmintrin.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mm_malloc.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc \
+  C:/Users/Roman/Desktop/Totality/include/viewMap.h \
+  C:/Users/Roman/Desktop/Totality/include/sounds.h \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/InputSoundFile.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Export.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Listener.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Music.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundStream.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundSource.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/AlResource.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/OutputSoundFile.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Sound.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundBuffer.hpp \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/set \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_set.h \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_multiset.h \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundBufferRecorder.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundRecorder.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileFactory.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileFactory.inl \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileReader.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileWriter.hpp \
+  C:/Users/Roman/Desktop/Totality/include/randomNums.h \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/chrono \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/ratio \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/parse_numbers.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/queue \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/deque \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_deque.h \
@@ -772,31 +799,6 @@ CMakeFiles/Totality.dir/src/archerUnit.cpp.obj: C:/Users/Roman/Desktop/Totality/
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/hashtable.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/hashtable_policy.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/unordered_map.h \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/set \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_set.h \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_multiset.h \
-  C:/Users/Roman/Desktop/Totality/include/sounds.h \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/InputSoundFile.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Export.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Listener.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Music.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundStream.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundSource.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/AlResource.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/OutputSoundFile.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Sound.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundBuffer.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundBufferRecorder.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundRecorder.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileFactory.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileFactory.inl \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileReader.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileWriter.hpp \
-  C:/Users/Roman/Desktop/Totality/include/randomNums.h \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/chrono \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/ratio \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/parse_numbers.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/math.h
 
 CMakeFiles/Totality.dir/src/button.cpp.obj: C:/Users/Roman/Desktop/Totality/src/button.cpp \
@@ -1394,6 +1396,11 @@ CMakeFiles/Totality.dir/src/engine.cpp.obj: C:/Users/Roman/Desktop/Totality/src/
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mmintrin.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mm_malloc.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc \
+  C:/Users/Roman/Desktop/Totality/include/viewMap.h \
+  C:/Users/Roman/Desktop/Totality/include/randomNums.h \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/chrono \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/ratio \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/parse_numbers.h \
   C:/Users/Roman/Desktop/Totality/include/WariorUnit.h \
   C:/Users/Roman/Desktop/Totality/include/BaseUnit.h \
   C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp \
@@ -1408,13 +1415,8 @@ CMakeFiles/Totality.dir/src/engine.cpp.obj: C:/Users/Roman/Desktop/Totality/src/
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/hashtable.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/hashtable_policy.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/unordered_map.h \
-  C:/Users/Roman/Desktop/Totality/include/randomNums.h \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/chrono \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/ratio \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/parse_numbers.h \
   C:/Users/Roman/Desktop/Totality/include/archerUnit.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/math.h \
-  C:/Users/Roman/Desktop/Totality/include/viewMap.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/thread \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/memory \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_raw_storage_iter.h \
@@ -1933,6 +1935,11 @@ CMakeFiles/Totality.dir/src/gameState.cpp.obj: C:/Users/Roman/Desktop/Totality/s
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mmintrin.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mm_malloc.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc \
+  C:/Users/Roman/Desktop/Totality/include/viewMap.h \
+  C:/Users/Roman/Desktop/Totality/include/randomNums.h \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/chrono \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/ratio \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/parse_numbers.h \
   C:/Users/Roman/Desktop/Totality/include/WariorUnit.h \
   C:/Users/Roman/Desktop/Totality/include/BaseUnit.h \
   C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp \
@@ -1947,13 +1954,8 @@ CMakeFiles/Totality.dir/src/gameState.cpp.obj: C:/Users/Roman/Desktop/Totality/s
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/hashtable.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/hashtable_policy.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/unordered_map.h \
-  C:/Users/Roman/Desktop/Totality/include/randomNums.h \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/chrono \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/ratio \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/parse_numbers.h \
   C:/Users/Roman/Desktop/Totality/include/archerUnit.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/math.h \
-  C:/Users/Roman/Desktop/Totality/include/viewMap.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/thread \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/memory \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_raw_storage_iter.h \
@@ -2472,6 +2474,11 @@ CMakeFiles/Totality.dir/src/main.cpp.obj: C:/Users/Roman/Desktop/Totality/src/ma
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mmintrin.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mm_malloc.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc \
+  C:/Users/Roman/Desktop/Totality/include/viewMap.h \
+  C:/Users/Roman/Desktop/Totality/include/randomNums.h \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/chrono \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/ratio \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/parse_numbers.h \
   C:/Users/Roman/Desktop/Totality/include/WariorUnit.h \
   C:/Users/Roman/Desktop/Totality/include/BaseUnit.h \
   C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp \
@@ -2486,13 +2493,8 @@ CMakeFiles/Totality.dir/src/main.cpp.obj: C:/Users/Roman/Desktop/Totality/src/ma
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/hashtable.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/hashtable_policy.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/unordered_map.h \
-  C:/Users/Roman/Desktop/Totality/include/randomNums.h \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/chrono \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/ratio \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/parse_numbers.h \
   C:/Users/Roman/Desktop/Totality/include/archerUnit.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/math.h \
-  C:/Users/Roman/Desktop/Totality/include/viewMap.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/thread \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/memory \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_raw_storage_iter.h \
@@ -3012,6 +3014,11 @@ CMakeFiles/Totality.dir/src/mainState.cpp.obj: C:/Users/Roman/Desktop/Totality/s
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mmintrin.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mm_malloc.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc \
+  C:/Users/Roman/Desktop/Totality/include/viewMap.h \
+  C:/Users/Roman/Desktop/Totality/include/randomNums.h \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/chrono \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/ratio \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/parse_numbers.h \
   C:/Users/Roman/Desktop/Totality/include/WariorUnit.h \
   C:/Users/Roman/Desktop/Totality/include/BaseUnit.h \
   C:/Users/Roman/Desktop/Totality/include/SFML/Graphics.hpp \
@@ -3026,13 +3033,8 @@ CMakeFiles/Totality.dir/src/mainState.cpp.obj: C:/Users/Roman/Desktop/Totality/s
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/hashtable.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/hashtable_policy.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/unordered_map.h \
-  C:/Users/Roman/Desktop/Totality/include/randomNums.h \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/chrono \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/ratio \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/parse_numbers.h \
   C:/Users/Roman/Desktop/Totality/include/archerUnit.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/math.h \
-  C:/Users/Roman/Desktop/Totality/include/viewMap.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/thread \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/memory \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_raw_storage_iter.h \
@@ -4729,7 +4731,33 @@ CMakeFiles/Totality.dir/src/tilemap.cpp.obj: C:/Users/Roman/Desktop/Totality/src
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/xmmintrin.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mmintrin.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mm_malloc.h \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc \
+  C:/Users/Roman/Desktop/Totality/include/viewMap.h \
+  C:/Users/Roman/Desktop/Totality/include/sounds.h \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/InputSoundFile.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Export.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Listener.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Music.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundStream.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundSource.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/AlResource.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/OutputSoundFile.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Sound.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundBuffer.hpp \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/set \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_set.h \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_multiset.h \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundBufferRecorder.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundRecorder.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileFactory.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileFactory.inl \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileReader.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileWriter.hpp \
+  C:/Users/Roman/Desktop/Totality/include/randomNums.h \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/chrono \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/ratio \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/parse_numbers.h
 
 CMakeFiles/Totality.dir/src/viewMap.cpp.obj: C:/Users/Roman/Desktop/Totality/src/viewMap.cpp \
   C:/Users/Roman/Desktop/Totality/include/viewMap.h \
@@ -5259,6 +5287,32 @@ CMakeFiles/Totality.dir/src/wariorUnit.cpp.obj: C:/Users/Roman/Desktop/Totality/
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mmintrin.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mm_malloc.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/random.tcc \
+  C:/Users/Roman/Desktop/Totality/include/viewMap.h \
+  C:/Users/Roman/Desktop/Totality/include/sounds.h \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/InputSoundFile.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Export.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Listener.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Music.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundStream.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundSource.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/AlResource.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/OutputSoundFile.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Sound.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundBuffer.hpp \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/set \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_set.h \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_multiset.h \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundBufferRecorder.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundRecorder.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileFactory.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileFactory.inl \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileReader.hpp \
+  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileWriter.hpp \
+  C:/Users/Roman/Desktop/Totality/include/randomNums.h \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/chrono \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/ratio \
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/parse_numbers.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/queue \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/deque \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_deque.h \
@@ -5272,32 +5326,7 @@ CMakeFiles/Totality.dir/src/wariorUnit.cpp.obj: C:/Users/Roman/Desktop/Totality/
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/unordered_map \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/hashtable.h \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/hashtable_policy.h \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/unordered_map.h \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/set \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_set.h \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_multiset.h \
-  C:/Users/Roman/Desktop/Totality/include/sounds.h \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/InputSoundFile.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Export.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Listener.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Music.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundStream.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundSource.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/AlResource.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/OutputSoundFile.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/Sound.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundBuffer.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundBufferRecorder.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundRecorder.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileFactory.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileFactory.inl \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileReader.hpp \
-  C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileWriter.hpp \
-  C:/Users/Roman/Desktop/Totality/include/randomNums.h \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/chrono \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/ratio \
-  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/parse_numbers.h
+  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/unordered_map.h
 
 
 C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_iterator_base_funcs.h:
@@ -6082,15 +6111,7 @@ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/mmintrin.h:
 
 C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundBufferRecorder.hpp:
 
-C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/deque:
-
-C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_deque.h:
-
-C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/deque.tcc:
-
-C:/Users/Roman/Desktop/Totality/include/team.h:
-
-C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/tmmintrin.h:
+C:/Users/Roman/Desktop/Totality/include/viewMap.h:
 
 C:/Users/Roman/Desktop/Totality/include/sounds.h:
 
@@ -6124,6 +6145,16 @@ C:/Users/Roman/Desktop/Totality/include/SFML/Audio/SoundFileWriter.hpp:
 
 C:/Users/Roman/Desktop/Totality/include/randomNums.h:
 
+C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/deque:
+
+C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_deque.h:
+
+C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/deque.tcc:
+
+C:/Users/Roman/Desktop/Totality/include/team.h:
+
+C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/tmmintrin.h:
+
 C:/Users/Roman/Desktop/Totality/src/archerUnit.cpp:
 
 C:/mingw64/x86_64-w64-mingw32/include/winapifamily.h:
@@ -6145,8 +6176,6 @@ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/stack:
 C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/xsavecintrin.h:
 
 C:/Users/Roman/Desktop/Totality/include/gameState.h:
-
-C:/Users/Roman/Desktop/Totality/include/viewMap.h:
 
 C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/avx512vlbwintrin.h:
 

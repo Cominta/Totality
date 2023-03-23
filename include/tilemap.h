@@ -4,6 +4,9 @@
 #include "SFML/Graphics.hpp"
 #include <iostream>
 #include "PerlinNoise.hpp"
+#include "viewMap.h"
+#include "sounds.h"
+#include "randomNums.h"
 
 class Tilemap 
 {
@@ -23,7 +26,11 @@ class Tilemap
         const int animSleep;
         int currentAnim;
 
+        const int soundSleep;
+        int currentSound;
+
         std::map<int, sf::Texture> tiles;
+        void checkWater(int x, int y, float& distX, float& distY);
 
     public:
         std::vector<std::vector<int>> map;

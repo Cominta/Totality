@@ -15,6 +15,8 @@ private:
     const int sideY;
 
 public:
+    static sf::RectangleShape cameraShape;
+
     Camera(sf::RenderWindow* window, int sideX, int sideY);
     ~Camera();
 

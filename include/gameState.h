@@ -56,6 +56,8 @@ class GameState : public State
         int updateButtons(bool mousePressedLeft);
         void multiplyUnits();
 
+        static int seed;
+
     public:
         GameState(typeState type, sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures, unsigned int seed);
         ~GameState();

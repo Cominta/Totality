@@ -1,9 +1,11 @@
 #include "tilemap.h"
 
 Tilemap::Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& textures, int width, int height, int frequency, int octaves, int seedGame)
-    : window(window), width(width), height(height), animSleep(10)
+    : window(window), width(width), height(height), animSleep(10), soundSleep(150)
 {
     srand(time(0));
+
+    this->currentSound = this->soundSleep;
 
     this->tileKeys = {
         {"water", {0, 7}},
@@ -78,11 +80,39 @@ Tilemap::Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& t
             this->mapUnits[y].push_back(0);
         }
     }
+
 }
 
 Tilemap::~Tilemap()
 {
     delete this->perlinNoise;
+}
+
+void Tilemap::checkWater(int x, int y, float& distX, float& distY)
+{
+    sf::Vector2f cameraPos = this->window->getView().getCenter();
+
+    // x
+    if (x > cameraPos.x)
+    {
+        distX = x - cameraPos.x;
+    }
+
+    else 
+    {
+        distX = cameraPos.x - x;
+    }
+
+    // y
+    if (y > cameraPos.y)
+    {
+        distY = y - cameraPos.y;
+    }
+
+    else 
+    {
+        distY = cameraPos.y - y;
+    }
 }
 
 void Tilemap::renderGame(sf::View view)
@@ -93,30 +123,11 @@ void Tilemap::renderGame(sf::View view)
     sf::Sprite sprite;
     sf::Vector2f pos(0, 0);
 
-    for (int y = 0; y < this->map.size(); y++)
-    {
-        for (int x = 0; x < this->map[y].size(); x++)
-        {
-            sprite.setTexture(this->tiles[this->map[y][x]]);
-            sprite.setPosition(pos);
-            this->window->draw(sprite);
-            pos.x += 64;
-        }
-
-        pos.y += 64;
-        pos.x = 0;
-    }
-
-    this->window->setView(old);
-}
-
-void Tilemap::renderMini(sf::View view)
-{
-    sf::View old = this->window->getView();
-    this->window->setView(view);
-
-    sf::Sprite sprite;
-    sf::Vector2f pos(0, 0);
+    bool waterPlay = false;
+    int minDistX = 10000000;
+    int minDistY = 10000000;
+    int xPlay;
+    int yPlay;
 
     for (int y = 0; y < this->map.size(); y++)
     {
@@ -142,6 +153,65 @@ void Tilemap::renderMini(sf::View view)
                 this->currentAnim--;
             }
 
+            if (this->currentSound <= 0)
+            {
+                if (this->map[y][x] <= this->tileKeys["water"].second && this->map[y][x] >= this->tileKeys["water"].first && 
+                    Camera::cameraShape.getGlobalBounds().contains(sf::Vector2f(x * 64, y * 64)))
+                {
+                    waterPlay = true;
+
+                    float distX;
+                    float distY;
+
+                    this->checkWater(x, y, distX, distY);
+
+                    if (distX < minDistX && distY < minDistY)
+                    {
+                        minDistX = distX;
+                        minDistY = distY;
+
+                        xPlay = x;
+                        yPlay = y;
+                    }
+                }
+            }
+
+            sprite.setTexture(this->tiles[this->map[y][x]]);
+            sprite.setPosition(pos);
+            this->window->draw(sprite);
+            pos.x += 64;
+        }
+
+        pos.y += 64;
+        pos.x = 0;
+    }
+
+    if (waterPlay)
+    {
+        int hitSound = randomNumbers::getRandomNum(1, 3);
+        std::string str = "water_" + std::string(std::to_string(hitSound));
+        sounds::play(str, sounds::getVolume(str), false, true, xPlay * 64, yPlay * 64);
+
+        this->currentSound = this->soundSleep;
+    }
+
+    this->currentSound--;
+    this->window->setView(old);
+}
+
+void Tilemap::renderMini(sf::View view)
+{
+    sf::View old = this->window->getView();
+    this->window->setView(view);
+
+    sf::Sprite sprite;
+    sf::Vector2f pos(0, 0);
+
+    for (int y = 0; y < this->map.size(); y++)
+    {
+        for (int x = 0; x < this->map[y].size(); x++)
+        {
+
             sprite.setTexture(this->tiles[this->map[y][x]]);
             sprite.setScale(0.15, 0.15);
             sprite.setPosition(pos);
@@ -153,6 +223,7 @@ void Tilemap::renderMini(sf::View view)
         pos.y += sprite.getTexture()->getSize().y * sprite.getScale().y;
         pos.x = 0;
     }
+
 
     this->window->setView(old);
 }

@@ -115,7 +115,10 @@ void Engine::loadSounds()
         "walk",
         "hit_sword_1",
         "hit_sword_2",
-        "wind"
+        "wind",
+        "water_1",
+        "water_2",
+        "water_3"
     };
 
     std::vector<float> volumes = {
@@ -123,6 +126,9 @@ void Engine::loadSounds()
         70.0f,
         1.0f,
         1.0f,
+        40.0f,
+        40.0f,
+        40.0f,
         40.0f
     };
 

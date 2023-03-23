@@ -83,6 +83,7 @@ namespace sounds
         if (sounds.size() == 0)
         {
             sounds.push_back(std::pair<sf::Sound, std::string> (sf::Sound(), name));
+            sounds[0].second = name;
             sounds[0].first.setBuffer(buffers[name]);
             sounds[0].first.setVolume(volume);
             sounds[0].first.play();
@@ -94,7 +95,12 @@ namespace sounds
 
             for (int i = 0; i < sounds.size(); i++)
             {
-                if (sounds[i].first.getStatus() != sf::Sound::Playing && location == -1)
+                // if (sounds[i].first.getStatus() != sf::Sound::Playing)
+                // {
+                //     sounds.erase(sounds.begin() + i);
+                // }
+
+                if (sounds[i].first.getStatus() != sf::Sound::Playing)
                 {
                     location = i;
                     break;
@@ -103,7 +109,7 @@ namespace sounds
 
             if (location != -1)
             {
-                sounds.push_back(std::pair<sf::Sound, std::string> (sf::Sound(), name));
+                sounds[location].second = name;
                 sounds[location].first.setBuffer(buffers[name]);
                 sounds[location].first.setVolume(volume);
                 sounds[location].first.play();
@@ -128,6 +134,7 @@ namespace sounds
             musics.push_back(std::pair<sf::Sound, std::string> (sf::Sound(), name));
             musics[0].first.setBuffer(buffers[name]);
             musics[0].first.setVolume(volumes[name]);
+            musics[0].first.setLoop(true);
             musics[0].first.play();
         }
 

@@ -1,11 +1,14 @@
 #include "gameState.h"
 
 static int team = 0;
+int GameState::seed;
 
 GameState::GameState(typeState type, sf::RenderWindow* window, std::stack<State*>& states, std::map<std::string, sf::Texture>& textures, unsigned int seed)
     : State(type, window, states, textures), sizeMapX(100), sizeMapY(100), maxWidthBar(1000)
 {
     this->percentDone = 0;
+    this->seed = seed;
+
     this->loadingScreen();
 
     this->future = std::async(std::launch::async, [&]
@@ -45,11 +48,11 @@ void GameState::setup(unsigned int seed)
     this->percentDone += 10;
     std::this_thread::sleep_for(1000ms);
 
-    this->tilemap = new Tilemap(this->window, this->textures, this->sizeMapX, this->sizeMapY, 3, 8, seed);
+    this->camera = new Camera(this->window, 16000, 16000);
+    this->tilemap = new Tilemap(this->window, this->textures, this->sizeMapX, this->sizeMapY, 3, 8, this->seed);
     this->percentDone += 50;
     std::this_thread::sleep_for(1000ms);
 
-    this->camera = new Camera(this->window, 16000, 16000);
     this->gameView = this->window->getView();
     this->minimap.setViewport(sf::FloatRect(0.86f, 0, 0.15f, 0.25f));
     this->minimapCamera.setSize(this->gameView.getSize());

@@ -1,9 +1,14 @@
 #include "viewMap.h"
 
+sf::RectangleShape Camera::cameraShape;
+
 Camera::Camera(sf::RenderWindow* window, int sideX, int sideY) 
     : window(window), sideX(sideX), sideY(sideY)
 {
     this->scrollSpeed = 1000;
+    this->cameraShape.setSize(sf::Vector2f(this->window->getSize()));
+    this->cameraShape.setOrigin(this->cameraShape.getSize().x / 2, this->cameraShape.getSize().y / 2);
+    this->cameraShape.setFillColor(sf::Color::Transparent);
 }
 Camera::~Camera()
 {
@@ -81,6 +86,10 @@ void Camera::update(sf::Vector2f mousePosition, int mouseScroll, int width, int 
 
     view.move(this->currentSpeedX * dt, this->currentSpeedY * dt);
     this->window->setView(view);
+
+    this->cameraShape.setPosition(view.getCenter());
+    this->cameraShape.setSize(view.getSize());
+    this->cameraShape.setOrigin(this->cameraShape.getSize().x / 2, this->cameraShape.getSize().y / 2);
 
     currentSpeedX = 0;
     currentSpeedY = 0;
