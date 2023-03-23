@@ -65,8 +65,8 @@ void GameState::setup(unsigned int seed)
     this->buttons["Prepare"]->setOrigin(textures["Prepare_End"].getSize().x / 2, textures["Prepare_End"].getSize().y / 2);
     this->buttons["AddUnit"] = new Button(this->window, 1840, 1000, 1, &textures["UnitButton_Idle"]);
     this->buttons["Team"] = new Button(this->window, 1840, 920, 1, &textures["Team_Red"]);
-    this->buttons["AddBaseUnit"] = new Button(this->window, 1840, 840, 1, &textures["BaseUnitAddButton_Idle"]);
-    this->buttons["AddArcherUnit"] = new Button(this->window, 1840, 660, 1, &textures["ArcherUnitAddButton_Idle"]);
+    this->buttons["AddBaseUnit"] = new Button(this->window, 1840, 840, 1, &textures["BaseUnitAddButton_Idle"], nullptr, &textures["BaseUnitAddButton_Active"]);
+    this->buttons["AddArcherUnit"] = new Button(this->window, 1840, 660, 1, &textures["ArcherUnitAddButton_Idle"], nullptr, &textures["ArcherUnitAddButton_Active"]);
     this->buttons["AddUnit"]->setActiv(false);
     this->buttons["AddBaseUnit"]->setActiv(false);
     this->buttons["AddArcherUnit"]->setActiv(false);
@@ -349,6 +349,8 @@ int GameState::updateButtons(bool mousePressedLeft)
                 if (buttons.at("AddBaseUnit")->isActiv())
                 {
                     buttons.at("AddBaseUnit")->setActiv(false);
+                    buttons.at("AddBaseUnit")->setTexture(&this->textures["BaseUnitAddButton_Idle"]);
+                    buttons.at("AddBaseUnit")->updateSprite();
                 }
                 else
                 {
@@ -358,6 +360,10 @@ int GameState::updateButtons(bool mousePressedLeft)
                     }
                     buttons.at("AddUnit")->setActiv(true);
                     buttons.at("AddBaseUnit")->setActiv(true);
+                    buttons.at("AddBaseUnit")->setTexture(&this->textures["BaseUnitAddButton_Active"]);
+                    buttons.at("AddBaseUnit")->updateSprite();
+                    buttons.at("AddArcherUnit")->setTexture(&this->textures["ArcherUnitAddButton_Idle"]);
+                    buttons.at("AddArcherUnit")->updateSprite();
                 }
             }
             else if(buttons.at("AddArcherUnit")->isHover(this->mousePosition) && mousePressedLeft)
@@ -365,6 +371,8 @@ int GameState::updateButtons(bool mousePressedLeft)
                 if (buttons.at("AddArcherUnit")->isActiv())
                 {
                     buttons.at("AddArcherUnit")->setActiv(false);
+                    buttons.at("AddArcherUnit")->setTexture(&this->textures["ArcherUnitAddButton_Idle"]);
+                    buttons.at("AddArcherUnit")->updateSprite();
                 }
                 else
                 {
@@ -374,6 +382,10 @@ int GameState::updateButtons(bool mousePressedLeft)
                     }
                     buttons.at("AddUnit")->setActiv(true);
                     buttons.at("AddArcherUnit")->setActiv(true);
+                    buttons.at("AddArcherUnit")->setTexture(&this->textures["ArcherUnitAddButton_Active"]);
+                    buttons.at("AddArcherUnit")->updateSprite();
+                    buttons.at("AddBaseUnit")->setTexture(&this->textures["BaseUnitAddButton_Idle"]);
+                    buttons.at("AddBaseUnit")->updateSprite();
                 }
             }
             else if (buttons.at("Team")->isHover(this->mousePosition) && mousePressedLeft)

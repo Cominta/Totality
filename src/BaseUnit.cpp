@@ -385,8 +385,8 @@ void BaseUnit::moveTo(float dt, std::vector<BaseUnit*>& units)
         // this->xMap = oldX;
         // this->yMap = oldY;
 
-        this->clearTasks();
-        this->b_moving = false;
+        // this->clearTasks();
+        // this->b_moving = false;
 
         return;
     }
