@@ -43,6 +43,8 @@ void Camera::update(sf::Vector2f mousePosition, int mouseScroll, int width, int 
         this->currentSpeedY = -this->scrollSpeed; 
     }
 
+    view.move(this->currentSpeedX * dt, this->currentSpeedY * dt);
+
     // CAMERA LIMIT X
     if (view.getCenter().x - view.getSize().x / 2 < 0) {
         view.setCenter(view.getSize().x / 2, view.getCenter().y);
@@ -84,7 +86,6 @@ void Camera::update(sf::Vector2f mousePosition, int mouseScroll, int width, int 
         view.setSize(currentSize * currentZoom);
     }
 
-    view.move(this->currentSpeedX * dt, this->currentSpeedY * dt);
     this->window->setView(view);
 
     this->cameraShape.setPosition(view.getCenter());
