@@ -34,6 +34,7 @@ GameState::~GameState()
     this->window->setView(this->window->getDefaultView());
     delete this->tilemap;
     team = 0;
+    sounds::stopMusic("wind");
 }
 
 void GameState::setup(unsigned int seed)
@@ -78,6 +79,8 @@ void GameState::setup(unsigned int seed)
     this->percentDone += 10;
 
     std::this_thread::sleep_for(1000ms);
+
+    sounds::playMusic("wind");
 
     return;
 }

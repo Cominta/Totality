@@ -5,7 +5,8 @@ namespace sounds
     const std::string rootPath = "resources/sounds/";
 
     std::map<std::string, sf::SoundBuffer> buffers;
-    std::vector<sf::Sound> sounds;
+    std::vector<std::pair<sf::Sound, std::string>> sounds; // для коротких звуков по типу удара 
+    std::vector<std::pair<sf::Sound, std::string>> musics; // для фоновых длинных звуков
     std::map<std::string, float> volumes;
     sf::RenderWindow* window;
 
@@ -81,10 +82,10 @@ namespace sounds
 
         if (sounds.size() == 0)
         {
-            sounds.push_back(sf::Sound());
-            sounds[0].setBuffer(buffers[name]);
-            sounds[0].setVolume(volume);
-            sounds[0].play();
+            sounds.push_back(std::pair<sf::Sound, std::string> (sf::Sound(), name));
+            sounds[0].first.setBuffer(buffers[name]);
+            sounds[0].first.setVolume(volume);
+            sounds[0].first.play();
         }
 
         else 
@@ -93,12 +94,7 @@ namespace sounds
 
             for (int i = 0; i < sounds.size(); i++)
             {
-                // if (sounds[i].getStatus() != sf::Sound::Playing)
-                // {
-                //     sounds.erase(sounds.begin() + i);
-                // }
-
-                if (sounds[i].getStatus() != sf::Sound::Playing && location == -1)
+                if (sounds[i].first.getStatus() != sf::Sound::Playing && location == -1)
                 {
                     location = i;
                     break;
@@ -107,17 +103,75 @@ namespace sounds
 
             if (location != -1)
             {
-                sounds[location].setBuffer(buffers[name]);
-                sounds[location].setVolume(volume);
-                sounds[location].play();
+                sounds.push_back(std::pair<sf::Sound, std::string> (sf::Sound(), name));
+                sounds[location].first.setBuffer(buffers[name]);
+                sounds[location].first.setVolume(volume);
+                sounds[location].first.play();
             }
 
             else 
             {
-                sounds.push_back(sf::Sound());
-                sounds[sounds.size() - 1].setBuffer(buffers[name]);
-                sounds[sounds.size() - 1].setVolume(volume);
-                sounds[sounds.size() - 1].play();   
+                sounds.push_back(std::pair<sf::Sound, std::string> (sf::Sound(), name));
+                sounds[sounds.size() - 1].second = name;
+                sounds[sounds.size() - 1].first.setBuffer(buffers[name]);
+                sounds[sounds.size() - 1].first.setVolume(volume);
+                sounds[sounds.size() - 1].first.setLoop(repeat);
+                sounds[sounds.size() - 1].first.play();   
+            }
+        }
+    }
+
+    void playMusic(std::string name)
+    {
+        if (musics.size() == 0)
+        {
+            musics.push_back(std::pair<sf::Sound, std::string> (sf::Sound(), name));
+            musics[0].first.setBuffer(buffers[name]);
+            musics[0].first.setVolume(volumes[name]);
+            musics[0].first.play();
+        }
+
+        else 
+        {
+            int location = -1;
+
+            for (int i = 0; i < sounds.size(); i++)
+            {
+                if (musics[i].first.getStatus() != sf::Sound::Playing && location == -1)
+                {
+                    location = i;
+                    break;
+                }
+            }
+
+            if (location != -1)
+            {
+                musics.push_back(std::pair<sf::Sound, std::string> (sf::Sound(), name));
+                musics[location].first.setBuffer(buffers[name]);
+                musics[location].first.setVolume(volumes[name]);
+                musics[location].first.setLoop(true);
+                musics[location].first.play();
+            }
+
+            else 
+            {
+                musics.push_back(std::pair<sf::Sound, std::string> (sf::Sound(), name));
+                musics[musics.size() - 1].second = name;
+                musics[musics.size() - 1].first.setBuffer(buffers[name]);
+                musics[musics.size() - 1].first.setVolume(volumes[name]);
+                musics[musics.size() - 1].first.setLoop(true);
+                musics[musics.size() - 1].first.play();   
+            }
+        }
+    }
+
+    void stopMusic(std::string name)
+    {
+        for (int i = 0; i < musics.size(); i++)
+        {
+            if (musics[i].second == name)
+            {
+                musics[i].first.stop();
             }
         }
     }

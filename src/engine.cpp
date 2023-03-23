@@ -114,14 +114,16 @@ void Engine::loadSounds()
         "press_button",
         "walk",
         "hit_sword_1",
-        "hit_sword_2"
+        "hit_sword_2",
+        "wind"
     };
 
     std::vector<float> volumes = {
         40.0f,
         70.0f,
         1.0f,
-        1.0f
+        1.0f,
+        40.0f
     };
 
     for (int i = 0; i < names.size(); i++)
