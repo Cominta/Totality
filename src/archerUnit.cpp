@@ -190,6 +190,8 @@ void Archer::moveTo(float dt, std::vector<BaseUnit*>& units)
     int newX = path[0].getPosition().x / 64;
     int newY = path[0].getPosition().y / 64;
 
+    this->flipTexture(newX, newY);
+
     this->updateHpBar();
 
     if (this->tilemap->map[newY][newX] >= this->tilemap->tileKeys["sand"].first && this->tilemap->map[newY][newX] <= this->tilemap->tileKeys["sand"].second)

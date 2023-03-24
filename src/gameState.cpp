@@ -299,6 +299,12 @@ int GameState::updateButtons(bool mousePressedLeft)
             bloods.clear();
             deads.clear();
             this->units.clear();
+
+            buttons.at("AddBaseUnit")->setTexture(&this->textures["BaseUnitAddButton_Idle"]);
+            buttons.at("AddBaseUnit")->updateSprite();
+
+            buttons.at("AddArcherUnit")->setTexture(&this->textures["ArcherUnitAddButton_Idle"]);
+            buttons.at("AddArcherUnit")->updateSprite();
         }
         buttons.at("Prepare")->updateSprite();
     }

@@ -28,7 +28,6 @@ protected:
     sf::Texture activeTexture;
     sf::Color activeColor;
 
-    bool flipped;
     // sf::Vector2i wayEnd;
     sf::RenderWindow* window;
     Tilemap* tilemap;
@@ -63,6 +62,7 @@ protected:
     void clearTasks();
     void initHpBar();
     sf::Texture editSprite(sf::Color color, sf::Texture texture);
+    void flipTexture(int newX, int newY);
 
     Team team;
 
@@ -75,7 +75,6 @@ public:
         this->attacked = false;
         this->damage = 10;
         team = _team;
-        this->flipped = false;
 
         if (team == 0)
         {
