@@ -133,6 +133,15 @@ void Tilemap::renderGame(sf::View view)
     {
         for (int x = 0; x < this->map[y].size(); x++)
         {
+            if ((x * 64 + 64 < Camera::cameraShape.getPosition().x - Camera::cameraShape.getSize().x / 2 || 
+                 x * 64 - 64 > Camera::cameraShape.getPosition().x + Camera::cameraShape.getSize().x / 2) &&
+                (y * 64 + 64 < Camera::cameraShape.getPosition().y - Camera::cameraShape.getSize().y / 2 ||
+                 y * 64 - 64 > Camera::cameraShape.getPosition().y + Camera::cameraShape.getSize().y / 2))
+            {
+                pos.x += 64;
+                continue;
+            }
+
             if (this->currentAnim <= 0)
             {
                 if (this->map[y][x] < this->tileKeys["water"].second)
