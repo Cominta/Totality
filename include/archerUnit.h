@@ -22,7 +22,7 @@ class Archer : public BaseUnit
 
     public:
         Archer(sf::RenderWindow *_window, Tilemap* tilemap, int xMap, int yMap, std::vector<std::vector<int>>& mapUnits, Team _team, sf::Texture texture) 
-        : BaseUnit(_window, tilemap, xMap, yMap, mapUnits, _team, texture)
+        : BaseUnit(_window, tilemap, xMap, yMap, mapUnits, _team, texture, group, position_in_group)
         {
             this->range.setSize(sf::Vector2f(2000, 2000));
             this->range.setOrigin(this->range.getSize().x / 2, this->range.getSize().y / 2);

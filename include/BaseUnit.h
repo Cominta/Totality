@@ -8,6 +8,8 @@
 #include "AStar.hpp"
 #include "sounds.h"
 #include "randomNums.h"
+#include "UnitGroup.h"
+
 
 struct TaskMove
 {
@@ -66,9 +68,13 @@ protected:
 
     Team team;
 
+    UnitGroup* group;
+
+    int position_in_group;
+
 public:
-    BaseUnit(sf::RenderWindow *_window, Tilemap* tilemap, int xMap, int yMap, std::vector<std::vector<int>>& mapUnits, Team _team, sf::Texture texture)
-        : speed(6), speedAttack(20), maxHp(100)
+    BaseUnit(sf::RenderWindow *_window, Tilemap* tilemap, int xMap, int yMap, std::vector<std::vector<int>>& mapUnits, Team _team, sf::Texture texture, UnitGroup* group, int position_in_group)
+        : speed(6), speedAttack(20), maxHp(100), group(group), position_in_group(position_in_group)
     {
         this->slowed = false;
         this->hp = 100;
@@ -261,4 +267,13 @@ public:
     virtual void renderGame(sf::View view, bool renderPath);
     void renderMini(sf::View view);
     virtual void renderArrow();
+
+    void setGroup(UnitGroup* group) {
+        this->group = group;
+    }
+
+    void setPositionInGroup(int pos) {
+        position_in_group = pos;
+    }
+
 };

@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
-  "C:/Users/Roman/Desktop/Totality/output/Totality.exe"
-  "C:/Users/Roman/Desktop/Totality/output/Totality.exe.manifest"
-  "C:/Users/Roman/Desktop/Totality/output/Totality.pdb"
-  "C:/Users/Roman/Desktop/Totality/output/libTotality.dll.a"
+  "C:/Users/gala/Desktop/Project/Totality/output/Totality.exe"
+  "C:/Users/gala/Desktop/Project/Totality/output/Totality.exe.manifest"
+  "C:/Users/gala/Desktop/Project/Totality/output/Totality.pdb"
+  "C:/Users/gala/Desktop/Project/Totality/output/libTotality.dll.a"
   "CMakeFiles/Totality.dir/src/AStar.cpp.obj"
   "CMakeFiles/Totality.dir/src/AStar.cpp.obj.d"
   "CMakeFiles/Totality.dir/src/BaseUnit.cpp.obj"
