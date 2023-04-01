@@ -313,6 +313,19 @@ bool BaseUnit::newPredict()
     return false;
 }
 
+void BaseUnit::flipTexture(int newX, int newY)
+{
+    if (newX > this->xMap && this->unit.getScale().x != 1)
+    {
+        this->unit.setScale(1, 1);
+    }
+
+    else if (newX < this->xMap && this->unit.getScale().x == 1) 
+    {
+        this->unit.setScale(-1, 1);
+    }
+}
+
 void BaseUnit::moveTo(float dt, std::vector<BaseUnit*>& units)
 {
     if (!this->attack)
@@ -361,6 +374,8 @@ void BaseUnit::moveTo(float dt, std::vector<BaseUnit*>& units)
 
     int newX = path[0].getPosition().x / 64;
     int newY = path[0].getPosition().y / 64;
+
+    this->flipTexture(newX, newY);
     
     if (this->tilemap->mapUnits[newY][newX] == 1)
     {
@@ -385,8 +400,8 @@ void BaseUnit::moveTo(float dt, std::vector<BaseUnit*>& units)
         // this->xMap = oldX;
         // this->yMap = oldY;
 
-        this->clearTasks();
-        this->b_moving = false;
+        // this->clearTasks();
+        // this->b_moving = false;
 
         return;
     }

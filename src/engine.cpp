@@ -32,7 +32,11 @@ void Engine::loadTextures()
         rootPath + "buttons/mainstate/exit_active.png",
         rootPath + "buttons/gamestate/UnitButton_Idle.png",
         rootPath + "buttons/gamestate/BaseUnitAddButton_Idle.png",
+        rootPath + "buttons/gamestate/BaseUnitAddButton_Hover.png",
+        rootPath + "buttons/gamestate/BaseUnitAddButton_Active.png",
         rootPath + "buttons/gamestate/ArcherUnitAddButton_Idle.png",
+        rootPath + "buttons/gamestate/ArcherUnitAddButton_Hover.png",
+        rootPath + "buttons/gamestate/ArcherUnitAddButton_Active.png",
         rootPath + "buttons/gamestate/Team_Red.png",
         rootPath + "buttons/gamestate/Team_Blue.png",
         rootPath + "buttons/gamestate/Team_Green.png",
@@ -126,7 +130,11 @@ void Engine::loadTextures()
         "exit_active",
         "UnitButton_Idle",
         "BaseUnitAddButton_Idle",
+        "BaseUnitAddButton_Hover",
+        "BaseUnitAddButton_Active",
         "ArcherUnitAddButton_Idle",
+        "ArcherUnitAddButton_Hover",
+        "ArcherUnitAddButton_Active",
         "Team_Red",
         "Team_Blue",
         "Team_Green",
@@ -226,14 +234,22 @@ void Engine::loadSounds()
         "press_button",
         "walk",
         "hit_sword_1",
-        "hit_sword_2"
+        "hit_sword_2",
+        "wind",
+        "water_1",
+        "water_2",
+        "water_3"
     };
 
     std::vector<float> volumes = {
         40.0f,
         70.0f,
         1.0f,
-        1.0f
+        1.0f,
+        40.0f,
+        40.0f,
+        40.0f,
+        40.0f
     };
 
     for (int i = 0; i < names.size(); i++)
