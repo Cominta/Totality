@@ -128,7 +128,8 @@ public:
         {
             for (int x = 0; x < this->tilemap->getWidth(); x++)
             {
-                if (this->tilemap->map[y][x] < this->tilemap->tileKeys["sand"].first || this->tilemap->map[y][x] > this->tilemap->tileKeys["ground"].second)
+                if (this->tilemap->map[y][x] < this->tilemap->tileKeys["sand"].first || this->tilemap->map[y][x] > this->tilemap->tileKeys["ground"].second && 
+                this->tilemap->map[y][x] < this->tilemap->tileKeys["crossGround"].first)
                 {
                     this->generator.addCollision({x, y});
                 }

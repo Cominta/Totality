@@ -44,7 +44,8 @@ void BaseUnit::update(bool mousePressedLeft, bool mousePressedRight, std::vector
             bool success = true;
 
             if ((worldPos.x > this->tilemap->getWidth() - 1 || worldPos.y > this->tilemap->getHeight() - 1) ||
-                (this->tilemap->map[worldPos.y][worldPos.x] < this->tilemap->tileKeys["sand"].first || this->tilemap->map[worldPos.y][worldPos.x] > this->tilemap->tileKeys["ground"].second))
+                (this->tilemap->map[worldPos.y][worldPos.x] < this->tilemap->tileKeys["sand"].first || this->tilemap->map[worldPos.y][worldPos.x] > this->tilemap->tileKeys["ground"].second && 
+                this->tilemap->map[worldPos.y][worldPos.x] < this->tilemap->tileKeys["crossGround"].first))
             {
                 return;
             }
@@ -374,7 +375,8 @@ void BaseUnit::moveTo(float dt, std::vector<BaseUnit*>& units)
         }
     }
 
-    if (this->tilemap->map[newY][newX] >= this->tilemap->tileKeys["sand"].first && this->tilemap->map[newY][newX] <= this->tilemap->tileKeys["sand"].second)
+    if (this->tilemap->map[newY][newX] >= this->tilemap->tileKeys["sand"].first && this->tilemap->map[newY][newX] <= this->tilemap->tileKeys["sand"].second ||
+    this->tilemap->map[newY][newX] >= this->tilemap->tileKeys["crossSand"].first && this->tilemap->map[newY][newX] <= this->tilemap->tileKeys["crossSand"].second)
     {
         this->slowed = true;
     }
