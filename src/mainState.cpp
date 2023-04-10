@@ -36,7 +36,7 @@ MainState::MainState(typeState type, sf::RenderWindow* window, std::stack<State*
     this->credits.setStyle(sf::Text::Bold);
     this->credits.setFillColor(sf::Color::Black);
     this->credits.setPosition(1200, 270);
-    this->credits.setString("Team-lead: Roman Zaitsev \nCoders: Ilya Idir, Roman Zaitsev, Andrey Kostin,\nDenis Hutsul");
+    this->credits.setString("Team-lead: Roman Zaitsev \nCoders: Ilya Idir, Roman Zaitsev, Andrey Kostin,\nDenis Hutsul\nDisagners: Ilya Idir, Andrey Kostin");
 
     this->version.setFont(this->font);
     this->version.setCharacterSize(30);

@@ -150,7 +150,7 @@ void GameState::generateBlood(std::pair<sf::Vector2f, int>& pos)
 
     pos.first.x = x;
     pos.first.y = y;
-    pos.second = rand() % (360 + 1 - 0) - 0;
+    pos.second = randomNumbers::getRandomNum(0, 360);
 }
 
 void GameState::updateUnits(bool mousePressedLeft, bool mousePressedRight, std::vector<int>& pressedKeys, std::vector<int>& realisedKeys, float dt)
