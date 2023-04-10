@@ -9,32 +9,12 @@ GameState::GameState(typeState type, sf::RenderWindow* window, std::stack<State*
     this->percentDone = 0;
     this->seed = seed;
 
-<<<<<<< HEAD
-    this->buttons["Prepare"] = new Button(this->window, 910, 0, 1, &textures["Prepare_End"]);
-    this->buttons["Prepare"]->setOrigin(textures["Prepare_End"].getSize().x / 2, textures["Prepare_End"].getSize().y / 2);
-    this->buttons["AddUnit"] = new Button(this->window, 1840, 1000, 1, &textures["UnitButton_Idle"]);
-    this->buttons["Team"] = new Button(this->window, 1840, 920, 1, &textures["Team_Red"]);
-    this->buttons["AddBaseUnit"] = new Button(this->window, 1840, 840, 1, &textures["BaseUnitAddButton_Idle"]);
-    this->buttons["AddArcherUnit"] = new Button(this->window, 1840, 660, 1, &textures["ArcherUnitAddButton_Idle"]);
-    this->buttons["AddUnit"]->setActiv(false);
-    this->buttons["AddBaseUnit"]->setActiv(false);
-    this->buttons["AddArcherUnit"]->setActiv(false);
-    this->buttons["Prepare"]->setActiv(true);
-    this->multiply = false;
-    // sf::Color color();
-    // color.a = 100;
-    this->multiplyShape.setFillColor(sf::Color::Transparent);
-    this->multiplyShape.setOutlineColor(sf::Color(17, 255, 0));
-    this->multiplyShape.setOutlineThickness(5.0f);
-
-=======
     this->loadingScreen();
 
     this->future = std::async(std::launch::async, [&]
     {
         return this->setup(seed);
     });
->>>>>>> 9a6b89a4821f523a916f9de7d7a98f944cf2121a
 }
 
 GameState::~GameState()
@@ -302,8 +282,6 @@ int GameState::updateButtons(bool mousePressedLeft)
                 delete unit;
             }
 
-<<<<<<< HEAD
-=======
             for (int y = 0; y < this->tilemap->mapUnits.size(); y++)
             {
                 for (int x = 0; x < this->tilemap->mapUnits[y].size(); x++)
@@ -316,7 +294,6 @@ int GameState::updateButtons(bool mousePressedLeft)
             this->bloods.clear();
             this->deads.clear();
 
->>>>>>> 9a6b89a4821f523a916f9de7d7a98f944cf2121a
             buttons.at("Prepare")->setActiv(true);
             buttons.at("Prepare")->setTexture(&textures["Prepare_End"]);
             this->bloods.clear();
@@ -538,12 +515,7 @@ void GameState::update(bool mousePressedLeft, bool mousePressedRight, std::vecto
 
 void GameState::render()
 {
-<<<<<<< HEAD
-
-    this->tilemap->renderGame(this->gameView);
-=======
     this->status = this->future.wait_for(0ms);
->>>>>>> 9a6b89a4821f523a916f9de7d7a98f944cf2121a
 
     if (status != std::future_status::ready)
     {

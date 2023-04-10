@@ -140,11 +140,7 @@ Tilemap::Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& t
             this->mapUnits[y].push_back(0);
         }
     }
-<<<<<<< HEAD
     this->mapAfterprocces();
-=======
-
->>>>>>> 9a6b89a4821f523a916f9de7d7a98f944cf2121a
 }
 
 Tilemap::~Tilemap()
