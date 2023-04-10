@@ -10,7 +10,9 @@ Tilemap::Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& t
     this->tileKeys = {
         {"water", {0, 7}},
         {"sand", {8, 8}},
+        {"crossSand", {1000000, 12000000}},
         {"ground", {9, 12}},
+        {"crossGround", {15, 80033}},
         {"mountain", {13, 13}},
         {"snow", {14, 14}}
     };
@@ -34,7 +36,65 @@ Tilemap::Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& t
         {11, textures["tile_ground_3"]},
         {12, textures["tile_ground_4"]},
         {13, textures["tile_mountain"]},
-        {14, textures["tile_snow"]}
+        {14, textures["tile_snow"]},
+        {15, textures["g_bottom_sand"]}, 
+        {16, textures["g_left_sand"]}, 
+        {17, textures["g_right_sand"]}, 
+        {19, textures["g_top_sand"]}, 
+        {31, textures["g_bottom_left_sand"]}, 
+        {32, textures["g_bottom_right_sand"]}, 
+        {33, textures["g_left_right_sand"]}, 
+        {34, textures["g_bottom_top_sand"]},
+        {35, textures["g_left_top_sand"]}, 
+        {36, textures["g_right_top_sand"]},
+        {100, textures["g_bottom_mount"]},
+        {200, textures["g_left_mount"]},
+        {400, textures["g_right_mount"]},
+        {800, textures["g_top_mount"]},
+        {300, textures["g_bottom_left_mount"]},
+        {500, textures["g_bottom_right_mount"]},
+        {600, textures["g_left_right_mount"]},
+        {900, textures["g_bottom_top_mount"]},
+        {1000, textures["g_left_top_mount"]},
+        {1200, textures["g_right_top_mount"]},
+        {10000, textures["g_bottom_water"]}, 
+        {10016, textures["g_bottom_water_left_sand"]}, 
+        {10017, textures["g_bottom_water_right_sand"]}, 
+        {10019, textures["g_bottom_water_top_sand"]},
+        {10033, textures["g_bottom_water_left_right_sand"]}, 
+        {10035, textures["g_bottom_water_left_top_sand"]},
+        {10036, textures["g_bottom_water_right_top_sand"]},
+        {20000, textures["g_left_water"]}, 
+        {20015, textures["g_left_water_bottom_sand"]}, 
+        {20017, textures["g_left_water_right_sand"]}, 
+        {20019, textures["g_left_water_top_sand"]},
+        {20032, textures["g_left_water_bottom_right_sand"]}, 
+        {20034, textures["g_left_water_bottom_top_sand"]},
+        {20036, textures["g_left_water_right_top_sand"]},
+        {40000, textures["g_right_water"]}, 
+        {40015, textures["g_right_water_bottom_sand"]}, 
+        {40016, textures["g_right_water_left_sand"]}, 
+        {40019, textures["g_right_water_top_sand"]},
+        {40031, textures["g_right_water_bottom_left_sand"]}, 
+        {40034, textures["g_right_water_bottom_top_sand"]},
+        {40035, textures["g_right_water_left_top_sand"]},
+        {80000, textures["g_top_water"]},
+        {80015, textures["g_top_water_bottom_sand"]}, 
+        {80016, textures["g_top_water_left_sand"]}, 
+        {80017, textures["g_top_water_right_sand"]},
+        {80031, textures["g_top_water_bottom_left_sand"]}, 
+        {80032, textures["g_top_water_bottom_right_sand"]},
+        {80033, textures["g_top_water_left_right_sand"]},
+        {1000000, textures["s_bottom_water"]}, 
+        {2000000, textures["s_left_water"]}, 
+        {4000000, textures["s_right_water"]}, 
+        {8000000, textures["s_top_water"]},
+        {3000000, textures["s_bottom_left_water"]}, 
+        {5000000, textures["s_bottom_right_water"]},
+        {6000000, textures["s_left_right_water"]},
+        {9000000, textures["s_bottom_top_water"]},
+        {10000000, textures["s_left_top_water"]}, 
+        {12000000, textures["s_right_top_water"]}
     };
 
     for (int y = 0; y < this->height; y++)
@@ -80,7 +140,7 @@ Tilemap::Tilemap(sf::RenderWindow* window, std::map<std::string, sf::Texture>& t
             this->mapUnits[y].push_back(0);
         }
     }
-
+    this->mapAfterprocces();
 }
 
 Tilemap::~Tilemap()
@@ -235,4 +295,219 @@ void Tilemap::renderMini(sf::View view)
 
 
     this->window->setView(old);
+}
+
+void Tilemap::mapAfterprocces()
+{
+    int tile_key = 0;
+    for (int y = 0; y < this->height; y++)
+    {
+        for (int x = 0; x < this->width; x++)
+        {
+            tile_key = 0;
+            int toGround = 0;
+            int toWater = 0;
+            if (this->map[y][x] >= 9 && this->map[y][x] <= 12 || this->map[y][x] >= 15 && this->map[y][x] < 1000000)
+            {
+                if (y > 0 && this->map[y - 1][x] > 12 && this->map[y - 1][x] < 15 ||
+                y > 0 && this->map[y - 1][x] < 9 || y > 0 && this->map[y - 1][x] >= 1000000)
+                {
+                    if(this->map[y - 1][x] == 8 || this->map[y - 1][x] >= 1000000)
+                    {
+                        tile_key += 19;
+                    }
+                    else if (this->map[y - 1][x] == 13)
+                    {
+                        tile_key += 800;
+                    }
+                    else if (this->map[y - 1][x] <= 7 && this->map[y - 1][x] >= 0)
+                    {
+                        tile_key += 80000;
+                        toWater += 1;
+                    }
+                }
+                if (x > 0 && this->map[y][x - 1] > 12 && this->map[y][x - 1] < 15 ||
+                x > 0 && this->map[y][x - 1] < 9 || x > 0 && this->map[y][x - 1] >= 1000000)
+                {
+                    if (this->map[y][x - 1] == 8 || this->map[y][x - 1] >= 1000000)
+                    {
+                        tile_key += 16;
+                    }
+                    else if (this->map[y][x - 1] == 13)
+                    {
+                        tile_key += 200;
+                    }
+                    else if (this->map[y][x - 1] <= 7 && this->map[y][x - 1] >= 0)
+                    {
+                        tile_key += 20000;
+                        toWater += 1;
+                    }
+                }
+                if (x < this->width - 1 && this->map[y][x + 1] > 12 && this->map[y][x + 1] < 15 ||
+                x < this->width - 1 && this->map[y][x + 1] < 9 || x < this->width - 1 && this->map[y][x + 1] >= 1000000)
+                {
+                    if (this->map[y][x + 1] == 8 || this->map[y][x + 1] >= 1000000)
+                    {
+                        tile_key += 17;
+                    }
+                    else if (this->map[y][x + 1] == 13)
+                    {
+                        tile_key += 400;
+                    }
+                    else if (this->map[y][x + 1] <= 7 && this->map[y][x + 1] >= 0)
+                    {
+                        tile_key += 40000;
+                        toWater += 1;
+                    }
+                }
+                if(y < this->height - 1 && this->map[y + 1][x] > 12 && this->map[y + 1][x] < 15 ||
+                y < this->height - 1 && this->map[y + 1][x] < 9 || y < this->height - 1 && this->map[y + 1][x] >= 1000000)
+                {
+                    if (this->map[y + 1][x] == 8 || this->map[y + 1][x] >= 1000000)
+                    {
+                        tile_key += 15;
+                    }
+                    else if (this->map[y + 1][x] == 13)
+                    {
+                        tile_key += 100;
+                    }
+                    else if (this->map[y + 1][x] <= 7 && this->map[y + 1][x] >= 0)
+                    {
+                        tile_key += 10000;
+                        toWater += 1;
+                    }
+                }
+                if (tile_key != 0 || toWater != 0)
+                {
+                    if (this->tiles.count(tile_key) != 0)
+                    {
+                        this->map[y][x] = tile_key;
+                    }
+                    else
+                    {
+                        if (tile_key % 10000 > 699)
+                        {
+                            this->map[y][x] = 13;
+                            y -= (y >= 2 ? 2 : (y > 0 ? 1 : 0));
+                        }
+                        else if (tile_key % 100 > 36)
+                        {
+                            this->map[y][x] = 8;
+                            y -= (y >= 2 ? 2 : (y > 0 ? 1 : 0));
+                        }
+                        else if (toWater >= 2)
+                        {
+                            this->map[y][x] = 0;
+                            y -= (y >= 2 ? 2 : (y > 0 ? 1 : 0));
+                        }
+                        //else if (tile_key % 1000000 > 120200)
+                        //{
+                        //    this->map[y][x] = 0;
+                        //    y -= (y >= 2 ? 2 : (y > 0 ? 1 : 0));
+                        //}
+                    }
+                }
+                else if (this->map[y][x] < 1000000 && this->map[y][x] >= 15)
+                {
+                    if (y > 0 && this->map[y - 1][x] >= 9 && this->map[y - 1][x] <= 12 ||
+                     y > 0 && this->map[y - 1][x] >= 15 && this->map[y - 1][x] < 1000000)
+                    {
+                        toGround += 1;
+                    }
+                    if (x > 0 && this->map[y][x - 1] >= 9 && this->map[y][x - 1] <= 12 ||
+                     x > 0 && this->map[y][x - 1] >= 15 && this->map[y][x - 1] < 1000000)
+                    {
+                        toGround += 1;
+                    }
+                    if (x < this->width - 1 && this->map[y][x + 1] >= 9 && this->map[y][x + 1] <= 12 ||
+                     x < this->width - 1 && this->map[y][x + 1] >= 15 && this->map[y][x + 1] < 1000000)
+                    {
+                        toGround += 1;
+                    }
+                    if (y < this->height - 1 && this->map[y + 1][x] >= 9 && this->map[y + 1][x] <= 12 ||
+                     y < this->height - 1 && this->map[y + 1][x] >= 15 && this->map[y + 1][x] < 1000000)
+                    {
+                        toGround += 1;
+                    }
+                    if (toGround == 4)
+                    {
+                        this->map[y][x] = 9;
+                        y -= (y >= 2 ? 2 : (y > 0 ? 1 : 0));
+                    }
+                }
+            }
+            else if (this->map[y][x] == 8 || this->map[y][x] >= 1000000)
+            {
+                if (y > 0 && this->map[y - 1][x] != 8 && this->map[y - 1][x] < 1000000)
+                {
+                    //if (this->map[y - 1][x] >= 9 && this->map[y - 1][x] <= 12 ||
+                    //this->map[y - 1][x] >= 15 && this->map[y - 1][x] < 1000000)
+                    //{
+                    //    toGround += 1;
+                    //}
+                    if (this->map[y - 1][x] >= 0 && this->map[y - 1][x] <= 7)
+                    {
+                        tile_key += 8000000;
+                        toWater += 1;
+                    }
+                }
+                if (x > 0 && this->map[y][x - 1] != 8 && this->map[y][x - 1] < 1000000)
+                {
+                    //if (this->map[y][x - 1] >= 9 && this->map[y][x - 1] <= 12 ||
+                    //this->map[y][x - 1] >= 15 && this->map[y][x - 1] < 1000000)
+                    //{
+                    //    toGround += 1;
+                    //}
+                    if (this->map[y][x - 1] >= 0 && this->map[y][x - 1] <= 7)
+                    {
+                        tile_key += 2000000;
+                        toWater += 1;
+                    }
+                }
+                if (x < this->width - 1 && this->map[y][x + 1] != 8 && this->map[y][x + 1] < 1000000)
+                {
+                    //if (this->map[y][x + 1] >= 9 && this->map[y][x + 1] <= 12 ||
+                    //this->map[y][x + 1] >=15 && this->map[y][x + 1] < 1000000)
+                    //{
+                    //    toGround += 1;
+                    //}
+                    if (this->map[y][x + 1] >= 0 && this->map[y][x + 1] <= 7)
+                    {
+                        tile_key += 4000000;
+                        toWater += 1;
+                    }
+                }
+                if (y < this->height - 1 && this->map[y + 1][x] != 8 && this->map[y + 1][x] < 1000000)
+                {
+                    //if (this->map[y + 1][x] >= 9 && this->map[y + 1][x] <= 12 ||
+                    //this->map[y + 1][x] >= 15 && this->map[y + 1][x] < 1000000)
+                    //{
+                    //    toGround += 1;
+                    //}
+                    if (this->map[y + 1][x] >= 0 && this->map[y + 1][x] <= 7)
+                    {
+                        tile_key += 1000000;
+                        toWater += 1;
+                    }
+                }
+                if (tile_key != 0 || toGround != 0 || toWater != 0)
+                {
+                    if (this->tiles.count(tile_key) != 0)
+                    {
+                        this->map[y][x] = tile_key;
+                    }
+                    //else if (toGround >= 4)
+                    //{
+                    //    this->map[y][x] = 9;
+                    //    y -= (y >= 2 ? 2 : (y > 0 ? 1 : 0));
+                    //}
+                    else if (toWater >= 3)
+                    {
+                        this->map[y][x] = 0;
+                        y -= (y >= 2 ? 2 : (y > 0 ? 1 : 0));
+                    }
+                }
+            }
+        }
+    }
 }

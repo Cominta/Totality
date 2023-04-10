@@ -296,8 +296,8 @@ int GameState::updateButtons(bool mousePressedLeft)
 
             buttons.at("Prepare")->setActiv(true);
             buttons.at("Prepare")->setTexture(&textures["Prepare_End"]);
-            bloods.clear();
-            deads.clear();
+            this->bloods.clear();
+            this->deads.clear();
             this->units.clear();
 
             buttons.at("AddBaseUnit")->setTexture(&this->textures["BaseUnitAddButton_Idle"]);
@@ -315,8 +315,7 @@ int GameState::updateButtons(bool mousePressedLeft)
     {
         if (it.first == "Prepare")
         {
-            it.second->setPosition(this->window->mapPixelToCoords(sf::Vector2i(this->window->getSize().x / 2, 
-                                    80)));
+            it.second->setPosition(this->window->mapPixelToCoords(sf::Vector2i(this->window->getSize().x / 2, 80)));
             it.second->setScale(this->window->getView().getSize().x / 100 / 18.0f, this->window->getView().getSize().y / 100 / 10);
         }
 

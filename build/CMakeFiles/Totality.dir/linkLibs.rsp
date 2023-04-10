@@ -1,1 +1,0 @@
- "C:/Users/Roman/Desktop/Totality/lib/libsfml-system-d.a" "C:/Users/Roman/Desktop/Totality/lib/libsfml-graphics-d.a" "C:/Users/Roman/Desktop/Totality/lib/libsfml-window-d.a" "C:/Users/Roman/Desktop/Totality/lib/libsfml-main-d.a" "C:/Users/Roman/Desktop/Totality/lib/libsfml-audio-d.a" -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

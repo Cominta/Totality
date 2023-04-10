@@ -47,4 +47,5 @@ class Tilemap
 
         void renderGame(sf::View view);
         void renderMini(sf::View view);
+        void mapAfterprocces();
 };
